@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_marginStart="@dimen/game_item_card_view_margin_start"
+    android:layout_marginEnd="@dimen/game_item_card_view_margin_end"
+    android:layout_marginTop="@dimen/game_item_card_view_margin_top"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- Cover Art -->
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="@dimen/game_item_cover_art_width"
+            android:layout_height="@dimen/game_item_cover_art_height"
+            android:layout_weight="1.5"
+            android:layout_marginStart="@dimen/game_item_cover_art_margin_start"
+            android:layout_marginEnd="@dimen/game_item_cover_art_margin_end"
+            android:layout_marginTop="@dimen/game_item_cover_art_margin_top"
+            android:layout_marginBottom="@dimen/game_item_cover_art_margin_bottom"
+            android:contentDescription="@string/game_list_image_view_content_description"
+            app:srcCompat="@drawable/no_art" />
+
+        <!-- Game Info -->
+        <RelativeLayout
+            android:layout_weight="8"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+            <!-- Game info here-->
+            <TextView
+                android:id="@+id/title_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextAppearance.AppCompat.Large"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:text="Game title"/>
+        </RelativeLayout>
+
+        <!-- Favourite Star -->
+        <TextView
+            android:layout_weight="1.5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Star"/>
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

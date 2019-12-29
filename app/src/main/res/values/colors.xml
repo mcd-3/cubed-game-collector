@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_primary">#008577</color>
+    <color name="color_primary_dark">#00574B</color>
+    <color name="color_accent">#D81B60</color>
+
+    <!-- Theme: Cubed -->
+    <color name="cubed_primary">#9c00e8</color>
+    <color name="cubed_primary_dark">#7800b3</color>
+    <color name="cubed_accent">#dd99ff</color>
+    <color name="cubed_text">#000000</color>
+    <color name="cubed_navbar">#660099</color>
+
+    <!-- Theme: Cubed-Dark -->
+    <color name="cubed_dark_primary">#9c00e8</color>
+    <color name="cubed_dark_primary_dark">#7800b3</color>
+    <color name="cubed_dark_accent">#dd99ff</color>
+    <color name="cubed_dark_text">#FFFFFF</color>
+    <color name="cubed_dark__navbar">#660099</color>
+
+    <!-- Theme: Night -->
+    <color name="night_primary">#333333</color>
+    <color name="night_primary_dark">#131313</color>
+    <color name="night_accent">#565656</color>
+    <color name="night_text">#FFFFFF</color>
+    <color name="night_navbar">#000000</color>
+
+    <!-- Theme: Dolphin -->
+    <color name="dolphin_primary">#35bdff</color>
+    <color name="dolphin_primary_dark">#0098e1</color>
+    <color name="dolphin_accent">#99dfff</color>
+    <color name="dolphin_text">#000000</color>
+    <color name="dolphin_navbar">#004666</color>
+
+    <!-- Theme: Player's Choice [Yellow] -->
+    <color name="pcy_primary">#9c00e8</color>
+    <color name="pcy_primary_dark">#ffec04</color>
+    <color name="pcy_accent">#dd99ff</color>
+    <color name="pcy_text">#000000</color>
+    <color name="pcy_navbar">#000000</color>
+
+    <!-- Theme: Player's Choice [Silver] -->
+    <color name="pcg_primary">#aaaaaa</color>
+    <color name="pcg_primary_dark">#ffec04</color>
+    <color name="pcg_accent">#c5c5c5</color>
+    <color name="pcg_text">#000000</color>
+    <color name="pcg_navbar">#000000</color>
+</resources>

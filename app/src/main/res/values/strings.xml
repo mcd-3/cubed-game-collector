@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">GamecubeCollector</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- ImageView content descriptions -->
+    <string name="game_list_image_view_content_description">Game cover art</string>
+</resources>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/game_item_card_view_margin_start"
+        android:layout_marginEnd="@dimen/game_item_card_view_margin_end">
+
+        <!-- TODO: Change text color to that of the style-->
+        <TextView
+            android:id="@+id/title_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/game_detail_title_margin_start"
+            android:layout_marginEnd="@dimen/game_detail_title_margin_end"
+            android:layout_marginTop="@dimen/game_detail_title_margin_top"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            style="@style/TextAppearance.AppCompat.Medium"
+            android:maxLines="3"
+            android:ellipsize="end"
+            android:text="Title"/>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>
