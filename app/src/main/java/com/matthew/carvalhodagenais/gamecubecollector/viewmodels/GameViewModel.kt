@@ -16,6 +16,10 @@ class GameViewModel(application: Application): AndroidViewModel(application) {
         repository.insertGame(game)
     }
 
+    fun delete(game: Game) {
+        repository.deleteGame(game)
+    }
+
     fun getAllGames(): LiveData<List<Game>> {
         return repository.getAllGames()
     }

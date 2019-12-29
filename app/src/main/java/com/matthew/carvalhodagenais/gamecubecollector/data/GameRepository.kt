@@ -24,6 +24,10 @@ class GameRepository(application: Application) {
         val insert = InsertGameAsyncTask(gameDao).execute(game)
     }
 
+    fun deleteGame(game: Game) {
+        val delete = DeleteGameAsyncTask(gameDao).execute(game)
+    }
+
     fun getAllGames(): LiveData<List<Game>> {
         return allGames
     }
@@ -34,6 +38,13 @@ class GameRepository(application: Application) {
             val dao = gameDao
             override fun doInBackground(vararg params: Game?) {
                 dao.insert(params[0]!!)
+            }
+        }
+
+        class DeleteGameAsyncTask(gameDao: GameDao): AsyncTask<Game, Unit, Unit>() {
+            val dao = gameDao
+            override fun doInBackground(vararg params: Game?) {
+                dao.delete(params[0]!!)
             }
         }
 

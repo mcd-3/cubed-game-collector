@@ -10,4 +10,10 @@
 
     <!-- ImageView content descriptions -->
     <string name="game_list_image_view_content_description">Game cover art</string>
+
+    <!-- Alert Dialog text -->
+    <string name="game_detail_delete_alert_title">Delete Game?</string>
+    <string name="game_detail_delete_alert_body">Are you sure you want to delete this game?</string>
+    <string name="game_detail_delete_alert_positive">Delete</string>
+    <string name="game_detail_delete_alert_negative">@android:string/cancel</string>
 </resources>

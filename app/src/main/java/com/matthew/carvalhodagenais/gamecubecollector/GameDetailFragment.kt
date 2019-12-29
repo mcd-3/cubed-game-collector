@@ -1,5 +1,7 @@
 package com.matthew.carvalhodagenais.gamecubecollector
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
@@ -10,6 +12,7 @@ import kotlinx.android.synthetic.main.fragment_game_detail.*
 class GameDetailFragment: Fragment() {
 
     private lateinit var viewModel: GameViewModel
+    private lateinit var currentGame: Game
 
     companion object {
         const val FRAGMENT_TAG =
@@ -25,13 +28,14 @@ class GameDetailFragment: Fragment() {
         val view: View =
             inflater.inflate(R.layout.fragment_game_detail, container, false)
         viewModel = (activity as MainActivity).getGameViewModel()
+        currentGame = viewModel.getSelectedGame()!!
         setHasOptionsMenu(true)
         return view
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        initialDataSetup(viewModel.getSelectedGame()!!)
+        initialDataSetup(currentGame)
     }
 
     override fun onPrepareOptionsMenu(menu: Menu) {
@@ -51,6 +55,7 @@ class GameDetailFragment: Fragment() {
             true
         }
         R.id.menu_delete -> {
+            showDeleteDialog()
             true
         }
         else -> {
@@ -63,5 +68,30 @@ class GameDetailFragment: Fragment() {
      */
     private fun initialDataSetup(game: Game) {
         title_text_view.text = game.title
+    }
+
+    /**
+     * Prompts the user for whether or not the game will be deleted
+     */
+    private fun showDeleteDialog() {
+        val builder = AlertDialog.Builder(context)
+        builder.setTitle(getString(R.string.game_detail_delete_alert_title))
+            .setMessage(getString(R.string.game_detail_delete_alert_body))
+            .setPositiveButton(getString(R.string.game_detail_delete_alert_positive),
+                alertPositiveOnClick)
+            .setNegativeButton(getString(R.string.game_detail_delete_alert_negative)){
+                    dialog, id -> dialog.dismiss() }
+        val alert = builder.create()
+        alert.show()
+    }
+
+    /**
+     * AlertDialog OnClickListener to delete the currently selected game
+     */
+    private val alertPositiveOnClick = DialogInterface.OnClickListener { _, _ ->
+        viewModel.delete(currentGame)
+        val transaction = activity!!.supportFragmentManager.beginTransaction()
+        transaction.replace(this@GameDetailFragment.id, GameListFragment.newInstance())
+        transaction.commit()
     }
 }
