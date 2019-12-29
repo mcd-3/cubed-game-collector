@@ -4,6 +4,10 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <!-- Menu item titles -->
+    <string name="menu_edit_title">Edit</string>
+    <string name="menu_delete_title">Delete</string>
+
     <!-- ImageView content descriptions -->
     <string name="game_list_image_view_content_description">Game cover art</string>
 </resources>
