@@ -1,10 +1,7 @@
 package com.matthew.carvalhodagenais.gamecubecollector
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.Menu
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.fragment.app.Fragment
 import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Game
 import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.GameViewModel
@@ -41,6 +38,24 @@ class GameDetailFragment: Fragment() {
         menu.clear()
         activity!!.menuInflater.inflate(R.menu.menu_game_detail, menu)
         return super.onPrepareOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean = when(item.itemId) {
+        R.id.menu_edit -> {
+            val transaction = activity!!.supportFragmentManager.beginTransaction()
+            transaction.replace(this@GameDetailFragment.id,
+                GameAddEditFragment.newInstance(GameAddEditFragment.EDIT_REQUEST),
+                GameAddEditFragment.FRAGMENT_TAG)
+            transaction.addToBackStack(null)
+            transaction.commit()
+            true
+        }
+        R.id.menu_delete -> {
+            true
+        }
+        else -> {
+            super.onOptionsItemSelected(item)
+        }
     }
 
     /**

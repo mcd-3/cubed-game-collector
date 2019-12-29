@@ -10,11 +10,18 @@ class GameAddEditFragment: Fragment() {
 
     companion object {
 
-        val ADD_REQUEST: Int = 1
-        val EDIT_REQUEST: Int = 2
+        private const val REQUEST_CODE: String = "GameAddEditFragment.REQUEST_CODE"
+        const val FRAGMENT_TAG =
+            "com.matthew.carvalhodagenais.gamecubecollector.GameAddEditFragment"
+        const val ADD_REQUEST: Int = 1
+        const val EDIT_REQUEST: Int = 2
 
-        fun newInstance() {
-
+        fun newInstance(request: Int): GameAddEditFragment {
+            val fragment = GameAddEditFragment()
+            val args = Bundle()
+            args.putInt(REQUEST_CODE, request)
+            fragment.arguments = args
+            return fragment
         }
     }
 
