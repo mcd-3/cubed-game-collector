@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/title_card_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/game_item_card_view_margin_start"
-        android:layout_marginEnd="@dimen/game_item_card_view_margin_end">
+        android:layout_marginEnd="@dimen/game_item_card_view_margin_end"
+        android:layout_marginTop="@dimen/game_detail_title_margin_top"
+        android:layout_marginBottom="@dimen/game_item_card_view_margin_bottom">
 
         <!-- TODO: Change text color to that of the style-->
         <TextView
@@ -17,14 +21,50 @@
             android:layout_marginStart="@dimen/game_detail_title_margin_start"
             android:layout_marginEnd="@dimen/game_detail_title_margin_end"
             android:layout_marginTop="@dimen/game_detail_title_margin_top"
+            android:layout_marginBottom="@dimen/game_detail_title_margin_bottom"
             android:layout_gravity="center_horizontal"
+            android:gravity="center"
             android:textColor="#000000"
             android:textStyle="bold"
             style="@style/TextAppearance.AppCompat.Medium"
             android:maxLines="3"
             android:ellipsize="end"
-            android:text="Title"/>
+            android:text="@string/no_title_available"/>
 
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cover_card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/game_item_card_view_margin_start"
+        android:layout_marginEnd="@dimen/game_item_card_view_margin_end">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/cover_art_image_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:contentDescription="@string/game_detail_image_view_content_description"
+                app:srcCompat="@drawable/no_art" />
+
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="@dimen/favourite_button_margin_end"
+                android:layout_marginTop="@dimen/favourite_button_margin_top"
+                android:contentDescription="@string/game_detail_favourite_image_button_view_content_description"
+                android:background="?attr/selectableItemBackground"
+                app:srcCompat="@drawable/ic_star_border_yellow_48dp" />
+
+
+        </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
 </LinearLayout>

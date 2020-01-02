@@ -3,20 +3,24 @@
 
     <!-- Card View -->
     <dimen name="game_item_card_view_margin_top">4dp</dimen>
+    <dimen name="game_item_card_view_margin_bottom">4dp</dimen>
     <dimen name="game_item_card_view_margin_start">8dp</dimen>
     <dimen name="game_item_card_view_margin_end">8dp</dimen>
 
-    <!-- Image View -->
+    <!-- Image View and ImageButton View -->
     <dimen name="game_item_cover_art_margin_start">4dp</dimen>
     <dimen name="game_item_cover_art_margin_end">4dp</dimen>
     <dimen name="game_item_cover_art_margin_top">4dp</dimen>
     <dimen name="game_item_cover_art_margin_bottom">4dp</dimen>
+    <dimen name="favourite_button_margin_end">12dp</dimen>
+    <dimen name="favourite_button_margin_top">12dp</dimen>
     <dimen name="game_item_cover_art_width">32dp</dimen>
     <dimen name="game_item_cover_art_height">128dp</dimen>
 
     <!-- Text View -->
     <dimen name="game_detail_title_margin_top">8dp</dimen>
-    <dimen name="game_detail_title_margin_start">10dp</dimen>
-    <dimen name="game_detail_title_margin_end">10dp</dimen>
+    <dimen name="game_detail_title_margin_bottom">8dp</dimen>
+    <dimen name="game_detail_title_margin_start">32dp</dimen>
+    <dimen name="game_detail_title_margin_end">32dp</dimen>
 
 </resources>
