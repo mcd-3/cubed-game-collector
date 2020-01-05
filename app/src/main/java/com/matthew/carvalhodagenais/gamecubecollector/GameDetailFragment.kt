@@ -35,6 +35,7 @@ class GameDetailFragment: Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        favourite_image_button.setOnClickListener(favouriteOnClick)
         initialDataSetup(currentGame)
     }
 
@@ -93,5 +94,18 @@ class GameDetailFragment: Fragment() {
         val transaction = activity!!.supportFragmentManager.beginTransaction()
         transaction.replace(this@GameDetailFragment.id, GameListFragment.newInstance())
         transaction.commit()
+    }
+
+    /**
+     * OnClickListener for the star ImageButton to favourite the Game
+     */
+    private val favouriteOnClick = View.OnClickListener {
+        if (currentGame.isFavourite!!) {
+            favourite_image_button.setImageDrawable(resources.getDrawable(R.drawable.ic_star_border_yellow_48dp, null))
+            currentGame.isFavourite = false
+        } else {
+            favourite_image_button.setImageDrawable(resources.getDrawable(R.drawable.ic_star_yellow_48dp, null))
+            currentGame.isFavourite = true
+        }
     }
 }

@@ -31,4 +31,8 @@ class GameViewModel(application: Application): AndroidViewModel(application) {
     fun getSelectedGame(): Game? {
         return selectedGame.value
     }
+
+    fun setFavourite(game: Game, isFavourite: Boolean) {
+        game.isFavourite = isFavourite
+    }
 }
