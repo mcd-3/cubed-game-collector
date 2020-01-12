@@ -7,6 +7,7 @@
     <!-- Menu item titles -->
     <string name="menu_edit_title">Edit</string>
     <string name="menu_delete_title">Delete</string>
+    <string name="menu_save_title">Save</string>
 
     <!-- ImageView content descriptions -->
     <string name="game_list_image_view_content_description">Game cover art</string>
@@ -27,4 +28,7 @@
     <string name="developers_title">Developers: </string>
     <string name="publisher_title">Publisher: </string>
     <string name="publishers_title">Publishers: </string>
+
+    <!-- Toast Messages -->
+    <string name="toast_favourite">Favourited!</string>
 </resources>

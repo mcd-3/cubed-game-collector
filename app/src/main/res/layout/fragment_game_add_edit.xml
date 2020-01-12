@@ -3,4 +3,77 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <EditText
+        android:id="@+id/title_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Title of game"/>
+
+    <EditText
+        android:id="@+id/developer_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Developer"/>
+
+    <EditText
+        android:id="@+id/publisher_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Publisher"/>
+
+    <EditText
+        android:id="@+id/release_date_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Release date"/>
+
+    <EditText
+        android:id="@+id/region_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Region"/>
+
+    <EditText
+        android:id="@+id/date_bought_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Date bought"/>
+
+    <EditText
+        android:id="@+id/condition_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Condition"/>
+
+    <EditText
+        android:id="@+id/price_paid_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Price paid"/>
+
+    <EditText
+        android:id="@+id/case_in_box_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="CIB?"/>
+
+    <EditText
+        android:id="@+id/manual_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Manual?"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save Game"/>
+<!--
+ {
+    @ColumnInfo(name = "favourite")
+    var isFavourite: Boolean? = false
+
+    @ColumnInfo(name = "image_path")
+    var imagePath: String? = ""
+
+-->
 </LinearLayout>

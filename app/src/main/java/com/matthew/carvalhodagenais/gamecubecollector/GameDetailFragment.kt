@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.content.DialogInterface
 import android.os.Bundle
 import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Game
 import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.GameViewModel
@@ -69,6 +70,9 @@ class GameDetailFragment: Fragment() {
      */
     private fun initialDataSetup(game: Game) {
         title_text_view.text = game.title
+        if (currentGame.isFavourite!!) {
+            favourite_image_button.setImageDrawable(resources.getDrawable(R.drawable.ic_star_yellow_48dp, null))
+        }
     }
 
     /**
@@ -101,11 +105,15 @@ class GameDetailFragment: Fragment() {
      */
     private val favouriteOnClick = View.OnClickListener {
         if (currentGame.isFavourite!!) {
-            favourite_image_button.setImageDrawable(resources.getDrawable(R.drawable.ic_star_border_yellow_48dp, null))
+            favourite_image_button
+                .setImageDrawable(resources.getDrawable(R.drawable.ic_star_border_yellow_48dp, null))
             currentGame.isFavourite = false
         } else {
-            favourite_image_button.setImageDrawable(resources.getDrawable(R.drawable.ic_star_yellow_48dp, null))
+            favourite_image_button
+                .setImageDrawable(resources.getDrawable(R.drawable.ic_star_yellow_48dp, null))
             currentGame.isFavourite = true
+            Toast.makeText(context, getString(R.string.toast_favourite), Toast.LENGTH_SHORT).show()
         }
+        viewModel.update(currentGame)
     }
 }

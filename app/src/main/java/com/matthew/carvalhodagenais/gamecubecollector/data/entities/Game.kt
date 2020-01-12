@@ -18,17 +18,18 @@ import java.util.*
         onDelete = ForeignKey.NO_ACTION)
     ])
 @TypeConverters(DateConverter::class)
+//Note: use named parameters instead of Builder. This is Kotlin!
 data class Game(
     @ColumnInfo(name = "title") var title: String,
-    @ColumnInfo(name = "developer") var developers: String?, //DevOne::DevTwo if multiple
-    @ColumnInfo(name = "publisher") var publishers: String?, //PubOne::PubTwo if multiple
-    @ColumnInfo(name = "date_released") var releaseDate: Date?,
-    @ColumnInfo(name = "region_id") var regionId: Int?,
-    @ColumnInfo(name = "date_bought") var boughtDate: Date?,
-    @ColumnInfo(name = "condition_id") var condition: Int?,
-    @ColumnInfo(name = "price_paid") var pricePaid: Double?,
-    @ColumnInfo(name = "case_in_box") var hasCase: Boolean?,
-    @ColumnInfo(name = "includes_manual") var hasManual: Boolean?
+    @ColumnInfo(name = "developer") var developers: String? = null, //DevOne::DevTwo if multiple
+    @ColumnInfo(name = "publisher") var publishers: String? = null, //PubOne::PubTwo if multiple
+    @ColumnInfo(name = "date_released") var releaseDate: Date? = null,
+    @ColumnInfo(name = "region_id") var regionId: Int? = null,
+    @ColumnInfo(name = "date_bought") var boughtDate: Date? = null,
+    @ColumnInfo(name = "condition_id") var condition: Int? = null,
+    @ColumnInfo(name = "price_paid") var pricePaid: Double? = null,
+    @ColumnInfo(name = "case_in_box") var hasCase: Boolean? = null,
+    @ColumnInfo(name = "includes_manual") var hasManual: Boolean? = null
 ) {
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0
