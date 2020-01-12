@@ -8,6 +8,8 @@
     <string name="menu_edit_title">Edit</string>
     <string name="menu_delete_title">Delete</string>
     <string name="menu_save_title">Save</string>
+    <string name="menu_add_title">Add</string>
+    <string name="menu_search_title">Search</string>
 
     <!-- ImageView content descriptions -->
     <string name="game_list_image_view_content_description">Game cover art</string>

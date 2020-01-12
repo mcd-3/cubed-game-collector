@@ -1,10 +1,9 @@
 package com.matthew.carvalhodagenais.gamecubecollector
 
 import android.os.Bundle
+import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.matthew.carvalhodagenais.gamecubecollector.adapters.GameListRecyclerAdapter
@@ -28,6 +27,7 @@ class GameListFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_game_list, container, false)
         viewModel = (activity as MainActivity).getGameViewModel()
+        setHasOptionsMenu(true)
         return view
     }
 
@@ -45,6 +45,29 @@ class GameListFragment : Fragment() {
             recyclerAdapter.submitList(it)
             recyclerAdapter.setItemOnClickListener(itemOnClick)
         })
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu) {
+        menu.clear()
+        activity!!.menuInflater.inflate(R.menu.menu_game_list, menu)
+        return super.onPrepareOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean = when(item.itemId){
+        R.id.menu_add -> {
+            val transaction = activity!!.supportFragmentManager.beginTransaction()
+            transaction.replace(this@GameListFragment.id,
+                GameAddEditFragment.newInstance(
+                    GameAddEditFragment.ADD_REQUEST
+                ),
+                GameAddEditFragment.FRAGMENT_TAG)
+                .addToBackStack(null)
+            transaction.commit()
+            true
+        }
+        else -> {
+            super.onOptionsItemSelected(item)
+        }
     }
 
     /**

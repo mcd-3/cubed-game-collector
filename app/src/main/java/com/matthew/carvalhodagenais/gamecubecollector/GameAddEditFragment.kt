@@ -58,16 +58,18 @@ class GameAddEditFragment: Fragment() {
         }
     }
 
+    /**
+     * Saves the game to the database by grabbing all values from the inputs
+     */
     private fun saveGame() {
-        //TODO: Save the game to DB
         val g: Game = Game("New Super Mario Bros Wii").apply {
             developers = setNullIfEmptyString(developer_edit_text.text.toString())
             publishers = setNullIfEmptyString(publisher_edit_text.text.toString())
             releaseDate = null
-            regionId = 1
+            regionId = condition_edit_text.text.toString().toInt()
             boughtDate = null
-            condition = 2
-            pricePaid = 10.00
+            condition = condition_edit_text.text.toString().toInt()
+            pricePaid = price_paid_edit_text.text.toString().toDouble()
             hasCase = true
             hasManual = true
         }
