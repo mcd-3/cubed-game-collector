@@ -33,4 +33,12 @@
 
     <!-- Toast Messages -->
     <string name="toast_favourite">Favourited!</string>
+    <string name="toast_no_title_warning">Enter a title</string>
+    <string name="toast_game_saved">Game Saved!</string>
+
+    <!-- Drawer Layout Things -->
+    <string name="drawer_layout_open">Open</string>
+    <string name="drawer_layout_close">Close</string>
+
+
 </resources>

@@ -49,8 +49,19 @@ class GameAddEditFragment: Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when(item.itemId){
         R.id.menu_save -> {
-            Toast.makeText(context, "Save coming soon!", Toast.LENGTH_SHORT).show()
-            saveGame()
+            if (title_edit_text.text.trim().toString().isEmpty()) {
+                Toast.makeText(context,
+                    getString(R.string.toast_no_title_warning),
+                    Toast.LENGTH_SHORT).show()
+            } else {
+                saveGame()
+                val transaction =
+                    activity!!.supportFragmentManager.beginTransaction()
+                transaction.replace(this@GameAddEditFragment.id,
+                    GameListFragment.newInstance(),
+                    GameListFragment.FRAGMENT_TAG)
+                transaction.commit()
+            }
             true
         }
         else -> {
@@ -62,14 +73,14 @@ class GameAddEditFragment: Fragment() {
      * Saves the game to the database by grabbing all values from the inputs
      */
     private fun saveGame() {
-        val g: Game = Game("New Super Mario Bros Wii").apply {
+        val g: Game = Game(title_edit_text.text.toString()).apply {
             developers = setNullIfEmptyString(developer_edit_text.text.toString())
             publishers = setNullIfEmptyString(publisher_edit_text.text.toString())
             releaseDate = null
-            regionId = condition_edit_text.text.toString().toInt()
+            regionId = null//condition_edit_text.text.toString().toInt()
             boughtDate = null
-            condition = condition_edit_text.text.toString().toInt()
-            pricePaid = price_paid_edit_text.text.toString().toDouble()
+            condition = null//condition_edit_text.text.toString().toInt()
+            pricePaid = null//price_paid_edit_text.text.toString().toDouble()
             hasCase = true
             hasManual = true
         }
@@ -80,6 +91,5 @@ class GameAddEditFragment: Fragment() {
 
     private fun setNullIfEmptyString(string: String): String? =
         if (string.trim().isEmpty()) null else string
-
 
 }

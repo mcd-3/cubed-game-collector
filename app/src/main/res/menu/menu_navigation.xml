@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:title="Games" />
+    <item
+        android:title="Consoles" />
+    <item
+        android:title="Accessories" />
+    <item
+        android:title="Favourites" />
+
+</menu>
