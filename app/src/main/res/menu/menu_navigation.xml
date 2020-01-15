@@ -10,4 +10,10 @@
     <item
         android:title="Favourites" />
 
+    <item
+        android:title="Settings" />
+
+    <item
+        android:title="About" />
+
 </menu>

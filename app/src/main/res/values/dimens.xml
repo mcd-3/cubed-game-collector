@@ -32,4 +32,7 @@
     <dimen name="details_game_info_margin_bottom">16dp</dimen>
     <dimen name="details_game_info_padding_bottom">24dp</dimen>
 
+    <!-- Navigation Menu -->
+    <dimen name="navigation_header_height">148dp</dimen>
+
 </resources>

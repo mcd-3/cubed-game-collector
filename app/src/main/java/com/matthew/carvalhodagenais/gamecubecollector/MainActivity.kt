@@ -3,9 +3,11 @@ package com.matthew.carvalhodagenais.gamecubecollector
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.core.view.GravityCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.matthew.carvalhodagenais.gamecubecollector.data.CollectorDatabase
@@ -29,6 +31,7 @@ class MainActivity : AppCompatActivity() {
             GameViewModelFactory(this.application)).get(GameViewModel::class.java)
 
         //Set NavigationDrawer
+        setSupportActionBar(toolbar)
         toggle = ActionBarDrawerToggle(this,
             main_activity_drawer_layout,
             R.string.drawer_layout_open,
@@ -49,6 +52,14 @@ class MainActivity : AppCompatActivity() {
             return true
         }
         return false
+    }
+
+    override fun onBackPressed() {
+        if (main_activity_drawer_layout.isDrawerOpen(GravityCompat.START)) {
+            main_activity_drawer_layout.closeDrawer(GravityCompat.START)
+        } else {
+            super.onBackPressed()
+        }
     }
 
     /**
