@@ -1,9 +1,11 @@
-package com.matthew.carvalhodagenais.gamecubecollector
+package com.matthew.carvalhodagenais.gamecubecollector.ui
 
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.matthew.carvalhodagenais.gamecubecollector.MainActivity
+import com.matthew.carvalhodagenais.gamecubecollector.R
 import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Game
 import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.GameViewModel
 import kotlinx.android.synthetic.main.fragment_game_add_edit.*
@@ -16,12 +18,13 @@ class GameAddEditFragment: Fragment() {
 
         private const val REQUEST_CODE: String = "GameAddEditFragment.REQUEST_CODE"
         const val FRAGMENT_TAG =
-            "com.matthew.carvalhodagenais.gamecubecollector.GameAddEditFragment"
+            "com.matthew.carvalhodagenais.gamecubecollector.ui.GameAddEditFragment"
         const val ADD_REQUEST: Int = 1
         const val EDIT_REQUEST: Int = 2
 
         fun newInstance(request: Int): GameAddEditFragment {
-            val fragment = GameAddEditFragment()
+            val fragment =
+                GameAddEditFragment()
             val args = Bundle()
             args.putInt(REQUEST_CODE, request)
             fragment.arguments = args
@@ -59,7 +62,8 @@ class GameAddEditFragment: Fragment() {
                     activity!!.supportFragmentManager.beginTransaction()
                 transaction.replace(this@GameAddEditFragment.id,
                     GameListFragment.newInstance(),
-                    GameListFragment.FRAGMENT_TAG)
+                    GameListFragment.FRAGMENT_TAG
+                )
                 transaction.commit()
             }
             true

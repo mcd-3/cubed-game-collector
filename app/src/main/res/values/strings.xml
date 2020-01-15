@@ -10,6 +10,15 @@
     <string name="menu_save_title">Save</string>
     <string name="menu_add_title">Add</string>
     <string name="menu_search_title">Search</string>
+    <string name="menu_games_title">Games</string>
+    <string name="menu_consoles_title">Consoles</string>
+    <string name="menu_accessories_title">Accessories</string>
+    <string name="menu_favourites_title">Favourites</string>
+    <string name="menu_settings_title">Settings</string>
+    <string name="menu_about_title">About</string>
+    <string name="menu_navigation_collection_title">Collection</string>
+    <string name="menu_navigation_other_title">Other</string>
+
 
     <!-- ImageView content descriptions -->
     <string name="game_list_image_view_content_description">Game cover art</string>

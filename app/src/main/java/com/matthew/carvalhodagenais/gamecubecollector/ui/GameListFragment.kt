@@ -1,11 +1,12 @@
-package com.matthew.carvalhodagenais.gamecubecollector
+package com.matthew.carvalhodagenais.gamecubecollector.ui
 
 import android.os.Bundle
 import android.view.*
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.matthew.carvalhodagenais.gamecubecollector.MainActivity
+import com.matthew.carvalhodagenais.gamecubecollector.R
 import com.matthew.carvalhodagenais.gamecubecollector.adapters.GameListRecyclerAdapter
 import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Game
 import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.GameViewModel
@@ -17,8 +18,9 @@ class GameListFragment : Fragment() {
 
     companion object {
         const val FRAGMENT_TAG =
-            "com.matthew.carvalhodagenais.gamecubecollector.GameListFragment"
-        fun newInstance() = GameListFragment()
+            "com.matthew.carvalhodagenais.gamecubecollector.ui.GameListFragment"
+        fun newInstance() =
+            GameListFragment()
     }
 
     override fun onCreateView(

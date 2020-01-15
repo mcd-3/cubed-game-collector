@@ -2,22 +2,17 @@ package com.matthew.carvalhodagenais.gamecubecollector
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.Gravity
 import android.view.MenuItem
-import android.view.View
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
-import com.matthew.carvalhodagenais.gamecubecollector.data.CollectorDatabase
-import com.matthew.carvalhodagenais.gamecubecollector.data.GameRepository
-import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Game
+import com.google.android.material.navigation.NavigationView
+import com.matthew.carvalhodagenais.gamecubecollector.ui.GameListFragment
 import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.GameViewModel
 import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.GameViewModelFactory
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private lateinit var gameViewModel: GameViewModel
     private lateinit var toggle: ActionBarDrawerToggle
@@ -60,6 +55,13 @@ class MainActivity : AppCompatActivity() {
         } else {
             super.onBackPressed()
         }
+    }
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+//        when (item.itemId) {
+//            R.id.nav_games -> //frag transaction
+//        }
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     /**

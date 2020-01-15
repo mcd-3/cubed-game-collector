@@ -1,4 +1,4 @@
-package com.matthew.carvalhodagenais.gamecubecollector
+package com.matthew.carvalhodagenais.gamecubecollector.ui
 
 import android.app.AlertDialog
 import android.content.DialogInterface
@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.matthew.carvalhodagenais.gamecubecollector.MainActivity
+import com.matthew.carvalhodagenais.gamecubecollector.R
 import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Game
 import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.GameViewModel
 import kotlinx.android.synthetic.main.fragment_game_detail.*
@@ -17,8 +19,9 @@ class GameDetailFragment: Fragment() {
 
     companion object {
         const val FRAGMENT_TAG =
-            "com.matthew.carvalhodagenais.gamecubecollector.GameDetailFragment"
-        fun newInstance() = GameDetailFragment()
+            "com.matthew.carvalhodagenais.gamecubecollector.ui.GameDetailFragment"
+        fun newInstance() =
+            GameDetailFragment()
     }
 
     override fun onCreateView(
@@ -50,7 +53,8 @@ class GameDetailFragment: Fragment() {
         R.id.menu_edit -> {
             val transaction = activity!!.supportFragmentManager.beginTransaction()
             transaction.replace(this@GameDetailFragment.id,
-                GameAddEditFragment.newInstance(GameAddEditFragment.EDIT_REQUEST),
+                GameAddEditFragment.newInstance(
+                    GameAddEditFragment.EDIT_REQUEST),
                 GameAddEditFragment.FRAGMENT_TAG)
             transaction.addToBackStack(null)
             transaction.commit()
@@ -96,7 +100,9 @@ class GameDetailFragment: Fragment() {
     private val alertPositiveOnClick = DialogInterface.OnClickListener { _, _ ->
         viewModel.delete(currentGame)
         val transaction = activity!!.supportFragmentManager.beginTransaction()
-        transaction.replace(this@GameDetailFragment.id, GameListFragment.newInstance())
+        transaction.replace(this@GameDetailFragment.id,
+            GameListFragment.newInstance()
+        )
         transaction.commit()
     }
 
