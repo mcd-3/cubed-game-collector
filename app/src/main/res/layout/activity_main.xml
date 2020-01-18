@@ -32,6 +32,7 @@
 
 
     <com.google.android.material.navigation.NavigationView
+        android:id="@+id/main_activity_navigation_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         app:menu="@menu/menu_navigation"

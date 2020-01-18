@@ -3,6 +3,6 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="@dimen/navigation_header_height"
-    android:background="#FF0000">
+    android:background="#9c00e8">
 
 </LinearLayout>

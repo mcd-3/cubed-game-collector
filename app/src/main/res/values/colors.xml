@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!-- TODO: Follow best practices -->
+
     <color name="color_primary">#008577</color>
     <color name="color_primary_dark">#00574B</color>
     <color name="color_accent">#D81B60</color>

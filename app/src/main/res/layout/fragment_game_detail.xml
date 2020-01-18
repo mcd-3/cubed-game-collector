@@ -13,10 +13,10 @@
             android:id="@+id/title_card_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/game_item_card_view_margin_start"
-            android:layout_marginEnd="@dimen/game_item_card_view_margin_end"
+            android:layout_marginStart="@dimen/small"
+            android:layout_marginEnd="@dimen/small"
             android:layout_marginTop="@dimen/game_detail_title_margin_top"
-            android:layout_marginBottom="@dimen/game_item_card_view_margin_bottom">
+            android:layout_marginBottom="@dimen/very_small">
 
             <!-- TODO: Change text color to that of the style-->
             <TextView
@@ -42,10 +42,10 @@
             android:id="@+id/cover_card_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/game_item_card_view_margin_start"
-            android:layout_marginEnd="@dimen/game_item_card_view_margin_end"
-            android:layout_marginTop="@dimen/game_item_card_view_margin_top"
-            android:layout_marginBottom="@dimen/game_item_card_view_margin_bottom">
+            android:layout_marginStart="@dimen/small"
+            android:layout_marginEnd="@dimen/small"
+            android:layout_marginTop="@dimen/very_small"
+            android:layout_marginBottom="@dimen/very_small">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -79,10 +79,10 @@
             android:id="@+id/game_info_card_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/game_item_card_view_margin_start"
-            android:layout_marginEnd="@dimen/game_item_card_view_margin_end"
-            android:layout_marginTop="@dimen/game_item_card_view_margin_top"
-            android:layout_marginBottom="@dimen/game_item_card_view_margin_bottom">
+            android:layout_marginStart="@dimen/small"
+            android:layout_marginEnd="@dimen/small"
+            android:layout_marginTop="@dimen/very_small"
+            android:layout_marginBottom="@dimen/very_small">
 
             <LinearLayout
                 android:id="@+id/info_parent_linear_layout"
@@ -205,10 +205,10 @@
             android:id="@+id/collector_card_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/game_item_card_view_margin_start"
-            android:layout_marginEnd="@dimen/game_item_card_view_margin_end"
-            android:layout_marginTop="@dimen/game_item_card_view_margin_top"
-            android:layout_marginBottom="@dimen/game_item_card_view_margin_bottom">
+            android:layout_marginStart="@dimen/small"
+            android:layout_marginEnd="@dimen/small"
+            android:layout_marginTop="@dimen/very_small"
+            android:layout_marginBottom="@dimen/very_small">
 
             <LinearLayout
                 android:id="@+id/collector_parent_linear_layout"

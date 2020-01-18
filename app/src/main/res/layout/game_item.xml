@@ -2,9 +2,9 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:layout_marginStart="@dimen/game_item_card_view_margin_start"
-    android:layout_marginEnd="@dimen/game_item_card_view_margin_end"
-    android:layout_marginTop="@dimen/game_item_card_view_margin_top"
+    android:layout_marginStart="@dimen/small"
+    android:layout_marginEnd="@dimen/small"
+    android:layout_marginTop="@dimen/very_small"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -14,7 +14,7 @@
 
         <!-- Cover Art -->
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/cover_art_image_view"
             android:layout_width="@dimen/game_item_cover_art_width"
             android:layout_height="@dimen/game_item_cover_art_height"
             android:layout_weight="1.5"
@@ -29,25 +29,72 @@
         <RelativeLayout
             android:layout_weight="8"
             android:layout_width="0dp"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
             <!-- Game info here-->
             <TextView
                 android:id="@+id/title_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/small"
                 style="@style/TextAppearance.AppCompat.Large"
                 android:maxLines="2"
                 android:ellipsize="end"
-                android:text="Game title"/>
+                android:text="@string/no_title_available"/>
+
+            <TextView
+                android:id="@+id/developer_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/small"
+                android:layout_below="@id/title_text_view"
+                style="@style/TextAppearance.AppCompat.Medium"
+                android:textStyle="italic"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:layout_alignParentBottom="true"
+                android:text="@string/no_developer_available"/>
+
+            <TextView
+                android:id="@+id/year_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/small"
+                android:layout_marginBottom="@dimen/small"
+                android:layout_below="@id/title_text_view"
+                style="@style/TextAppearance.AppCompat.Medium"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:gravity="bottom"
+                android:layout_alignParentBottom="true"
+                android:text="@string/no_date_available"/>
         </RelativeLayout>
 
         <!-- Favourite Star -->
-        <TextView
-            android:layout_weight="1.5"
+        <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Star"/>
+            android:layout_height="match_parent">
+
+            <ImageButton
+                android:id="@+id/favourite_image_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/extra_medium"
+                android:layout_marginEnd="@dimen/small"
+                android:layout_marginTop="@dimen/very_small"
+                android:contentDescription="@string/game_list_star_image_view_content_description"
+                android:background="?attr/selectableItemBackground"
+                app:srcCompat="@drawable/ic_star_border_yellow_48dp" />
+
+            <TextView
+                android:id="@+id/region_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextAppearance.AppCompat.Large"
+                android:layout_alignParentBottom="true"
+                android:layout_centerInParent="true"
+                android:text="@string/no_region_available"/>
+        </RelativeLayout>
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>
