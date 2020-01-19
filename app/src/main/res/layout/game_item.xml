@@ -68,33 +68,21 @@
                 android:gravity="bottom"
                 android:layout_alignParentBottom="true"
                 android:text="@string/no_date_available"/>
-        </RelativeLayout>
-
-        <!-- Favourite Star -->
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent">
-
-            <ImageButton
-                android:id="@+id/favourite_image_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/extra_medium"
-                android:layout_marginEnd="@dimen/small"
-                android:layout_marginTop="@dimen/very_small"
-                android:contentDescription="@string/game_list_star_image_view_content_description"
-                android:background="?attr/selectableItemBackground"
-                app:srcCompat="@drawable/ic_star_border_yellow_48dp" />
 
             <TextView
                 android:id="@+id/region_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/small"
+                android:layout_marginBottom="@dimen/small"
                 style="@style/TextAppearance.AppCompat.Large"
                 android:layout_alignParentBottom="true"
-                android:layout_centerInParent="true"
+                android:layout_alignParentEnd="true"
                 android:text="@string/no_region_available"/>
+
         </RelativeLayout>
+
+        <!-- Favourite Star -->
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

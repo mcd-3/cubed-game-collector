@@ -58,24 +58,16 @@ class GameListRecyclerAdapter: ListAdapter<Game, GameListRecyclerAdapter.GameHol
                     listener?.onItemClick(getItem(position))
                 }
             }
-            view.favourite_image_button.setOnClickListener {
-                val position = adapterPosition
-                if (adapterPosition != RecyclerView.NO_POSITION) {
-                    listener?.favourite(getItem(position))
-                }
-            }
         }
 
         var titleTextView = view.title_text_view
         var developerTextView = view.developer_text_view
         var yearTextView = view.year_text_view
         var regionTextView = view.region_text_view
-        var starImageButton = view.favourite_image_button
     }
 
     interface ItemOnClickListener {
         fun onItemClick(game: Game)
-        fun favourite(game: Game) //if favourite star was clicked
     }
 
     fun setItemOnClickListener(listener: ItemOnClickListener) {

@@ -87,9 +87,5 @@ class GameListFragment : Fragment() {
                 .addToBackStack(null)
             transaction.commit()
         }
-
-        override fun favourite(game: Game) {
-            Toast.makeText(context, "Hello World", Toast.LENGTH_SHORT).show()
-        }
     }
 }
