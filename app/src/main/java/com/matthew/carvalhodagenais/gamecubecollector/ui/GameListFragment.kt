@@ -2,6 +2,7 @@ package com.matthew.carvalhodagenais.gamecubecollector.ui
 
 import android.os.Bundle
 import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -85,6 +86,10 @@ class GameListFragment : Fragment() {
                 GameDetailFragment.FRAGMENT_TAG)
                 .addToBackStack(null)
             transaction.commit()
+        }
+
+        override fun favourite(game: Game) {
+            Toast.makeText(context, "Hello World", Toast.LENGTH_SHORT).show()
         }
     }
 }
