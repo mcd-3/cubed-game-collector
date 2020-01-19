@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.matthew.carvalhodagenais.gamecubecollector.R
 import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Game
 import kotlinx.android.synthetic.main.game_item.view.*
@@ -48,6 +49,19 @@ class GameListRecyclerAdapter: ListAdapter<Game, GameListRecyclerAdapter.GameHol
         holder.regionTextView.text =
             if (game.regionId != null) game.regionId.toString()
             else holder.parentView.context.getString(R.string.no_region_available)
+
+        // Place appropriate cover art
+        if (game.imagePath != "" && game.imagePath != null) {
+            Glide
+                .with(holder.parentView)
+                .load(game.imagePath)
+                .into(holder.coverImageView)
+        } else {
+            Glide
+                .with(holder.parentView)
+                .load(holder.parentView.context.getDrawable(R.drawable.no_art))
+                .into(holder.coverImageView)
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameHolder {
@@ -71,6 +85,7 @@ class GameListRecyclerAdapter: ListAdapter<Game, GameListRecyclerAdapter.GameHol
         var developerTextView = view.developer_text_view
         var yearTextView = view.year_text_view
         var regionTextView = view.region_text_view
+        var coverImageView = view.cover_art_image_view
     }
 
     interface ItemOnClickListener {

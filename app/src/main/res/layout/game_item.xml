@@ -22,8 +22,7 @@
             android:layout_marginEnd="@dimen/game_item_cover_art_margin_end"
             android:layout_marginTop="@dimen/game_item_cover_art_margin_top"
             android:layout_marginBottom="@dimen/game_item_cover_art_margin_bottom"
-            android:contentDescription="@string/game_list_image_view_content_description"
-            app:srcCompat="@drawable/no_art" />
+            android:contentDescription="@string/game_list_image_view_content_description" />
 
         <!-- Game Info -->
         <RelativeLayout
