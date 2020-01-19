@@ -39,9 +39,15 @@ class GameListRecyclerAdapter: ListAdapter<Game, GameListRecyclerAdapter.GameHol
     override fun onBindViewHolder(holder: GameHolder, position: Int) {
         val game = getItem(position)
         holder.titleTextView.text = game.title
-        holder.developerTextView.text = game?.developers
-        holder.yearTextView.text = game?.releaseDate.toString()
-        holder.regionTextView.text = game?.regionId.toString()
+        holder.developerTextView.text =
+            if (game.developers != "" && game.developers != null) game.developers
+            else holder.parentView.context.getString(R.string.no_developer_available)
+        holder.yearTextView.text =
+            if (game.releaseDate != null) game.releaseDate.toString()
+            else holder.parentView.context.getString(R.string.no_date_available)
+        holder.regionTextView.text =
+            if (game.regionId != null) game.regionId.toString()
+            else holder.parentView.context.getString(R.string.no_region_available)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameHolder {
@@ -60,6 +66,7 @@ class GameListRecyclerAdapter: ListAdapter<Game, GameListRecyclerAdapter.GameHol
             }
         }
 
+        var parentView = view
         var titleTextView = view.title_text_view
         var developerTextView = view.developer_text_view
         var yearTextView = view.year_text_view
