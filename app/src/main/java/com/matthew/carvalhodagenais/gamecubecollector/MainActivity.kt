@@ -6,9 +6,11 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.google.android.material.navigation.NavigationView
 import com.matthew.carvalhodagenais.gamecubecollector.ui.GameListFragment
+import com.matthew.carvalhodagenais.gamecubecollector.ui.SettingsFragment
 import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.GameViewModel
 import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.GameViewModelFactory
 import kotlinx.android.synthetic.main.activity_main.*
@@ -36,13 +38,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         toggle.syncState()
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         main_activity_navigation_view.setNavigationItemSelectedListener(this)
+        main_activity_navigation_view.setCheckedItem(R.id.nav_games)
 
         //Set initial fragment
-        val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.main_frame_layout,
-            GameListFragment.newInstance(),
-            GameListFragment.FRAGMENT_TAG)
-            .commit()
+        replaceFragment(GameListFragment.newInstance(), GameListFragment.FRAGMENT_TAG)
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
@@ -63,11 +62,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     //TODO: Edit what each thing does
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.nav_games -> Toast.makeText(this, "Games", Toast.LENGTH_SHORT).show()//frag transaction
+            R.id.nav_games -> replaceFragment(GameListFragment.newInstance(), GameListFragment.FRAGMENT_TAG)
             R.id.nav_consoles -> Toast.makeText(this, "Consoles", Toast.LENGTH_SHORT).show()//frag transaction
             R.id.nav_accessories -> Toast.makeText(this, "Accessories", Toast.LENGTH_SHORT).show()//frag transaction
             R.id.nav_favourites -> Toast.makeText(this, "Favourites", Toast.LENGTH_SHORT).show()//frag transaction
-            R.id.nav_settings -> Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show()//frag transaction
+            //Maybe replace this with addFragment()
+            R.id.nav_settings -> addFragment(SettingsFragment.newInstance(), SettingsFragment.FRAGMENT_TAG)
             R.id.nav_about -> Toast.makeText(this, "About", Toast.LENGTH_SHORT).show()//frag transaction
         }
         main_activity_drawer_layout.closeDrawer(GravityCompat.START)
@@ -79,5 +79,22 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
      */
     fun getGameViewModel(): GameViewModel {
         return gameViewModel
+    }
+
+    private fun replaceFragment(fragment: Fragment, fragmentTag: String) {
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.main_frame_layout,
+            fragment,
+            fragmentTag)
+            .commit()
+    }
+
+    private fun addFragment(fragment: Fragment, fragmentTag: String) {
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.main_frame_layout,
+            fragment,
+            fragmentTag)
+            .addToBackStack(fragmentTag)
+            .commit()
     }
 }
