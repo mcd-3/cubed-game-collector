@@ -3,6 +3,7 @@
 
     <!-- TODO: Follow Best Practices -->
     <dimen name="very_small">4dp</dimen>
+    <dimen name="slightly_small">6dp</dimen>
     <dimen name="small">8dp</dimen>
     <dimen name="medium">16dp</dimen>
     <dimen name="extra_medium">24dp</dimen>

@@ -52,7 +52,7 @@ class GameAddEditFragment: Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when(item.itemId){
         R.id.menu_save -> {
-            if (title_edit_text.text.trim().toString().isEmpty()) {
+            if (title_edit_text.text?.trim().toString().isEmpty()) {
                 Toast.makeText(context,
                     getString(R.string.toast_no_title_warning),
                     Toast.LENGTH_SHORT).show()

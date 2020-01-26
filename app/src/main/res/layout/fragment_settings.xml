@@ -3,9 +3,31 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:text="Hello World"
+
+    <LinearLayout
+        android:id="@+id/delete_all_data_linear_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:text="Delete Data"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/small"
+            android:layout_marginBottom="@dimen/very_small"
+            style="@style/TextAppearance.AppCompat.Large"/>
+
+
+        <TextView
+            android:text="WARNING: Deletes all in-app data"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/small"
+            style="@style/TextAppearance.AppCompat.Medium"/>
+
+    </LinearLayout>
 
 </LinearLayout>
