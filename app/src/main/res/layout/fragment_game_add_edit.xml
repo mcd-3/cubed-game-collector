@@ -145,24 +145,26 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/medium"
+                    android:layout_marginTop="@dimen/small"
                     android:layout_marginStart="@dimen/small"
-                    android:layout_marginEnd="@dimen/small"
-                    android:layout_marginBottom="@dimen/small" >
+                    android:layout_marginEnd="@dimen/very_small"
+                    android:layout_marginBottom="@dimen/medium"
+                    android:paddingTop="@dimen/medium"
+                    android:paddingBottom="@dimen/slightly_small">
 
                     <com.google.android.material.textview.MaterialTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/small"
-                        android:layout_marginEnd="@dimen/small"
+                        android:layout_marginEnd="@dimen/large"
                         style="@style/TextAppearance.AppCompat.Medium"
+                        android:layout_gravity="center"
                         android:text="Region:"/>
 
                     <Spinner
-                        android:id="@+id/region_edit_text"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/small"/>
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
 
                 </LinearLayout>
 
@@ -179,6 +181,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
+                        android:layout_gravity="center_vertical"
                         android:background="#FFFFFF">
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -196,7 +199,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:layout_gravity="center_vertical"
+                        android:layout_gravity="center"
                         android:layout_marginStart="@dimen/medium"
                         android:layout_marginEnd="@dimen/medium"
                         android:src="@drawable/ic_date_range_white_42dp" />
@@ -206,7 +209,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.7"
-                        android:layout_gravity="center_vertical"
+                        android:layout_gravity="center"
                         android:clickable="false"
                         android:src="@drawable/ic_cancel_white_32dp" />
 
@@ -224,40 +227,18 @@
             android:layout_marginBottom="@dimen/very_small">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <LinearLayout
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <EditText
-                        android:id="@+id/buy_date_edit_text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:hint="Date bought"/>
-
-                    <ImageButton
-                        android:layout_width="@dimen/very_large"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/ic_date_range_white_42dp" />
-
-                    <!-- Set this to RED if has date, else set to very light gray -->
-                    <ImageButton
-                        android:layout_width="@dimen/very_large"
-                        android:layout_height="wrap_content"
-                        android:clickable="false"
-                        android:src="@drawable/ic_cancel_white_32dp" />
-
-                </LinearLayout>
-
-                <EditText
-                    android:id="@+id/condition_edit_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Condition [MAKE THIS A SPINNER]" />
+                    android:layout_marginStart="@dimen/slightly_small"
+                    android:layout_marginTop="@dimen/slightly_small"
+                    style="@style/TextAppearance.AppCompat.Medium"
+                    android:textStyle="bold"
+                    android:text="More Details" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
@@ -275,11 +256,92 @@
                         android:hint="Price Paid"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/medium"
+                    android:layout_marginBottom="@dimen/medium"
+                    android:layout_marginStart="@dimen/small"
+                    android:layout_marginEnd="@dimen/small"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:layout_gravity="center_vertical"
+                        android:background="#FFFFFF">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/small"
+                            android:enabled="false"
+                            android:background="#FFFFFF"
+                            android:text="No Date Set"
+                            android:hint="Date Bought"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <ImageButton
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="@dimen/medium"
+                        android:layout_marginEnd="@dimen/medium"
+                        android:src="@drawable/ic_date_range_white_42dp" />
+
+                    <!-- Set this to RED if has date, else set to very light gray -->
+                    <ImageButton
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.7"
+                        android:layout_gravity="center"
+                        android:clickable="false"
+                        android:src="@drawable/ic_cancel_white_32dp" />
+
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/condition_edit_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Condition [MAKE THIS A SPINNER]" />
+
                 <EditText
                     android:id="@+id/case_in_box_edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="CIB?" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/small"
+                    android:layout_marginEnd="@dimen/small"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_weight="1.5"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/TextAppearance.AppCompat.Medium"
+                        android:text="Completeness:"/>
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Case"/>
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Manual"/>
+
+                </LinearLayout>
 
                 <EditText
                     android:id="@+id/manual_edit_text"
@@ -293,7 +355,6 @@
                     android:text="Save Game" />
 
             </LinearLayout>
-
         </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
 </ScrollView>

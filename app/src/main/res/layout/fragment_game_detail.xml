@@ -13,6 +13,7 @@
             android:id="@+id/title_card_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
             android:layout_marginStart="@dimen/small"
             android:layout_marginEnd="@dimen/small"
             android:layout_marginTop="@dimen/game_detail_title_margin_top"
