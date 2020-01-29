@@ -19,6 +19,12 @@
     <string name="menu_navigation_collection_title">Collection</string>
     <string name="menu_navigation_other_title">Other</string>
 
+    <!-- TextView text -->
+    <string name="game_info_label">Game Info</string>
+    <string name="more_details_label">More Details</string>
+    <string name="region_label">Region:</string>
+    <string name="cib_label">Completeness:</string>
+    <string name="condition_label">Condition:</string>
 
     <!-- ImageView content descriptions -->
     <string name="game_list_image_view_content_description">Game cover art</string>
@@ -48,6 +54,16 @@
 
     <!-- EditText Hints -->
     <string name="title_hint">Game Title</string>
+    <string name="release_date_hint">Release Date</string>
+    <string name="buy_date_hint">Date Bought</string>
+    <string name="price_paid_hint">Price Paid</string>
+
+    <!-- EditText Default text -->
+    <string name="date_default">No Date Set</string>
+
+    <!-- Checkbox Labels -->
+    <string name="case_checkbox_label">Case</string>
+    <string name="manual_checkbox_label">Manual</string>
 
     <!-- Toast Messages -->
     <string name="toast_favourite">Favourited!</string>

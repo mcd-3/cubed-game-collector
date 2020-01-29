@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -57,7 +56,7 @@
                 android:layout_height="match_parent">
 
                 <ImageView
-                    android:id="@+id/imageView"
+                    android:id="@+id/cover_art_image_view"
                     android:layout_width="128dp"
                     android:layout_height="212dp"
                     android:src="@drawable/no_art"
@@ -68,7 +67,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageButton
-                    android:id="@+id/imageButton"
+                    android:id="@+id/favourite_image_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="?attr/selectableItemBackground"
@@ -76,7 +75,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.811"
-                    app:layout_constraintStart_toEndOf="@+id/imageView"
+                    app:layout_constraintStart_toEndOf="@+id/cover_art_image_view"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.0"
                     app:srcCompat="@drawable/ic_star_border_yellow_48dp" />
@@ -99,13 +98,14 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/game_info_label_text_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/slightly_small"
                     android:layout_marginTop="@dimen/slightly_small"
                     style="@style/TextAppearance.AppCompat.Medium"
                     android:textStyle="bold"
-                    android:text="Game Info" />
+                    android:text="@string/game_info_label" />
 
                 <!--TODO: Add button for expandable layout for 2 more devs -->
 
@@ -125,6 +125,8 @@
                         android:background="#FFFFFF"
                         android:hint="Developer 1"/>
                 </com.google.android.material.textfield.TextInputLayout>
+
+                <!--TODO: Add button for expandable layout for 2 more pubs -->
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
@@ -159,7 +161,7 @@
                         android:layout_marginEnd="@dimen/large"
                         style="@style/TextAppearance.AppCompat.Medium"
                         android:layout_gravity="center"
-                        android:text="Region:"/>
+                        android:text="@string/region_label"/>
 
                     <Spinner
                         android:layout_weight="1"
@@ -190,12 +192,13 @@
                             android:layout_marginEnd="@dimen/small"
                             android:enabled="false"
                             android:background="#FFFFFF"
-                            android:text="No Date Set"
-                            android:hint="Release Date"/>
+                            android:text="@string/date_default"
+                            android:hint="@string/release_date_hint"/>
 
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <ImageButton
+                        android:id="@+id/release_date_calendar_image_button"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -206,6 +209,7 @@
 
                     <!-- Set this to RED if has date, else set to very light gray -->
                     <ImageButton
+                        android:id="@+id/release_date_clear_image_button"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.7"
@@ -232,13 +236,14 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/details_label_text_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/slightly_small"
                     android:layout_marginTop="@dimen/slightly_small"
                     style="@style/TextAppearance.AppCompat.Medium"
                     android:textStyle="bold"
-                    android:text="More Details" />
+                    android:text="@string/more_details_label" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
@@ -253,7 +258,7 @@
                         android:layout_height="wrap_content"
                         android:inputType="numberDecimal"
                         android:background="#FFFFFF"
-                        android:hint="Price Paid"/>
+                        android:hint="@string/price_paid_hint"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -279,12 +284,13 @@
                             android:layout_marginEnd="@dimen/small"
                             android:enabled="false"
                             android:background="#FFFFFF"
-                            android:text="No Date Set"
-                            android:hint="Date Bought"/>
+                            android:text="@string/date_default"
+                            android:hint="@string/buy_date_hint"/>
 
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <ImageButton
+                        android:id="@+id/buy_date_calendar_image_button"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -294,6 +300,7 @@
 
                     <!-- Set this to RED if has date, else set to very light gray -->
                     <ImageButton
+                        android:id="@+id/buy_date_clear_image_button"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.7"
@@ -303,57 +310,64 @@
 
                 </LinearLayout>
 
-                <EditText
-                    android:id="@+id/condition_edit_text"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Condition [MAKE THIS A SPINNER]" />
+                    android:layout_marginTop="@dimen/small"
+                    android:layout_marginStart="@dimen/small"
+                    android:layout_marginEnd="@dimen/very_small"
+                    android:layout_marginBottom="@dimen/medium"
+                    android:paddingTop="@dimen/medium"
+                    android:paddingBottom="@dimen/slightly_small">
 
-                <EditText
-                    android:id="@+id/case_in_box_edit_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="CIB?" />
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/small"
+                        android:layout_marginEnd="@dimen/large"
+                        style="@style/TextAppearance.AppCompat.Medium"
+                        android:layout_gravity="center"
+                        android:text="@string/condition_label"/>
+
+                    <Spinner
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/small"
                     android:layout_marginStart="@dimen/small"
                     android:layout_marginEnd="@dimen/small"
+                    android:layout_marginBottom="@dimen/medium"
                     android:orientation="horizontal">
 
                     <com.google.android.material.textview.MaterialTextView
                         android:layout_weight="1.5"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/small"
                         style="@style/TextAppearance.AppCompat.Medium"
-                        android:text="Completeness:"/>
+                        android:text="@string/cib_label"/>
 
                     <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/case_checkbox"
                         android:layout_weight="1"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="Case"/>
+                        android:text="@string/case_checkbox_label"/>
 
                     <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/manual_checkbox"
                         android:layout_weight="1"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="Manual"/>
+                        android:text="@string/manual_checkbox_label"/>
 
                 </LinearLayout>
-
-                <EditText
-                    android:id="@+id/manual_edit_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Manual?" />
-
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Save Game" />
-
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
     </LinearLayout>

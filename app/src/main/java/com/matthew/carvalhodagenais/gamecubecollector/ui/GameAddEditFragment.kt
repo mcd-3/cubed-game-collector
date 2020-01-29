@@ -77,20 +77,20 @@ class GameAddEditFragment: Fragment() {
      * Saves the game to the database by grabbing all values from the inputs
      */
     private fun saveGame() {
-        val g: Game = Game(title_edit_text.text.toString()).apply {
-            developers = setNullIfEmptyString(developer_edit_text.text.toString())
-            publishers = setNullIfEmptyString(publisher_edit_text.text.toString())
-            releaseDate = null
-            regionId = null//condition_edit_text.text.toString().toInt()
-            boughtDate = null
-            condition = null//condition_edit_text.text.toString().toInt()
-            pricePaid = null//price_paid_edit_text.text.toString().toDouble()
-            hasCase = true
-            hasManual = true
-        }
-        g.isFavourite = false
-        g.imagePath = ""
-        viewModel.insert(g)
+//        val g: Game = Game(title_edit_text.text.toString()).apply {
+//            developers = setNullIfEmptyString(developer_edit_text.text.toString())
+//            publishers = setNullIfEmptyString(publisher_edit_text.text.toString())
+//            releaseDate = null
+//            regionId = null//condition_edit_text.text.toString().toInt()
+//            boughtDate = null
+//            condition = null//condition_edit_text.text.toString().toInt()
+//            pricePaid = null//price_paid_edit_text.text.toString().toDouble()
+//            hasCase = true
+//            hasManual = true
+//        }
+//        g.isFavourite = false
+//        g.imagePath = ""
+//        viewModel.insert(g)
     }
 
     private fun setNullIfEmptyString(string: String): String? =
