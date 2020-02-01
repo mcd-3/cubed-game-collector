@@ -13,6 +13,7 @@ import kotlinx.android.synthetic.main.fragment_game_add_edit.*
 class GameAddEditFragment: Fragment() {
 
     private lateinit var viewModel: GameViewModel
+    private var isFav: Boolean = false
 
     companion object {
 
@@ -42,6 +43,23 @@ class GameAddEditFragment: Fragment() {
         setHasOptionsMenu(true)
         viewModel = (activity as MainActivity).getGameViewModel()
         return view
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        val request = arguments!!.getInt(REQUEST_CODE)
+
+        favourite_image_button.setOnClickListener(favouriteButtonOnClick)
+
+        if (request == EDIT_REQUEST) {
+            setFavouriteStarDraw(viewModel.getSelectedGame()?.isFavourite ?: false)
+            title_edit_text.setText(viewModel.getSelectedGame()!!.title)
+            developer_edit_text.setText(viewModel.getSelectedGame()?.developers)
+            publisher_edit_text.setText(viewModel.getSelectedGame()?.publishers)
+            price_paid_edit_text.setText(viewModel.getSelectedGame()?.pricePaid?.toString() ?: "")
+            case_checkbox.isChecked = viewModel.getSelectedGame()?.hasCase ?: false
+            manual_checkbox.isChecked = viewModel.getSelectedGame()?.hasManual ?: false
+        }
     }
 
     override fun onPrepareOptionsMenu(menu: Menu) {
@@ -91,9 +109,37 @@ class GameAddEditFragment: Fragment() {
 //        g.isFavourite = false
 //        g.imagePath = ""
 //        viewModel.insert(g)
+        val game: Game = Game(title_edit_text.text.toString()).apply {
+            publishers = setNullIfEmptyString(publisher_edit_text.text.toString())
+            developers = setNullIfEmptyString(developer_edit_text.text.toString())
+            pricePaid = setNullIfEmptyString(price_paid_edit_text.text.toString())?.toDouble()
+            hasCase = case_checkbox.isChecked
+            hasManual = manual_checkbox.isChecked
+        }
+        game.isFavourite = isFav
+
+        if (arguments!!.getInt(REQUEST_CODE) == EDIT_REQUEST) {
+            game.id = viewModel.getSelectedGame()!!.id
+            viewModel.update(game)
+        }
     }
 
     private fun setNullIfEmptyString(string: String): String? =
         if (string.trim().isEmpty()) null else string
 
+    private fun setFavouriteStarDraw(isFav: Boolean) {
+        if (isFav) {
+            favourite_image_button.setImageDrawable(
+                resources.getDrawable(R.drawable.ic_star_yellow_48dp, null))
+        } else {
+            favourite_image_button.setImageDrawable(
+                resources.getDrawable(R.drawable.ic_star_border_yellow_48dp, null))
+        }
+    }
+
+
+    private val favouriteButtonOnClick = View.OnClickListener {
+        isFav = !isFav
+        setFavouriteStarDraw(isFav)
+    }
 }

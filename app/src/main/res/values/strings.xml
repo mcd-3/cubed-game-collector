@@ -33,6 +33,8 @@
     <string name="game_detail_favourite_image_button_view_content_description">Favourite button</string>
     <string name="game_add_edit_favourite_image_button_view_content_description">Favourite button</string>
     <string name="game_list_star_image_view_content_description">Favourite</string>
+    <string name="game_add_edit_calendar_image_button_content_description">Pick a Date</string>
+    <string name="game_add_edit_clear_image_button_content_description">Clear Date</string>
 
     <!-- Alert Dialog text -->
     <string name="game_detail_delete_alert_title">Delete Game?</string>
@@ -54,6 +56,8 @@
 
     <!-- EditText Hints -->
     <string name="title_hint">Game Title</string>
+    <string name="developer_hint">Developer</string>
+    <string name="publisher_hint">Publisher</string>
     <string name="release_date_hint">Release Date</string>
     <string name="buy_date_hint">Date Bought</string>
     <string name="price_paid_hint">Price Paid</string>

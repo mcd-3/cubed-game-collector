@@ -84,6 +84,7 @@
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/game_info_card_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/small"
@@ -123,7 +124,7 @@
                         android:layout_height="wrap_content"
                         android:inputType="text"
                         android:background="#FFFFFF"
-                        android:hint="Developer 1"/>
+                        android:hint="@string/developer_hint"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <!--TODO: Add button for expandable layout for 2 more pubs -->
@@ -141,7 +142,7 @@
                         android:layout_height="wrap_content"
                         android:inputType="text"
                         android:background="#FFFFFF"
-                        android:hint="Publisher 1"/>
+                        android:hint="@string/publisher_hint"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <LinearLayout
@@ -205,6 +206,7 @@
                         android:layout_gravity="center"
                         android:layout_marginStart="@dimen/medium"
                         android:layout_marginEnd="@dimen/medium"
+                        android:contentDescription="@string/game_add_edit_calendar_image_button_content_description"
                         android:src="@drawable/ic_date_range_white_42dp" />
 
                     <!-- Set this to RED if has date, else set to very light gray -->
@@ -215,6 +217,7 @@
                         android:layout_weight="0.7"
                         android:layout_gravity="center"
                         android:clickable="false"
+                        android:contentDescription="@string/game_add_edit_clear_image_button_content_description"
                         android:src="@drawable/ic_cancel_white_32dp" />
 
                 </LinearLayout>
@@ -222,6 +225,7 @@
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
+        <!-- Details Card -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -296,6 +300,7 @@
                         android:layout_weight="1"
                         android:layout_marginStart="@dimen/medium"
                         android:layout_marginEnd="@dimen/medium"
+                        android:contentDescription="@string/game_add_edit_calendar_image_button_content_description"
                         android:src="@drawable/ic_date_range_white_42dp" />
 
                     <!-- Set this to RED if has date, else set to very light gray -->
@@ -306,6 +311,7 @@
                         android:layout_weight="0.7"
                         android:layout_gravity="center"
                         android:clickable="false"
+                        android:contentDescription="@string/game_add_edit_clear_image_button_content_description"
                         android:src="@drawable/ic_cancel_white_32dp" />
 
                 </LinearLayout>
