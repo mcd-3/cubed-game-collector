@@ -188,6 +188,7 @@
                         android:background="#FFFFFF">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/release_date_edit_text"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="@dimen/small"
@@ -283,6 +284,7 @@
                         android:background="#FFFFFF">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/buy_date_edit_text"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="@dimen/small"
