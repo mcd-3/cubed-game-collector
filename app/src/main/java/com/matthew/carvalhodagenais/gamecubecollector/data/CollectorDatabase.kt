@@ -14,6 +14,7 @@ import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Condition
 import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Game
 import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Region
 import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Type
+import kotlinx.coroutines.*
 
 @Database(entities = [Game::class, Region::class, Type::class, Condition::class], version = 1)
 abstract class CollectorDatabase: RoomDatabase() {
@@ -59,26 +60,27 @@ abstract class CollectorDatabase: RoomDatabase() {
             private val typeDao = database?.typeDao()
 
             override fun doInBackground(vararg params: Unit?) {
+                GlobalScope.launch {
+                    //Add regions
+                    regionDao?.insert(Region(1, "NTSC-U", "America"))
+                    regionDao?.insert(Region(2,  "PAL", "Europe"))
+                    regionDao?.insert(Region(3, "NTSC-J", "Japan"))
 
-                //Add regions
-                regionDao?.insert(Region(1, "NTSC-U", "America"))
-                regionDao?.insert(Region(2,  "PAL", "Europe"))
-                regionDao?.insert(Region(3, "NTSC-J", "Japan"))
+                    //Add types
+                    typeDao?.insert(Type(1, "DI", "Disc/Game"))
+                    typeDao?.insert(Type(2, "CO", "Console"))
+                    typeDao?.insert(Type(3, "AC", "Accessory"))
 
-                //Add types
-                typeDao?.insert(Type(1, "DI", "Disc/Game"))
-                typeDao?.insert(Type(2, "CO", "Console"))
-                typeDao?.insert(Type(3, "AC", "Accessory"))
-
-                //Add conditions
-                val count = typeDao?.getCount()!!
-                var id = 1
-                val codeList = listOf("M", "NM", "VG", "F", "P")
-                val nameList = listOf("Mint", "Near Mint", "Very Good", "Fair", "Poor")
-                for (i in 1..count) {
-                    for (j in 0..4) {
-                        conditionDao?.insert(Condition(id, codeList[j], nameList[j], i))
-                        id++
+                    //Add conditions
+                    val count = typeDao?.getCount()!!
+                    var id = 1
+                    val codeList = listOf("M", "NM", "VG", "F", "P")
+                    val nameList = listOf("Mint", "Near Mint", "Very Good", "Fair", "Poor")
+                    for (i in 1..count) {
+                        for (j in 0..4) {
+                            conditionDao?.insert(Condition(id, codeList[j], nameList[j], i))
+                            id++
+                        }
                     }
                 }
             }

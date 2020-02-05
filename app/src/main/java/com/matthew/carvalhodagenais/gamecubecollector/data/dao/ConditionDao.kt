@@ -8,6 +8,6 @@ import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Condition
 interface ConditionDao {
 
     @Insert
-    fun insert(condition: Condition)
+    suspend fun insert(condition: Condition)
 
 }

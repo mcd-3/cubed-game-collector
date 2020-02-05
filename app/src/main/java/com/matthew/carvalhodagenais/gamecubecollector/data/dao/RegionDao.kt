@@ -8,13 +8,13 @@ import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Region
 interface RegionDao {
 
     @Insert
-    fun insert(region: Region)
+    suspend fun insert(region: Region)
 
     @Update
-    fun update(region: Region)
+    suspend fun update(region: Region)
 
     @Delete
-    fun delete(region: Region)
+    suspend fun delete(region: Region)
 
     @Query("SELECT * FROM region_table WHERE region_code = :code")
     fun getRegionByCode(code: String): LiveData<Region>

@@ -9,7 +9,7 @@ import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Type
 interface TypeDao {
 
     @Insert
-    fun insert(type: Type)
+    suspend fun insert(type: Type)
 
     @Query("SELECT COUNT(id) FROM type_table")
     fun getCount(): Int

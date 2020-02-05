@@ -1,5 +1,6 @@
 package com.matthew.carvalhodagenais.gamecubecollector.ui
 
+import android.app.DatePickerDialog
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
@@ -9,11 +10,15 @@ import com.matthew.carvalhodagenais.gamecubecollector.R
 import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Game
 import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.GameViewModel
 import kotlinx.android.synthetic.main.fragment_game_add_edit.*
+import java.util.*
 
 class GameAddEditFragment: Fragment() {
 
     private lateinit var viewModel: GameViewModel
     private var isFav: Boolean = false
+
+    private var releaseDateToSave: Calendar? = null
+    private var buyDate: Calendar? = null
 
     companion object {
 
@@ -51,8 +56,8 @@ class GameAddEditFragment: Fragment() {
 
         favourite_image_button.setOnClickListener(favouriteButtonOnClick)
 
-        if (request == EDIT_REQUEST) {
-            setFavouriteStarDraw(viewModel.getSelectedGame()?.isFavourite ?: false)
+        if (request == EDIT_REQUEST) { // Set all values in the UI
+            setFavouriteStarDrawable(viewModel.getSelectedGame()?.isFavourite ?: false)
             title_edit_text.setText(viewModel.getSelectedGame()!!.title)
             developer_edit_text.setText(viewModel.getSelectedGame()?.developers)
             publisher_edit_text.setText(viewModel.getSelectedGame()?.publishers)
@@ -60,6 +65,8 @@ class GameAddEditFragment: Fragment() {
             case_checkbox.isChecked = viewModel.getSelectedGame()?.hasCase ?: false
             manual_checkbox.isChecked = viewModel.getSelectedGame()?.hasManual ?: false
         }
+
+        release_date_calendar_image_button.setOnClickListener(releaseDateOnClickListener)
     }
 
     override fun onPrepareOptionsMenu(menu: Menu) {
@@ -112,6 +119,7 @@ class GameAddEditFragment: Fragment() {
         val game: Game = Game(title_edit_text.text.toString()).apply {
             publishers = setNullIfEmptyString(publisher_edit_text.text.toString())
             developers = setNullIfEmptyString(developer_edit_text.text.toString())
+            releaseDate = releaseDateToSave?.time
             pricePaid = setNullIfEmptyString(price_paid_edit_text.text.toString())?.toDouble()
             hasCase = case_checkbox.isChecked
             hasManual = manual_checkbox.isChecked
@@ -121,13 +129,15 @@ class GameAddEditFragment: Fragment() {
         if (arguments!!.getInt(REQUEST_CODE) == EDIT_REQUEST) {
             game.id = viewModel.getSelectedGame()!!.id
             viewModel.update(game)
+        } else {
+            viewModel.insert(game)
         }
     }
 
     private fun setNullIfEmptyString(string: String): String? =
         if (string.trim().isEmpty()) null else string
 
-    private fun setFavouriteStarDraw(isFav: Boolean) {
+    private fun setFavouriteStarDrawable(isFav: Boolean) {
         if (isFav) {
             favourite_image_button.setImageDrawable(
                 resources.getDrawable(R.drawable.ic_star_yellow_48dp, null))
@@ -137,9 +147,39 @@ class GameAddEditFragment: Fragment() {
         }
     }
 
+    /**
+     * Creates a Calendar using a year, month, and day
+     *
+     * @param year int
+     * @param month int
+     * @param day int
+     * @return Calendar
+     */
+    private fun createCalendar(year: Int, month: Int, day: Int): Calendar {
+        val cal = Calendar.getInstance()
+        cal.set(Calendar.YEAR, year)
+        cal.set(Calendar.MONTH, month)
+        cal.set(Calendar.DAY_OF_MONTH, day)
+        return cal
+    }
 
     private val favouriteButtonOnClick = View.OnClickListener {
         isFav = !isFav
-        setFavouriteStarDraw(isFav)
+        setFavouriteStarDrawable(isFav)
+    }
+
+    /**
+     * OnClickListener to set a birthday
+     */
+    private val releaseDateOnClickListener = View.OnClickListener {
+        val cal = Calendar.getInstance()
+        val datePicker = DatePickerDialog(context!!,
+            DatePickerDialog.OnDateSetListener{_, mYear, mMonth, mDay ->
+                Toast.makeText(context!!, "${mYear}/${mMonth + 1}/${mDay}", Toast.LENGTH_SHORT).show()
+                releaseDateToSave = createCalendar(mYear, mMonth + 1, mDay)
+            }, cal.get(Calendar.YEAR),
+            cal.get(Calendar.MONTH),
+            cal.get(Calendar.DAY_OF_MONTH))
+        datePicker.show()
     }
 }

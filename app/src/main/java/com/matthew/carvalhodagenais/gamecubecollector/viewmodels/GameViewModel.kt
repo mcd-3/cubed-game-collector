@@ -4,23 +4,25 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.matthew.carvalhodagenais.gamecubecollector.data.GameRepository
 import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Game
+import kotlinx.coroutines.launch
 
 class GameViewModel(application: Application): AndroidViewModel(application) {
 
     private var selectedGame = MutableLiveData<Game>()
     private var repository = GameRepository(application)
 
-    fun insert(game: Game) {
+    fun insert(game: Game) = viewModelScope.launch {
         repository.insertGame(game)
     }
 
-    fun update(game: Game) {
+    fun update(game: Game) = viewModelScope.launch {
         repository.updateGame(game)
     }
 
-    fun delete(game: Game) {
+    fun delete(game: Game) = viewModelScope.launch {
         repository.deleteGame(game)
     }
 

@@ -8,13 +8,13 @@ import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Game
 interface GameDao {
 
     @Insert
-    fun insert(game: Game)
+    suspend fun insert(game: Game)
 
     @Update
-    fun update(game: Game)
+    suspend fun update(game: Game)
 
     @Delete
-    fun delete(game: Game)
+    suspend fun delete(game: Game)
 
     @Query("SELECT * FROM game_table WHERE title = :title")
     fun getGamesByName(title: String): LiveData<List<Game>>

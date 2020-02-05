@@ -20,45 +20,20 @@ class GameRepository(application: Application) {
         allGames = gameDao.getAllGames()
     }
 
-    fun insertGame(game: Game) {
-        val insert = InsertGameAsyncTask(gameDao).execute(game)
+    suspend fun insertGame(game: Game) {
+        gameDao.insert(game)
     }
 
-    fun updateGame(game: Game) {
-        val update = UpdateAsyncTask(gameDao).execute(game)
+    suspend fun updateGame(game: Game) {
+        gameDao.update(game)
     }
 
-    fun deleteGame(game: Game) {
-        val delete = DeleteGameAsyncTask(gameDao).execute(game)
+    suspend fun deleteGame(game: Game) {
+        gameDao.delete(game)
     }
 
     fun getAllGames(): LiveData<List<Game>> {
         return allGames
-    }
-
-    companion object {
-
-        class InsertGameAsyncTask(gameDao: GameDao): AsyncTask<Game, Unit, Unit>() {
-            val dao = gameDao
-            override fun doInBackground(vararg params: Game?) {
-                dao.insert(params[0]!!)
-            }
-        }
-
-        class UpdateAsyncTask(gameDao: GameDao): AsyncTask<Game, Unit, Unit>() {
-            val dao = gameDao
-            override fun doInBackground(vararg params: Game?) {
-                dao.update(params[0]!!)
-            }
-        }
-
-        class DeleteGameAsyncTask(gameDao: GameDao): AsyncTask<Game, Unit, Unit>() {
-            val dao = gameDao
-            override fun doInBackground(vararg params: Game?) {
-                dao.delete(params[0]!!)
-            }
-        }
-
     }
 
 }
