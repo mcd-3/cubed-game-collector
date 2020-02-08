@@ -2,7 +2,6 @@ package com.matthew.carvalhodagenais.gamecubecollector.ui
 
 import android.app.DatePickerDialog
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -22,7 +21,6 @@ class GameAddEditFragment: Fragment() {
     private var buyDateToSave: Calendar? = null
 
     companion object {
-
         private const val REQUEST_CODE: String = "GameAddEditFragment.REQUEST_CODE"
         const val FRAGMENT_TAG =
             "com.matthew.carvalhodagenais.gamecubecollector.ui.GameAddEditFragment"
@@ -54,20 +52,19 @@ class GameAddEditFragment: Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        // Set OnClickListener for "favourite" button
         favourite_image_button.setOnClickListener(favouriteButtonOnClick)
-        val game: Game = viewModel.getSelectedGame()!!
+
+        // Set OnClickListeners for the "pick date" buttons
+        release_date_calendar_image_button.setOnClickListener(releaseDateOnClickListener)
+        release_date_clear_image_button.setOnClickListener(releaseDateClearOnClick)
+        buy_date_calendar_image_button.setOnClickListener(buyDateOnClickListener)
+        buy_date_clear_image_button.setOnClickListener(buyDateClearOnClick)
 
         // Set all values in the UI
         if (arguments!!.getInt(REQUEST_CODE) == EDIT_REQUEST) {
-            setUIValues(game)
-
-            Log.e("RELEASE", game.releaseDate?.time.toString())
-            Log.e("BUY", game.boughtDate?.time.toString())
+            setUIValues(viewModel.getSelectedGame()!!)
         }
-
-        // Set OnClickListeners for the "pick date" anc "clear date" buttons
-        release_date_calendar_image_button.setOnClickListener(releaseDateOnClickListener)
-        buy_date_calendar_image_button.setOnClickListener(buyDateOnClickListener)
     }
 
     override fun onPrepareOptionsMenu(menu: Menu) {
@@ -105,6 +102,7 @@ class GameAddEditFragment: Fragment() {
      * @param game Game
      */
     private fun setUIValues(game: Game) {
+        // Set the values
         setFavouriteStarDrawable(game.isFavourite ?: false)
         title_edit_text.setText(game.title)
         developer_edit_text.setText(game.developers)
@@ -114,6 +112,23 @@ class GameAddEditFragment: Fragment() {
         manual_checkbox.isChecked = game.hasManual ?: false
         release_date_edit_text.setText(createDateString(game.releaseDate))
         buy_date_edit_text.setText(createDateString(game.boughtDate))
+
+        // Set the dates to save and "clear date" buttons clickable state
+        val cal: Calendar = Calendar.getInstance()
+        if (game.releaseDate != null) {
+            cal.time = game.releaseDate
+            releaseDateToSave = cal
+            release_date_clear_image_button.isClickable = true
+        } else {
+            release_date_clear_image_button.isClickable = false
+        }
+        if (game.boughtDate != null) {
+            cal.time = game.boughtDate
+            buyDateToSave = cal
+            buy_date_clear_image_button.isClickable = true
+        } else {
+            buy_date_clear_image_button.isClickable = false
+        }
     }
 
     /**
@@ -160,7 +175,7 @@ class GameAddEditFragment: Fragment() {
      * @return String
      */
     private fun createDateString(date: Date?): String {
-        var str = ""
+        val str: String
         if (date != null) {
             val cal = Calendar.getInstance()
             cal.time = Date(date.time)
@@ -229,6 +244,7 @@ class GameAddEditFragment: Fragment() {
             DatePickerDialog.OnDateSetListener{_, mYear, mMonth, mDay ->
                 release_date_edit_text.setText("${mDay}/${mMonth + 1}/${mYear}")
                 releaseDateToSave = createCalendar(mYear, mMonth + 1, mDay)
+                release_date_clear_image_button.isClickable = true
             }, cal.get(Calendar.YEAR),
             cal.get(Calendar.MONTH),
             cal.get(Calendar.DAY_OF_MONTH))
@@ -245,9 +261,30 @@ class GameAddEditFragment: Fragment() {
             DatePickerDialog.OnDateSetListener{_, mYear, mMonth, mDay ->
                 buy_date_edit_text.setText("${mDay}/${mMonth + 1}/${mYear}")
                 buyDateToSave = createCalendar(mYear, mMonth + 1, mDay)
+                buy_date_clear_image_button.isClickable = true
             }, cal.get(Calendar.YEAR),
             cal.get(Calendar.MONTH),
             cal.get(Calendar.DAY_OF_MONTH))
         datePicker.show()
+    }
+
+    /**
+     * OnClickListener to clear a date
+     * Clears the release date on click
+     */
+    private val releaseDateClearOnClick = View.OnClickListener {
+        releaseDateToSave = null
+        release_date_edit_text.setText(getString(R.string.date_default))
+        it.isClickable = false
+    }
+
+    /**
+     * OnClickListener to clear a date
+     * Clears the bought date on click
+     */
+    private val buyDateClearOnClick = View.OnClickListener {
+        buyDateToSave = null
+        buy_date_edit_text.setText(getString(R.string.date_default))
+        it.isClickable = false
     }
 }
