@@ -9,13 +9,12 @@ import androidx.fragment.app.Fragment
 import com.matthew.carvalhodagenais.gamecubecollector.MainActivity
 import com.matthew.carvalhodagenais.gamecubecollector.R
 import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Game
-import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.GameViewModel
+import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.GameDetailViewModel
 import kotlinx.android.synthetic.main.fragment_game_detail.*
 
 class GameDetailFragment: Fragment() {
 
-    private lateinit var viewModel: GameViewModel
-    private lateinit var currentGame: Game
+    private lateinit var detailViewModel: GameDetailViewModel
 
     companion object {
         const val FRAGMENT_TAG =
@@ -31,8 +30,7 @@ class GameDetailFragment: Fragment() {
     ): View? {
         val view: View =
             inflater.inflate(R.layout.fragment_game_detail, container, false)
-        viewModel = (activity as MainActivity).getGameViewModel()
-        currentGame = viewModel.getSelectedGame()!!
+        detailViewModel = (activity as MainActivity).getGameDetailViewModel()
         setHasOptionsMenu(true)
         return view
     }
@@ -40,7 +38,7 @@ class GameDetailFragment: Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         favourite_image_button.setOnClickListener(favouriteOnClick)
-        initialDataSetup(currentGame)
+        initialDataSetup(detailViewModel.getSelectedGame()!!)
     }
 
     override fun onPrepareOptionsMenu(menu: Menu) {
@@ -52,6 +50,9 @@ class GameDetailFragment: Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when(item.itemId) {
         R.id.menu_edit -> {
             val transaction = activity!!.supportFragmentManager.beginTransaction()
+            (activity as MainActivity).getGameAddEditViewModel().setSelectedGame(
+                detailViewModel.getSelectedGame()!!
+            )
             transaction.replace(this@GameDetailFragment.id,
                 GameAddEditFragment.newInstance(
                     GameAddEditFragment.EDIT_REQUEST),
@@ -74,8 +75,10 @@ class GameDetailFragment: Fragment() {
      */
     private fun initialDataSetup(game: Game) {
         title_text_view.text = game.title
-        if (currentGame.isFavourite!!) {
-            favourite_image_button.setImageDrawable(resources.getDrawable(R.drawable.ic_star_yellow_48dp, null))
+        if (detailViewModel.getIsFavourite()) {
+            favourite_image_button.setImageDrawable(
+                resources.getDrawable(R.drawable.ic_star_yellow_48dp,
+                null))
         }
     }
 
@@ -89,7 +92,7 @@ class GameDetailFragment: Fragment() {
             .setPositiveButton(getString(R.string.game_detail_delete_alert_positive),
                 alertPositiveOnClick)
             .setNegativeButton(getString(R.string.game_detail_delete_alert_negative)){
-                    dialog, id -> dialog.dismiss() }
+                    dialog, _ -> dialog.dismiss() }
         val alert = builder.create()
         alert.show()
     }
@@ -98,7 +101,7 @@ class GameDetailFragment: Fragment() {
      * AlertDialog OnClickListener to delete the currently selected game
      */
     private val alertPositiveOnClick = DialogInterface.OnClickListener { _, _ ->
-        viewModel.delete(currentGame)
+        detailViewModel.delete(detailViewModel.getSelectedGame()!!)
         val transaction = activity!!.supportFragmentManager.beginTransaction()
         transaction.replace(this@GameDetailFragment.id,
             GameListFragment.newInstance()
@@ -110,16 +113,18 @@ class GameDetailFragment: Fragment() {
      * OnClickListener for the star ImageButton to favourite the Game
      */
     private val favouriteOnClick = View.OnClickListener {
-        if (currentGame.isFavourite!!) {
+        if (detailViewModel.getIsFavourite()) {
             favourite_image_button
-                .setImageDrawable(resources.getDrawable(R.drawable.ic_star_border_yellow_48dp, null))
-            currentGame.isFavourite = false
+                .setImageDrawable(
+                    resources.getDrawable(R.drawable.ic_star_border_yellow_48dp,
+                    null))
         } else {
             favourite_image_button
-                .setImageDrawable(resources.getDrawable(R.drawable.ic_star_yellow_48dp, null))
-            currentGame.isFavourite = true
+                .setImageDrawable(
+                    resources.getDrawable(R.drawable.ic_star_yellow_48dp,
+                    null))
             Toast.makeText(context, getString(R.string.toast_favourite), Toast.LENGTH_SHORT).show()
         }
-        viewModel.update(currentGame)
+        detailViewModel.toggleFavourite()
     }
 }

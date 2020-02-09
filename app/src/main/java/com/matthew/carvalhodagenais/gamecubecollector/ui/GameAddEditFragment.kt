@@ -8,13 +8,13 @@ import androidx.fragment.app.Fragment
 import com.matthew.carvalhodagenais.gamecubecollector.MainActivity
 import com.matthew.carvalhodagenais.gamecubecollector.R
 import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Game
-import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.GameViewModel
+import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.GameAddEditViewModel
 import kotlinx.android.synthetic.main.fragment_game_add_edit.*
 import java.util.*
 
 class GameAddEditFragment: Fragment() {
 
-    private lateinit var viewModel: GameViewModel
+    private lateinit var addEditViewModel: GameAddEditViewModel
     private var isFav: Boolean = false
 
     private var releaseDateToSave: Calendar? = null
@@ -45,7 +45,7 @@ class GameAddEditFragment: Fragment() {
         val view: View =
             inflater.inflate(R.layout.fragment_game_add_edit, container, false)
         setHasOptionsMenu(true)
-        viewModel = (activity as MainActivity).getGameViewModel()
+        addEditViewModel = (activity as MainActivity).getGameAddEditViewModel()
         return view
     }
 
@@ -63,7 +63,7 @@ class GameAddEditFragment: Fragment() {
 
         // Set all values in the UI
         if (arguments!!.getInt(REQUEST_CODE) == EDIT_REQUEST) {
-            setUIValues(viewModel.getSelectedGame()!!)
+            setUIValues(addEditViewModel.getSelectedGame()!!)
         }
     }
 
@@ -148,7 +148,7 @@ class GameAddEditFragment: Fragment() {
 //        }
 //        g.isFavourite = false
 //        g.imagePath = ""
-//        viewModel.insert(g)
+//        addEditViewModel.insert(g)
         val game: Game = Game(title_edit_text.text.toString()).apply {
             publishers = setNullIfEmptyString(publisher_edit_text.text.toString())
             developers = setNullIfEmptyString(developer_edit_text.text.toString())
@@ -161,10 +161,10 @@ class GameAddEditFragment: Fragment() {
         game.isFavourite = isFav
 
         if (arguments!!.getInt(REQUEST_CODE) == EDIT_REQUEST) {
-            game.id = viewModel.getSelectedGame()!!.id
-            viewModel.update(game)
+            game.id = addEditViewModel.getSelectedGame()!!.id
+            addEditViewModel.update(game)
         } else {
-            viewModel.insert(game)
+            addEditViewModel.insert(game)
         }
     }
 

@@ -11,22 +11,26 @@ import androidx.lifecycle.ViewModelProviders
 import com.google.android.material.navigation.NavigationView
 import com.matthew.carvalhodagenais.gamecubecollector.ui.GameListFragment
 import com.matthew.carvalhodagenais.gamecubecollector.ui.SettingsFragment
-import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.GameViewModel
-import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.GameViewModelFactory
+import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.GameDetailViewModel
+import com.matthew.carvalhodagenais.gamecubecollector.factories.GameViewModelFactory
+import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.GameAddEditViewModel
+import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.GameListViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
-    private lateinit var gameViewModel: GameViewModel
+    private lateinit var gameDetailViewModel: GameDetailViewModel
+    private lateinit var gameListViewModel: GameListViewModel
+    private lateinit var gameAddEditViewModel: GameAddEditViewModel
+
     private lateinit var toggle: ActionBarDrawerToggle
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //Set view model to be used across the app
-        gameViewModel = ViewModelProviders.of(this,
-            GameViewModelFactory(this.application)).get(GameViewModel::class.java)
+        // Initialise ViewModels
+        initViewModels()
 
         //Set NavigationDrawer
         setSupportActionBar(toolbar)
@@ -75,10 +79,37 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     /**
-     * Get the GameViewModel so that we can share it instead of creating a new instance every time
+     * Gets the GameDetailViewModel
      */
-    fun getGameViewModel(): GameViewModel {
-        return gameViewModel
+    fun getGameDetailViewModel(): GameDetailViewModel {
+        return gameDetailViewModel
+    }
+
+    /**
+     * Gets the GameListViewModel
+     */
+    fun getGameListViewModel(): GameListViewModel {
+        return gameListViewModel
+    }
+
+    /**
+     * Gets the GameAddEditViewModel
+     */
+    fun getGameAddEditViewModel(): GameAddEditViewModel {
+        return gameAddEditViewModel
+    }
+
+    /**
+     * Initialises all the ViewModels associated with this activity. Each ViewModel will be used
+     * in its respective Fragment
+     */
+    private fun initViewModels() {
+        gameListViewModel = ViewModelProviders.of(this, GameViewModelFactory(this.application))
+            .get(GameListViewModel::class.java)
+        gameDetailViewModel = ViewModelProviders.of(this, GameViewModelFactory(this.application)
+        ).get(GameDetailViewModel::class.java)
+        gameAddEditViewModel = ViewModelProviders.of(this, GameViewModelFactory(this.application))
+            .get(GameAddEditViewModel::class.java)
     }
 
     private fun replaceFragment(fragment: Fragment, fragmentTag: String) {

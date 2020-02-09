@@ -9,25 +9,13 @@ import com.matthew.carvalhodagenais.gamecubecollector.data.GameRepository
 import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Game
 import kotlinx.coroutines.launch
 
-class GameViewModel(application: Application): AndroidViewModel(application) {
+class GameDetailViewModel(application: Application): AndroidViewModel(application) {
 
     private var selectedGame = MutableLiveData<Game>()
     private var repository = GameRepository(application)
 
-    fun insert(game: Game) = viewModelScope.launch {
-        repository.insertGame(game)
-    }
-
-    fun update(game: Game) = viewModelScope.launch {
-        repository.updateGame(game)
-    }
-
     fun delete(game: Game) = viewModelScope.launch {
         repository.deleteGame(game)
-    }
-
-    fun getAllGames(): LiveData<List<Game>> {
-        return repository.getAllGames()
     }
 
     fun setSelectedGame(game: Game) {
@@ -38,7 +26,16 @@ class GameViewModel(application: Application): AndroidViewModel(application) {
         return selectedGame.value
     }
 
-    fun setFavourite(game: Game, isFavourite: Boolean) {
-        game.isFavourite = isFavourite
+    fun getIsFavourite(): Boolean {
+        return selectedGame.value!!.isFavourite!!
+    }
+
+    fun toggleFavourite() {
+        selectedGame.value!!.isFavourite = !(selectedGame.value!!.isFavourite)!!
+        update()
+    }
+
+    private fun update() = viewModelScope.launch {
+        repository.updateGame(selectedGame.value!!)
     }
 }

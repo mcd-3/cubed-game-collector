@@ -2,20 +2,20 @@ package com.matthew.carvalhodagenais.gamecubecollector.ui
 
 import android.os.Bundle
 import android.view.*
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.matthew.carvalhodagenais.gamecubecollector.MainActivity
 import com.matthew.carvalhodagenais.gamecubecollector.R
 import com.matthew.carvalhodagenais.gamecubecollector.adapters.GameListRecyclerAdapter
 import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Game
-import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.GameViewModel
+import com.matthew.carvalhodagenais.gamecubecollector.factories.GameViewModelFactory
+import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.GameDetailViewModel
+import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.GameListViewModel
 import kotlinx.android.synthetic.main.fragment_game_list.*
 
 class GameListFragment : Fragment() {
-
-    private lateinit var viewModel: GameViewModel
 
     companion object {
         const val FRAGMENT_TAG =
@@ -29,7 +29,6 @@ class GameListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_game_list, container, false)
-        viewModel = (activity as MainActivity).getGameViewModel()
         setHasOptionsMenu(true)
         return view
     }
@@ -44,9 +43,10 @@ class GameListFragment : Fragment() {
             adapter = recyclerAdapter
         }
 
-        viewModel.getAllGames().observe(viewLifecycleOwner, Observer<List<Game>> {
-            recyclerAdapter.submitList(it)
-            recyclerAdapter.setItemOnClickListener(itemOnClick)
+        (activity as MainActivity).getGameListViewModel().getAllGames()
+            .observe(viewLifecycleOwner, Observer<List<Game>> {
+                recyclerAdapter.submitList(it)
+                recyclerAdapter.setItemOnClickListener(itemOnClick)
         })
     }
 
@@ -79,7 +79,7 @@ class GameListFragment : Fragment() {
      */
     private var itemOnClick = object: GameListRecyclerAdapter.ItemOnClickListener {
         override fun onItemClick(game: Game) {
-            viewModel.setSelectedGame(game)
+            (activity as MainActivity).getGameDetailViewModel().setSelectedGame(game)
             val transaction = activity!!.supportFragmentManager.beginTransaction()
             transaction.replace(this@GameListFragment.id,
                 GameDetailFragment.newInstance(),
