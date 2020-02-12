@@ -42,11 +42,12 @@
     <string name="game_detail_delete_alert_positive">Delete</string>
     <string name="game_detail_delete_alert_negative">@android:string/cancel</string>
 
-    <!-- Default TextView t1ext -->
+    <!-- Default TextView text -->
     <string name="no_title_available">No Title</string>
     <string name="no_developer_available">No Developer</string>
     <string name="no_date_available">N.D</string>
     <string name="no_region_available" />
+    <string name="no_publisher_available">No Publisher</string>
 
     <!-- EditText Titles -->
     <string name="developer_title">Developer: </string>

@@ -1,265 +1,275 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
+
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.matthew.carvalhodagenais.gamecubecollector.viewmodels.GameDetailViewModel" />
+    </data>
+
+    <ScrollView
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/title_card_view"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            android:layout_marginStart="@dimen/small"
-            android:layout_marginEnd="@dimen/small"
-            android:layout_marginTop="@dimen/game_detail_title_margin_top"
-            android:layout_marginBottom="@dimen/very_small">
-
-            <!-- TODO: Change text color to that of the style-->
-            <TextView
-                android:id="@+id/title_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/game_detail_title_margin_start"
-                android:layout_marginEnd="@dimen/game_detail_title_margin_end"
-                android:layout_marginTop="@dimen/game_detail_title_margin_top"
-                android:layout_marginBottom="@dimen/game_detail_title_margin_bottom"
-                android:layout_gravity="center_horizontal"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textStyle="bold"
-                style="@style/TextAppearance.AppCompat.Large"
-                android:maxLines="3"
-                android:ellipsize="end"
-                android:text="@string/no_title_available"/>
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cover_card_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/small"
-            android:layout_marginEnd="@dimen/small"
-            android:layout_marginTop="@dimen/very_small"
-            android:layout_marginBottom="@dimen/very_small">
-
-            <RelativeLayout
+            <androidx.cardview.widget.CardView
+                android:id="@+id/title_card_view"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
 
-                <ImageView
-                    android:id="@+id/cover_art_image_view"
-                    android:layout_width="@dimen/details_cover_art_width"
-                    android:layout_height="@dimen/details_cover_art_height"
-                    android:layout_centerHorizontal="true"
-                    android:paddingTop="@dimen/details_cover_art_padding_top"
-                    android:paddingBottom="@dimen/details_cover_art_padding_bottom"
-                    android:contentDescription="@string/game_detail_image_view_content_description"
-                    app:srcCompat="@drawable/no_art" />
+                android:layout_marginStart="@dimen/small"
+                android:layout_marginEnd="@dimen/small"
+                android:layout_marginTop="@dimen/game_detail_title_margin_top"
+                android:layout_marginBottom="@dimen/very_small">
 
-                <ImageButton
-                    android:id="@+id/favourite_image_button"
+                <!-- TODO: Change text color to that of the style-->
+                <TextView
+                    android:id="@+id/title_text_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="@dimen/favourite_button_margin_end"
-                    android:layout_marginTop="@dimen/favourite_button_margin_top"
-                    android:contentDescription="@string/game_detail_favourite_image_button_view_content_description"
-                    android:background="?attr/selectableItemBackground"
-                    app:srcCompat="@drawable/ic_star_border_yellow_48dp" />
+                    android:layout_marginStart="@dimen/game_detail_title_margin_start"
+                    android:layout_marginEnd="@dimen/game_detail_title_margin_end"
+                    android:layout_marginTop="@dimen/game_detail_title_margin_top"
+                    android:layout_marginBottom="@dimen/game_detail_title_margin_bottom"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    style="@style/TextAppearance.AppCompat.Large"
+                    android:maxLines="3"
+                    android:ellipsize="end"
+                    android:text="@{viewmodel.selectedGame.title}"/>
 
-            </RelativeLayout>
-        </androidx.cardview.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/game_info_card_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/small"
-            android:layout_marginEnd="@dimen/small"
-            android:layout_marginTop="@dimen/very_small"
-            android:layout_marginBottom="@dimen/very_small">
-
-            <LinearLayout
-                android:id="@+id/info_parent_linear_layout"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cover_card_view"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/small"
+                android:layout_marginEnd="@dimen/small"
+                android:layout_marginTop="@dimen/very_small"
+                android:layout_marginBottom="@dimen/very_small">
 
-                <LinearLayout
-                    android:id="@+id/developer_linear_layout"
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingBottom="@dimen/details_game_info_padding_bottom"
-                    android:orientation="vertical">
+                    android:layout_height="match_parent">
 
-                    <TextView
-                        android:id="@+id/developer_label_text_view"
+                    <ImageView
+                        android:id="@+id/cover_art_image_view"
+                        android:layout_width="@dimen/details_cover_art_width"
+                        android:layout_height="@dimen/details_cover_art_height"
+                        android:layout_centerHorizontal="true"
+                        android:paddingTop="@dimen/details_cover_art_padding_top"
+                        android:paddingBottom="@dimen/details_cover_art_padding_bottom"
+                        android:contentDescription="@string/game_detail_image_view_content_description"
+                        app:srcCompat="@drawable/no_art" />
+
+                    <ImageButton
+                        android:id="@+id/favourite_image_button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        style="@style/TextAppearance.AppCompat.Medium"
-                        android:textColor="#000000"
-                        android:text="@string/developer_title" />
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="@dimen/favourite_button_margin_end"
+                        android:layout_marginTop="@dimen/favourite_button_margin_top"
+                        android:contentDescription="@string/game_detail_favourite_image_button_view_content_description"
+                        android:background="?attr/selectableItemBackground"
+                        android:onClick="@{(view) -> viewmodel.favouriteButtonOnClick(view)}"
+                        favouriteStarDrawable="@{viewmodel.selectedGame.isFavourite}"/>
 
-                    <TextView
-                        android:id="@+id/developer_text_view"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/game_detail_title_margin_top"
-                        style="@style/TextAppearance.AppCompat.Large"
-                        android:textStyle="italic"
-                        android:textColor="#000000"
-                        android:text="Nintendo" />
-                </LinearLayout>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
 
-                <LinearLayout
-                    android:id="@+id/publisher_linear_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingBottom="@dimen/details_game_info_padding_bottom"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/publisher_label_text_view"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        style="@style/TextAppearance.AppCompat.Medium"
-                        android:textColor="#000000"
-                        android:text="@string/publisher_title" />
-
-                    <TextView
-                        android:id="@+id/publisher_text_view"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/game_detail_title_margin_top"
-                        style="@style/TextAppearance.AppCompat.Large"
-                        android:textStyle="italic"
-                        android:textColor="#000000"
-                        android:text="Pub 1\nPub 2" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/release_date_linear_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/release_date_label_text_view"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="#000000"
-                        style="@style/TextAppearance.AppCompat.Medium"
-                        android:text="Release Date: " />
-
-                    <TextView
-                        android:id="@+id/release_date_text_view"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        style="@style/TextAppearance.AppCompat.Medium"
-                        android:textColor="#000000"
-                        android:textStyle="bold"
-                        android:text="08/04/03" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/region_linear_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/region_margin_top"
-                    android:paddingBottom="@dimen/details_game_info_margin_bottom"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/region_label_text_view"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="#000000"
-                        style="@style/TextAppearance.AppCompat.Medium"
-                        android:text="Region: " />
-
-                    <TextView
-                        android:id="@+id/region_text_view"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        style="@style/TextAppearance.AppCompat.Medium"
-                        android:textColor="#000000"
-                        android:textStyle="bold"
-                        android:text="North America [NTSC-U]" />
-
-                </LinearLayout>
-
-                <!-- Dev, publisher, date, region -->
-                <!-- Each in its own LinearLayout -->
-
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/collector_card_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/small"
-            android:layout_marginEnd="@dimen/small"
-            android:layout_marginTop="@dimen/very_small"
-            android:layout_marginBottom="@dimen/very_small">
-
-            <LinearLayout
-                android:id="@+id/collector_parent_linear_layout"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/game_info_card_view"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/small"
+                android:layout_marginEnd="@dimen/small"
+                android:layout_marginTop="@dimen/very_small"
+                android:layout_marginBottom="@dimen/very_small">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Condition: " />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Near Mint [NM]" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Price Paid: " />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="$45.99" />
-
-                </LinearLayout>
-
-                <TextView
+                    android:id="@+id/info_parent_linear_layout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="CIB"/>
+                    android:orientation="vertical">
 
-            </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/developer_linear_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="@dimen/details_game_info_padding_bottom"
+                        android:orientation="vertical">
 
-        </androidx.cardview.widget.CardView>
+                        <TextView
+                            android:id="@+id/developer_label_text_view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/TextAppearance.AppCompat.Medium"
+                            android:textColor="#000000"
+                            android:text="@string/developer_title" />
+
+                        <TextView
+                            android:id="@+id/developer_text_view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/game_detail_title_margin_top"
+                            style="@style/TextAppearance.AppCompat.Large"
+                            android:textStyle="italic"
+                            android:textColor="#000000"
+                            android:text="@{viewmodel.selectedGame.developers ?? @string/no_developer_available}" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/publisher_linear_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="@dimen/details_game_info_padding_bottom"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/publisher_label_text_view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/TextAppearance.AppCompat.Medium"
+                            android:textColor="#000000"
+                            android:text="@string/publisher_title" />
+
+                        <TextView
+                            android:id="@+id/publisher_text_view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/game_detail_title_margin_top"
+                            style="@style/TextAppearance.AppCompat.Large"
+                            android:textStyle="italic"
+                            android:textColor="#000000"
+                            android:text="@{viewmodel.selectedGame.publishers ?? @string/no_publisher_available}" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/release_date_linear_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/release_date_label_text_view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#000000"
+                            style="@style/TextAppearance.AppCompat.Medium"
+                            android:text="Release Date: " />
+
+                        <TextView
+                            android:id="@+id/release_date_text_view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/TextAppearance.AppCompat.Medium"
+                            android:textColor="#000000"
+                            android:textStyle="bold"
+                            android:text="08/04/03" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/region_linear_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/region_margin_top"
+                        android:paddingBottom="@dimen/details_game_info_margin_bottom"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/region_label_text_view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#000000"
+                            style="@style/TextAppearance.AppCompat.Medium"
+                            android:text="Region: " />
+
+                        <TextView
+                            android:id="@+id/region_text_view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/TextAppearance.AppCompat.Medium"
+                            android:textColor="#000000"
+                            android:textStyle="bold"
+                            android:text="North America [NTSC-U]" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/collector_card_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/small"
+                android:layout_marginEnd="@dimen/small"
+                android:layout_marginTop="@dimen/very_small"
+                android:layout_marginBottom="@dimen/very_small">
+
+                <LinearLayout
+                    android:id="@+id/collector_parent_linear_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Condition: " />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Near Mint [NM]" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Price Paid: " />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="$45.99" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="CIB"/>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
 
 
-    </LinearLayout>
-</ScrollView>
+        </LinearLayout>
+    </ScrollView>
+
+</layout>

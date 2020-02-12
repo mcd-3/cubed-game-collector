@@ -5,10 +5,12 @@ import android.content.DialogInterface
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.matthew.carvalhodagenais.gamecubecollector.MainActivity
 import com.matthew.carvalhodagenais.gamecubecollector.R
 import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Game
+import com.matthew.carvalhodagenais.gamecubecollector.databinding.FragmentGameDetailBinding
 import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.GameDetailViewModel
 import kotlinx.android.synthetic.main.fragment_game_detail.*
 
@@ -28,17 +30,20 @@ class GameDetailFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view: View =
-            inflater.inflate(R.layout.fragment_game_detail, container, false)
         detailViewModel = (activity as MainActivity).getGameDetailViewModel()
+        val binding = DataBindingUtil.inflate<FragmentGameDetailBinding>(
+            inflater, R.layout.fragment_game_detail, container, false
+        ).apply {
+            this.lifecycleOwner = this@GameDetailFragment
+            this.viewmodel = detailViewModel
+        }
         setHasOptionsMenu(true)
-        return view
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        favourite_image_button.setOnClickListener(favouriteOnClick)
-        initialDataSetup(detailViewModel.getSelectedGame()!!)
+        //favourite_image_button.setOnClickListener(favouriteOnClick)
     }
 
     override fun onPrepareOptionsMenu(menu: Menu) {
@@ -71,18 +76,6 @@ class GameDetailFragment: Fragment() {
     }
 
     /**
-     * Sets up all fragment views with game information
-     */
-    private fun initialDataSetup(game: Game) {
-        title_text_view.text = game.title
-        if (detailViewModel.getIsFavourite()) {
-            favourite_image_button.setImageDrawable(
-                resources.getDrawable(R.drawable.ic_star_yellow_48dp,
-                null))
-        }
-    }
-
-    /**
      * Prompts the user for whether or not the game will be deleted
      */
     private fun showDeleteDialog() {
@@ -109,22 +102,22 @@ class GameDetailFragment: Fragment() {
         transaction.commit()
     }
 
-    /**
-     * OnClickListener for the star ImageButton to favourite the Game
-     */
-    private val favouriteOnClick = View.OnClickListener {
-        if (detailViewModel.getIsFavourite()) {
-            favourite_image_button
-                .setImageDrawable(
-                    resources.getDrawable(R.drawable.ic_star_border_yellow_48dp,
-                    null))
-        } else {
-            favourite_image_button
-                .setImageDrawable(
-                    resources.getDrawable(R.drawable.ic_star_yellow_48dp,
-                    null))
-            Toast.makeText(context, getString(R.string.toast_favourite), Toast.LENGTH_SHORT).show()
-        }
-        detailViewModel.toggleFavourite()
-    }
+//    /**
+//     * OnClickListener for the star ImageButton to favourite the Game
+//     */
+//    private val favouriteOnClick = View.OnClickListener {
+//        if (detailViewModel.getIsFavourite()) {
+//            favourite_image_button
+//                .setImageDrawable(
+//                    resources.getDrawable(R.drawable.ic_star_border_yellow_48dp,
+//                    null))
+//        } else {
+//            favourite_image_button
+//                .setImageDrawable(
+//                    resources.getDrawable(R.drawable.ic_star_yellow_48dp,
+//                    null))
+//            Toast.makeText(context, getString(R.string.toast_favourite), Toast.LENGTH_SHORT).show()
+//        }
+//        detailViewModel.toggleFavourite()
+//    }
 }
