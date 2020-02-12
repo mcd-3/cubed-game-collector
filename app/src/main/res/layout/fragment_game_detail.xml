@@ -6,7 +6,7 @@
 
     <data>
         <variable
-            name="viewmodel"
+            name="viewModel"
             type="com.matthew.carvalhodagenais.gamecubecollector.viewmodels.GameDetailViewModel" />
     </data>
 
@@ -46,7 +46,7 @@
                     style="@style/TextAppearance.AppCompat.Large"
                     android:maxLines="3"
                     android:ellipsize="end"
-                    android:text="@{viewmodel.selectedGame.title}"/>
+                    android:text="@{viewModel.selectedGame.title}"/>
 
             </androidx.cardview.widget.CardView>
 
@@ -82,8 +82,8 @@
                         android:layout_marginTop="@dimen/favourite_button_margin_top"
                         android:contentDescription="@string/game_detail_favourite_image_button_view_content_description"
                         android:background="?attr/selectableItemBackground"
-                        android:onClick="@{(view) -> viewmodel.favouriteButtonOnClick(view)}"
-                        favouriteStarDrawable="@{viewmodel.selectedGame.isFavourite}"/>
+                        android:onClick="@{(view) -> viewModel.favouriteButtonOnClick(view)}"
+                        favouriteStarDrawable="@{viewModel.selectedGame.isFavourite}"/>
 
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
@@ -126,7 +126,7 @@
                             style="@style/TextAppearance.AppCompat.Large"
                             android:textStyle="italic"
                             android:textColor="#000000"
-                            android:text="@{viewmodel.selectedGame.developers ?? @string/no_developer_available}" />
+                            android:text="@{viewModel.selectedGame.developers ?? @string/no_developer_available}" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -152,7 +152,7 @@
                             style="@style/TextAppearance.AppCompat.Large"
                             android:textStyle="italic"
                             android:textColor="#000000"
-                            android:text="@{viewmodel.selectedGame.publishers ?? @string/no_publisher_available}" />
+                            android:text="@{viewModel.selectedGame.publishers ?? @string/no_publisher_available}" />
                     </LinearLayout>
 
                     <LinearLayout

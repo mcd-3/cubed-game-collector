@@ -23,19 +23,6 @@ class GameDetailViewModel(application: Application): AndroidViewModel(applicatio
     private var selectedGame = MutableLiveData<Game>()
     private var repository = GameRepository(application)
 
-    companion object {
-        @JvmStatic
-        @BindingAdapter("favouriteStarDrawable")
-        fun setFavouriteStarDrawable(imageButton: ImageButton, isFav: Boolean) {
-            val drawable =
-                if (isFav) R.drawable.ic_star_yellow_48dp
-                else R.drawable.ic_star_border_yellow_48dp
-            Glide.with(imageButton.context)
-                .load(drawable)
-                .into(imageButton)
-        }
-    }
-
     fun delete(game: Game) = viewModelScope.launch {
         repository.deleteGame(game)
     }
@@ -52,7 +39,7 @@ class GameDetailViewModel(application: Application): AndroidViewModel(applicatio
         return selectedGame.value!!.isFavourite!!
     }
 
-    fun toggleFavourite() {
+    private fun toggleFavourite() {
         selectedGame.value!!.isFavourite = !(selectedGame.value!!.isFavourite)!!
         update()
     }

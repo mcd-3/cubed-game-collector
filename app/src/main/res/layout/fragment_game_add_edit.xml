@@ -1,382 +1,395 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout>
 
-    <LinearLayout
+    <data>
+        <variable
+            name="viewModel"
+            type="com.matthew.carvalhodagenais.gamecubecollector.viewmodels.GameAddEditViewModel" />
+    </data>
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <!-- Title Card -->
-        <com.google.android.material.card.MaterialCardView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/small"
-            android:layout_marginEnd="@dimen/small"
-            android:layout_marginTop="@dimen/small"
-            android:layout_marginBottom="@dimen/very_small">
+            android:orientation="vertical">
 
-            <com.google.android.material.textfield.TextInputLayout
+            <!-- Title Card -->
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:errorEnabled="true"
-                android:layout_marginTop="@dimen/small"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/small"
                 android:layout_marginEnd="@dimen/small"
-                android:layout_marginBottom="@dimen/small">
+                android:layout_marginTop="@dimen/small"
+                android:layout_marginBottom="@dimen/very_small">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/title_edit_text"
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textMultiLine"
-                    android:background="#FFFFFF"
-                    android:hint="@string/title_hint"/>
+                    android:layout_height="match_parent"
+                    app:errorEnabled="true"
+                    android:layout_marginTop="@dimen/small"
+                    android:layout_marginStart="@dimen/small"
+                    android:layout_marginEnd="@dimen/small"
+                    android:layout_marginBottom="@dimen/small">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/title_edit_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textMultiLine"
+                        android:background="#FFFFFF"
+                        android:text="@{viewModel.selectedGame.title}"
+                        android:hint="@string/title_hint"/>
 
-        </com.google.android.material.card.MaterialCardView>
+                </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Cover art and favourite Card -->
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/small"
-            android:layout_marginEnd="@dimen/small"
-            android:layout_marginTop="@dimen/small"
-            android:layout_marginBottom="@dimen/very_small">
+            </com.google.android.material.card.MaterialCardView>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_marginTop="@dimen/medium"
-                android:layout_marginBottom="@dimen/medium"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:id="@+id/cover_art_image_view"
-                    android:layout_width="128dp"
-                    android:layout_height="212dp"
-                    android:src="@drawable/no_art"
-                    android:contentDescription="@string/game_add_edit_image_view_content_description"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageButton
-                    android:id="@+id/favourite_image_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="?attr/selectableItemBackground"
-                    android:contentDescription="@string/game_add_edit_favourite_image_button_view_content_description"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.811"
-                    app:layout_constraintStart_toEndOf="@+id/cover_art_image_view"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0"
-                    app:srcCompat="@drawable/ic_star_border_yellow_48dp" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/game_info_card_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/small"
-            android:layout_marginEnd="@dimen/small"
-            android:layout_marginTop="@dimen/small"
-            android:layout_marginBottom="@dimen/very_small"
-            android:background="#FFFFFF">
-
-            <LinearLayout
+            <!-- Cover art and favourite Card -->
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_marginStart="@dimen/small"
+                android:layout_marginEnd="@dimen/small"
+                android:layout_marginTop="@dimen/small"
+                android:layout_marginBottom="@dimen/very_small">
 
-                <TextView
-                    android:id="@+id/game_info_label_text_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/slightly_small"
-                    android:layout_marginTop="@dimen/slightly_small"
-                    style="@style/TextAppearance.AppCompat.Medium"
-                    android:textStyle="bold"
-                    android:text="@string/game_info_label" />
-
-                <!--TODO: Add button for expandable layout for 2 more devs -->
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="@dimen/very_small"
-                    android:layout_marginStart="@dimen/small"
-                    android:layout_marginEnd="@dimen/small"
-                    android:layout_marginBottom="@dimen/small">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/developer_edit_text"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="text"
-                        android:background="#FFFFFF"
-                        android:hint="@string/developer_hint"/>
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <!--TODO: Add button for expandable layout for 2 more pubs -->
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="@dimen/small"
-                    android:layout_marginEnd="@dimen/small"
-                    android:layout_marginBottom="@dimen/small">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/publisher_edit_text"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="text"
-                        android:background="#FFFFFF"
-                        android:hint="@string/publisher_hint"/>
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/small"
-                    android:layout_marginStart="@dimen/small"
-                    android:layout_marginEnd="@dimen/very_small"
-                    android:layout_marginBottom="@dimen/medium"
-                    android:paddingTop="@dimen/medium"
-                    android:paddingBottom="@dimen/slightly_small">
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/small"
-                        android:layout_marginEnd="@dimen/large"
-                        style="@style/TextAppearance.AppCompat.Medium"
-                        android:layout_gravity="center"
-                        android:text="@string/region_label"/>
-
-                    <Spinner
-                        android:layout_weight="1"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_marginTop="@dimen/medium"
                     android:layout_marginBottom="@dimen/medium"
-                    android:layout_marginStart="@dimen/small"
-                    android:layout_marginEnd="@dimen/small"
-                    android:orientation="horizontal">
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:layout_gravity="center_vertical"
-                        android:background="#FFFFFF">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/release_date_edit_text"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="@dimen/small"
-                            android:enabled="false"
-                            android:background="#FFFFFF"
-                            android:text="@string/date_default"
-                            android:hint="@string/release_date_hint"/>
-
-                    </com.google.android.material.textfield.TextInputLayout>
+                    <ImageView
+                        android:id="@+id/cover_art_image_view"
+                        android:layout_width="128dp"
+                        android:layout_height="212dp"
+                        android:src="@drawable/no_art"
+                        android:contentDescription="@string/game_add_edit_image_view_content_description"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageButton
-                        android:id="@+id/release_date_calendar_image_button"
-                        android:layout_width="0dp"
+                        android:id="@+id/favourite_image_button"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="@dimen/medium"
-                        android:layout_marginEnd="@dimen/medium"
-                        android:contentDescription="@string/game_add_edit_calendar_image_button_content_description"
-                        android:src="@drawable/ic_date_range_white_42dp" />
+                        android:background="?attr/selectableItemBackground"
+                        android:contentDescription="@string/game_add_edit_favourite_image_button_view_content_description"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.811"
+                        app:layout_constraintStart_toEndOf="@+id/cover_art_image_view"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0"
+                        android:tag="@{viewModel.createFavouriteButtonTag}"
+                        android:onClick="@{(view) -> viewModel.favouriteButtonOnClick(view)}"
+                        favouriteStarDrawable="@{viewModel.selectedGame.isFavourite}" />
 
-                    <!-- Set this to RED if has date, else set to very light gray -->
-                    <ImageButton
-                        android:id="@+id/release_date_clear_image_button"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.7"
-                        android:layout_gravity="center"
-                        android:clickable="false"
-                        android:contentDescription="@string/game_add_edit_clear_image_button_content_description"
-                        android:src="@drawable/ic_cancel_white_32dp" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-                </LinearLayout>
-
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <!-- Details Card -->
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/small"
-            android:layout_marginTop="@dimen/small"
-            android:layout_marginEnd="@dimen/small"
-            android:layout_marginBottom="@dimen/very_small">
-
-            <LinearLayout
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/game_info_card_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_marginStart="@dimen/small"
+                android:layout_marginEnd="@dimen/small"
+                android:layout_marginTop="@dimen/small"
+                android:layout_marginBottom="@dimen/very_small"
+                android:background="#FFFFFF">
 
-                <TextView
-                    android:id="@+id/details_label_text_view"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/slightly_small"
-                    android:layout_marginTop="@dimen/slightly_small"
-                    style="@style/TextAppearance.AppCompat.Medium"
-                    android:textStyle="bold"
-                    android:text="@string/more_details_label" />
+                    android:orientation="vertical">
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="@dimen/small"
-                    android:layout_marginEnd="@dimen/small"
-                    android:layout_marginBottom="@dimen/small">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/price_paid_edit_text"
+                    <TextView
+                        android:id="@+id/game_info_label_text_view"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="numberDecimal"
-                        android:background="#FFFFFF"
-                        android:hint="@string/price_paid_hint"/>
-                </com.google.android.material.textfield.TextInputLayout>
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/medium"
-                    android:layout_marginBottom="@dimen/medium"
-                    android:layout_marginStart="@dimen/small"
-                    android:layout_marginEnd="@dimen/small"
-                    android:orientation="horizontal">
+                        android:layout_marginStart="@dimen/slightly_small"
+                        android:layout_marginTop="@dimen/slightly_small"
+                        style="@style/TextAppearance.AppCompat.Medium"
+                        android:textStyle="bold"
+                        android:text="@string/game_info_label" />
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:layout_gravity="center_vertical"
-                        android:background="#FFFFFF">
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/very_small"
+                        android:layout_marginStart="@dimen/small"
+                        android:layout_marginEnd="@dimen/small"
+                        android:layout_marginBottom="@dimen/small">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/buy_date_edit_text"
+                            android:id="@+id/developer_edit_text"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="@dimen/small"
-                            android:enabled="false"
+                            android:inputType="text"
                             android:background="#FFFFFF"
-                            android:text="@string/date_default"
-                            android:hint="@string/buy_date_hint"/>
-
+                            android:text="@{viewModel.selectedGame.developers}"
+                            android:hint="@string/developer_hint"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
-                    <ImageButton
-                        android:id="@+id/buy_date_calendar_image_button"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_marginStart="@dimen/medium"
-                        android:layout_marginEnd="@dimen/medium"
-                        android:contentDescription="@string/game_add_edit_calendar_image_button_content_description"
-                        android:src="@drawable/ic_date_range_white_42dp" />
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/small"
+                        android:layout_marginEnd="@dimen/small"
+                        android:layout_marginBottom="@dimen/small">
 
-                    <!-- Set this to RED if has date, else set to very light gray -->
-                    <ImageButton
-                        android:id="@+id/buy_date_clear_image_button"
-                        android:layout_width="0dp"
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/publisher_edit_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text"
+                            android:background="#FFFFFF"
+                            android:text="@{viewModel.selectedGame.publishers}"
+                            android:hint="@string/publisher_hint"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.7"
-                        android:layout_gravity="center"
-                        android:clickable="false"
-                        android:contentDescription="@string/game_add_edit_clear_image_button_content_description"
-                        android:src="@drawable/ic_cancel_white_32dp" />
+                        android:layout_marginTop="@dimen/small"
+                        android:layout_marginStart="@dimen/small"
+                        android:layout_marginEnd="@dimen/very_small"
+                        android:layout_marginBottom="@dimen/medium"
+                        android:paddingTop="@dimen/medium"
+                        android:paddingBottom="@dimen/slightly_small">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/small"
+                            android:layout_marginEnd="@dimen/large"
+                            style="@style/TextAppearance.AppCompat.Medium"
+                            android:layout_gravity="center"
+                            android:text="@string/region_label"/>
+
+                        <Spinner
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/medium"
+                        android:layout_marginBottom="@dimen/medium"
+                        android:layout_marginStart="@dimen/small"
+                        android:layout_marginEnd="@dimen/small"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:layout_gravity="center_vertical"
+                            android:background="#FFFFFF">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/release_date_edit_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="@dimen/small"
+                                android:enabled="false"
+                                android:background="#FFFFFF"
+                                android:text="@string/date_default"
+                                android:hint="@string/release_date_hint"/>
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <ImageButton
+                            android:id="@+id/release_date_calendar_image_button"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/medium"
+                            android:layout_marginEnd="@dimen/medium"
+                            android:contentDescription="@string/game_add_edit_calendar_image_button_content_description"
+                            android:src="@drawable/ic_date_range_white_42dp" />
+
+                        <!-- Set this to RED if has date, else set to very light gray -->
+                        <ImageButton
+                            android:id="@+id/release_date_clear_image_button"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.7"
+                            android:layout_gravity="center"
+                            android:clickable="false"
+                            android:contentDescription="@string/game_add_edit_clear_image_button_content_description"
+                            android:src="@drawable/ic_cancel_white_32dp" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Details Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/small"
+                android:layout_marginTop="@dimen/small"
+                android:layout_marginEnd="@dimen/small"
+                android:layout_marginBottom="@dimen/very_small">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/small"
-                    android:layout_marginStart="@dimen/small"
-                    android:layout_marginEnd="@dimen/very_small"
-                    android:layout_marginBottom="@dimen/medium"
-                    android:paddingTop="@dimen/medium"
-                    android:paddingBottom="@dimen/slightly_small">
+                    android:orientation="vertical">
 
-                    <com.google.android.material.textview.MaterialTextView
-                        android:layout_width="wrap_content"
+                    <TextView
+                        android:id="@+id/details_label_text_view"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/small"
-                        android:layout_marginEnd="@dimen/large"
+                        android:layout_marginStart="@dimen/slightly_small"
+                        android:layout_marginTop="@dimen/slightly_small"
                         style="@style/TextAppearance.AppCompat.Medium"
-                        android:layout_gravity="center"
-                        android:text="@string/condition_label"/>
+                        android:textStyle="bold"
+                        android:text="@string/more_details_label" />
 
-                    <Spinner
-                        android:layout_weight="1"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/small"
-                    android:layout_marginStart="@dimen/small"
-                    android:layout_marginEnd="@dimen/small"
-                    android:layout_marginBottom="@dimen/medium"
-                    android:orientation="horizontal">
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:layout_weight="1.5"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_marginStart="@dimen/small"
-                        style="@style/TextAppearance.AppCompat.Medium"
-                        android:text="@string/cib_label"/>
+                        android:layout_marginEnd="@dimen/small"
+                        android:layout_marginBottom="@dimen/small">
 
-                    <com.google.android.material.checkbox.MaterialCheckBox
-                        android:id="@+id/case_checkbox"
-                        android:layout_weight="1"
-                        android:layout_width="0dp"
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/price_paid_edit_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="numberDecimal"
+                            android:background="#FFFFFF"
+                            android:text="@{viewModel.selectedGame.pricePaid.toString()}"
+                            android:hint="@string/price_paid_hint"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/case_checkbox_label"/>
+                        android:layout_marginTop="@dimen/medium"
+                        android:layout_marginBottom="@dimen/medium"
+                        android:layout_marginStart="@dimen/small"
+                        android:layout_marginEnd="@dimen/small"
+                        android:orientation="horizontal">
 
-                    <com.google.android.material.checkbox.MaterialCheckBox
-                        android:id="@+id/manual_checkbox"
-                        android:layout_weight="1"
-                        android:layout_width="0dp"
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:layout_gravity="center_vertical"
+                            android:background="#FFFFFF">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/buy_date_edit_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="@dimen/small"
+                                android:enabled="false"
+                                android:background="#FFFFFF"
+                                android:text="@string/date_default"
+                                android:hint="@string/buy_date_hint"/>
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <ImageButton
+                            android:id="@+id/buy_date_calendar_image_button"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginStart="@dimen/medium"
+                            android:layout_marginEnd="@dimen/medium"
+                            android:contentDescription="@string/game_add_edit_calendar_image_button_content_description"
+                            android:src="@drawable/ic_date_range_white_42dp" />
+
+                        <!-- Set this to RED if has date, else set to very light gray -->
+                        <ImageButton
+                            android:id="@+id/buy_date_clear_image_button"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.7"
+                            android:layout_gravity="center"
+                            android:clickable="false"
+                            android:contentDescription="@string/game_add_edit_clear_image_button_content_description"
+                            android:src="@drawable/ic_cancel_white_32dp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/manual_checkbox_label"/>
+                        android:layout_marginTop="@dimen/small"
+                        android:layout_marginStart="@dimen/small"
+                        android:layout_marginEnd="@dimen/very_small"
+                        android:layout_marginBottom="@dimen/medium"
+                        android:paddingTop="@dimen/medium"
+                        android:paddingBottom="@dimen/slightly_small">
 
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/small"
+                            android:layout_marginEnd="@dimen/large"
+                            style="@style/TextAppearance.AppCompat.Medium"
+                            android:layout_gravity="center"
+                            android:text="@string/condition_label"/>
+
+                        <Spinner
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/small"
+                        android:layout_marginStart="@dimen/small"
+                        android:layout_marginEnd="@dimen/small"
+                        android:layout_marginBottom="@dimen/medium"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_weight="1.5"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/small"
+                            style="@style/TextAppearance.AppCompat.Medium"
+                            android:text="@string/cib_label"/>
+
+                        <com.google.android.material.checkbox.MaterialCheckBox
+                            android:id="@+id/case_checkbox"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:checked="@{viewModel.selectedGame.hasCase}"
+                            android:text="@string/case_checkbox_label"/>
+
+                        <com.google.android.material.checkbox.MaterialCheckBox
+                            android:id="@+id/manual_checkbox"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:checked="@{viewModel.selectedGame.hasManual}"
+                            android:text="@string/manual_checkbox_label"/>
+
+                    </LinearLayout>
                 </LinearLayout>
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-    </LinearLayout>
-</ScrollView>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+    </ScrollView>
+</layout>

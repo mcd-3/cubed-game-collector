@@ -35,15 +35,10 @@ class GameDetailFragment: Fragment() {
             inflater, R.layout.fragment_game_detail, container, false
         ).apply {
             this.lifecycleOwner = this@GameDetailFragment
-            this.viewmodel = detailViewModel
+            this.viewModel = detailViewModel
         }
         setHasOptionsMenu(true)
         return binding.root
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        //favourite_image_button.setOnClickListener(favouriteOnClick)
     }
 
     override fun onPrepareOptionsMenu(menu: Menu) {
@@ -101,23 +96,4 @@ class GameDetailFragment: Fragment() {
         )
         transaction.commit()
     }
-
-//    /**
-//     * OnClickListener for the star ImageButton to favourite the Game
-//     */
-//    private val favouriteOnClick = View.OnClickListener {
-//        if (detailViewModel.getIsFavourite()) {
-//            favourite_image_button
-//                .setImageDrawable(
-//                    resources.getDrawable(R.drawable.ic_star_border_yellow_48dp,
-//                    null))
-//        } else {
-//            favourite_image_button
-//                .setImageDrawable(
-//                    resources.getDrawable(R.drawable.ic_star_yellow_48dp,
-//                    null))
-//            Toast.makeText(context, getString(R.string.toast_favourite), Toast.LENGTH_SHORT).show()
-//        }
-//        detailViewModel.toggleFavourite()
-//    }
 }

@@ -79,5 +79,8 @@
     <string name="drawer_layout_open">Open</string>
     <string name="drawer_layout_close">Close</string>
 
+    <!-- Various Tags -->
+    <string name="star_border_tag">0</string>
+    <string name="star_filled_tag">1</string>
 
 </resources>

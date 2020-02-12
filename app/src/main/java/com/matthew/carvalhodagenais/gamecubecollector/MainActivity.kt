@@ -55,6 +55,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return false
     }
 
+    //TODO: Clear the currently selected game when back is clicked at Detail frag
     override fun onBackPressed() {
         if (main_activity_drawer_layout.isDrawerOpen(GravityCompat.START)) {
             main_activity_drawer_layout.closeDrawer(GravityCompat.START)

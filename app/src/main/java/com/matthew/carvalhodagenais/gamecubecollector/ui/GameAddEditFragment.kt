@@ -4,10 +4,13 @@ import android.app.DatePickerDialog
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.matthew.carvalhodagenais.gamecubecollector.MainActivity
 import com.matthew.carvalhodagenais.gamecubecollector.R
 import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Game
+import com.matthew.carvalhodagenais.gamecubecollector.databinding.FragmentGameAddEditBinding
+import com.matthew.carvalhodagenais.gamecubecollector.databinding.FragmentGameDetailBinding
 import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.GameAddEditViewModel
 import kotlinx.android.synthetic.main.fragment_game_add_edit.*
 import java.util.*
@@ -42,18 +45,19 @@ class GameAddEditFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view: View =
-            inflater.inflate(R.layout.fragment_game_add_edit, container, false)
-        setHasOptionsMenu(true)
         addEditViewModel = (activity as MainActivity).getGameAddEditViewModel()
-        return view
+        val binding = DataBindingUtil.inflate<FragmentGameAddEditBinding>(
+            inflater, R.layout.fragment_game_add_edit, container, false
+        ).apply {
+            this.lifecycleOwner = this@GameAddEditFragment
+            this.viewModel = addEditViewModel
+        }
+        setHasOptionsMenu(true)
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
-        // Set OnClickListener for "favourite" button
-        favourite_image_button.setOnClickListener(favouriteButtonOnClick)
 
         // Set OnClickListeners for the "pick date" buttons
         release_date_calendar_image_button.setOnClickListener(releaseDateOnClickListener)
@@ -103,13 +107,7 @@ class GameAddEditFragment: Fragment() {
      */
     private fun setUIValues(game: Game) {
         // Set the values
-        setFavouriteStarDrawable(game.isFavourite ?: false)
-        title_edit_text.setText(game.title)
-        developer_edit_text.setText(game.developers)
-        publisher_edit_text.setText(game.publishers)
-        price_paid_edit_text.setText(game.pricePaid?.toString() ?: "")
-        case_checkbox.isChecked = game.hasCase ?: false
-        manual_checkbox.isChecked = game.hasManual ?: false
+//        setFavouriteStarDrawable(game.isFavourite ?: false)
         release_date_edit_text.setText(createDateString(game.releaseDate))
         buy_date_edit_text.setText(createDateString(game.boughtDate))
 
@@ -166,6 +164,8 @@ class GameAddEditFragment: Fragment() {
         } else {
             addEditViewModel.insert(game)
         }
+
+        addEditViewModel.clearCurrentlySelectedGame()
     }
 
     /**
