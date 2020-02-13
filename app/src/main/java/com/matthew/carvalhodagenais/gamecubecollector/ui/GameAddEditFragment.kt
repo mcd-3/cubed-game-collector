@@ -54,16 +54,14 @@ class GameAddEditFragment: Fragment() {
         }
         binding.setReleaseDateEditText(binding.releaseDateEditText)
         binding.setBuyDateEditText(binding.buyDateEditText)
+        binding.setReleaseDateClearImageButton(binding.releaseDateClearImageButton)
+        binding.setBuyDateClearImageButton(binding.buyDateClearImageButton)
         setHasOptionsMenu(true)
         return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
-        // Set OnClickListeners for the "pick date" buttons
-        release_date_calendar_image_button.setOnClickListener(releaseDateOnClickListener)
-        buy_date_calendar_image_button.setOnClickListener(buyDateOnClickListener)
 
         // Set all values in the UI
         if (arguments!!.getInt(REQUEST_CODE) == EDIT_REQUEST) {
@@ -193,53 +191,4 @@ class GameAddEditFragment: Fragment() {
     private fun setNullIfEmptyString(string: String): String? =
         if (string.trim().isEmpty()) null else string
 
-    /**
-     * Creates a Calendar using a year, month, and day
-     *
-     * @param year int
-     * @param month int
-     * @param day int
-     * @return Calendar
-     */
-    private fun createCalendar(year: Int, month: Int, day: Int): Calendar {
-        val cal = Calendar.getInstance()
-        cal.set(Calendar.YEAR, year)
-        cal.set(Calendar.MONTH, month)
-        cal.set(Calendar.DAY_OF_MONTH, day)
-        return cal
-    }
-
-    /**
-     * OnClickListener to set a date
-     * Sets the release date on click
-     */
-    private val releaseDateOnClickListener = View.OnClickListener {
-        val cal = Calendar.getInstance()
-        val datePicker = DatePickerDialog(context!!,
-            DatePickerDialog.OnDateSetListener{_, mYear, mMonth, mDay ->
-                release_date_edit_text.setText("${mDay}/${mMonth + 1}/${mYear}")
-                releaseDateToSave = createCalendar(mYear, mMonth + 1, mDay)
-                release_date_clear_image_button.isClickable = true
-            }, cal.get(Calendar.YEAR),
-            cal.get(Calendar.MONTH),
-            cal.get(Calendar.DAY_OF_MONTH))
-        datePicker.show()
-    }
-
-    /**
-     * OnClickListener to set a date
-     * Sets the buy date on click
-     */
-    private val buyDateOnClickListener = View.OnClickListener {
-        val cal = Calendar.getInstance()
-        val datePicker = DatePickerDialog(context!!,
-            DatePickerDialog.OnDateSetListener{_, mYear, mMonth, mDay ->
-                buy_date_edit_text.setText("${mDay}/${mMonth + 1}/${mYear}")
-                buyDateToSave = createCalendar(mYear, mMonth + 1, mDay)
-                buy_date_clear_image_button.isClickable = true
-            }, cal.get(Calendar.YEAR),
-            cal.get(Calendar.MONTH),
-            cal.get(Calendar.DAY_OF_MONTH))
-        datePicker.show()
-    }
 }

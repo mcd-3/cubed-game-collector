@@ -1,8 +1,10 @@
 package com.matthew.carvalhodagenais.gamecubecollector.viewmodels
 
 import android.app.Application
+import android.app.DatePickerDialog
 import android.util.Log
 import android.view.View
+import android.widget.DatePicker
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.Toast
@@ -14,8 +16,10 @@ import com.bumptech.glide.Glide
 import com.matthew.carvalhodagenais.gamecubecollector.R
 import com.matthew.carvalhodagenais.gamecubecollector.data.GameRepository
 import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Game
+import kotlinx.android.synthetic.main.fragment_game_add_edit.*
 import kotlinx.coroutines.launch
 import java.lang.ClassCastException
+import java.util.*
 
 class GameAddEditViewModel(application: Application): AndroidViewModel(application) {
 
@@ -75,6 +79,30 @@ class GameAddEditViewModel(application: Application): AndroidViewModel(applicati
                 Log.e("EXCEPTION", "View cannot be an ImageButton.\n${e.message}"),
                 Toast.LENGTH_SHORT).show()
         }
+    }
+
+    /**
+     * OnClickListener for the date picker buttons
+     * Opens a DatePickerDialog, sets the date in a given EditText, and enables a given ImageButton
+     * for clearing the date
+     *
+     * @param editText
+     * @param clearButton
+     * @param dateButton
+     */
+    fun createDateOnClick(editText: View, clearButton: View, dateButton: View) {
+        val cal = Calendar.getInstance()
+        val datePicker = DatePickerDialog(
+            dateButton.context,
+            DatePickerDialog.OnDateSetListener {_, mYear, mMonth, mDay ->
+                (editText as EditText).setText("${mDay}/${mMonth + 1}/${mYear}")
+                (clearButton as ImageButton).isClickable = true
+            },
+            cal.get(Calendar.YEAR),
+            cal.get(Calendar.MONTH),
+            cal.get(Calendar.DAY_OF_MONTH)
+        )
+        datePicker.show()
     }
 
     /**
