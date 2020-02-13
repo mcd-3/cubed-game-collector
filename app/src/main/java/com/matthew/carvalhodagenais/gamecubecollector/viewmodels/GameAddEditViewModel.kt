@@ -3,6 +3,7 @@ package com.matthew.carvalhodagenais.gamecubecollector.viewmodels
 import android.app.Application
 import android.util.Log
 import android.view.View
+import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.databinding.BindingAdapter
@@ -14,6 +15,7 @@ import com.matthew.carvalhodagenais.gamecubecollector.R
 import com.matthew.carvalhodagenais.gamecubecollector.data.GameRepository
 import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Game
 import kotlinx.coroutines.launch
+import java.lang.ClassCastException
 
 class GameAddEditViewModel(application: Application): AndroidViewModel(application) {
 
@@ -40,6 +42,15 @@ class GameAddEditViewModel(application: Application): AndroidViewModel(applicati
         selectedGame = MutableLiveData<Game>()
     }
 
+    // TODO: Use the tag to determine whether or not we should save as favourite or not
+    fun createFavouriteButtonTag(): String {
+        return (
+                if (selectedGame.value != null && selectedGame.value?.isFavourite!!)
+                    getApplication<Application>().resources.getString(R.string.star_filled_tag)
+                else
+                    getApplication<Application>().resources.getString(R.string.star_border_tag))
+    }
+
     /**
      * OnClickListener for the favourite button
      * Changes the game's "favourited" status and changes the star drawable
@@ -48,8 +59,8 @@ class GameAddEditViewModel(application: Application): AndroidViewModel(applicati
      */
     fun favouriteButtonOnClick(view: View) {
         try {
-            var drawable = view.context.getDrawable(R.drawable.ic_star_border_yellow_48dp)
-            if (view.tag != view.context.getString(R.string.star_filled_tag)) {
+            var drawable = view.context.getDrawable(R.drawable.ic_star_yellow_48dp)
+            if (view.tag == view.context.getString(R.string.star_filled_tag)) {
                 drawable = view.context.getDrawable(R.drawable.ic_star_border_yellow_48dp)
                 view.tag = view.context.getString(R.string.star_border_tag)
             } else {
@@ -61,18 +72,24 @@ class GameAddEditViewModel(application: Application): AndroidViewModel(applicati
         } catch (e: TypeCastException) {
             Toast.makeText(
                 view.context,
-                Log.e("EXCEPTION", "View cannot be an ImaneButton.\n${e.message}"),
+                Log.e("EXCEPTION", "View cannot be an ImageButton.\n${e.message}"),
                 Toast.LENGTH_SHORT).show()
         }
     }
 
-    // TODO: Use the tag to determine whether or not we should save as favourite or not
-    fun createFavouriteButtonTag(): String {
-        return (
-            if (selectedGame.value != null && selectedGame.value?.isFavourite!!)
-                getApplication<Application>().resources.getString(R.string.star_filled_tag)
-            else
-                getApplication<Application>().resources.getString(R.string.star_border_tag))
+    /**
+     * OnClickListener for the clear date buttons
+     * Clears the date set in a given EditText and disables the button when clicked
+     *
+     * @param editText
+     * @param button
+     */
+    fun clearDateOnClick(editText: View, button: View) {
+        try {
+            (editText as EditText).setText(editText.context.getString(R.string.date_default))
+            (button as ImageButton).isClickable = false
+        } catch (e: ClassCastException) {
+            Log.e("EXCEPTION", e.message.toString())
+        }
     }
-
 }

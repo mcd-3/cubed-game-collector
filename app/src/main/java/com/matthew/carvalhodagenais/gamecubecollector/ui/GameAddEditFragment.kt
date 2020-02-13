@@ -52,6 +52,8 @@ class GameAddEditFragment: Fragment() {
             this.lifecycleOwner = this@GameAddEditFragment
             this.viewModel = addEditViewModel
         }
+        binding.setReleaseDateEditText(binding.releaseDateEditText)
+        binding.setBuyDateEditText(binding.buyDateEditText)
         setHasOptionsMenu(true)
         return binding.root
     }
@@ -61,9 +63,7 @@ class GameAddEditFragment: Fragment() {
 
         // Set OnClickListeners for the "pick date" buttons
         release_date_calendar_image_button.setOnClickListener(releaseDateOnClickListener)
-        release_date_clear_image_button.setOnClickListener(releaseDateClearOnClick)
         buy_date_calendar_image_button.setOnClickListener(buyDateOnClickListener)
-        buy_date_clear_image_button.setOnClickListener(buyDateClearOnClick)
 
         // Set all values in the UI
         if (arguments!!.getInt(REQUEST_CODE) == EDIT_REQUEST) {
@@ -107,7 +107,6 @@ class GameAddEditFragment: Fragment() {
      */
     private fun setUIValues(game: Game) {
         // Set the values
-//        setFavouriteStarDrawable(game.isFavourite ?: false)
         release_date_edit_text.setText(createDateString(game.releaseDate))
         buy_date_edit_text.setText(createDateString(game.boughtDate))
 
@@ -195,21 +194,6 @@ class GameAddEditFragment: Fragment() {
         if (string.trim().isEmpty()) null else string
 
     /**
-     * Changes the star drawable to filled or bordered
-     *
-     * @param isFav bool
-     */
-    private fun setFavouriteStarDrawable(isFav: Boolean) {
-        if (isFav) {
-            favourite_image_button.setImageDrawable(
-                resources.getDrawable(R.drawable.ic_star_yellow_48dp, null))
-        } else {
-            favourite_image_button.setImageDrawable(
-                resources.getDrawable(R.drawable.ic_star_border_yellow_48dp, null))
-        }
-    }
-
-    /**
      * Creates a Calendar using a year, month, and day
      *
      * @param year int
@@ -223,15 +207,6 @@ class GameAddEditFragment: Fragment() {
         cal.set(Calendar.MONTH, month)
         cal.set(Calendar.DAY_OF_MONTH, day)
         return cal
-    }
-
-    /**
-     * OnClickListener for the favourite button
-     * Sets the boolean for "favourited" and changes the star drawable
-     */
-    private val favouriteButtonOnClick = View.OnClickListener {
-        isFav = !isFav
-        setFavouriteStarDrawable(isFav)
     }
 
     /**
@@ -266,25 +241,5 @@ class GameAddEditFragment: Fragment() {
             cal.get(Calendar.MONTH),
             cal.get(Calendar.DAY_OF_MONTH))
         datePicker.show()
-    }
-
-    /**
-     * OnClickListener to clear a date
-     * Clears the release date on click
-     */
-    private val releaseDateClearOnClick = View.OnClickListener {
-        releaseDateToSave = null
-        release_date_edit_text.setText(getString(R.string.date_default))
-        it.isClickable = false
-    }
-
-    /**
-     * OnClickListener to clear a date
-     * Clears the bought date on click
-     */
-    private val buyDateClearOnClick = View.OnClickListener {
-        buyDateToSave = null
-        buy_date_edit_text.setText(getString(R.string.date_default))
-        it.isClickable = false
     }
 }

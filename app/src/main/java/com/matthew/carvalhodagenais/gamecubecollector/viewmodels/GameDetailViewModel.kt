@@ -35,10 +35,6 @@ class GameDetailViewModel(application: Application): AndroidViewModel(applicatio
         return selectedGame.value
     }
 
-    fun getIsFavourite(): Boolean {
-        return selectedGame.value!!.isFavourite!!
-    }
-
     private fun toggleFavourite() {
         selectedGame.value!!.isFavourite = !(selectedGame.value!!.isFavourite)!!
         update()

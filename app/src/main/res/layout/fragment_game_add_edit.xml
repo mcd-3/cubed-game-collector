@@ -5,6 +5,13 @@
         <variable
             name="viewModel"
             type="com.matthew.carvalhodagenais.gamecubecollector.viewmodels.GameAddEditViewModel" />
+        <variable
+            name="releaseDateEditText"
+            type="com.google.android.material.textfield.TextInputEditText" />
+        <variable
+            name="buyDateEditText"
+            type="com.google.android.material.textfield.TextInputEditText" />
+        <import type="android.view.View"/>
     </data>
 
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
@@ -226,8 +233,9 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="0.7"
                             android:layout_gravity="center"
-                            android:clickable="false"
                             android:contentDescription="@string/game_add_edit_clear_image_button_content_description"
+                            android:clickable="@{(releaseDateEditText.text.toString() == @string/date_default)}"
+                            android:onClick="@{(view) -> viewModel.clearDateOnClick(releaseDateEditText, view)}"
                             android:src="@drawable/ic_cancel_white_32dp" />
 
                     </LinearLayout>
@@ -322,8 +330,9 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="0.7"
                             android:layout_gravity="center"
-                            android:clickable="false"
                             android:contentDescription="@string/game_add_edit_clear_image_button_content_description"
+                            android:clickable="@{(buyDateEditText.text.toString() == @string/date_default)}"
+                            android:onClick="@{(view) -> viewModel.clearDateOnClick(buyDateEditText, view)}"
                             android:src="@drawable/ic_cancel_white_32dp" />
 
                     </LinearLayout>
