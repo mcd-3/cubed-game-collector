@@ -23,6 +23,10 @@ class GameDetailViewModel(application: Application): AndroidViewModel(applicatio
     private var selectedGame = MutableLiveData<Game>()
     private var repository = GameRepository(application)
 
+    fun update(game: Game) = viewModelScope.launch {
+        repository.updateGame(game)
+    }
+
     fun delete(game: Game) = viewModelScope.launch {
         repository.deleteGame(game)
     }
@@ -37,11 +41,7 @@ class GameDetailViewModel(application: Application): AndroidViewModel(applicatio
 
     private fun toggleFavourite() {
         selectedGame.value!!.isFavourite = !(selectedGame.value!!.isFavourite)!!
-        update()
-    }
-
-    private fun update() = viewModelScope.launch {
-        repository.updateGame(selectedGame.value!!)
+        update(selectedGame.value!!)
     }
 
     /**

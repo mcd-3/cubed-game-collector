@@ -11,6 +11,7 @@ import com.matthew.carvalhodagenais.gamecubecollector.R
 import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Game
 import com.matthew.carvalhodagenais.gamecubecollector.databinding.FragmentGameAddEditBinding
 import com.matthew.carvalhodagenais.gamecubecollector.databinding.FragmentGameDetailBinding
+import com.matthew.carvalhodagenais.gamecubecollector.helpers.DateHelper
 import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.GameAddEditViewModel
 import kotlinx.android.synthetic.main.fragment_game_add_edit.*
 import java.util.*
@@ -19,9 +20,6 @@ class GameAddEditFragment: Fragment() {
 
     private lateinit var addEditViewModel: GameAddEditViewModel
     private var isFav: Boolean = false
-
-    private var releaseDateToSave: Calendar? = null
-    private var buyDateToSave: Calendar? = null
 
     companion object {
         private const val REQUEST_CODE: String = "GameAddEditFragment.REQUEST_CODE"
@@ -62,11 +60,6 @@ class GameAddEditFragment: Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
-        // Set all values in the UI
-        if (arguments!!.getInt(REQUEST_CODE) == EDIT_REQUEST) {
-            setUIValues(addEditViewModel.getSelectedGame()!!)
-        }
     }
 
     override fun onPrepareOptionsMenu(menu: Menu) {
@@ -99,34 +92,6 @@ class GameAddEditFragment: Fragment() {
     }
 
     /**
-     * Sets all UI values from game data
-     *
-     * @param game Game
-     */
-    private fun setUIValues(game: Game) {
-        // Set the values
-        release_date_edit_text.setText(createDateString(game.releaseDate))
-        buy_date_edit_text.setText(createDateString(game.boughtDate))
-
-        // Set the dates to save and "clear date" buttons clickable state
-        val cal: Calendar = Calendar.getInstance()
-        if (game.releaseDate != null) {
-            cal.time = game.releaseDate
-            releaseDateToSave = cal
-            release_date_clear_image_button.isClickable = true
-        } else {
-            release_date_clear_image_button.isClickable = false
-        }
-        if (game.boughtDate != null) {
-            cal.time = game.boughtDate
-            buyDateToSave = cal
-            buy_date_clear_image_button.isClickable = true
-        } else {
-            buy_date_clear_image_button.isClickable = false
-        }
-    }
-
-    /**
      * Saves the game to the database by grabbing all values from the inputs
      */
     private fun saveGame() {
@@ -147,9 +112,17 @@ class GameAddEditFragment: Fragment() {
         val game: Game = Game(title_edit_text.text.toString()).apply {
             publishers = setNullIfEmptyString(publisher_edit_text.text.toString())
             developers = setNullIfEmptyString(developer_edit_text.text.toString())
-            releaseDate = releaseDateToSave?.time
+            releaseDate =
+                if (release_date_edit_text.text.toString() != getString(R.string.date_default))
+                    DateHelper.createDate(release_date_edit_text.text.toString())
+                else
+                    null
             pricePaid = setNullIfEmptyString(price_paid_edit_text.text.toString())?.toDouble()
-            boughtDate = buyDateToSave?.time
+            boughtDate =
+                if (buy_date_edit_text.text.toString() != getString(R.string.date_default))
+                    DateHelper.createDate(buy_date_edit_text.text.toString())
+                else
+                    null
             hasCase = case_checkbox.isChecked
             hasManual = manual_checkbox.isChecked
         }
@@ -163,26 +136,6 @@ class GameAddEditFragment: Fragment() {
         }
 
         addEditViewModel.clearCurrentlySelectedGame()
-    }
-
-    /**
-     * Creates a formatted date string from a Date
-     *
-     * @param date Date
-     * @return String
-     */
-    private fun createDateString(date: Date?): String {
-        val str: String
-        if (date != null) {
-            val cal = Calendar.getInstance()
-            cal.time = Date(date.time)
-            str = "${cal.get(Calendar.DAY_OF_MONTH)}/" +
-                    "${cal.get(Calendar.MONTH)}/" +
-                    "${cal.get(Calendar.YEAR)}"
-        } else {
-            str = getString(R.string.date_default)
-        }
-        return str
     }
 
     /**

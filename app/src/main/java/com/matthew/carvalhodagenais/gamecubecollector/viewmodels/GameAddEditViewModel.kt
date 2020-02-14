@@ -16,6 +16,7 @@ import com.bumptech.glide.Glide
 import com.matthew.carvalhodagenais.gamecubecollector.R
 import com.matthew.carvalhodagenais.gamecubecollector.data.GameRepository
 import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Game
+import com.matthew.carvalhodagenais.gamecubecollector.helpers.DateHelper
 import kotlinx.android.synthetic.main.fragment_game_add_edit.*
 import kotlinx.coroutines.launch
 import java.lang.ClassCastException
@@ -44,6 +45,17 @@ class GameAddEditViewModel(application: Application): AndroidViewModel(applicati
 
     fun clearCurrentlySelectedGame() {
         selectedGame = MutableLiveData<Game>()
+    }
+
+    /**
+     * Creates a string from a Date or returns the default "No Date Set" text if date is null
+     *
+     * @param date
+     * @return String
+     */
+    fun getDateString(date: Date?): String {
+        return DateHelper.createDateString(date)
+                ?: getApplication<Application>().getString(R.string.date_default)
     }
 
     // TODO: Use the tag to determine whether or not we should save as favourite or not
