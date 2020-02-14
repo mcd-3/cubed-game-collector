@@ -1,8 +1,8 @@
-package com.matthew.carvalhodagenais.gamecubecollector.data
+package com.matthew.carvalhodagenais.gamecubecollector.data.repositories
 
 import android.app.Application
-import android.os.AsyncTask
 import androidx.lifecycle.LiveData
+import com.matthew.carvalhodagenais.gamecubecollector.data.CollectorDatabase
 import com.matthew.carvalhodagenais.gamecubecollector.data.dao.GameDao
 import com.matthew.carvalhodagenais.gamecubecollector.data.dao.RegionDao
 import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Game
@@ -10,13 +10,13 @@ import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Game
 class GameRepository(application: Application) {
 
     private var gameDao: GameDao
-    private var regionDao: RegionDao
     private var allGames: LiveData<List<Game>>
 
     init {
-        val database: CollectorDatabase = CollectorDatabase.getInstance(application.applicationContext)!!
+        val database: CollectorDatabase = CollectorDatabase.getInstance(
+            application.applicationContext
+        )!!
         gameDao = database.gameDao()
-        regionDao = database.regionDao()
         allGames = gameDao.getAllGames()
     }
 

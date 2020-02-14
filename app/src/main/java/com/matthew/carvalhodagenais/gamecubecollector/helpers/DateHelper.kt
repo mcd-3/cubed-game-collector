@@ -6,18 +6,6 @@ import java.util.*
 
 class DateHelper {
     companion object {
-        fun createCalendar(year: Int, month: Int, day: Int) {
-
-        }
-
-        fun createCalendar(dateString: String) {
-
-        }
-
-        fun createDate(cal: Calendar) {
-
-        }
-
         /**
          * Creates a Date from a date string in format DD/MM/YEAR
          *

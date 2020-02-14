@@ -1,27 +1,24 @@
 package com.matthew.carvalhodagenais.gamecubecollector.viewmodels
 
 import android.app.Application
-import android.graphics.drawable.Drawable
 import android.util.Log
 import android.view.View
 import android.widget.ImageButton
-import android.widget.ImageView
 import android.widget.Toast
-import androidx.databinding.BindingAdapter
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.bumptech.glide.Glide
 import com.matthew.carvalhodagenais.gamecubecollector.R
-import com.matthew.carvalhodagenais.gamecubecollector.data.GameRepository
+import com.matthew.carvalhodagenais.gamecubecollector.data.repositories.GameRepository
 import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Game
 import kotlinx.coroutines.launch
 
 class GameDetailViewModel(application: Application): AndroidViewModel(application) {
 
     private var selectedGame = MutableLiveData<Game>()
-    private var repository = GameRepository(application)
+    private var repository =
+        GameRepository(application)
 
     fun update(game: Game) = viewModelScope.launch {
         repository.updateGame(game)
