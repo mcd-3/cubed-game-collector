@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:bind="http://schemas.android.com/tools">
 
     <data>
         <variable
@@ -55,7 +55,7 @@
                         android:layout_height="wrap_content"
                         android:inputType="textMultiLine"
                         android:background="#FFFFFF"
-                        android:text="@{viewModel.selectedGame.title}"
+                        android:text="@{viewModel.selectedGame.title ?? @string/empty}"
                         android:hint="@string/title_hint"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -102,7 +102,7 @@
                         app:layout_constraintVertical_bias="0.0"
                         android:tag="@{viewModel.createFavouriteButtonTag}"
                         android:onClick="@{(view) -> viewModel.favouriteButtonOnClick(view)}"
-                        favouriteStarDrawable="@{viewModel.selectedGame.isFavourite}" />
+                        favouriteStarDrawable="@{viewModel.selectedGame.isFavourite ?? false}" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -146,7 +146,7 @@
                             android:layout_height="wrap_content"
                             android:inputType="text"
                             android:background="#FFFFFF"
-                            android:text="@{viewModel.selectedGame.developers}"
+                            android:text="@{viewModel.selectedGame.developers ?? @string/empty}"
                             android:hint="@string/developer_hint"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -163,7 +163,7 @@
                             android:layout_height="wrap_content"
                             android:inputType="text"
                             android:background="#FFFFFF"
-                            android:text="@{viewModel.selectedGame.publishers}"
+                            android:text="@{viewModel.selectedGame.publishers ?? @string/empty}"
                             android:hint="@string/publisher_hint"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -187,9 +187,11 @@
                             android:text="@string/region_label"/>
 
                         <Spinner
+                            android:id="@+id/region_spinner"
                             android:layout_weight="1"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            bind:entries="@{viewModel.getRegionCodes()}"/>
 
                     </LinearLayout>
 
@@ -287,7 +289,7 @@
                             android:layout_height="wrap_content"
                             android:inputType="numberDecimal"
                             android:background="#FFFFFF"
-                            android:text="@{viewModel.selectedGame.pricePaid.toString()}"
+                            android:text="@{viewModel.selectedGame.pricePaid.toString() ?? @string/empty}"
                             android:hint="@string/price_paid_hint"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -393,7 +395,7 @@
                             android:layout_weight="1"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:checked="@{viewModel.selectedGame.hasCase}"
+                            android:checked="@{viewModel.selectedGame.hasCase ?? false}"
                             android:text="@string/case_checkbox_label"/>
 
                         <com.google.android.material.checkbox.MaterialCheckBox
@@ -401,7 +403,7 @@
                             android:layout_weight="1"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:checked="@{viewModel.selectedGame.hasManual}"
+                            android:checked="@{viewModel.selectedGame.hasManual ?? false}"
                             android:text="@string/manual_checkbox_label"/>
 
                     </LinearLayout>

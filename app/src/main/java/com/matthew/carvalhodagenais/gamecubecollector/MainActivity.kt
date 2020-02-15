@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.google.android.material.navigation.NavigationView
 import com.matthew.carvalhodagenais.gamecubecollector.ui.GameListFragment
@@ -76,6 +77,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_about -> Toast.makeText(this, "About", Toast.LENGTH_SHORT).show()//frag transaction
         }
         main_activity_drawer_layout.closeDrawer(GravityCompat.START)
+        gameAddEditViewModel.clearCurrentlySelectedGame()
         return true
     }
 
@@ -105,11 +107,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
      * in its respective Fragment
      */
     private fun initViewModels() {
-        gameListViewModel = ViewModelProviders.of(this, GameViewModelFactory(this.application))
+        gameListViewModel = ViewModelProvider(this, GameViewModelFactory(this.application))
             .get(GameListViewModel::class.java)
-        gameDetailViewModel = ViewModelProviders.of(this, GameViewModelFactory(this.application)
+        gameDetailViewModel = ViewModelProvider(this, GameViewModelFactory(this.application)
         ).get(GameDetailViewModel::class.java)
-        gameAddEditViewModel = ViewModelProviders.of(this, GameViewModelFactory(this.application))
+        gameAddEditViewModel = ViewModelProvider(this, GameViewModelFactory(this.application))
             .get(GameAddEditViewModel::class.java)
     }
 

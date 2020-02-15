@@ -46,8 +46,8 @@ class GameAddEditViewModel(application: Application): AndroidViewModel(applicati
         selectedGame = MutableLiveData<Game>()
     }
 
-    fun getGameRegions(): List<String> {
-        return regionRepository.getRegionCodes()
+    fun getRegionCodes(): List<String> {
+        return listOf("asd", "dsf", "rfw")//regionRepository.getRegionCodes().value!!
     }
 
     /**

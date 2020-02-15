@@ -64,7 +64,7 @@ class GameDetailViewModel(application: Application): AndroidViewModel(applicatio
         } catch (e: TypeCastException) {
             Toast.makeText(
                 view.context,
-                Log.e("EXCEPTION", "View cannot be an ImaneButton.\n${e.message}"),
+                Log.e("EXCEPTION", "View cannot be an ImageButton.\n${e.message}"),
                 Toast.LENGTH_SHORT).show()
         }
     }

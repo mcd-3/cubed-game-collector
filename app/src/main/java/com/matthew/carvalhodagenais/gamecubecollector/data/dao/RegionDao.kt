@@ -26,5 +26,5 @@ interface RegionDao {
     fun getRegions(): LiveData<List<Region>>
 
     @Query("SELECT region_code FROM region_table")
-    fun getRegionCodes(): List<String>
+    fun getRegionCodes(): LiveData<List<String>>
 }

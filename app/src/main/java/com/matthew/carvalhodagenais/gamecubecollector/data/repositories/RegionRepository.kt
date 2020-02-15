@@ -1,6 +1,7 @@
 package com.matthew.carvalhodagenais.gamecubecollector.data.repositories
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.LiveData
 import com.matthew.carvalhodagenais.gamecubecollector.data.CollectorDatabase
 import com.matthew.carvalhodagenais.gamecubecollector.data.dao.RegionDao
@@ -10,6 +11,7 @@ class RegionRepository(application: Application) {
 
     private var regionDao: RegionDao
     private var allRegions: LiveData<List<Region>>
+    private var allRegionCodes: LiveData<List<String>>
 
     init {
         val database: CollectorDatabase = CollectorDatabase.getInstance(
@@ -17,14 +19,16 @@ class RegionRepository(application: Application) {
         )!!
         regionDao = database.regionDao()
         allRegions = regionDao.getRegions()
+        allRegionCodes = regionDao.getRegionCodes()
     }
 
     fun getAllRegion(): LiveData<List<Region>> {
         return allRegions
     }
 
-    fun getRegionCodes(): List<String> {
-        return regionDao.getRegionCodes()
+    fun getRegionCodes(): LiveData<List<String>> {
+        Log.e("Regions", allRegionCodes.value.toString())
+        return allRegionCodes
     }
 
 }
