@@ -2,6 +2,7 @@ package com.matthew.carvalhodagenais.gamecubecollector.ui
 
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil

@@ -2,6 +2,7 @@ package com.matthew.carvalhodagenais.gamecubecollector.data
 
 import android.content.Context
 import android.os.AsyncTask
+import android.util.Log
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
@@ -60,6 +61,7 @@ abstract class CollectorDatabase: RoomDatabase() {
             private val typeDao = database?.typeDao()
 
             override fun doInBackground(vararg params: Unit?) {
+                    //Add regions
                 GlobalScope.launch {
                     //Add regions
                     regionDao?.insert(Region(1, "NTSC-U", "America"))

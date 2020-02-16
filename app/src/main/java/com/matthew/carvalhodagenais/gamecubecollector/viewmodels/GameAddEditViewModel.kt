@@ -8,6 +8,7 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.bumptech.glide.Glide
@@ -17,6 +18,7 @@ import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Game
 import com.matthew.carvalhodagenais.gamecubecollector.data.repositories.RegionRepository
 import com.matthew.carvalhodagenais.gamecubecollector.helpers.DateHelper
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import java.lang.ClassCastException
 import java.util.*
 
@@ -46,9 +48,7 @@ class GameAddEditViewModel(application: Application): AndroidViewModel(applicati
         selectedGame = MutableLiveData<Game>()
     }
 
-    fun getRegionCodes(): List<String> {
-        return listOf("asd", "dsf", "rfw")//regionRepository.getRegionCodes().value!!
-    }
+    fun getRegionRepository(): RegionRepository = regionRepository
 
     /**
      * Creates a string from a Date or returns the default "No Date Set" text if date is null

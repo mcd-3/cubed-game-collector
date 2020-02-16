@@ -3,6 +3,9 @@
 
     <data>
         <variable
+            name="lifecycleOwner"
+            type="androidx.lifecycle.LifecycleOwner" />
+        <variable
             name="viewModel"
             type="com.matthew.carvalhodagenais.gamecubecollector.viewmodels.GameAddEditViewModel" />
         <variable
@@ -191,7 +194,8 @@
                             android:layout_weight="1"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            bind:entries="@{viewModel.getRegionCodes()}"/>
+                            bind:entries="@{viewModel.getRegionRepository()}"
+                            bind:lifecycleOwner="@{lifecycleOwner}"/>
 
                     </LinearLayout>
 

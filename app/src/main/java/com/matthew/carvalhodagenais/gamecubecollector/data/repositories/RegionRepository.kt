@@ -1,7 +1,6 @@
 package com.matthew.carvalhodagenais.gamecubecollector.data.repositories
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.LiveData
 import com.matthew.carvalhodagenais.gamecubecollector.data.CollectorDatabase
 import com.matthew.carvalhodagenais.gamecubecollector.data.dao.RegionDao
@@ -27,7 +26,6 @@ class RegionRepository(application: Application) {
     }
 
     fun getRegionCodes(): LiveData<List<String>> {
-        Log.e("Regions", allRegionCodes.value.toString())
         return allRegionCodes
     }
 
