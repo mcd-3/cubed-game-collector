@@ -25,7 +25,7 @@ class GameListRecyclerAdapter: ListAdapter<Game, GameListRecyclerAdapter.GameHol
                         oldItem.releaseDate == newItem.releaseDate &&
                         oldItem.regionId == newItem.regionId &&
                         oldItem.boughtDate == newItem.boughtDate &&
-                        oldItem.condition == newItem.condition &&
+                        oldItem.conditionId == newItem.conditionId &&
                         oldItem.pricePaid == newItem.pricePaid &&
                         oldItem.hasCase == newItem.hasCase &&
                         oldItem.hasManual == newItem.hasManual)

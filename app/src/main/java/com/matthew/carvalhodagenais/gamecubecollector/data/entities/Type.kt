@@ -11,4 +11,10 @@ data class Type(
     @ColumnInfo(name = "code") var code: String,
     @ColumnInfo(name = "type") var type: String
 ) {
+    // kinda cheating but it's faster than accessing DB
+    companion object {
+        const val CD_ID = 1
+        const val CONSOLE_ID = 2
+        const val ACCESSORY_ID = 3
+    }
 }

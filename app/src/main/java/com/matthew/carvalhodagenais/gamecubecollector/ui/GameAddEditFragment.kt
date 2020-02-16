@@ -102,7 +102,7 @@ class GameAddEditFragment: Fragment() {
 //            releaseDate = null
 //            regionId = null//condition_edit_text.text.toString().toInt()
 //            boughtDate = null
-//            condition = null//condition_edit_text.text.toString().toInt()
+//            conditionId = null//condition_edit_text.text.toString().toInt()
 //            pricePaid = null//price_paid_edit_text.text.toString().toDouble()
 //            hasCase = true
 //            hasManual = true

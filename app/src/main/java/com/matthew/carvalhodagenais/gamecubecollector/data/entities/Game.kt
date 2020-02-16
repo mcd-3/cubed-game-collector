@@ -26,7 +26,7 @@ data class Game(
     @ColumnInfo(name = "date_released") var releaseDate: Date? = null,
     @ColumnInfo(name = "region_id") var regionId: Int? = null,
     @ColumnInfo(name = "date_bought") var boughtDate: Date? = null,
-    @ColumnInfo(name = "condition_id") var condition: Int? = null,
+    @ColumnInfo(name = "condition_id") var conditionId: Int? = null,
     @ColumnInfo(name = "price_paid") var pricePaid: Double? = null,
     @ColumnInfo(name = "case_in_box") var hasCase: Boolean? = null,
     @ColumnInfo(name = "includes_manual") var hasManual: Boolean? = null

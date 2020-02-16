@@ -15,6 +15,8 @@ import com.bumptech.glide.Glide
 import com.matthew.carvalhodagenais.gamecubecollector.R
 import com.matthew.carvalhodagenais.gamecubecollector.data.repositories.GameRepository
 import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Game
+import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Type
+import com.matthew.carvalhodagenais.gamecubecollector.data.repositories.ConditionRepository
 import com.matthew.carvalhodagenais.gamecubecollector.data.repositories.RegionRepository
 import com.matthew.carvalhodagenais.gamecubecollector.helpers.DateHelper
 import kotlinx.coroutines.launch
@@ -27,6 +29,7 @@ class GameAddEditViewModel(application: Application): AndroidViewModel(applicati
     private var selectedGame = MutableLiveData<Game>()
     private var gameRepository = GameRepository(application)
     private var regionRepository = RegionRepository(application)
+    private var conditionRepository = ConditionRepository(application)
 
     fun insert(game: Game) = viewModelScope.launch {
         gameRepository.insertGame(game)
@@ -49,6 +52,10 @@ class GameAddEditViewModel(application: Application): AndroidViewModel(applicati
     }
 
     fun getRegionRepository(): RegionRepository = regionRepository
+
+    fun getConditionRepository(): ConditionRepository = conditionRepository
+
+    fun getConditionTypeID(): Int = Type.CD_ID
 
     /**
      * Creates a string from a Date or returns the default "No Date Set" text if date is null
