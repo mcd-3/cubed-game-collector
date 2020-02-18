@@ -63,9 +63,8 @@ class GameAddEditViewModel(application: Application): AndroidViewModel(applicati
      * @param date
      * @return String
      */
-    fun getDateString(date: Date?): String =
+    fun getDateString(date: Date?): String? =
         DateHelper.createDateString(date)
-            ?: getApplication<Application>().getString(R.string.date_default)
 
     // TODO: Use the tag to determine whether or not we should save as favourite or not
     fun createFavouriteButtonTag(): String {

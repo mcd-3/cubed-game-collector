@@ -223,7 +223,7 @@
                                 android:layout_marginEnd="@dimen/small"
                                 android:enabled="false"
                                 android:background="#FFFFFF"
-                                android:text="@{viewModel.getDateString(viewModel.selectedGame.releaseDate)}"
+                                android:text="@{viewModel.getDateString(viewModel.selectedGame.releaseDate) ?? @string/date_default}"
                                 android:hint="@string/release_date_hint"/>
 
                         </com.google.android.material.textfield.TextInputLayout>
@@ -248,7 +248,7 @@
                             android:layout_weight="0.7"
                             android:layout_gravity="center"
                             android:contentDescription="@string/game_add_edit_clear_image_button_content_description"
-                            android:clickable="@{(releaseDateEditText.text.toString() != @string/date_default)}"
+                            android:clickable="@{(viewModel.selectedGame.releaseDate != null)}"
                             android:onClick="@{(view) -> viewModel.clearDateOnClick(releaseDateEditText, view)}"
                             android:src="@drawable/ic_cancel_white_32dp" />
 
@@ -322,7 +322,7 @@
                                 android:layout_marginEnd="@dimen/small"
                                 android:enabled="false"
                                 android:background="#FFFFFF"
-                                android:text="@{viewModel.getDateString(viewModel.selectedGame.boughtDate)}"
+                                android:text="@{viewModel.getDateString(viewModel.selectedGame.boughtDate) ?? @string/date_default}"
                                 android:hint="@string/buy_date_hint"/>
 
                         </com.google.android.material.textfield.TextInputLayout>
@@ -346,7 +346,7 @@
                             android:layout_weight="0.7"
                             android:layout_gravity="center"
                             android:contentDescription="@string/game_add_edit_clear_image_button_content_description"
-                            android:clickable="@{(buyDateEditText.text.toString() != @string/date_default)}"
+                            android:clickable="@{(viewModel.selectedGame.boughtDate != null)}"
                             android:onClick="@{(view) -> viewModel.clearDateOnClick(buyDateEditText, view)}"
                             android:src="@drawable/ic_cancel_white_32dp" />
 
