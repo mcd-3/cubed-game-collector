@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/title_card_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -48,9 +48,9 @@
                     android:ellipsize="end"
                     android:text="@{viewModel.selectedGame.title}"/>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cover_card_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -86,9 +86,9 @@
                         favouriteStarDrawable="@{viewModel.selectedGame.isFavourite}"/>
 
                 </RelativeLayout>
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/game_info_card_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -109,6 +109,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/slightly_small"
                         android:layout_marginTop="@dimen/slightly_small"
+                        android:layout_marginBottom="@dimen/small"
                         style="@style/TextAppearance.AppCompat.Medium"
                         android:textStyle="bold"
                         android:text="@string/game_info_label" />
@@ -118,7 +119,7 @@
                         android:id="@+id/developer_linear_layout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingBottom="@dimen/details_game_info_padding_bottom"
+                        android:paddingBottom="@dimen/medium"
                         android:orientation="vertical">
 
                         <TextView
@@ -126,6 +127,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             style="@style/TextAppearance.AppCompat.Medium"
+                            android:layout_marginStart="@dimen/slightly_small"
+                            android:layout_marginTop="@dimen/small"
+                            android:drawablePadding="@dimen/small"
                             android:drawableStart="@drawable/ic_developer_black_24dp"
                             android:textColor="#000000"
                             android:text="@string/developer_title" />
@@ -135,8 +139,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/game_detail_title_margin_top"
+                            android:layout_marginStart="@dimen/small"
                             style="@style/TextAppearance.AppCompat.Large"
-                            android:textStyle="italic"
                             android:textColor="#000000"
                             android:text="@{viewModel.selectedGame.developers ?? @string/no_developer_available}" />
                     </LinearLayout>
@@ -145,7 +149,7 @@
                         android:id="@+id/publisher_linear_layout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingBottom="@dimen/details_game_info_padding_bottom"
+                        android:paddingBottom="@dimen/medium"
                         android:orientation="vertical">
 
                         <TextView
@@ -154,6 +158,9 @@
                             android:layout_height="wrap_content"
                             style="@style/TextAppearance.AppCompat.Medium"
                             android:drawableStart="@drawable/ic_publisher_black_24dp"
+                            android:layout_marginStart="@dimen/slightly_small"
+                            android:layout_marginTop="@dimen/small"
+                            android:drawablePadding="@dimen/small"
                             android:textColor="#000000"
                             android:text="@string/publisher_title" />
 
@@ -161,45 +168,20 @@
                             android:id="@+id/publisher_text_view"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/game_detail_title_margin_top"
                             style="@style/TextAppearance.AppCompat.Large"
-                            android:textStyle="italic"
+                            android:layout_marginStart="@dimen/slightly_small"
+                            android:layout_marginTop="@dimen/small"
+                            android:drawablePadding="@dimen/small"
                             android:textColor="#000000"
                             android:text="@{viewModel.selectedGame.publishers ?? @string/no_publisher_available}" />
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/release_date_linear_layout"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/release_date_label_text_view"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="#000000"
-                            style="@style/TextAppearance.AppCompat.Medium"
-                            android:text="Release Date: " />
-
-                        <TextView
-                            android:id="@+id/release_date_text_view"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            style="@style/TextAppearance.AppCompat.Medium"
-                            android:textColor="#000000"
-                            android:textStyle="bold"
-                            android:text="08/04/03" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
                         android:id="@+id/region_linear_layout"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/region_margin_top"
-                        android:paddingBottom="@dimen/details_game_info_margin_bottom"
-                        android:orientation="horizontal">
+                        android:layout_height="match_parent"
+                        android:paddingBottom="@dimen/medium"
+                        android:orientation="vertical">
 
                         <TextView
                             android:id="@+id/region_label_text_view"
@@ -207,24 +189,62 @@
                             android:layout_height="wrap_content"
                             android:textColor="#000000"
                             style="@style/TextAppearance.AppCompat.Medium"
+                            android:layout_marginTop="@dimen/small"
+                            android:layout_marginStart="@dimen/slightly_small"
                             android:drawableStart="@drawable/ic_region_black_24dp"
-                            android:text="Region: " />
+                            android:drawablePadding="@dimen/small"
+                            android:text="@string/region_label" />
 
                         <TextView
                             android:id="@+id/region_text_view"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            style="@style/TextAppearance.AppCompat.Medium"
+                            style="@style/TextAppearance.AppCompat.Large"
+                            android:layout_marginTop="@dimen/small"
+                            android:layout_marginStart="@dimen/small"
                             android:textColor="#000000"
-                            android:textStyle="bold"
                             android:text="North America [NTSC-U]" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/release_date_linear_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/medium"
+                        android:layout_marginBottom="@dimen/small"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/release_date_label_text_view"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/small"
+                            android:layout_gravity="center"
+                            android:textColor="#000000"
+                            android:drawableStart="@drawable/ic_date_black_24dp"
+                            android:drawablePadding="@dimen/small"
+                            style="@style/TextAppearance.AppCompat.Medium"
+                            android:text="@string/release_date_label" />
+
+                        <TextView
+                            android:id="@+id/release_date_text_view"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:gravity="end"
+                            android:layout_marginEnd="@dimen/medium"
+                            style="@style/TextAppearance.AppCompat.Large"
+                            android:textColor="#000000"
+                            android:text="08/04/03" />
 
                     </LinearLayout>
                 </LinearLayout>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/collector_card_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -239,19 +259,44 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
+                    <TextView
+                        android:id="@+id/more_details_label_text_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/slightly_small"
+                        android:layout_marginTop="@dimen/slightly_small"
+                        android:layout_marginBottom="@dimen/small"
+                        style="@style/TextAppearance.AppCompat.Medium"
+                        android:textStyle="bold"
+                        android:text="@string/more_details_label" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/small"
+                        android:layout_marginBottom="@dimen/small"
                         android:orientation="horizontal">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/small"
+                            android:drawableStart="@drawable/ic_condition_black_24dp"
+                            android:drawablePadding="@dimen/small"
+                            style="@style/TextAppearance.AppCompat.Medium"
+                            android:textColor="#000000"
                             android:text="Condition: " />
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:id="@+id/condition_text_view"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="end"
+                            style="@style/TextAppearance.AppCompat.Large"
+                            android:layout_marginEnd="@dimen/medium"
                             android:text="Near Mint [NM]" />
 
                     </LinearLayout>
@@ -259,29 +304,47 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/small"
+                        android:layout_marginBottom="@dimen/small"
                         android:orientation="horizontal">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/small"
+                            android:drawableStart="@drawable/ic_price_24dp"
+                            android:drawablePadding="@dimen/small"
+                            android:textColor="#000000"
+                            style="@style/TextAppearance.AppCompat.Medium"
                             android:text="Price Paid: " />
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:id="@+id/price_paid_text_view"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="end"
+                            style="@style/TextAppearance.AppCompat.Large"
+                            android:layout_marginEnd="@dimen/medium"
                             android:text="$45.99" />
 
                     </LinearLayout>
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:id="@+id/completeness_text_view"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        style="@style/TextAppearance.AppCompat.Large"
+                        android:layout_marginTop="@dimen/small"
+                        android:layout_marginBottom="@dimen/small"
                         android:text="CIB"/>
 
                 </LinearLayout>
 
-            </androidx.cardview.widget.CardView>
-
+            </com.google.android.material.card.MaterialCardView>
 
         </LinearLayout>
     </ScrollView>

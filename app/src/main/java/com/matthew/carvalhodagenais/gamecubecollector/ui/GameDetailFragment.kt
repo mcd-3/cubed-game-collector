@@ -7,6 +7,7 @@ import android.view.*
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.matthew.carvalhodagenais.gamecubecollector.MainActivity
 import com.matthew.carvalhodagenais.gamecubecollector.R
 import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Game
@@ -74,7 +75,7 @@ class GameDetailFragment: Fragment() {
      * Prompts the user for whether or not the game will be deleted
      */
     private fun showDeleteDialog() {
-        val builder = AlertDialog.Builder(context)
+        val builder = MaterialAlertDialogBuilder(context)
         builder.setTitle(getString(R.string.game_detail_delete_alert_title))
             .setMessage(getString(R.string.game_detail_delete_alert_body))
             .setPositiveButton(getString(R.string.game_detail_delete_alert_positive),
