@@ -12,6 +12,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.bumptech.glide.Glide
+import com.matthew.carvalhodagenais.gamecubecollector.MainActivity
 import com.matthew.carvalhodagenais.gamecubecollector.R
 import com.matthew.carvalhodagenais.gamecubecollector.data.repositories.GameRepository
 import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Game
@@ -56,6 +57,10 @@ class GameAddEditViewModel(application: Application): AndroidViewModel(applicati
     fun getConditionRepository(): ConditionRepository = conditionRepository
 
     fun getConditionTypeID(): Int = Type.CD_ID
+
+    fun goToListFragment() {
+        
+    }
 
     /**
      * Creates a string from a Date or returns the default "No Date Set" text if date is null

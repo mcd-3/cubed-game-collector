@@ -8,7 +8,6 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import com.google.android.material.navigation.NavigationView
 import com.matthew.carvalhodagenais.gamecubecollector.ui.GameListFragment
 import com.matthew.carvalhodagenais.gamecubecollector.ui.SettingsFragment
