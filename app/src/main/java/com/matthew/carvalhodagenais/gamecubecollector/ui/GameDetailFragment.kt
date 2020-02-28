@@ -7,6 +7,7 @@ import android.view.*
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.matthew.carvalhodagenais.gamecubecollector.MainActivity
 import com.matthew.carvalhodagenais.gamecubecollector.R
@@ -44,22 +45,20 @@ class GameDetailFragment: Fragment() {
 
     override fun onPrepareOptionsMenu(menu: Menu) {
         menu.clear()
-        activity!!.menuInflater.inflate(R.menu.menu_game_detail, menu)
+        requireActivity().menuInflater.inflate(R.menu.menu_game_detail, menu)
         return super.onPrepareOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when(item.itemId) {
         R.id.menu_edit -> {
-            val transaction = activity!!.supportFragmentManager.beginTransaction()
+            val action =
+                GameDetailFragmentDirections.actionGameDetailFragmentToGameAddEditFragment(
+                    GameAddEditFragment.EDIT_REQUEST
+                )
             (activity as MainActivity).getGameAddEditViewModel().setSelectedGame(
                 detailViewModel.getSelectedGame()!!
             )
-            transaction.replace(this@GameDetailFragment.id,
-                GameAddEditFragment.newInstance(
-                    GameAddEditFragment.EDIT_REQUEST),
-                GameAddEditFragment.FRAGMENT_TAG)
-            transaction.addToBackStack(null)
-            transaction.commit()
+            findNavController().navigate(action)
             true
         }
         R.id.menu_delete -> {
@@ -91,10 +90,6 @@ class GameDetailFragment: Fragment() {
      */
     private val alertPositiveOnClick = DialogInterface.OnClickListener { _, _ ->
         detailViewModel.delete(detailViewModel.getSelectedGame()!!)
-        val transaction = activity!!.supportFragmentManager.beginTransaction()
-        transaction.replace(this@GameDetailFragment.id,
-            GameListFragment.newInstance()
-        )
-        transaction.commit()
+        findNavController().navigate(R.id.action_gameDetailFragment_to_gameListFragment)
     }
 }

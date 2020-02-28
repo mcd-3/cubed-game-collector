@@ -7,6 +7,9 @@ import android.view.*
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavArgs
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.matthew.carvalhodagenais.gamecubecollector.MainActivity
 import com.matthew.carvalhodagenais.gamecubecollector.R
 import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Game
@@ -65,7 +68,7 @@ class GameAddEditFragment: Fragment() {
 
     override fun onPrepareOptionsMenu(menu: Menu) {
         menu.clear()
-        activity!!.menuInflater.inflate(R.menu.menu_game_add_edit, menu)
+        requireActivity().menuInflater.inflate(R.menu.menu_game_add_edit, menu)
         return super.onPrepareOptionsMenu(menu)
     }
 
@@ -77,13 +80,7 @@ class GameAddEditFragment: Fragment() {
                     Toast.LENGTH_SHORT).show()
             } else {
                 saveGame()
-                val transaction =
-                    activity!!.supportFragmentManager.beginTransaction()
-                transaction.replace(this@GameAddEditFragment.id,
-                    GameListFragment.newInstance(),
-                    GameListFragment.FRAGMENT_TAG
-                )
-                transaction.commit()
+                findNavController().navigate(R.id.action_gameAddEditFragment_to_gameListFragment)
             }
             true
         }
@@ -129,7 +126,7 @@ class GameAddEditFragment: Fragment() {
         }
         game.isFavourite = isFav
 
-        if (arguments!!.getInt(REQUEST_CODE) == EDIT_REQUEST) {
+        if (GameAddEditFragmentArgs.fromBundle(arguments!!).ADDEDITREQUEST == EDIT_REQUEST) {
             game.id = addEditViewModel.getSelectedGame()!!.id
             addEditViewModel.update(game)
         } else {

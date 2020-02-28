@@ -3,19 +3,45 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_graph"
-    app:startDestination="@id/gameListFragment">
+    app:startDestination="@id/nav_games">
 
     <fragment
-        android:id="@+id/gameListFragment"
+        android:id="@id/nav_games"
         android:name="com.matthew.carvalhodagenais.gamecubecollector.ui.GameListFragment"
         android:label="fragment_game_list"
         tools:layout="@layout/fragment_game_list" >
         <action
             android:id="@+id/action_gameListFragment_to_gameDetailFragment"
             app:destination="@id/gameDetailFragment" />
+        <action
+            android:id="@+id/action_gameListFragment_to_gameAddEditFragment"
+            app:destination="@id/gameAddEditFragment" />
     </fragment>
     <fragment
         android:id="@+id/gameDetailFragment"
         android:name="com.matthew.carvalhodagenais.gamecubecollector.ui.GameDetailFragment"
-        android:label="GameDetailFragment" />
+        android:label="GameDetailFragment" >
+        <action
+            android:id="@+id/action_gameDetailFragment_to_gameAddEditFragment"
+            app:destination="@id/gameAddEditFragment" />
+        <action
+            android:id="@+id/action_gameDetailFragment_to_gameListFragment"
+            app:destination="@id/nav_games" />
+    </fragment>
+    <fragment
+        android:id="@id/nav_settings"
+        android:name="com.matthew.carvalhodagenais.gamecubecollector.ui.SettingsFragment"
+        android:label="SettingsFragment" />
+    <fragment
+        android:id="@+id/gameAddEditFragment"
+        android:name="com.matthew.carvalhodagenais.gamecubecollector.ui.GameAddEditFragment"
+        android:label="GameAddEditFragment" >
+        <argument
+            android:name="ADD_EDIT_REQUEST"
+            app:argType="integer"
+            android:defaultValue="1" />
+        <action
+            android:id="@+id/action_gameAddEditFragment_to_gameListFragment"
+            app:destination="@id/nav_games" />
+    </fragment>
 </navigation>
