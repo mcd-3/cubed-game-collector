@@ -26,6 +26,7 @@
     <string name="release_date_label">Release Date:</string>
     <string name="cib_label">Completeness:</string>
     <string name="condition_label">Condition:</string>
+    <string name="no_price">0.00</string>
 
     <!-- ImageView content descriptions -->
     <string name="game_list_image_view_content_description">Game cover art</string>

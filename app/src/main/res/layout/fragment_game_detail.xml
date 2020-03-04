@@ -328,7 +328,7 @@
                             android:gravity="end"
                             style="@style/TextAppearance.AppCompat.Large"
                             android:layout_marginEnd="@dimen/medium"
-                            android:text="$45.99" />
+                            android:text="@{'$' + ((viewModel.selectedGame.pricePaid != null) ? viewModel.selectedGame.pricePaid.toString() : @string/no_price)}" />
 
                     </LinearLayout>
 

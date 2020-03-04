@@ -29,12 +29,13 @@ class MainActivity : AppCompatActivity(){//, NavigationView.OnNavigationItemSele
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setSupportActionBar(toolbar)
+
 
         // Initialise ViewModels
         initViewModels()
 
         //Set NavigationDrawer
-        setSupportActionBar(toolbar)
         val navController = findNavController(R.id.nav_host_fragment)
         appBarConfig = AppBarConfiguration(setOf(
             R.id.nav_games, R.id.nav_settings
