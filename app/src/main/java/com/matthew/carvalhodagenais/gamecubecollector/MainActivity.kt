@@ -27,6 +27,10 @@ class MainActivity : AppCompatActivity(){//, NavigationView.OnNavigationItemSele
     private lateinit var appBarConfig: AppBarConfiguration
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        // Set the theme
+        setTheme(R.style.PlayerSelection)
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)

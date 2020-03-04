@@ -9,6 +9,33 @@
         <item name="windowActionBar">false</item>
     </style>
 
+    <style name="CubedTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/purple</item>
+        <item name="colorPrimaryDark">@color/dark_purple</item>
+        <item name="colorAccent">@color/light_purple</item>
+        <item name="android:navigationBarColor">@color/dark_purple</item>
+        <item name="android:statusBarColor">@color/dark_purple</item>
+        <item name="windowActionBar">false</item>
+    </style>
+
+    <style name="DolphinTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/blue</item>
+        <item name="colorPrimaryDark">@color/dark_blue</item>
+        <item name="colorAccent">@color/light_blue</item>
+        <item name="android:navigationBarColor">@color/dark_blue</item>
+        <item name="android:statusBarColor">@color/dark_blue</item>
+        <item name="windowActionBar">false</item>
+    </style>
+
+    <style name="PlayerSelection" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/purple</item>
+        <item name="colorPrimaryDark">@color/deep_purple</item>
+        <item name="colorAccent">@color/light_purple</item>
+        <item name="android:navigationBarColor">@color/dark_purple</item>
+        <item name="android:statusBarColor">@color/yellow</item>
+        <item name="windowActionBar">false</item>
+    </style>
+
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>

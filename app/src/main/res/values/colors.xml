@@ -3,6 +3,22 @@
 
     <!-- TODO: Follow best practices -->
 
+    <color name="black">#000000</color>
+    <color name="dark_gray">#131313</color>
+    <color name="deep_gray">#565656</color>
+    <color name="silver">#AAAAAA</color>
+    <color name="smoke_grey">#c5c5c5</color>
+    <color name="white">#FFFFFF</color>
+    <color name="purple">#9c00e8</color>
+    <color name="deep_purple">#7800b3</color>
+    <color name="dark_purple">#660099</color>
+    <color name="light_purple">#dd99ff</color>
+    <color name="blue">#35bdff</color>
+    <color name="deep_blue">#0098e1</color>
+    <color name="dark_blue">#004666</color>
+    <color name="light_blue">#99dfff</color>
+    <color name="yellow">#ffec04</color>
+
     <color name="color_primary">#008577</color>
     <color name="color_primary_dark">#00574B</color>
     <color name="color_accent">#D81B60</color>
