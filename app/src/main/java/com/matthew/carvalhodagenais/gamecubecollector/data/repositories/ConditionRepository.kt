@@ -31,4 +31,8 @@ class ConditionRepository(application: Application) {
         return conditionDao.getConditionsByCodeAndType(code, typeID)
     }
 
+    fun getConditionById(id: Int): LiveData<Condition> {
+        return conditionDao.getConditionById(id)
+    }
+
 }

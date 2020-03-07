@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity(){//, NavigationView.OnNavigationItemSele
     override fun onCreate(savedInstanceState: Bundle?) {
 
         // Set the theme
-        setTheme(R.style.PlayerSelection)
+        setTheme(R.style.CubedTheme)
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

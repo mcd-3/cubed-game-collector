@@ -21,4 +21,7 @@ interface ConditionDao {
     @Query("SELECT * FROM condition_table")
     fun getAllConditions(): LiveData<List<Condition>>
 
+    @Query("SELECT * FROM condition_table WHERE id = :id")
+    fun getConditionById(id: Int): LiveData<Condition>
+
 }

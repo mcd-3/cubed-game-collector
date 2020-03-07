@@ -29,4 +29,8 @@ class RegionRepository(application: Application) {
         return allRegionCodes
     }
 
+    fun getRegionById(id: Int): LiveData<Region> {
+        return regionDao.getRegionById(id)
+    }
+
 }
