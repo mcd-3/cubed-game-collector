@@ -57,8 +57,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textMultiLine"
-                        android:background="#FFFFFF"
                         android:text="@{viewModel.selectedGame.title ?? @string/empty}"
+                        android:backgroundTint="?attr/colorSurface"
                         android:hint="@string/title_hint"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -117,8 +117,7 @@
                 android:layout_marginStart="@dimen/small"
                 android:layout_marginEnd="@dimen/small"
                 android:layout_marginTop="@dimen/small"
-                android:layout_marginBottom="@dimen/very_small"
-                android:background="#FFFFFF">
+                android:layout_marginBottom="@dimen/very_small">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -148,8 +147,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="text"
-                            android:background="#FFFFFF"
                             android:text="@{viewModel.selectedGame.developers ?? @string/empty}"
+                            android:backgroundTint="?attr/colorSurface"
                             android:hint="@string/developer_hint"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -165,8 +164,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="text"
-                            android:background="#FFFFFF"
                             android:text="@{viewModel.selectedGame.publishers ?? @string/empty}"
+                            android:backgroundTint="?attr/colorSurface"
                             android:hint="@string/publisher_hint"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -213,8 +212,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
-                            android:layout_gravity="center_vertical"
-                            android:background="#FFFFFF">
+                            android:layout_gravity="center_vertical">
 
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/release_date_edit_text"
@@ -222,8 +220,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginEnd="@dimen/small"
                                 android:enabled="false"
-                                android:background="#FFFFFF"
                                 android:text="@{viewModel.getDateString(viewModel.selectedGame.releaseDate) ?? @string/date_default}"
+                                android:backgroundTint="?attr/colorSurface"
                                 android:hint="@string/release_date_hint"/>
 
                         </com.google.android.material.textfield.TextInputLayout>
@@ -293,8 +291,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="numberDecimal"
-                            android:background="#FFFFFF"
                             android:text="@{viewModel.selectedGame.pricePaid.toString() ?? @string/empty}"
+                            android:backgroundTint="?attr/colorSurface"
                             android:hint="@string/price_paid_hint"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -312,8 +310,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
-                            android:layout_gravity="center_vertical"
-                            android:background="#FFFFFF">
+                            android:layout_gravity="center_vertical">
 
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/buy_date_edit_text"
@@ -321,8 +318,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginEnd="@dimen/small"
                                 android:enabled="false"
-                                android:background="#FFFFFF"
                                 android:text="@{viewModel.getDateString(viewModel.selectedGame.boughtDate) ?? @string/date_default}"
+                                android:backgroundTint="?attr/colorSurface"
                                 android:hint="@string/buy_date_hint"/>
 
                         </com.google.android.material.textfield.TextInputLayout>

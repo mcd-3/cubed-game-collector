@@ -27,13 +27,11 @@
                 android:id="@+id/title_card_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:layout_marginStart="@dimen/small"
                 android:layout_marginEnd="@dimen/small"
                 android:layout_marginTop="@dimen/game_detail_title_margin_top"
                 android:layout_marginBottom="@dimen/very_small">
 
-                <!-- TODO: Change text color to that of the style-->
                 <TextView
                     android:id="@+id/title_text_view"
                     android:layout_width="wrap_content"
@@ -44,7 +42,7 @@
                     android:layout_marginBottom="@dimen/game_detail_title_margin_bottom"
                     android:layout_gravity="center_horizontal"
                     android:gravity="center"
-                    android:textColor="#000000"
+                    android:textColor="?android:attr/textColor"
                     android:textStyle="bold"
                     style="@style/TextAppearance.AppCompat.Large"
                     android:maxLines="3"
@@ -134,7 +132,8 @@
                             android:layout_marginTop="@dimen/small"
                             android:drawablePadding="@dimen/small"
                             android:drawableStart="@drawable/ic_developer_black_24dp"
-                            android:textColor="#000000"
+                            android:drawableTint="?android:attr/icon"
+                            android:textColor="?android:attr/textColor"
                             android:text="@string/developer_title" />
 
                         <TextView
@@ -144,7 +143,8 @@
                             android:layout_marginTop="@dimen/game_detail_title_margin_top"
                             android:layout_marginStart="@dimen/small"
                             style="@style/TextAppearance.AppCompat.Large"
-                            android:textColor="#000000"
+                            android:textColor="?android:attr/subtitleTextColor"
+                            android:textStyle="italic"
                             android:text="@{viewModel.selectedGame.developers ?? @string/no_developer_available}" />
                     </LinearLayout>
 
@@ -161,10 +161,11 @@
                             android:layout_height="wrap_content"
                             style="@style/TextAppearance.AppCompat.Medium"
                             android:drawableStart="@drawable/ic_publisher_black_24dp"
+                            android:drawableTint="?android:attr/icon"
                             android:layout_marginStart="@dimen/slightly_small"
                             android:layout_marginTop="@dimen/small"
                             android:drawablePadding="@dimen/small"
-                            android:textColor="#000000"
+                            android:textColor="?android:attr/textColor"
                             android:text="@string/publisher_title" />
 
                         <TextView
@@ -175,7 +176,8 @@
                             android:layout_marginStart="@dimen/slightly_small"
                             android:layout_marginTop="@dimen/small"
                             android:drawablePadding="@dimen/small"
-                            android:textColor="#000000"
+                            android:textColor="?android:attr/subtitleTextColor"
+                            android:textStyle="italic"
                             android:text="@{viewModel.selectedGame.publishers ?? @string/no_publisher_available}" />
                     </LinearLayout>
 
@@ -190,11 +192,12 @@
                             android:id="@+id/region_label_text_view"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="#000000"
+                            android:textColor="?android:attr/textColor"
                             style="@style/TextAppearance.AppCompat.Medium"
                             android:layout_marginTop="@dimen/small"
                             android:layout_marginStart="@dimen/slightly_small"
                             android:drawableStart="@drawable/ic_region_black_24dp"
+                            android:drawableTint="?android:attr/icon"
                             android:drawablePadding="@dimen/small"
                             android:text="@string/region_label" />
 
@@ -205,7 +208,8 @@
                             style="@style/TextAppearance.AppCompat.Large"
                             android:layout_marginTop="@dimen/small"
                             android:layout_marginStart="@dimen/small"
-                            android:textColor="#000000"
+                            android:textColor="?android:attr/subtitleTextColor"
+                            android:textStyle="italic"
                             bind:lifecycleOwner="@{lifecycleOwner}"
                             bind:repository="@{viewModel.getRegionRepository()}"
                             bind:regionId="@{viewModel.selectedGame.regionId}" />
@@ -227,8 +231,9 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/small"
                             android:layout_gravity="center"
-                            android:textColor="#000000"
+                            android:textColor="?android:attr/textColor"
                             android:drawableStart="@drawable/ic_date_black_24dp"
+                            android:drawableTint="?android:attr/icon"
                             android:drawablePadding="@dimen/small"
                             style="@style/TextAppearance.AppCompat.Medium"
                             android:text="@string/release_date_label" />
@@ -241,7 +246,8 @@
                             android:gravity="end"
                             android:layout_marginEnd="@dimen/medium"
                             style="@style/TextAppearance.AppCompat.Large"
-                            android:textColor="#000000"
+                            android:textColor="?android:attr/subtitleTextColor"
+                            android:textStyle="italic"
                             android:text="08/04/03" />
 
                     </LinearLayout>
@@ -289,9 +295,10 @@
                             android:layout_gravity="center"
                             android:layout_marginStart="@dimen/small"
                             android:drawableStart="@drawable/ic_condition_black_24dp"
+                            android:drawableTint="?android:attr/icon"
                             android:drawablePadding="@dimen/small"
                             style="@style/TextAppearance.AppCompat.Medium"
-                            android:textColor="#000000"
+                            android:textColor="?android:attr/textColor"
                             android:text="@string/condition_label" />
 
                         <TextView
@@ -302,6 +309,7 @@
                             android:gravity="end"
                             style="@style/TextAppearance.AppCompat.Large"
                             android:layout_marginEnd="@dimen/medium"
+                            android:textColor="?android:attr/subtitleTextColor"
                             bind:lifecycleOwner="@{lifecycleOwner}"
                             bind:repository="@{viewModel.getConditionRepository()}"
                             bind:regionId="@{viewModel.selectedGame.conditionId}" />
@@ -322,8 +330,9 @@
                             android:layout_gravity="center"
                             android:layout_marginStart="@dimen/small"
                             android:drawableStart="@drawable/ic_price_24dp"
+                            android:drawableTint="?android:attr/icon"
                             android:drawablePadding="@dimen/small"
-                            android:textColor="#000000"
+                            android:textColor="?android:attr/textColor"
                             style="@style/TextAppearance.AppCompat.Medium"
                             android:text="@string/price_label" />
 
@@ -335,6 +344,7 @@
                             android:gravity="end"
                             style="@style/TextAppearance.AppCompat.Large"
                             android:layout_marginEnd="@dimen/medium"
+                            android:textColor="?android:attr/subtitleTextColor"
                             android:text="@{'$' + ((viewModel.selectedGame.pricePaid != null) ? viewModel.selectedGame.pricePaid.toString() : @string/no_price)}" />
 
                     </LinearLayout>
@@ -347,6 +357,7 @@
                         style="@style/TextAppearance.AppCompat.Large"
                         android:layout_marginTop="@dimen/small"
                         android:layout_marginBottom="@dimen/small"
+                        android:textColor="?android:attr/textColor"
                         android:text="CIB"/>
 
                 </LinearLayout>
