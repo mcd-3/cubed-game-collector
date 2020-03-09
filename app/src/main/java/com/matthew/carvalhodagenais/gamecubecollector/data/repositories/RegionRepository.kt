@@ -33,4 +33,8 @@ class RegionRepository(application: Application) {
         return regionDao.getRegionById(id)
     }
 
+    fun getRegionByCode(code: String): LiveData<Region> {
+        return regionDao.getRegionByCode(code)
+    }
+
 }

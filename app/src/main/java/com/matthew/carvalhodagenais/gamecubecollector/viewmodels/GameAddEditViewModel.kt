@@ -20,6 +20,8 @@ import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Type
 import com.matthew.carvalhodagenais.gamecubecollector.data.repositories.ConditionRepository
 import com.matthew.carvalhodagenais.gamecubecollector.data.repositories.RegionRepository
 import com.matthew.carvalhodagenais.gamecubecollector.helpers.DateHelper
+import com.matthew.carvalhodagenais.gamecubecollector.helpers.StringHelper
+import com.matthew.carvalhodagenais.gamecubecollector.ui.GameAddEditFragment
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import java.lang.ClassCastException
@@ -58,8 +60,44 @@ class GameAddEditViewModel(application: Application): AndroidViewModel(applicati
 
     fun getConditionTypeID(): Int = Type.CD_ID
 
-    fun goToListFragment() {
-        
+    fun saveGame(
+        requestInt: Int,
+        title: String,
+        publisher: String,
+        developer: String,
+        releaseDate: Date?,
+        pricePaid: Double?,
+        boughtDate: Date?,
+        hasCase: Boolean,
+        hasManual: Boolean,
+        isFavouriteTag: String,
+        regionCode: String,
+        conditionCode: String
+    ) = viewModelScope.launch {
+        //val regionId = regionRepository.getRegionByCode(regionCode).value!!.id
+        //val conditionId = conditionRepository.getConditionByCodeAndType(conditionCode,Type.CD_ID).value!!.id
+        val game = Game(
+            title =  title,
+            publishers = StringHelper.setNullIfEmptyString(publisher),
+            developers = StringHelper.setNullIfEmptyString(developer),
+            releaseDate = releaseDate,
+            pricePaid = pricePaid,
+            boughtDate = boughtDate,
+            hasCase = hasCase,
+            hasManual = hasManual//,
+            //regionId = regionId,
+            //conditionId = conditionId
+        )
+        game.isFavourite =
+            (isFavouriteTag == getApplication<Application>().resources.getString(R.string.star_filled_tag))
+
+        if (requestInt ==  GameAddEditFragment.EDIT_REQUEST) { // Edit the game
+            game.id = selectedGame.value!!.id
+            update(game)
+        } else { // Add the game
+            insert(game)
+        }
+        clearCurrentlySelectedGame()
     }
 
     /**
@@ -72,6 +110,9 @@ class GameAddEditViewModel(application: Application): AndroidViewModel(applicati
         DateHelper.createDateString(date)
 
     // TODO: Use the tag to determine whether or not we should save as favourite or not
+    /**
+     * Creates a tag for the favourite image
+     */
     fun createFavouriteButtonTag(): String {
         return (
                 if (selectedGame.value != null && selectedGame.value?.isFavourite!!)

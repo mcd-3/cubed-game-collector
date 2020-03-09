@@ -13,7 +13,7 @@ interface ConditionDao {
     suspend fun insert(condition: Condition)
 
     @Query("SELECT * FROM condition_table WHERE condition_code = :code AND type_id = :typeID")
-    fun getConditionsByCodeAndType(code: String, typeID: Int): LiveData<List<Condition>>
+    fun getConditionByCodeAndType(code: String, typeID: Int): LiveData<Condition>
 
     @Query("SELECT condition_code FROM condition_table INNER JOIN type_table ON condition_table.type_id = type_table.id WHERE type_table.id = :typeID")
     fun getConditionCodesByType(typeID: Int): LiveData<List<String>>

@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.NavArgs
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.google.android.material.snackbar.Snackbar
 import com.matthew.carvalhodagenais.gamecubecollector.MainActivity
 import com.matthew.carvalhodagenais.gamecubecollector.R
 import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Game
@@ -18,6 +19,8 @@ import com.matthew.carvalhodagenais.gamecubecollector.databinding.FragmentGameDe
 import com.matthew.carvalhodagenais.gamecubecollector.helpers.DateHelper
 import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.GameAddEditViewModel
 import kotlinx.android.synthetic.main.fragment_game_add_edit.*
+import kotlinx.android.synthetic.main.fragment_game_add_edit.favourite_image_button
+import kotlinx.android.synthetic.main.fragment_game_detail.*
 import java.util.*
 
 class GameAddEditFragment: Fragment() {
@@ -75,11 +78,35 @@ class GameAddEditFragment: Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when(item.itemId){
         R.id.menu_save -> {
             if (title_edit_text.text?.trim().toString().isEmpty()) {
-                Toast.makeText(context,
+                Snackbar.make(
+                    view!!,
                     getString(R.string.toast_no_title_warning),
-                    Toast.LENGTH_SHORT).show()
+                    Snackbar.LENGTH_SHORT)
+                    .show()
             } else {
-                saveGame()
+                addEditViewModel.saveGame(
+                    GameAddEditFragmentArgs.fromBundle(arguments!!).ADDEDITREQUEST,
+                    title_edit_text.text.toString(),
+                    publisher_edit_text.text.toString(),
+                    developer_edit_text.text.toString(),
+                    (if (release_date_edit_text.text.toString() != getString(R.string.date_default))
+                        DateHelper.createDate(release_date_edit_text.text.toString())
+                    else
+                        null),
+                    (if (price_paid_edit_text.text.toString().trim() != "")
+                        price_paid_edit_text.text.toString().trim().toDouble()
+                    else
+                        null),
+                    (if (buy_date_edit_text.text.toString() != getString(R.string.date_default))
+                        DateHelper.createDate(buy_date_edit_text.text.toString())
+                    else
+                        null),
+                    case_checkbox.isChecked,
+                    manual_checkbox.isChecked,
+                    favourite_image_button.tag.toString(),
+                    region_spinner.selectedItem.toString().trim(),
+                    condition_spinner.selectedItem.toString().trim()
+                )
                 findNavController().navigate(R.id.action_gameAddEditFragment_to_gameListFragment)
             }
             true
@@ -93,20 +120,6 @@ class GameAddEditFragment: Fragment() {
      * Saves the game to the database by grabbing all values from the inputs
      */
     private fun saveGame() {
-//        val g: Game = Game(title_edit_text.text.toString()).apply {
-//            developers = setNullIfEmptyString(developer_edit_text.text.toString())
-//            publishers = setNullIfEmptyString(publisher_edit_text.text.toString())
-//            releaseDate = null
-//            regionId = null//condition_edit_text.text.toString().toInt()
-//            boughtDate = null
-//            conditionId = null//condition_edit_text.text.toString().toInt()
-//            pricePaid = null//price_paid_edit_text.text.toString().toDouble()
-//            hasCase = true
-//            hasManual = true
-//        }
-//        g.isFavourite = false
-//        g.imagePath = ""
-//        addEditViewModel.insert(g)
         val game: Game = Game(title_edit_text.text.toString()).apply {
             publishers = setNullIfEmptyString(publisher_edit_text.text.toString())
             developers = setNullIfEmptyString(developer_edit_text.text.toString())
