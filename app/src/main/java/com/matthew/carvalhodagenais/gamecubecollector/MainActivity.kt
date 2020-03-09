@@ -35,7 +35,6 @@ class MainActivity : AppCompatActivity(){//, NavigationView.OnNavigationItemSele
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
-
         // Initialise ViewModels
         initViewModels()
 

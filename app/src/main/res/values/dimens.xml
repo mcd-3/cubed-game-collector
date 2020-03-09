@@ -13,6 +13,10 @@
     <dimen name="extra_huge">156dp</dimen>
     <dimen name="very_huge">256dp</dimen>
 
+    <!-- Text -->
+    <dimen name="medium_text">16sp</dimen>
+    <dimen name="extra_medium_text">20sp</dimen>
+
     <!-- Image View and ImageButton View -->
     <dimen name="game_item_cover_art_margin_start">4dp</dimen>
     <dimen name="game_item_cover_art_margin_end">4dp</dimen>

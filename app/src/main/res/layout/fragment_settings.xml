@@ -3,6 +3,75 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <LinearLayout
+        android:id="@+id/themes_linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:text="@string/themes_label"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/small"
+            android:layout_marginBottom="@dimen/very_small"
+            style="@style/TextAppearance.AppCompat.Large"/>
+
+        <RadioGroup
+            android:id="@+id/themes_radio_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/small"
+            android:layout_marginEnd="@dimen/small">
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/radio_theme_cubed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/medium_text"
+                    android:text="@string/cubed_theme"/>
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/radio_theme_cubed_dark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/medium_text"
+                    android:text="@string/cubed_dark_theme"/>
+
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/radio_theme_night"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/medium_text"
+                    android:text="@string/night_theme"/>
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/radio_theme_dolphin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/medium_text"
+                    android:text="@string/dolphin_theme"/>
+
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/radio_theme_player_selection"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/medium_text"
+                    android:text="@string/player_selection_theme"/>
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/radio_theme_silver_player"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/medium_text"
+                    android:text="@string/player_silver_theme"/>
+
+        </RadioGroup>
+
+
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/delete_all_data_linear_layout"

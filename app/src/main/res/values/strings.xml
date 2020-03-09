@@ -27,9 +27,18 @@
     <string name="cib_label">Completeness:</string>
     <string name="condition_label">Condition:</string>
     <string name="price_label">Price Paid:</string>
+    <string name="themes_label">Themes</string>
     <string name="no_price">0.00</string>
     <string name="no_region">No Region</string>
     <string name="no_condition">N/A</string>
+
+    <!-- Themes -->
+    <string name="cubed_theme">Cubed</string>
+    <string name="cubed_dark_theme">Cubed Dark</string>
+    <string name="night_theme">Night</string>
+    <string name="dolphin_theme">Dolphin</string>
+    <string name="player_selection_theme">Player Selection</string>
+    <string name="player_silver_theme">Silver Player</string>
 
     <!-- ImageView content descriptions -->
     <string name="game_list_image_view_content_description">Game cover art</string>
