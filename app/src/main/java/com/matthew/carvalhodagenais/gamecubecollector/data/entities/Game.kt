@@ -6,17 +6,17 @@ import java.util.*
 
 @Entity(tableName = "game_table",
     indices = [Index("region_id"), Index("condition_id")],
-    foreignKeys = [ForeignKey(
-        entity = Region::class,
-        parentColumns = ["id"],
-        childColumns = ["region_id"],
-        onDelete = ForeignKey.NO_ACTION),
-    ForeignKey(
-        entity = Condition::class,
-        parentColumns = ["id"],
-        childColumns = ["condition_id"],
-        onDelete = ForeignKey.NO_ACTION)
-    ])
+    foreignKeys = [
+        ForeignKey(
+            entity = Region::class,
+            parentColumns = ["id"],
+            childColumns = ["region_id"],
+            onDelete = ForeignKey.NO_ACTION),
+        ForeignKey(
+            entity = Condition::class,
+            parentColumns = ["id"],
+            childColumns = ["condition_id"],
+            onDelete = ForeignKey.NO_ACTION)])
 @TypeConverters(DateConverter::class)
 //Note: use named parameters instead of Builder. This is Kotlin!
 data class Game(

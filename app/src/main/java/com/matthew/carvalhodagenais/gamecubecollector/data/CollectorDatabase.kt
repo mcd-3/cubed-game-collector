@@ -7,10 +7,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.matthew.carvalhodagenais.gamecubecollector.data.dao.ConditionDao
-import com.matthew.carvalhodagenais.gamecubecollector.data.dao.GameDao
-import com.matthew.carvalhodagenais.gamecubecollector.data.dao.RegionDao
-import com.matthew.carvalhodagenais.gamecubecollector.data.dao.TypeDao
+import com.matthew.carvalhodagenais.gamecubecollector.data.dao.*
 import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Condition
 import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Game
 import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Region
@@ -24,6 +21,7 @@ abstract class CollectorDatabase: RoomDatabase() {
     abstract fun regionDao(): RegionDao
     abstract fun typeDao(): TypeDao
     abstract fun conditionDao(): ConditionDao
+    abstract fun consoleDao(): ConsoleDao
 
     companion object {
 

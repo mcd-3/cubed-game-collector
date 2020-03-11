@@ -7,12 +7,12 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "condition_table",
     indices = [androidx.room.Index("type_id")],
-    foreignKeys = [ForeignKey(
-        entity = Type::class,
-        parentColumns = ["id"],
-        childColumns = ["type_id"],
-        onDelete = ForeignKey.NO_ACTION)
-    ])
+    foreignKeys = [
+        ForeignKey(
+            entity = Type::class,
+            parentColumns = ["id"],
+            childColumns = ["type_id"],
+            onDelete = ForeignKey.NO_ACTION)])
 data class Condition(
     @PrimaryKey(autoGenerate = false) var id: Int,
     @ColumnInfo(name = "condition_code") var code: String,
