@@ -17,7 +17,7 @@ interface RegionDao {
     suspend fun delete(region: Region)
 
     @Query("SELECT * FROM region_table WHERE region_code = :code")
-    fun getRegionByCode(code: String): LiveData<Region>
+    suspend fun getRegionByCodeAsync(code: String): Region
 
     @Query("SELECT * FROM region_table WHERE rowid = :id")
     fun getRegionById(id: Int): LiveData<Region>

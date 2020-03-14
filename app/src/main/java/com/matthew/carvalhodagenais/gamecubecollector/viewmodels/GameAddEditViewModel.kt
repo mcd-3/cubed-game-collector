@@ -8,11 +8,9 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.bumptech.glide.Glide
-import com.matthew.carvalhodagenais.gamecubecollector.MainActivity
 import com.matthew.carvalhodagenais.gamecubecollector.R
 import com.matthew.carvalhodagenais.gamecubecollector.data.repositories.GameRepository
 import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Game
@@ -22,8 +20,8 @@ import com.matthew.carvalhodagenais.gamecubecollector.data.repositories.RegionRe
 import com.matthew.carvalhodagenais.gamecubecollector.helpers.DateHelper
 import com.matthew.carvalhodagenais.gamecubecollector.helpers.StringHelper
 import com.matthew.carvalhodagenais.gamecubecollector.ui.GameAddEditFragment
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import java.lang.ClassCastException
 import java.util.*
 
@@ -74,7 +72,14 @@ class GameAddEditViewModel(application: Application): AndroidViewModel(applicati
         regionCode: String,
         conditionCode: String
     ) = viewModelScope.launch {
-        //val regionId = regionRepository.getRegionByCode(regionCode).value!!.id
+        // Get the region ID
+        var regionId: Int? = null
+        val getRegionIdOperation = async {
+            val region = regionRepository.getRegionByCode(regionCode)
+            regionId = region.id
+        }
+        getRegionIdOperation.await()
+
         //val conditionId = conditionRepository.getConditionByCodeAndType(conditionCode,Type.CD_ID).value!!.id
         val game = Game(
             title =  title,
@@ -84,8 +89,8 @@ class GameAddEditViewModel(application: Application): AndroidViewModel(applicati
             pricePaid = pricePaid,
             boughtDate = boughtDate,
             hasCase = hasCase,
-            hasManual = hasManual//,
-            //regionId = regionId,
+            hasManual = hasManual,
+            regionId = regionId//,
             //conditionId = conditionId
         )
         game.isFavourite =
@@ -109,7 +114,6 @@ class GameAddEditViewModel(application: Application): AndroidViewModel(applicati
     fun getDateString(date: Date?): String? =
         DateHelper.createDateString(date)
 
-    // TODO: Use the tag to determine whether or not we should save as favourite or not
     /**
      * Creates a tag for the favourite image
      */

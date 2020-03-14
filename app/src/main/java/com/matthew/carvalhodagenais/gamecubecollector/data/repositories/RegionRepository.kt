@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import com.matthew.carvalhodagenais.gamecubecollector.data.CollectorDatabase
 import com.matthew.carvalhodagenais.gamecubecollector.data.dao.RegionDao
 import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Region
+import kotlinx.coroutines.coroutineScope
 
 class RegionRepository(application: Application) {
 
@@ -33,8 +34,8 @@ class RegionRepository(application: Application) {
         return regionDao.getRegionById(id)
     }
 
-    fun getRegionByCode(code: String): LiveData<Region> {
-        return regionDao.getRegionByCode(code)
+    suspend fun getRegionByCode(code: String): Region = coroutineScope{
+        regionDao.getRegionByCodeAsync(code)
     }
 
 }
