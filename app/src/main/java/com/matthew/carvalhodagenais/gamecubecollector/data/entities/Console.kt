@@ -4,7 +4,8 @@ import androidx.room.*
 
 @Entity(tableName = "console_table",
     indices = [
-        Index("region_id")],
+        Index("region_id"),
+        Index("condition_id")],
     foreignKeys = [
         ForeignKey(
             entity = Region::class,

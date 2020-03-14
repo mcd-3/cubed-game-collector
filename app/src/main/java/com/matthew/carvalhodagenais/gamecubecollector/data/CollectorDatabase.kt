@@ -8,13 +8,10 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.matthew.carvalhodagenais.gamecubecollector.data.dao.*
-import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Condition
-import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Game
-import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Region
-import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Type
+import com.matthew.carvalhodagenais.gamecubecollector.data.entities.*
 import kotlinx.coroutines.*
 
-@Database(entities = [Game::class, Region::class, Type::class, Condition::class], version = 1)
+@Database(entities = [Game::class, Console::class, Region::class, Type::class, Condition::class], version = 1)
 abstract class CollectorDatabase: RoomDatabase() {
 
     abstract fun gameDao(): GameDao
