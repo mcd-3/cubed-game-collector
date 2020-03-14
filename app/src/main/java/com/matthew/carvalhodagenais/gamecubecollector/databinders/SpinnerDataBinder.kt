@@ -22,15 +22,15 @@ class SpinnerDataBinder {
         ) {
             val list = mutableListOf<String>()
             val adapter = ArrayAdapter(spinner.context, android.R.layout.simple_spinner_item, list)
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             repo.getRegionCodes().observe(lco, Observer { items ->
                 items.forEach {
                     list.add(it)
                 }
                 adapter.notifyDataSetChanged()
+                spinner.adapter = adapter
                 spinner.setSelection(defaultSelection - INDEX_MIN_ID)
             })
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            spinner.adapter = adapter
         }
 
         @JvmStatic
