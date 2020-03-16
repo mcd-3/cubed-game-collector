@@ -80,7 +80,13 @@ class GameAddEditViewModel(application: Application): AndroidViewModel(applicati
         }
         getRegionIdOperation.await()
 
-        //val conditionId = conditionRepository.getConditionByCodeAndType(conditionCode,Type.CD_ID).value!!.id
+        var conditionId: Int? = null
+        val getConditionIdOperation = async {
+            val condition = conditionRepository.getConditionByCodeAndType(conditionCode, Type.CD_ID)
+            conditionId = condition.id
+        }
+        getConditionIdOperation.await()
+
         val game = Game(
             title =  title,
             publishers = StringHelper.setNullIfEmptyString(publisher),
@@ -90,8 +96,8 @@ class GameAddEditViewModel(application: Application): AndroidViewModel(applicati
             boughtDate = boughtDate,
             hasCase = hasCase,
             hasManual = hasManual,
-            regionId = regionId//,
-            //conditionId = conditionId
+            regionId = regionId,
+            conditionId = conditionId
         )
         game.isFavourite =
             (isFavouriteTag == getApplication<Application>().resources.getString(R.string.star_filled_tag))

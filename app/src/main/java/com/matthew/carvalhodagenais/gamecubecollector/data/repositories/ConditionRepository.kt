@@ -5,6 +5,8 @@ import androidx.lifecycle.LiveData
 import com.matthew.carvalhodagenais.gamecubecollector.data.CollectorDatabase
 import com.matthew.carvalhodagenais.gamecubecollector.data.dao.ConditionDao
 import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Condition
+import kotlinx.coroutines.coroutineScope
+import kotlin.coroutines.coroutineContext
 
 class ConditionRepository(application: Application) {
 
@@ -27,8 +29,8 @@ class ConditionRepository(application: Application) {
         return conditionDao.getConditionCodesByType(typeID)
     }
 
-    fun getConditionByCodeAndType(code: String, typeID: Int): LiveData<Condition> {
-        return conditionDao.getConditionByCodeAndType(code, typeID)
+    suspend fun getConditionByCodeAndType(code: String, typeID: Int): Condition = coroutineScope {
+        conditionDao.getConditionByCodeAndTypeAsync(code, typeID)
     }
 
     fun getConditionById(id: Int): LiveData<Condition> {
