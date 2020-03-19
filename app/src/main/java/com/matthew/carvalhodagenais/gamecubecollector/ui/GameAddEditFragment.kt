@@ -116,43 +116,4 @@ class GameAddEditFragment: Fragment() {
         }
     }
 
-    /**
-     * Saves the game to the database by grabbing all values from the inputs
-     */
-    private fun saveGame() {
-        val game: Game = Game(title_edit_text.text.toString()).apply {
-            publishers = setNullIfEmptyString(publisher_edit_text.text.toString())
-            developers = setNullIfEmptyString(developer_edit_text.text.toString())
-            releaseDate =
-                if (release_date_edit_text.text.toString() != getString(R.string.date_default))
-                    DateHelper.createDate(release_date_edit_text.text.toString())
-                else
-                    null
-            pricePaid = setNullIfEmptyString(price_paid_edit_text.text.toString())?.toDouble()
-            boughtDate =
-                if (buy_date_edit_text.text.toString() != getString(R.string.date_default))
-                    DateHelper.createDate(buy_date_edit_text.text.toString())
-                else
-                    null
-            hasCase = case_checkbox.isChecked
-            hasManual = manual_checkbox.isChecked
-        }
-        game.isFavourite = isFav
-
-        if (GameAddEditFragmentArgs.fromBundle(arguments!!).ADDEDITREQUEST == EDIT_REQUEST) {
-            game.id = addEditViewModel.getSelectedGame()!!.id
-            addEditViewModel.update(game)
-        } else {
-            addEditViewModel.insert(game)
-        }
-
-        addEditViewModel.clearCurrentlySelectedGame()
-    }
-
-    /**
-     * Sets a String to null if it is empty
-     */
-    private fun setNullIfEmptyString(string: String): String? =
-        if (string.trim().isEmpty()) null else string
-
 }
