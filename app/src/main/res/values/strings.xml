@@ -28,9 +28,14 @@
     <string name="condition_label">Condition:</string>
     <string name="price_label">Price Paid:</string>
     <string name="themes_label">Themes</string>
+    <string name="completeness_cib">CIB</string>
+    <string name="completeness_case">With Case</string>
+    <string name="completeness_manual">With Manual</string>
+    <string name="completeness_disc">Disc Only</string>
     <string name="no_price">0.00</string>
     <string name="no_region">No Region</string>
     <string name="no_condition">N/A</string>
+    <string name="no_date">N.D</string>
 
     <!-- Themes -->
     <string name="cubed_theme">Cubed</string>

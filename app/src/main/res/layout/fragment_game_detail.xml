@@ -143,8 +143,7 @@
                             android:layout_marginTop="@dimen/game_detail_title_margin_top"
                             android:layout_marginStart="@dimen/small"
                             style="@style/TextAppearance.AppCompat.Large"
-                            android:textColor="?android:attr/subtitleTextColor"
-                            android:textStyle="italic"
+                            bind:isDefault="@{viewModel.selectedGame.developers == null}"
                             android:text="@{viewModel.selectedGame.developers ?? @string/no_developer_available}" />
                     </LinearLayout>
 
@@ -168,6 +167,17 @@
                             android:textColor="?android:attr/textColor"
                             android:text="@string/publisher_title" />
 
+<!--                        <TextView-->
+<!--                            android:id="@+id/publisher_text_view"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            style="@style/TextAppearance.AppCompat.Large"-->
+<!--                            android:layout_marginStart="@dimen/slightly_small"-->
+<!--                            android:layout_marginTop="@dimen/small"-->
+<!--                            android:drawablePadding="@dimen/small"-->
+<!--                            android:textColor="?android:attr/subtitleTextColor"-->
+<!--                            android:textStyle="italic"-->
+<!--                            android:text="@{viewModel.selectedGame.publishers ?? @string/no_publisher_available}" />-->
                         <TextView
                             android:id="@+id/publisher_text_view"
                             android:layout_width="wrap_content"
@@ -176,8 +186,7 @@
                             android:layout_marginStart="@dimen/slightly_small"
                             android:layout_marginTop="@dimen/small"
                             android:drawablePadding="@dimen/small"
-                            android:textColor="?android:attr/subtitleTextColor"
-                            android:textStyle="italic"
+                            bind:isDefault="@{viewModel.selectedGame.publishers == null}"
                             android:text="@{viewModel.selectedGame.publishers ?? @string/no_publisher_available}" />
                     </LinearLayout>
 
@@ -208,8 +217,6 @@
                             style="@style/TextAppearance.AppCompat.Large"
                             android:layout_marginTop="@dimen/small"
                             android:layout_marginStart="@dimen/small"
-                            android:textColor="?android:attr/subtitleTextColor"
-                            android:textStyle="italic"
                             bind:lifecycleOwner="@{lifecycleOwner}"
                             bind:repository="@{viewModel.getRegionRepository()}"
                             bind:regionId="@{viewModel.selectedGame.regionId}" />
@@ -246,9 +253,8 @@
                             android:gravity="end"
                             android:layout_marginEnd="@dimen/medium"
                             style="@style/TextAppearance.AppCompat.Large"
-                            android:textColor="?android:attr/subtitleTextColor"
-                            android:textStyle="italic"
-                            android:text="08/04/03" />
+                            bind:isDefault="@{viewModel.selectedGame.releaseDate == null}"
+                            android:text="@{(viewModel.selectedGame.releaseDate == null)? @string/no_date: viewModel.selectedGame.releaseDate.toString()}" />
 
                     </LinearLayout>
                 </LinearLayout>
@@ -309,7 +315,6 @@
                             android:gravity="end"
                             style="@style/TextAppearance.AppCompat.Large"
                             android:layout_marginEnd="@dimen/medium"
-                            android:textColor="?android:attr/subtitleTextColor"
                             bind:lifecycleOwner="@{lifecycleOwner}"
                             bind:repository="@{viewModel.getConditionRepository()}"
                             bind:regionId="@{viewModel.selectedGame.conditionId}" />
@@ -344,7 +349,7 @@
                             android:gravity="end"
                             style="@style/TextAppearance.AppCompat.Large"
                             android:layout_marginEnd="@dimen/medium"
-                            android:textColor="?android:attr/subtitleTextColor"
+                            bind:isDefault="@{viewModel.selectedGame.pricePaid == null}"
                             android:text="@{'$' + ((viewModel.selectedGame.pricePaid != null) ? viewModel.selectedGame.pricePaid.toString() : @string/no_price)}" />
 
                     </LinearLayout>
@@ -358,7 +363,8 @@
                         android:layout_marginTop="@dimen/small"
                         android:layout_marginBottom="@dimen/small"
                         android:textColor="?android:attr/textColor"
-                        android:text="CIB"/>
+                        bind:hasCase="@{viewModel.selectedGame.hasCase}"
+                        bind:hasManual="@{viewModel.selectedGame.hasManual}" />
 
                 </LinearLayout>
 
