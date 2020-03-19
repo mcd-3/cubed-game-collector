@@ -12,6 +12,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.matthew.carvalhodagenais.gamecubecollector.MainActivity
 import com.matthew.carvalhodagenais.gamecubecollector.R
 import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Game
+import com.matthew.carvalhodagenais.gamecubecollector.databinders.ImageButtonActions
 import com.matthew.carvalhodagenais.gamecubecollector.databinding.FragmentGameDetailBinding
 import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.GameDetailViewModel
 import kotlinx.android.synthetic.main.fragment_game_detail.*
@@ -38,6 +39,7 @@ class GameDetailFragment: Fragment() {
         ).apply {
             this.lifecycleOwner = this@GameDetailFragment
             this.viewModel = detailViewModel
+            this.imageButtonActions = ImageButtonActions()
         }
         setHasOptionsMenu(true)
         return binding.root

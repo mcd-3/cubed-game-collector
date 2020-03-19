@@ -6,6 +6,9 @@
 
     <data>
         <variable
+            name="imageButtonActions"
+            type="com.matthew.carvalhodagenais.gamecubecollector.databinders.ImageButtonActions" />
+        <variable
             name="viewModel"
             type="com.matthew.carvalhodagenais.gamecubecollector.viewmodels.GameDetailViewModel" />
         <variable
@@ -83,7 +86,7 @@
                         android:layout_marginTop="@dimen/favourite_button_margin_top"
                         android:contentDescription="@string/game_detail_favourite_image_button_view_content_description"
                         android:background="?attr/selectableItemBackground"
-                        android:onClick="@{(view) -> viewModel.favouriteButtonOnClick(view)}"
+                        android:onClick="@{(view) -> imageButtonActions.changeFavouriteImage(view, viewModel.selectedGame.isFavourite, viewModel)}"
                         favouriteStarDrawable="@{viewModel.selectedGame.isFavourite}"/>
 
                 </RelativeLayout>
