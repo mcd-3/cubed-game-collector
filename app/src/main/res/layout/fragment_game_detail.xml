@@ -7,7 +7,7 @@
     <data>
         <variable
             name="imageButtonActions"
-            type="com.matthew.carvalhodagenais.gamecubecollector.databinders.ImageButtonActions" />
+            type="com.matthew.carvalhodagenais.gamecubecollector.viewactions.ImageButtonActions" />
         <variable
             name="viewModel"
             type="com.matthew.carvalhodagenais.gamecubecollector.viewmodels.GameDetailViewModel" />

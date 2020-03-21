@@ -1,32 +1,23 @@
 package com.matthew.carvalhodagenais.gamecubecollector.ui
 
-import android.app.DatePickerDialog
 import android.os.Bundle
-import android.util.Log
 import android.view.*
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.navigation.NavArgs
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import com.google.android.material.snackbar.Snackbar
 import com.matthew.carvalhodagenais.gamecubecollector.MainActivity
 import com.matthew.carvalhodagenais.gamecubecollector.R
-import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Game
 import com.matthew.carvalhodagenais.gamecubecollector.databinding.FragmentGameAddEditBinding
-import com.matthew.carvalhodagenais.gamecubecollector.databinding.FragmentGameDetailBinding
 import com.matthew.carvalhodagenais.gamecubecollector.helpers.DateHelper
+import com.matthew.carvalhodagenais.gamecubecollector.viewactions.ImageButtonActions
 import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.GameAddEditViewModel
 import kotlinx.android.synthetic.main.fragment_game_add_edit.*
 import kotlinx.android.synthetic.main.fragment_game_add_edit.favourite_image_button
-import kotlinx.android.synthetic.main.fragment_game_detail.*
-import java.util.*
 
 class GameAddEditFragment: Fragment() {
 
     private lateinit var addEditViewModel: GameAddEditViewModel
-    private var isFav: Boolean = false
 
     companion object {
         private const val REQUEST_CODE: String = "GameAddEditFragment.REQUEST_CODE"
@@ -56,6 +47,7 @@ class GameAddEditFragment: Fragment() {
         ).apply {
             this.lifecycleOwner = this@GameAddEditFragment
             this.viewModel = addEditViewModel
+            this.imageButtonActions = ImageButtonActions()
         }
         binding.setReleaseDateEditText(binding.releaseDateEditText)
         binding.setBuyDateEditText(binding.buyDateEditText)

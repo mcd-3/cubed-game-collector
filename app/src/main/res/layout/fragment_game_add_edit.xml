@@ -3,6 +3,9 @@
 
     <data>
         <variable
+            name="imageButtonActions"
+            type="com.matthew.carvalhodagenais.gamecubecollector.viewactions.ImageButtonActions" />
+        <variable
             name="lifecycleOwner"
             type="androidx.lifecycle.LifecycleOwner" />
         <variable
@@ -104,7 +107,7 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.0"
                         android:tag="@{viewModel.createFavouriteButtonTag}"
-                        android:onClick="@{(view) -> viewModel.favouriteButtonOnClick(view)}"
+                        android:onClick="@{(view) -> imageButtonActions.changeFavouriteImage(view)}"
                         favouriteStarDrawable="@{viewModel.selectedGame.isFavourite ?? false}" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -235,7 +238,7 @@
                             android:layout_marginStart="@dimen/medium"
                             android:layout_marginEnd="@dimen/medium"
                             android:contentDescription="@string/game_add_edit_calendar_image_button_content_description"
-                            android:onClick="@{(view) -> viewModel.createDateOnClick(releaseDateEditText, releaseDateClearImageButton, view)}"
+                            android:onClick="@{(view) -> imageButtonActions.pickDate(view, releaseDateEditText, releaseDateClearImageButton)}"
                             android:src="@drawable/ic_date_range_white_42dp" />
 
                         <!-- Set this to RED if has date, else set to very light gray -->
@@ -247,7 +250,7 @@
                             android:layout_gravity="center"
                             android:contentDescription="@string/game_add_edit_clear_image_button_content_description"
                             android:clickable="@{(viewModel.selectedGame.releaseDate != null)}"
-                            android:onClick="@{(view) -> viewModel.clearDateOnClick(releaseDateEditText, view)}"
+                            android:onClick="@{(view) -> imageButtonActions.clearEditText(view, releaseDateEditText)}"
                             android:src="@drawable/ic_cancel_white_32dp" />
 
                     </LinearLayout>
@@ -332,7 +335,7 @@
                             android:layout_marginStart="@dimen/medium"
                             android:layout_marginEnd="@dimen/medium"
                             android:contentDescription="@string/game_add_edit_calendar_image_button_content_description"
-                            android:onClick="@{(view) -> viewModel.createDateOnClick(buyDateEditText, buyDateClearImageButton, view)}"
+                            android:onClick="@{(view) -> imageButtonActions.pickDate(view, buyDateEditText, buyDateClearImageButton)}"
                             android:src="@drawable/ic_date_range_white_42dp" />
 
                         <!-- Set this to RED if has date, else set to very light gray -->
@@ -344,7 +347,7 @@
                             android:layout_gravity="center"
                             android:contentDescription="@string/game_add_edit_clear_image_button_content_description"
                             android:clickable="@{(viewModel.selectedGame.boughtDate != null)}"
-                            android:onClick="@{(view) -> viewModel.clearDateOnClick(buyDateEditText, view)}"
+                            android:onClick="@{(view) -> imageButtonActions.clearEditText(view, buyDateEditText)}"
                             android:src="@drawable/ic_cancel_white_32dp" />
 
                     </LinearLayout>

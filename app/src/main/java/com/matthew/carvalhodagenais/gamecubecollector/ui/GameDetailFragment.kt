@@ -1,21 +1,17 @@
 package com.matthew.carvalhodagenais.gamecubecollector.ui
 
-import android.app.AlertDialog
 import android.content.DialogInterface
 import android.os.Bundle
 import android.view.*
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.matthew.carvalhodagenais.gamecubecollector.MainActivity
 import com.matthew.carvalhodagenais.gamecubecollector.R
-import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Game
-import com.matthew.carvalhodagenais.gamecubecollector.databinders.ImageButtonActions
+import com.matthew.carvalhodagenais.gamecubecollector.viewactions.ImageButtonActions
 import com.matthew.carvalhodagenais.gamecubecollector.databinding.FragmentGameDetailBinding
 import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.GameDetailViewModel
-import kotlinx.android.synthetic.main.fragment_game_detail.*
 
 class GameDetailFragment: Fragment() {
 
@@ -39,7 +35,8 @@ class GameDetailFragment: Fragment() {
         ).apply {
             this.lifecycleOwner = this@GameDetailFragment
             this.viewModel = detailViewModel
-            this.imageButtonActions = ImageButtonActions()
+            this.imageButtonActions =
+                ImageButtonActions()
         }
         setHasOptionsMenu(true)
         return binding.root
