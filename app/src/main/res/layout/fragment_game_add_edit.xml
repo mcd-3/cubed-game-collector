@@ -237,6 +237,8 @@
                             android:layout_gravity="center"
                             android:layout_marginStart="@dimen/medium"
                             android:layout_marginEnd="@dimen/medium"
+                            android:backgroundTint="?android:attr/colorAccent"
+                            android:foreground="?attr/selectableItemBackground"
                             android:contentDescription="@string/game_add_edit_calendar_image_button_content_description"
                             android:onClick="@{(view) -> imageButtonActions.pickDate(view, releaseDateEditText, releaseDateClearImageButton)}"
                             android:src="@drawable/ic_date_range_white_42dp" />
@@ -335,6 +337,8 @@
                             android:layout_marginStart="@dimen/medium"
                             android:layout_marginEnd="@dimen/medium"
                             android:contentDescription="@string/game_add_edit_calendar_image_button_content_description"
+                            android:backgroundTint="?android:attr/colorAccent"
+                            android:foreground="?attr/selectableItemBackground"
                             android:onClick="@{(view) -> imageButtonActions.pickDate(view, buyDateEditText, buyDateClearImageButton)}"
                             android:src="@drawable/ic_date_range_white_42dp" />
 
