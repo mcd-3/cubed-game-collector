@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- TODO: Follow Best Practices -->
     <dimen name="very_small">4dp</dimen>
     <dimen name="slightly_small">6dp</dimen>
     <dimen name="small">8dp</dimen>
@@ -18,10 +17,6 @@
     <dimen name="extra_medium_text">20sp</dimen>
 
     <!-- Image View and ImageButton View -->
-    <dimen name="game_item_cover_art_margin_start">4dp</dimen>
-    <dimen name="game_item_cover_art_margin_end">4dp</dimen>
-    <dimen name="game_item_cover_art_margin_top">4dp</dimen>
-    <dimen name="game_item_cover_art_margin_bottom">4dp</dimen>
     <dimen name="favourite_button_margin_end">12dp</dimen>
     <dimen name="favourite_button_margin_top">12dp</dimen>
     <dimen name="details_cover_art_padding_top">16dp</dimen>
@@ -37,10 +32,6 @@
     <dimen name="game_detail_title_margin_start">32dp</dimen>
     <dimen name="game_detail_title_margin_end">32dp</dimen>
 
-    <!-- Linear Layout -->
-    <dimen name="region_margin_top">16dp</dimen>
-    <dimen name="details_game_info_margin_bottom">16dp</dimen>
-    <dimen name="details_game_info_padding_bottom">24dp</dimen>
 
     <!-- Navigation Menu -->
     <dimen name="navigation_header_height">156dp</dimen>

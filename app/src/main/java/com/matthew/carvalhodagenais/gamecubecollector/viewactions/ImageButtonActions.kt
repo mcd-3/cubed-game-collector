@@ -96,7 +96,7 @@ class ImageButtonActions {
      */
     fun clearEditText(button: View, editText: EditText) {
         try {
-            (editText as EditText).setText(editText.context.getString(R.string.date_default))
+            editText.setText(editText.context.getString(R.string.date_default))
             (button as ImageButton).isClickable = false
         } catch (e: ClassCastException) {
             Toast.makeText(

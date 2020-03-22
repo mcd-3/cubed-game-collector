@@ -18,10 +18,10 @@
             android:layout_width="@dimen/game_item_cover_art_width"
             android:layout_height="@dimen/game_item_cover_art_height"
             android:layout_weight="1.5"
-            android:layout_marginStart="@dimen/game_item_cover_art_margin_start"
-            android:layout_marginEnd="@dimen/game_item_cover_art_margin_end"
-            android:layout_marginTop="@dimen/game_item_cover_art_margin_top"
-            android:layout_marginBottom="@dimen/game_item_cover_art_margin_bottom"
+            android:layout_marginStart="@dimen/very_small"
+            android:layout_marginEnd="@dimen/very_small"
+            android:layout_marginTop="@dimen/very_small"
+            android:layout_marginBottom="@dimen/very_small"
             android:contentDescription="@string/game_list_image_view_content_description" />
 
         <!-- Game Info -->

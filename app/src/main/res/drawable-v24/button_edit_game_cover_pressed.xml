@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:height="212dp"
+        android:width="128dp"
+        android:drawable="@drawable/edit_game_cover_pressed" />
+    <item
+        android:height="48dp"
+        android:width="48dp"
+        android:gravity="center"
+        android:drawable="@drawable/ic_edit_grey_24dp" />
+</layer-list>
