@@ -2,10 +2,6 @@ package com.matthew.carvalhodagenais.gamecubecollector
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.MenuItem
-import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.core.view.GravityCompat
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -14,16 +10,17 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.GameDetailViewModel
 import com.matthew.carvalhodagenais.gamecubecollector.factories.GameViewModelFactory
+import com.matthew.carvalhodagenais.gamecubecollector.global.ImageViewBitmapChanger
 import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.GameAddEditViewModel
 import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.GameListViewModel
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_game_add_edit.*
 
 class MainActivity : AppCompatActivity(){//, NavigationView.OnNavigationItemSelectedListener {
 
     private lateinit var gameDetailViewModel: GameDetailViewModel
     private lateinit var gameListViewModel: GameListViewModel
     private lateinit var gameAddEditViewModel: GameAddEditViewModel
-
     private lateinit var appBarConfig: AppBarConfiguration
 
     override fun onCreate(savedInstanceState: Bundle?) {

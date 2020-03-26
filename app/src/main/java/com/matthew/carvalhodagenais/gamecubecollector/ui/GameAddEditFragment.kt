@@ -48,6 +48,7 @@ class GameAddEditFragment: Fragment() {
             this.lifecycleOwner = this@GameAddEditFragment
             this.viewModel = addEditViewModel
             this.imageButtonActions = ImageButtonActions()
+            this.navController = findNavController()
         }
         binding.setReleaseDateEditText(binding.releaseDateEditText)
         binding.setBuyDateEditText(binding.buyDateEditText)

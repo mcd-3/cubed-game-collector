@@ -5,6 +5,9 @@
 
     <data>
         <variable
+            name="navController"
+            type="androidx.navigation.NavController" />
+        <variable
             name="imageButtonActions"
             type="com.matthew.carvalhodagenais.gamecubecollector.viewactions.ImageButtonActions" />
         <variable
@@ -101,6 +104,7 @@
                         android:focusable="true"
                         android:clickable="true"
                         android:src="@drawable/custom_edit_game_cover_button"
+                        android:onClick="@{() -> navController.navigate(@id/imageSelectDialogFragment)}"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"

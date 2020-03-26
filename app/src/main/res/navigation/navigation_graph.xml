@@ -43,5 +43,12 @@
         <action
             android:id="@+id/action_gameAddEditFragment_to_gameListFragment"
             app:destination="@id/nav_games" />
+        <action
+            android:id="@+id/action_gameAddEditFragment_to_imageSelectDialogFragment"
+            app:destination="@id/imageSelectDialogFragment" />
     </fragment>
+    <dialog
+        android:id="@+id/imageSelectDialogFragment"
+        android:name="com.matthew.carvalhodagenais.gamecubecollector.ui.ImageSelectDialogFragment"
+        android:label="ImageSelectDialogFragment" />
 </navigation>

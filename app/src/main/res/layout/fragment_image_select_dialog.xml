@@ -1,17 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+    </data>
 
     <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/camera_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="true"
+            android:clickable="true"
+            android:background="?attr/selectableItemBackground"
+            android:paddingStart="@dimen/large"
+            android:paddingEnd="@dimen/medium"
+            android:paddingTop="@dimen/medium"
+            android:paddingBottom="@dimen/medium"
+            android:drawableStart="@drawable/ic_camera_grey_64dp"
+            android:drawablePadding="@dimen/large"
+            style="@style/TextAppearance.AppCompat.Large"
+            android:gravity="center_vertical"
+            android:text="Camera"/>
 
+        <TextView
+            android:id="@+id/gallery_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="true"
+            android:clickable="true"
+            android:background="?attr/selectableItemBackground"
+            android:paddingStart="@dimen/large"
+            android:paddingEnd="@dimen/medium"
+            android:paddingTop="@dimen/medium"
+            android:paddingBottom="@dimen/medium"
+            android:drawableStart="@drawable/ic_image_grey_64dp"
+            android:drawablePadding="@dimen/large"
+            style="@style/TextAppearance.AppCompat.Large"
+            android:gravity="center_vertical"
+            android:text="Gallery"/>
     </LinearLayout>
 
-</LinearLayout>
+</layout>

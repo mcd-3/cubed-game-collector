@@ -93,6 +93,9 @@
     <string name="toast_favourite">Favourited!</string>
     <string name="toast_no_title_warning">Enter a title</string>
     <string name="toast_game_saved">Game Saved!</string>
+    <string name="no_camera">No camera</string>
+    <string name="camera_cancelled">Camera cancelled</string>
+    <string name="gallery_cancelled">Gallery cancelled</string>
 
     <!-- Drawer Layout Things -->
     <string name="drawer_layout_open">Open</string>
