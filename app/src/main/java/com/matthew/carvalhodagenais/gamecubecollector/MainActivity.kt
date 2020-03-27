@@ -1,7 +1,9 @@
 package com.matthew.carvalhodagenais.gamecubecollector
 
+import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -10,13 +12,13 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.GameDetailViewModel
 import com.matthew.carvalhodagenais.gamecubecollector.factories.GameViewModelFactory
-import com.matthew.carvalhodagenais.gamecubecollector.global.ImageViewBitmapChanger
+import com.matthew.carvalhodagenais.gamecubecollector.ui.ImageSelectDialogFragment
 import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.GameAddEditViewModel
 import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.GameListViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_game_add_edit.*
 
-class MainActivity : AppCompatActivity(){//, NavigationView.OnNavigationItemSelectedListener {
+class MainActivity : AppCompatActivity(), ImageSelectDialogFragment.ImageSelectDialogInterface{//, NavigationView.OnNavigationItemSelectedListener {
 
     private lateinit var gameDetailViewModel: GameDetailViewModel
     private lateinit var gameListViewModel: GameListViewModel
@@ -81,4 +83,10 @@ class MainActivity : AppCompatActivity(){//, NavigationView.OnNavigationItemSele
         gameAddEditViewModel = ViewModelProvider(this, GameViewModelFactory(this.application))
             .get(GameAddEditViewModel::class.java)
     }
+
+    override fun changeImageBitmap(bitmap: Bitmap) {
+        cover_art_image_view?.setImageBitmap(bitmap)
+    }
+
+
 }

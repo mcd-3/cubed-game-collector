@@ -1,6 +1,7 @@
 package com.matthew.carvalhodagenais.gamecubecollector.viewmodels
 
 import android.app.Application
+import android.graphics.Bitmap
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -62,7 +63,8 @@ class GameAddEditViewModel(application: Application): AndroidViewModel(applicati
         hasManual: Boolean,
         isFavouriteTag: String,
         regionCode: String,
-        conditionCode: String
+        conditionCode: String,
+        bitmap: Bitmap
     ) = viewModelScope.launch {
         // Get the region ID
         var regionId: Int? = null
