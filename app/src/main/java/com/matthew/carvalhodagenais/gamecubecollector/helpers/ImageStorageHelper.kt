@@ -15,19 +15,34 @@ class ImageStorageHelper {
 
         private const val IMAGE_DIRECTORY = "coverArt"
 
-        var lastSavedImageName: String = ""
-
         const val IMAGE_PATH = "data/data/com.matthew.carvalhodagenais.gamecubecollector/" +
                 "app_${IMAGE_DIRECTORY}/"
 
+        /**
+         * Returns the absolute path of an image
+         *
+         * @return String
+         */
         fun getImageWithPath(name: String): String {
             return IMAGE_PATH + name
         }
 
+        /**
+         * Generates a unique image name using UUID
+         *
+         * @return String
+         */
         fun generateUniqueImageName(): String {
             return "${UUID.randomUUID()}_cover.png"
         }
 
+        /**
+         * Saves a bitmap image to the internal storage
+         *
+         * @param context
+         * @param bitmap
+         * @param name
+         */
         suspend fun save(context: Context, bitmap: Bitmap, name: String) = coroutineScope {
             val contextWrapper = ContextWrapper(context.applicationContext)
             val directory: File = contextWrapper.getDir(IMAGE_DIRECTORY, Context.MODE_PRIVATE)
