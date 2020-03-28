@@ -2,6 +2,7 @@ package com.matthew.carvalhodagenais.gamecubecollector.ui
 
 import android.os.Bundle
 import android.view.*
+import androidx.core.graphics.drawable.toBitmap
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -98,7 +99,8 @@ class GameAddEditFragment: Fragment() {
                     manual_checkbox.isChecked,
                     favourite_image_button.tag.toString(),
                     region_spinner.selectedItem.toString().trim(),
-                    condition_spinner.selectedItem.toString().trim()
+                    condition_spinner.selectedItem.toString().trim(),
+                    cover_art_image_view.drawable.toBitmap()
                 )
                 findNavController().navigate(R.id.action_gameAddEditFragment_to_gameListFragment)
             }

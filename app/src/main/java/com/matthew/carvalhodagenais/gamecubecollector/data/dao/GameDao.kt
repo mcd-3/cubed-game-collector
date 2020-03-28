@@ -16,6 +16,9 @@ interface GameDao {
     @Delete
     suspend fun delete(game: Game)
 
+    @Query("SELECT * FROM game_table WHERE id = :id")
+    fun getGameById(id: Int): LiveData<Game>
+
     @Query("SELECT * FROM game_table WHERE title = :title")
     fun getGamesByName(title: String): LiveData<List<Game>>
 

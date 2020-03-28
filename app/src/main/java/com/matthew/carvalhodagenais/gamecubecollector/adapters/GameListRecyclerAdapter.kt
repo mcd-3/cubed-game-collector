@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.matthew.carvalhodagenais.gamecubecollector.R
 import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Game
+import com.matthew.carvalhodagenais.gamecubecollector.helpers.ImageStorageHelper
 import kotlinx.android.synthetic.main.game_item.view.*
 
 class GameListRecyclerAdapter: ListAdapter<Game, GameListRecyclerAdapter.GameHolder>(DIFF_CALLBACK) {
@@ -51,10 +52,10 @@ class GameListRecyclerAdapter: ListAdapter<Game, GameListRecyclerAdapter.GameHol
             else holder.parentView.context.getString(R.string.no_region_available)
 
         // Place appropriate cover art
-        if (game.imagePath != "" && game.imagePath != null) {
+        if (game.imageName != "" && game.imageName != null) {
             Glide
                 .with(holder.parentView)
-                .load(game.imagePath)
+                .load(ImageStorageHelper.getImageWithPath(game.imageName.toString()))
                 .into(holder.coverImageView)
         } else {
             Glide

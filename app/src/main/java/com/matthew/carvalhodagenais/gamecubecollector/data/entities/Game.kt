@@ -38,5 +38,5 @@ data class Game(
     var isFavourite: Boolean? = false
 
     @ColumnInfo(name = "image_path")
-    var imagePath: String? = ""
+    var imageName: String? = ""
 }

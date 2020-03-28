@@ -32,6 +32,10 @@ class GameRepository(application: Application) {
         gameDao.delete(game)
     }
 
+    fun getGameById(id: Int): LiveData<Game> {
+        return gameDao.getGameById(id)
+    }
+
     fun getAllGames(): LiveData<List<Game>> {
         return allGames
     }

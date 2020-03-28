@@ -12,6 +12,7 @@ import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Type
 import com.matthew.carvalhodagenais.gamecubecollector.data.repositories.ConditionRepository
 import com.matthew.carvalhodagenais.gamecubecollector.data.repositories.RegionRepository
 import com.matthew.carvalhodagenais.gamecubecollector.helpers.DateHelper
+import com.matthew.carvalhodagenais.gamecubecollector.helpers.ImageStorageHelper
 import com.matthew.carvalhodagenais.gamecubecollector.helpers.StringHelper
 import com.matthew.carvalhodagenais.gamecubecollector.ui.GameAddEditFragment
 import kotlinx.coroutines.async
@@ -27,10 +28,16 @@ class GameAddEditViewModel(application: Application): AndroidViewModel(applicati
 
     fun insert(game: Game) = viewModelScope.launch {
         gameRepository.insertGame(game)
+        clearCurrentlySelectedGame()
     }
 
     fun update(game: Game) = viewModelScope.launch {
+        if (selectedGame.value?.imageName != "") {
+            ImageStorageHelper.deleteImage(
+                ImageStorageHelper.IMAGE_PATH, selectedGame.value?.imageName!!)
+        }
         gameRepository.updateGame(game)
+        clearCurrentlySelectedGame()
     }
 
     fun setSelectedGame(game: Game) {
@@ -41,7 +48,7 @@ class GameAddEditViewModel(application: Application): AndroidViewModel(applicati
         return selectedGame.value
     }
 
-    fun clearCurrentlySelectedGame() {
+    private fun clearCurrentlySelectedGame() {
         selectedGame = MutableLiveData<Game>()
     }
 
@@ -81,6 +88,13 @@ class GameAddEditViewModel(application: Application): AndroidViewModel(applicati
         }
         getConditionIdOperation.await()
 
+        val name = ImageStorageHelper.generateUniqueImageName()
+        ImageStorageHelper.save(
+            getApplication<Application>().applicationContext,
+            bitmap,
+            name
+        )
+
         val game = Game(
             title =  title,
             publishers = StringHelper.setNullIfEmptyString(publisher),
@@ -95,6 +109,7 @@ class GameAddEditViewModel(application: Application): AndroidViewModel(applicati
         )
         game.isFavourite =
             (isFavouriteTag == getApplication<Application>().resources.getString(R.string.star_filled_tag))
+        game.imageName = name
 
         if (requestInt ==  GameAddEditFragment.EDIT_REQUEST) { // Edit the game
             game.id = selectedGame.value!!.id
@@ -102,7 +117,6 @@ class GameAddEditViewModel(application: Application): AndroidViewModel(applicati
         } else { // Add the game
             insert(game)
         }
-        clearCurrentlySelectedGame()
     }
 
     /**
