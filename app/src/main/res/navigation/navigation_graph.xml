@@ -12,10 +12,18 @@
         tools:layout="@layout/fragment_game_list" >
         <action
             android:id="@+id/action_gameListFragment_to_gameDetailFragment"
-            app:destination="@id/gameDetailFragment" />
+            app:destination="@id/gameDetailFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
         <action
             android:id="@+id/action_gameListFragment_to_gameAddEditFragment"
-            app:destination="@id/gameAddEditFragment" />
+            app:destination="@id/gameAddEditFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
     </fragment>
     <fragment
         android:id="@+id/gameDetailFragment"
@@ -23,10 +31,18 @@
         android:label="GameDetailFragment" >
         <action
             android:id="@+id/action_gameDetailFragment_to_gameAddEditFragment"
-            app:destination="@id/gameAddEditFragment" />
+            app:destination="@id/gameAddEditFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
         <action
             android:id="@+id/action_gameDetailFragment_to_gameListFragment"
-            app:destination="@id/nav_games" />
+            app:destination="@id/nav_games"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
     </fragment>
     <fragment
         android:id="@id/nav_settings"
@@ -42,10 +58,18 @@
             android:defaultValue="1" />
         <action
             android:id="@+id/action_gameAddEditFragment_to_gameListFragment"
-            app:destination="@id/nav_games" />
+            app:destination="@id/nav_games"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
         <action
             android:id="@+id/action_gameAddEditFragment_to_imageSelectDialogFragment"
-            app:destination="@id/imageSelectDialogFragment" />
+            app:destination="@id/imageSelectDialogFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
     </fragment>
     <dialog
         android:id="@+id/imageSelectDialogFragment"
