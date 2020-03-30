@@ -25,7 +25,7 @@
     </style>
 
     <style name="CubedDarkTheme" parent="Theme.MaterialComponents.NoActionBar">
-        <item name="colorPrimary">@color/purple</item>
+        <item name="colorPrimary">@color/deep_purple</item>
         <item name="colorPrimaryDark">@color/dark_purple</item>
         <item name="colorAccent">@color/light_purple</item>
         <item name="android:navigationBarColor">@color/dark_grey</item>
