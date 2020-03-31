@@ -6,11 +6,13 @@ import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.matthew.carvalhodagenais.gamecubecollector.MainActivity
 import com.matthew.carvalhodagenais.gamecubecollector.R
 import com.matthew.carvalhodagenais.gamecubecollector.adapters.GameListRecyclerAdapter
 import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Game
+import com.matthew.carvalhodagenais.gamecubecollector.helpers.ItemTouchHelperGenerator
 import kotlinx.android.synthetic.main.fragment_game_list.*
 
 class GameListFragment : Fragment() {
@@ -49,6 +51,9 @@ class GameListFragment : Fragment() {
                 recyclerAdapter.setSearchableList(it)
                 recyclerAdapter.setItemOnClickListener(itemOnClick)
         })
+
+        // Make each item slide
+        ItemTouchHelper(ItemTouchHelperGenerator().generate()).attachToRecyclerView(game_list_recycler_view)
     }
 
     override fun onPrepareOptionsMenu(menu: Menu) {
