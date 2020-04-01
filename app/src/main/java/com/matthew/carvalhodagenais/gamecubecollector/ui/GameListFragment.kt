@@ -77,6 +77,7 @@ class GameListFragment : Fragment() {
                 GameListFragmentDirections.actionGameListFragmentToGameAddEditFragment(
                     GameAddEditFragment.ADD_REQUEST
                 )
+            (activity as MainActivity).getGameAddEditViewModel().clearCurrentlySelectedGame()
             findNavController().navigate(action)
             true
         }

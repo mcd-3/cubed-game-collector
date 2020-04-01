@@ -48,7 +48,7 @@ class GameAddEditViewModel(application: Application): AndroidViewModel(applicati
         return selectedGame.value
     }
 
-    private fun clearCurrentlySelectedGame() {
+    fun clearCurrentlySelectedGame() {
         selectedGame = MutableLiveData<Game>()
     }
 
