@@ -8,7 +8,7 @@
     <fragment
         android:id="@id/nav_games"
         android:name="com.matthew.carvalhodagenais.gamecubecollector.ui.GameListFragment"
-        android:label="fragment_game_list"
+        android:label="@string/navigation_game_list_title"
         tools:layout="@layout/fragment_game_list" >
         <action
             android:id="@+id/action_gameListFragment_to_gameDetailFragment"
@@ -28,7 +28,7 @@
     <fragment
         android:id="@+id/gameDetailFragment"
         android:name="com.matthew.carvalhodagenais.gamecubecollector.ui.GameDetailFragment"
-        android:label="GameDetailFragment" >
+        android:label="@string/navigation_game_details_title" >
         <action
             android:id="@+id/action_gameDetailFragment_to_gameAddEditFragment"
             app:destination="@id/gameAddEditFragment"
@@ -47,11 +47,10 @@
     <fragment
         android:id="@id/nav_settings"
         android:name="com.matthew.carvalhodagenais.gamecubecollector.ui.SettingsFragment"
-        android:label="SettingsFragment" />
+        android:label="@string/navigation_settings" />
     <fragment
         android:id="@+id/gameAddEditFragment"
-        android:name="com.matthew.carvalhodagenais.gamecubecollector.ui.GameAddEditFragment"
-        android:label="GameAddEditFragment" >
+        android:name="com.matthew.carvalhodagenais.gamecubecollector.ui.GameAddEditFragment">
         <argument
             android:name="ADD_EDIT_REQUEST"
             app:argType="integer"

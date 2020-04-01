@@ -13,6 +13,7 @@ import com.matthew.carvalhodagenais.gamecubecollector.databinding.FragmentGameAd
 import com.matthew.carvalhodagenais.gamecubecollector.helpers.DateHelper
 import com.matthew.carvalhodagenais.gamecubecollector.viewactions.ImageButtonActions
 import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.GameAddEditViewModel
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_game_add_edit.*
 import kotlinx.android.synthetic.main.fragment_game_add_edit.favourite_image_button
 
@@ -56,6 +57,14 @@ class GameAddEditFragment: Fragment() {
         binding.setReleaseDateClearImageButton(binding.releaseDateClearImageButton)
         binding.setBuyDateClearImageButton(binding.buyDateClearImageButton)
         setHasOptionsMenu(true)
+
+        // Set the title
+        if (GameAddEditFragmentArgs.fromBundle(arguments!!).ADDEDITREQUEST == EDIT_REQUEST) {
+            activity?.toolbar?.title = getString(R.string.navigation_game_edit_title)
+        } else {
+            activity?.toolbar?.title = getString(R.string.navigation_game_add_title)
+        }
+
         return binding.root
     }
 

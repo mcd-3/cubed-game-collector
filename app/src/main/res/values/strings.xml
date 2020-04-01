@@ -112,4 +112,11 @@
     <string name="ith_favourite">Favourite</string>
     <string name="ith_delete">Delete</string>
 
+    <!-- Navigation Component Labels -->
+    <string name="navigation_game_list_title">My Games</string>
+    <string name="navigation_game_details_title">Details</string>
+    <string name="navigation_game_edit_title">Edit Game</string>
+    <string name="navigation_game_add_title">Add Game</string>
+    <string name="navigation_settings">Settings</string>
+
 </resources>
