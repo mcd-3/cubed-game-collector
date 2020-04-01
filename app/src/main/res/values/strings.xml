@@ -108,4 +108,8 @@
     <!-- Empty -->
     <string name="empty" />
 
+    <!-- RecyclerView ItemTouchHelper Labels -->
+    <string name="ith_favourite">Favourite</string>
+    <string name="ith_delete">Delete</string>
+
 </resources>

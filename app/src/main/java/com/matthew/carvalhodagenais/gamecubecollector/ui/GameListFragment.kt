@@ -53,7 +53,7 @@ class GameListFragment : Fragment() {
         })
 
         // Make each item slide
-        ItemTouchHelper(ItemTouchHelperGenerator().generate()).attachToRecyclerView(game_list_recycler_view)
+        ItemTouchHelper(ItemTouchHelperGenerator(context!!).generate()).attachToRecyclerView(game_list_recycler_view)
     }
 
     override fun onPrepareOptionsMenu(menu: Menu) {

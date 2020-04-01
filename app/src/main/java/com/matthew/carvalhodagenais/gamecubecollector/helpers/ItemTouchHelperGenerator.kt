@@ -1,11 +1,14 @@
 package com.matthew.carvalhodagenais.gamecubecollector.helpers
 
+import android.content.Context
 import android.graphics.Canvas
+import android.graphics.Color
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.matthew.carvalhodagenais.gamecubecollector.R
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator
 
-class ItemTouchHelperGenerator {
+class ItemTouchHelperGenerator(context: Context) {
 
     fun generate(): ItemTouchHelper.SimpleCallback {
         return recyclerViewTouchHelper
@@ -16,7 +19,7 @@ class ItemTouchHelperGenerator {
      * and create background/child views under each item
      */
     private var recyclerViewTouchHelper = object: ItemTouchHelper.SimpleCallback(
-        0,ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
+        0, ItemTouchHelper.RIGHT) {
         override fun onMove(
             recyclerView: RecyclerView,
             viewHolder: RecyclerView.ViewHolder,
@@ -37,6 +40,20 @@ class ItemTouchHelperGenerator {
             actionState: Int,
             isCurrentlyActive: Boolean
         ) {
+            RecyclerViewSwipeDecorator.Builder(
+                    c,
+                    recyclerView,
+                    viewHolder,
+                    dX,
+                    dY,
+                    actionState,
+                    isCurrentlyActive
+                ).addSwipeRightBackgroundColor(context.getColor(R.color.red))
+                .setSwipeRightLabelColor(Color.WHITE)
+                .addSwipeRightLabel(context.getString(R.string.ith_delete))
+                .addSwipeRightActionIcon(R.drawable.ic_delete_white_32dp)
+                .create()
+                .decorate()
             super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
         }
     }
