@@ -75,6 +75,22 @@ class GameListRecyclerAdapter: ListAdapter<Game, GameListRecyclerAdapter.GameHol
         return GameHolder(itemView)
     }
 
+    override fun getFilter(): Filter {
+        return searchFilter
+    }
+
+    fun setItemOnClickListener(listener: ItemOnClickListener) {
+        this.listener = listener
+    }
+
+    fun setSearchableList(list: List<Game>) {
+        searchableList = list
+    }
+
+    fun getGame(position: Int): Game {
+        return getItem(position)
+    }
+
     inner class GameHolder(view: View): RecyclerView.ViewHolder(view) {
         init {
             view.setOnClickListener {
@@ -95,18 +111,6 @@ class GameListRecyclerAdapter: ListAdapter<Game, GameListRecyclerAdapter.GameHol
 
     interface ItemOnClickListener {
         fun onItemClick(game: Game)
-    }
-
-    fun setItemOnClickListener(listener: ItemOnClickListener) {
-        this.listener = listener
-    }
-
-    fun setSearchableList(list: List<Game>) {
-        searchableList = list
-    }
-
-    override fun getFilter(): Filter {
-        return searchFilter
     }
 
     private var searchFilter = object: Filter() {

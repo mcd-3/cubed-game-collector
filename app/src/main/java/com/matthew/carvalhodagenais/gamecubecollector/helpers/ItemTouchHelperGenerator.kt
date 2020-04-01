@@ -6,11 +6,18 @@ import android.graphics.Color
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.matthew.carvalhodagenais.gamecubecollector.R
+import com.matthew.carvalhodagenais.gamecubecollector.adapters.GameListRecyclerAdapter
+import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.GameListViewModel
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator
 
 class ItemTouchHelperGenerator(context: Context) {
 
-    fun generate(): ItemTouchHelper.SimpleCallback {
+    private lateinit var recyclerAdapter: GameListRecyclerAdapter
+    private lateinit var gameListViewModel: GameListViewModel
+
+    fun generate(adapter: GameListRecyclerAdapter, viewModel: GameListViewModel): ItemTouchHelper.SimpleCallback {
+        recyclerAdapter = adapter
+        gameListViewModel = viewModel
         return recyclerViewTouchHelper
     }
 
@@ -24,11 +31,15 @@ class ItemTouchHelperGenerator(context: Context) {
             recyclerView: RecyclerView,
             viewHolder: RecyclerView.ViewHolder,
             target: RecyclerView.ViewHolder
-        ): Boolean {
-            return false
-        }
+        ): Boolean = false
 
         override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+            if (direction == ItemTouchHelper.RIGHT) {
+                //Get game from viewholder and delete
+                gameListViewModel.delete(recyclerAdapter.getGame(viewHolder.adapterPosition)).also {
+                    recyclerAdapter.notifyDataSetChanged()
+                }
+            }
         }
 
         override fun onChildDraw(
