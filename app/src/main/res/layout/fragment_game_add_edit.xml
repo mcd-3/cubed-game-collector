@@ -91,7 +91,7 @@
                         android:id="@+id/cover_art_image_view"
                         android:layout_width="128dp"
                         android:layout_height="212dp"
-                        android:src="@drawable/no_art"
+                        bind:game="@{viewModel.selectedGame}"
                         android:contentDescription="@string/game_add_edit_image_view_content_description"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"

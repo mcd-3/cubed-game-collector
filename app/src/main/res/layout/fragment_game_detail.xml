@@ -75,7 +75,7 @@
                         android:paddingTop="@dimen/details_cover_art_padding_top"
                         android:paddingBottom="@dimen/details_cover_art_padding_bottom"
                         android:contentDescription="@string/game_detail_image_view_content_description"
-                        app:srcCompat="@drawable/no_art" />
+                        bind:game="@{viewModel.selectedGame}" />
 
                     <ImageButton
                         android:id="@+id/favourite_image_button"

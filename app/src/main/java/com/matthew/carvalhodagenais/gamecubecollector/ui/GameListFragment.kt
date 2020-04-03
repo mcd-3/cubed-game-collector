@@ -46,7 +46,7 @@ class GameListFragment : Fragment() {
         }
 
         (activity as MainActivity).getGameListViewModel().getAllGames()
-            .observe(viewLifecycleOwner, Observer<List<Game>> {
+            .observe(viewLifecycleOwner, Observer {
                 recyclerAdapter.submitList(it)
                 recyclerAdapter.setSearchableList(it)
                 recyclerAdapter.setItemOnClickListener(itemOnClick)
