@@ -75,7 +75,7 @@
     <fragment
         android:id="@id/nav_favourites"
         android:name="com.matthew.carvalhodagenais.gamecubecollector.ui.FavouriteGameListFragment"
-        android:label="FavouriteGameListFragment" />
+        android:label="@string/navigation_favourites" />
     <dialog
         android:id="@+id/imageSelectDialogFragment"
         android:name="com.matthew.carvalhodagenais.gamecubecollector.ui.ImageSelectDialogFragment"

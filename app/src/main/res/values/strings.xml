@@ -117,6 +117,7 @@
     <string name="navigation_game_details_title">Details</string>
     <string name="navigation_game_edit_title">Edit Game</string>
     <string name="navigation_game_add_title">Add Game</string>
+    <string name="navigation_favourites">Favourites</string>
     <string name="navigation_settings">Settings</string>
 
 </resources>
