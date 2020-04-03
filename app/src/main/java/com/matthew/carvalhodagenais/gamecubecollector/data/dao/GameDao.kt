@@ -22,6 +22,9 @@ interface GameDao {
     @Query("SELECT * FROM game_table WHERE title = :title")
     fun getGamesByName(title: String): LiveData<List<Game>>
 
+    @Query("SELECT * FROM game_table WHERE favourite = 1")
+    fun getAllFavouriteGames(): LiveData<List<Game>>
+
     @Query("SELECT * FROM game_table")
     fun getAllGames(): LiveData<List<Game>>
 }

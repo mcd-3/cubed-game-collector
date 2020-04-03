@@ -40,4 +40,8 @@ class GameRepository(application: Application) {
         return allGames
     }
 
+    fun getAllFavouriteGames(): LiveData<List<Game>> {
+        return gameDao.getAllFavouriteGames()
+    }
+
 }

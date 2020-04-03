@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_marginStart="@dimen/small"
     android:layout_marginEnd="@dimen/small"
@@ -80,8 +79,6 @@
                 android:text="@string/no_region_available"/>
 
         </RelativeLayout>
-
-        <!-- Favourite Star -->
     </LinearLayout>
 
 </com.google.android.material.card.MaterialCardView>

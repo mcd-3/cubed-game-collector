@@ -17,6 +17,10 @@ class GameListViewModel(application: Application): AndroidViewModel(application)
         return repository.getAllGames()
     }
 
+    fun getAllFavouriteGames(): LiveData<List<Game>> {
+        return repository.getAllFavouriteGames()
+    }
+
     fun delete(game: Game) = viewModelScope.launch {  repository.deleteGame(game) }
 
 }
