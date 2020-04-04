@@ -29,6 +29,10 @@
         android:id="@+id/gameDetailFragment"
         android:name="com.matthew.carvalhodagenais.gamecubecollector.ui.GameDetailFragment"
         android:label="@string/navigation_game_details_title" >
+        <argument
+            android:name="FROM_FAVOURITE"
+            app:argType="integer"
+            android:defaultValue="0" />
         <action
             android:id="@+id/action_gameDetailFragment_to_gameAddEditFragment"
             app:destination="@id/gameAddEditFragment"
@@ -55,6 +59,10 @@
             android:name="ADD_EDIT_REQUEST"
             app:argType="integer"
             android:defaultValue="1" />
+        <argument
+            android:name="FROM_FAVOURITE"
+            app:argType="integer"
+            android:defaultValue="0" />
         <action
             android:id="@+id/action_gameAddEditFragment_to_gameListFragment"
             app:destination="@id/nav_games"
@@ -71,11 +79,18 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+        <action
+            android:id="@+id/action_gameAddEditFragment_to_favouriteGameListFragment"
+            app:destination="@id/nav_favourites" />
     </fragment>
     <fragment
         android:id="@id/nav_favourites"
         android:name="com.matthew.carvalhodagenais.gamecubecollector.ui.FavouriteGameListFragment"
-        android:label="@string/navigation_favourites" />
+        android:label="@string/navigation_favourites" >
+        <action
+            android:id="@+id/action_nav_favourites_to_gameDetailFragment"
+            app:destination="@id/gameDetailFragment" />
+    </fragment>
     <dialog
         android:id="@+id/imageSelectDialogFragment"
         android:name="com.matthew.carvalhodagenais.gamecubecollector.ui.ImageSelectDialogFragment"

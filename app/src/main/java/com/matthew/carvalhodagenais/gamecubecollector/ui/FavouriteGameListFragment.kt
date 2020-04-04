@@ -7,10 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.matthew.carvalhodagenais.gamecubecollector.MainActivity
 import com.matthew.carvalhodagenais.gamecubecollector.R
 import com.matthew.carvalhodagenais.gamecubecollector.adapters.GameListRecyclerAdapter
+import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Game
 import kotlinx.android.synthetic.main.fragment_game_list.*
 
 class FavouriteGameListFragment: Fragment() {
@@ -20,6 +22,7 @@ class FavouriteGameListFragment: Fragment() {
     companion object {
         const val FRAGMENT_TAG =
             "com.matthew.carvalhodagenais.gamecubecollector.ui.FavouriteGameListFragment"
+        const val FROM_FAVOURITE_REQUEST: Int = 1
         fun newInstance() =
             FavouriteGameListFragment()
     }
@@ -47,7 +50,7 @@ class FavouriteGameListFragment: Fragment() {
             .observe(viewLifecycleOwner, Observer {
                 recyclerAdapter.submitList(it)
                 recyclerAdapter.setSearchableList(it)
-                //recyclerAdapter.setItemOnClickListener(itemOnClick)
+                recyclerAdapter.setItemOnClickListener(itemOnClick)
             })
     }
 
@@ -56,7 +59,19 @@ class FavouriteGameListFragment: Fragment() {
         super.onPrepareOptionsMenu(menu)
     }
 
-
+    /**
+     * OnClick for each RecyclerView item.
+     * Changes the fragment to the game's details
+     */
+    private var itemOnClick = object: GameListRecyclerAdapter.ItemOnClickListener {
+        override fun onItemClick(game: Game) {
+            (activity as MainActivity).getGameDetailViewModel().setSelectedGame(game)
+            val action = FavouriteGameListFragmentDirections.actionNavFavouritesToGameDetailFragment(
+                FROM_FAVOURITE_REQUEST
+            )
+            findNavController().navigate(action)
+        }
+    }
 
 
 }

@@ -27,6 +27,7 @@ class GameAddEditFragment: Fragment() {
             "com.matthew.carvalhodagenais.gamecubecollector.ui.GameAddEditFragment"
         const val ADD_REQUEST: Int = 1
         const val EDIT_REQUEST: Int = 2
+        const val FROM_FAVOURITE_REQUEST: Int = 1
 
         fun newInstance(request: Int): GameAddEditFragment {
             val fragment =
@@ -111,7 +112,11 @@ class GameAddEditFragment: Fragment() {
                     condition_spinner.selectedItem.toString().trim(),
                     cover_art_image_view.drawable.toBitmap()
                 )
-                findNavController().navigate(R.id.action_gameAddEditFragment_to_gameListFragment)
+                if (GameAddEditFragmentArgs.fromBundle(arguments!!).FROMFAVOURITE == FROM_FAVOURITE_REQUEST) {
+                    findNavController().navigate(R.id.action_gameAddEditFragment_to_favouriteGameListFragment)
+                } else {
+                    findNavController().navigate(R.id.action_gameAddEditFragment_to_gameListFragment)
+                }
             }
             true
         }

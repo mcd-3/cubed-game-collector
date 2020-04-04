@@ -20,6 +20,7 @@ class GameDetailFragment: Fragment() {
     companion object {
         const val FRAGMENT_TAG =
             "com.matthew.carvalhodagenais.gamecubecollector.ui.GameDetailFragment"
+        const val FROM_FAVOURITE_REQUEST: Int = 1
         fun newInstance() =
             GameDetailFragment()
     }
@@ -50,9 +51,13 @@ class GameDetailFragment: Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when(item.itemId) {
         R.id.menu_edit -> {
+            val req =
+                if (GameDetailFragmentArgs.fromBundle(arguments!!).FROMFAVOURITE == FROM_FAVOURITE_REQUEST)
+                    1
+                else 2
             val action =
                 GameDetailFragmentDirections.actionGameDetailFragmentToGameAddEditFragment(
-                    GameAddEditFragment.EDIT_REQUEST
+                    GameAddEditFragment.EDIT_REQUEST, req
                 )
             (activity as MainActivity).getGameAddEditViewModel().setSelectedGame(
                 detailViewModel.getSelectedGame()!!
