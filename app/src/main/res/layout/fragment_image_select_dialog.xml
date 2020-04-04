@@ -11,6 +11,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <!-- This TextView is just for spacing purposes -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/medium" />
+
         <TextView
             android:id="@+id/camera_input"
             android:layout_width="match_parent"
@@ -26,7 +31,7 @@
             android:drawablePadding="@dimen/large"
             style="@style/TextAppearance.AppCompat.Large"
             android:gravity="center_vertical"
-            android:text="Camera"/>
+            android:text="@string/camera"/>
 
         <TextView
             android:id="@+id/gallery_input"
@@ -43,7 +48,7 @@
             android:drawablePadding="@dimen/large"
             style="@style/TextAppearance.AppCompat.Large"
             android:gravity="center_vertical"
-            android:text="Gallery"/>
+            android:text="@string/gallery"/>
     </LinearLayout>
 
 </layout>

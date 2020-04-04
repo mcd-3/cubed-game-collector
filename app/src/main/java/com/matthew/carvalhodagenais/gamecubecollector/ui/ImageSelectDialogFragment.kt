@@ -38,7 +38,7 @@ class ImageSelectDialogFragment: AppCompatDialogFragment() {
         val builder = MaterialAlertDialogBuilder(activity)
 
         builder.setView(binding.root)
-            .setTitle("Hello World")
+            .setTitle(getString(R.string.game_add_edit_change_image_title))
 
         return builder.create()
     }
