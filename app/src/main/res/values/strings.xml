@@ -70,6 +70,7 @@
     <string name="no_date_available">N.D</string>
     <string name="no_region_available" />
     <string name="no_publisher_available">No Publisher</string>
+    <string name="no_description_available">No Description</string>
 
     <!-- EditText Titles -->
     <string name="developer_title">Developer: </string>
@@ -121,6 +122,7 @@
     <string name="navigation_game_edit_title">Edit Game</string>
     <string name="navigation_game_add_title">Add Game</string>
     <string name="navigation_favourites">Favourites</string>
+    <string name="navigation_console_list_title">My Consoles</string>
     <string name="navigation_settings">Settings</string>
 
 </resources>

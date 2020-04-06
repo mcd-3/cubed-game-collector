@@ -10,9 +10,11 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.matthew.carvalhodagenais.gamecubecollector.factories.ConsoleViewModelFactory
 import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.GameDetailViewModel
 import com.matthew.carvalhodagenais.gamecubecollector.factories.GameViewModelFactory
 import com.matthew.carvalhodagenais.gamecubecollector.ui.ImageSelectDialogFragment
+import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.ConsoleListViewModel
 import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.GameAddEditViewModel
 import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.GameListViewModel
 import kotlinx.android.synthetic.main.activity_main.*
@@ -23,6 +25,7 @@ class MainActivity : AppCompatActivity(), ImageSelectDialogFragment.ImageSelectD
     private lateinit var gameDetailViewModel: GameDetailViewModel
     private lateinit var gameListViewModel: GameListViewModel
     private lateinit var gameAddEditViewModel: GameAddEditViewModel
+    private lateinit var consoleListViewModel: ConsoleListViewModel
     private lateinit var appBarConfig: AppBarConfiguration
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,7 +43,7 @@ class MainActivity : AppCompatActivity(), ImageSelectDialogFragment.ImageSelectD
         //Set NavigationDrawer
         val navController = findNavController(R.id.nav_host_fragment)
         appBarConfig = AppBarConfiguration(setOf(
-            R.id.nav_games, R.id.nav_favourites, R.id.nav_settings
+            R.id.nav_games, R.id.nav_favourites, R.id.nav_consoles, R.id.nav_settings
         ), main_activity_drawer_layout)
         setupActionBarWithNavController(navController, appBarConfig)
         main_activity_navigation_view.setupWithNavController(navController)
@@ -72,6 +75,13 @@ class MainActivity : AppCompatActivity(), ImageSelectDialogFragment.ImageSelectD
     }
 
     /**
+     * Gets the ConsoleListViewModel
+     */
+    fun getConsoleListViewModel(): ConsoleListViewModel {
+        return consoleListViewModel
+    }
+
+    /**
      * Initialises all the ViewModels associated with this activity. Each ViewModel will be used
      * in its respective Fragment
      */
@@ -82,6 +92,8 @@ class MainActivity : AppCompatActivity(), ImageSelectDialogFragment.ImageSelectD
         ).get(GameDetailViewModel::class.java)
         gameAddEditViewModel = ViewModelProvider(this, GameViewModelFactory(this.application))
             .get(GameAddEditViewModel::class.java)
+        consoleListViewModel = ViewModelProvider(this, ConsoleViewModelFactory(this.application))
+            .get(ConsoleListViewModel::class.java)
     }
 
     override fun changeImageBitmap(bitmap: Bitmap) {

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/small"
+    android:layout_marginEnd="@dimen/small"
+    android:layout_marginTop="@dimen/very_small">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- Cover Art -->
+        <ImageView
+            android:id="@+id/console_image_view"
+            android:layout_width="@dimen/very_large"
+            android:layout_height="@dimen/huge"
+            android:layout_weight="1.5"
+            android:layout_marginStart="@dimen/very_small"
+            android:layout_marginEnd="@dimen/very_small"
+            android:layout_marginTop="@dimen/very_small"
+            android:layout_marginBottom="@dimen/very_small"
+            android:contentDescription="@string/game_list_image_view_content_description" />
+
+        <!-- Game Info -->
+        <RelativeLayout
+            android:layout_weight="8"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+
+            <!-- Game info here-->
+            <TextView
+                android:id="@+id/title_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/small"
+                style="@style/TextAppearance.AppCompat.Large"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:text="@string/no_title_available"/>
+
+            <TextView
+                android:id="@+id/description_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/small"
+                android:layout_marginEnd="@dimen/small"
+                android:layout_marginBottom="@dimen/small"
+                android:layout_below="@id/title_text_view"
+                style="@style/TextAppearance.AppCompat.Medium"
+                android:textStyle="italic"
+                android:maxLines="4"
+                android:ellipsize="end"
+                android:layout_alignParentBottom="true"
+                android:text="@string/no_description_available" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>
