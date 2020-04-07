@@ -11,7 +11,7 @@ import com.matthew.carvalhodagenais.gamecubecollector.MainActivity
 import com.matthew.carvalhodagenais.gamecubecollector.R
 import com.matthew.carvalhodagenais.gamecubecollector.databinding.FragmentGameAddEditBinding
 import com.matthew.carvalhodagenais.gamecubecollector.helpers.DateHelper
-import com.matthew.carvalhodagenais.gamecubecollector.viewactions.ImageButtonActions
+import com.matthew.carvalhodagenais.gamecubecollector.databinders.viewactions.ImageButtonActions
 import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.GameAddEditViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_game_add_edit.*

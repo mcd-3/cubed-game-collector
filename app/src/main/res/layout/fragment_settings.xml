@@ -4,7 +4,7 @@
     <data>
         <variable
             name="radioButtonActions"
-            type="com.matthew.carvalhodagenais.gamecubecollector.viewactions.RadioButtonActions" />
+            type="com.matthew.carvalhodagenais.gamecubecollector.databinders.viewactions.RadioButtonActions" />
         <variable
             name="act"
             type="android.app.Activity" />

@@ -9,7 +9,7 @@
             type="androidx.navigation.NavController" />
         <variable
             name="imageButtonActions"
-            type="com.matthew.carvalhodagenais.gamecubecollector.viewactions.ImageButtonActions" />
+            type="com.matthew.carvalhodagenais.gamecubecollector.databinders.viewactions.ImageButtonActions" />
         <variable
             name="lifecycleOwner"
             type="androidx.lifecycle.LifecycleOwner" />

@@ -1,8 +1,7 @@
-package com.matthew.carvalhodagenais.gamecubecollector.viewactions
+package com.matthew.carvalhodagenais.gamecubecollector.databinders.viewactions
 
 import android.app.Activity
 import android.content.Context
-import android.util.Log
 import android.view.View
 import com.matthew.carvalhodagenais.gamecubecollector.R
 

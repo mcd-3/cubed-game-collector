@@ -1,4 +1,4 @@
-package com.matthew.carvalhodagenais.gamecubecollector.viewactions
+package com.matthew.carvalhodagenais.gamecubecollector.databinders.viewactions
 
 import android.app.DatePickerDialog
 import android.view.View

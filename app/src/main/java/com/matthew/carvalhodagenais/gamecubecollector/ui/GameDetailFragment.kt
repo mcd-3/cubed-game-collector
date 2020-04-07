@@ -9,7 +9,7 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.matthew.carvalhodagenais.gamecubecollector.MainActivity
 import com.matthew.carvalhodagenais.gamecubecollector.R
-import com.matthew.carvalhodagenais.gamecubecollector.viewactions.ImageButtonActions
+import com.matthew.carvalhodagenais.gamecubecollector.databinders.viewactions.ImageButtonActions
 import com.matthew.carvalhodagenais.gamecubecollector.databinding.FragmentGameDetailBinding
 import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.GameDetailViewModel
 
