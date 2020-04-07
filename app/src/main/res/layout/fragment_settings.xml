@@ -1,28 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout>
 
-    <LinearLayout
-        android:id="@+id/themes_linear_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+    <data>
 
-        <TextView
-            android:text="@string/themes_label"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/small"
-            android:layout_marginBottom="@dimen/very_small"
-            style="@style/TextAppearance.AppCompat.Large"/>
 
-        <RadioGroup
-            android:id="@+id/themes_radio_group"
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/themes_linear_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/small"
-            android:layout_marginEnd="@dimen/small">
+            android:orientation="vertical">
+
+            <TextView
+                android:text="@string/themes_label"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/small"
+                android:layout_marginBottom="@dimen/very_small"
+                style="@style/TextAppearance.AppCompat.Large"/>
+
+            <RadioGroup
+                android:id="@+id/themes_radio_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/small"
+                android:layout_marginEnd="@dimen/small">
 
                 <com.google.android.material.radiobutton.MaterialRadioButton
                     android:id="@+id/radio_theme_cubed"
@@ -68,35 +75,37 @@
                     android:textSize="@dimen/medium_text"
                     android:text="@string/player_silver_theme"/>
 
-        </RadioGroup>
+            </RadioGroup>
 
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/delete_all_data_linear_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:text="Delete Data"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/small"
+                android:layout_marginBottom="@dimen/very_small"
+                style="@style/TextAppearance.AppCompat.Large"/>
+
+
+            <TextView
+                android:text="WARNING: Deletes all in-app data"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/small"
+                style="@style/TextAppearance.AppCompat.Medium"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/delete_all_data_linear_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:orientation="vertical">
-
-
-        <TextView
-            android:text="Delete Data"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/small"
-            android:layout_marginBottom="@dimen/very_small"
-            style="@style/TextAppearance.AppCompat.Large"/>
-
-
-        <TextView
-            android:text="WARNING: Deletes all in-app data"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/small"
-            style="@style/TextAppearance.AppCompat.Medium"/>
-
-    </LinearLayout>
-
-</LinearLayout>
+</layout>
