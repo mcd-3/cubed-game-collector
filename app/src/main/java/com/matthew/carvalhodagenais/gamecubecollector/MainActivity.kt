@@ -108,6 +108,7 @@ class MainActivity : AppCompatActivity(), ImageSelectDialogFragment.ImageSelectD
         when (theme) {
             getString(R.string.shared_preference_theme_cubed).toInt() -> setTheme(R.style.CubedTheme)
             getString(R.string.shared_preference_theme_cubed_dark).toInt() -> setTheme(R.style.CubedDarkTheme)
+            getString(R.string.shared_preference_theme_cubed_night).toInt() -> setTheme(R.style.NightTheme)
             else -> setTheme(R.style.CubedTheme)
         }
     }

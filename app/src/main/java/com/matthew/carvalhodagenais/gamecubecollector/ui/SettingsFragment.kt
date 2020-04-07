@@ -36,24 +36,6 @@ class SettingsFragment: Fragment() {
             this.act = (activity as MainActivity)
             this.radioButtonActions = RadioButtonActions()
         }
-        return binding.root//inflater.inflate(R.layout.fragment_settings, container, false)
+        return binding.root
     }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-        themes_radio_group.setOnCheckedChangeListener(radioOnClickListener)
-    }
-
-    private val radioOnClickListener = RadioGroup.OnCheckedChangeListener {radio, radioId ->
-        when (radioId) {
-            R.id.radio_theme_cubed -> Toast.makeText(context, "Cubed", Toast.LENGTH_SHORT).show()
-            R.id.radio_theme_cubed_dark -> Toast.makeText(context, "CubedDark", Toast.LENGTH_SHORT).show()
-            R.id.radio_theme_night -> Toast.makeText(context, "Night", Toast.LENGTH_SHORT).show()
-            R.id.radio_theme_dolphin -> Toast.makeText(context, "Dolphin", Toast.LENGTH_SHORT).show()
-            R.id.radio_theme_player_selection -> Toast.makeText(context, "PS", Toast.LENGTH_SHORT).show()
-            R.id.radio_theme_silver_player -> Toast.makeText(context, "Silver", Toast.LENGTH_SHORT).show()
-        }
-    }
-
 }
