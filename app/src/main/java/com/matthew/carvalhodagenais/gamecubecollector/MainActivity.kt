@@ -1,5 +1,6 @@
 package com.matthew.carvalhodagenais.gamecubecollector
 
+import android.content.Context
 import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -31,7 +32,7 @@ class MainActivity : AppCompatActivity(), ImageSelectDialogFragment.ImageSelectD
     override fun onCreate(savedInstanceState: Bundle?) {
 
         // Set the theme
-        setTheme(R.style.CubedTheme)
+        this.setTheme()
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -94,6 +95,21 @@ class MainActivity : AppCompatActivity(), ImageSelectDialogFragment.ImageSelectD
             .get(GameAddEditViewModel::class.java)
         consoleListViewModel = ViewModelProvider(this, ConsoleViewModelFactory(this.application))
             .get(ConsoleListViewModel::class.java)
+    }
+
+    /**
+     * Changes the theme based on SharedPreferences
+     */
+    private fun setTheme() {
+        val sharedPrefs = getSharedPreferences(getString(R.string.shared_preference_key), Context.MODE_PRIVATE)
+        val theme = sharedPrefs.getInt(
+            getString(R.string.shared_preference_theme_key),
+            getString(R.string.shared_preference_theme_cubed).toInt())
+        when (theme) {
+            getString(R.string.shared_preference_theme_cubed).toInt() -> setTheme(R.style.CubedTheme)
+            getString(R.string.shared_preference_theme_cubed_dark).toInt() -> setTheme(R.style.CubedDarkTheme)
+            else -> setTheme(R.style.CubedTheme)
+        }
     }
 
     override fun changeImageBitmap(bitmap: Bitmap) {

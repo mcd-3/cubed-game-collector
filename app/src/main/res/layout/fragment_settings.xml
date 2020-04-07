@@ -41,14 +41,15 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/medium_text"
                     android:text="@string/cubed_theme"
-                    android:onClick="@{(view) -> radioButtonActions.test(view, act)}"/>
+                    android:onClick="@{(view) -> radioButtonActions.setTheme(view, act)}"/>
 
                 <com.google.android.material.radiobutton.MaterialRadioButton
                     android:id="@+id/radio_theme_cubed_dark"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/medium_text"
-                    android:text="@string/cubed_dark_theme"/>
+                    android:text="@string/cubed_dark_theme"
+                    android:onClick="@{(view) -> radioButtonActions.setTheme(view, act)}"/>
 
 
                 <com.google.android.material.radiobutton.MaterialRadioButton
@@ -56,14 +57,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/medium_text"
-                    android:text="@string/night_theme"/>
+                    android:text="@string/night_theme"
+                    android:onClick="@{(view) -> radioButtonActions.setTheme(view, act)}"/>
 
                 <com.google.android.material.radiobutton.MaterialRadioButton
                     android:id="@+id/radio_theme_dolphin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/medium_text"
-                    android:text="@string/dolphin_theme"/>
+                    android:text="@string/dolphin_theme"
+                    android:onClick="@{(view) -> radioButtonActions.setTheme(view, act)}"/>
 
 
                 <com.google.android.material.radiobutton.MaterialRadioButton
@@ -71,14 +74,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/medium_text"
-                    android:text="@string/player_selection_theme"/>
+                    android:text="@string/player_selection_theme"
+                    android:onClick="@{(view) -> radioButtonActions.setTheme(view, act)}"/>
 
                 <com.google.android.material.radiobutton.MaterialRadioButton
                     android:id="@+id/radio_theme_silver_player"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/medium_text"
-                    android:text="@string/player_silver_theme"/>
+                    android:text="@string/player_silver_theme"
+                    android:onClick="@{(view) -> radioButtonActions.setTheme(view, act)}"/>
 
             </RadioGroup>
 
