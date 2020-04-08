@@ -2,8 +2,10 @@ package com.matthew.carvalhodagenais.gamecubecollector.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -36,5 +38,11 @@ class ConsoleListFragment: Fragment() {
             .observe(viewLifecycleOwner, Observer {
                 recyclerAdapter.submitList(it)
             })
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu) {
+        menu.clear()
+        requireActivity().menuInflater.inflate(R.menu.menu_console_list, menu)
+        return super.onPrepareOptionsMenu(menu)
     }
 }

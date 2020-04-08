@@ -104,7 +104,26 @@
     <fragment
         android:id="@id/nav_consoles"
         android:name="com.matthew.carvalhodagenais.gamecubecollector.ui.ConsoleListFragment"
-        android:label="@string/navigation_console_list_title" />
+        android:label="@string/navigation_console_list_title" >
+        <action
+            android:id="@+id/action_nav_consoles_to_consoleAddEditFragment"
+            app:destination="@id/consoleAddEditFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/consoleAddEditFragment"
+        android:name="com.matthew.carvalhodagenais.gamecubecollector.ui.ConsoleAddEditFragment"
+        android:label="ConsoleAddEditFragment" >
+        <argument
+            android:name="ADD_EDIT_REQUEST"
+            app:argType="integer"
+            android:defaultValue="1" />
+        <action
+            android:id="@+id/action_consoleAddEditFragment_to_nav_consoles"
+            app:destination="@id/nav_consoles" />
+        <action
+            android:id="@+id/action_consoleAddEditFragment_to_imageSelectDialogFragment"
+            app:destination="@id/imageSelectDialogFragment" />
+    </fragment>
     <dialog
         android:id="@+id/imageSelectDialogFragment"
         android:name="com.matthew.carvalhodagenais.gamecubecollector.ui.ImageSelectDialogFragment"
