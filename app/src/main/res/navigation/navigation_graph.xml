@@ -108,6 +108,9 @@
         <action
             android:id="@+id/action_nav_consoles_to_consoleAddEditFragment"
             app:destination="@id/consoleAddEditFragment" />
+        <action
+            android:id="@+id/action_nav_consoles_to_consoleDetailFragment"
+            app:destination="@id/consoleDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/consoleAddEditFragment"
@@ -128,4 +131,15 @@
         android:id="@+id/imageSelectDialogFragment"
         android:name="com.matthew.carvalhodagenais.gamecubecollector.ui.ImageSelectDialogFragment"
         android:label="ImageSelectDialogFragment" />
+    <fragment
+        android:id="@+id/consoleDetailFragment"
+        android:name="com.matthew.carvalhodagenais.gamecubecollector.ui.ConsoleDetailFragment"
+        android:label="ConsoleDetailFragment" >
+        <action
+            android:id="@+id/action_consoleDetailFragment_to_consoleAddEditFragment"
+            app:destination="@id/consoleAddEditFragment" />
+        <action
+            android:id="@+id/action_consoleDetailFragment_to_nav_consoles"
+            app:destination="@id/nav_consoles" />
+    </fragment>
 </navigation>
