@@ -1,13 +1,11 @@
 package com.matthew.carvalhodagenais.gamecubecollector.ui
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.Menu
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.matthew.carvalhodagenais.gamecubecollector.MainActivity
 import com.matthew.carvalhodagenais.gamecubecollector.R
@@ -44,5 +42,19 @@ class ConsoleListFragment: Fragment() {
         menu.clear()
         requireActivity().menuInflater.inflate(R.menu.menu_console_list, menu)
         return super.onPrepareOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean = when(item.itemId) {
+        R.id.menu_add -> {
+            val action =
+                ConsoleListFragmentDirections.actionNavConsolesToConsoleAddEditFragment(
+                    ConsoleAddEditFragment.ADD_REQUEST
+                )
+            // TODO: Replace this once ConsoleAddEditViewModel() is done.
+            //(activity as MainActivity).getGameAddEditViewModel().clearCurrentlySelectedGame()
+            findNavController().navigate(action)
+            true
+        }
+        else -> super.onOptionsItemSelected(item)
     }
 }

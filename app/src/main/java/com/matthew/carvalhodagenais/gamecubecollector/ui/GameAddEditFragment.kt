@@ -75,7 +75,7 @@ class GameAddEditFragment: Fragment() {
 
     override fun onPrepareOptionsMenu(menu: Menu) {
         menu.clear()
-        requireActivity().menuInflater.inflate(R.menu.menu_game_add_edit, menu)
+        requireActivity().menuInflater.inflate(R.menu.menu_item_add_edit, menu)
         return super.onPrepareOptionsMenu(menu)
     }
 

@@ -45,7 +45,7 @@ class GameDetailFragment: Fragment() {
 
     override fun onPrepareOptionsMenu(menu: Menu) {
         menu.clear()
-        requireActivity().menuInflater.inflate(R.menu.menu_game_detail, menu)
+        requireActivity().menuInflater.inflate(R.menu.menu_item_detail, menu)
         return super.onPrepareOptionsMenu(menu)
     }
 

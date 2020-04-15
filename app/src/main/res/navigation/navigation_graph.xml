@@ -127,10 +127,6 @@
             android:id="@+id/action_consoleAddEditFragment_to_imageSelectDialogFragment"
             app:destination="@id/imageSelectDialogFragment" />
     </fragment>
-    <dialog
-        android:id="@+id/imageSelectDialogFragment"
-        android:name="com.matthew.carvalhodagenais.gamecubecollector.ui.ImageSelectDialogFragment"
-        android:label="ImageSelectDialogFragment" />
     <fragment
         android:id="@+id/consoleDetailFragment"
         android:name="com.matthew.carvalhodagenais.gamecubecollector.ui.ConsoleDetailFragment"
@@ -142,4 +138,8 @@
             android:id="@+id/action_consoleDetailFragment_to_nav_consoles"
             app:destination="@id/nav_consoles" />
     </fragment>
+    <dialog
+        android:id="@+id/imageSelectDialogFragment"
+        android:name="com.matthew.carvalhodagenais.gamecubecollector.ui.ImageSelectDialogFragment"
+        android:label="ImageSelectDialogFragment" />
 </navigation>
