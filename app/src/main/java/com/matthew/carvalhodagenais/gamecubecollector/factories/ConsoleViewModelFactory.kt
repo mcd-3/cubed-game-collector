@@ -3,6 +3,8 @@ package com.matthew.carvalhodagenais.gamecubecollector.factories
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.ConsoleAddEditViewModel
+import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.ConsoleDetailViewModel
 import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.ConsoleListViewModel
 
 class ConsoleViewModelFactory(private val application: Application):
@@ -13,6 +15,10 @@ class ConsoleViewModelFactory(private val application: Application):
         when {
             isAssignableFrom(ConsoleListViewModel::class.java) ->
                 ConsoleListViewModel(application) as T
+            isAssignableFrom(ConsoleDetailViewModel::class.java) ->
+                ConsoleDetailViewModel(application) as T
+            isAssignableFrom(ConsoleAddEditViewModel::class.java) ->
+                ConsoleAddEditViewModel(application) as T
             else -> IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}") as T
         }
     }
