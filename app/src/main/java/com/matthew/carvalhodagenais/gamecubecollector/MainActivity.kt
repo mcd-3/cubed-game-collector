@@ -12,21 +12,20 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.matthew.carvalhodagenais.gamecubecollector.factories.ConsoleViewModelFactory
-import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.GameDetailViewModel
 import com.matthew.carvalhodagenais.gamecubecollector.factories.GameViewModelFactory
 import com.matthew.carvalhodagenais.gamecubecollector.ui.ImageSelectDialogFragment
-import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.ConsoleListViewModel
-import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.GameAddEditViewModel
-import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.GameListViewModel
+import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_game_add_edit.*
 
-class MainActivity : AppCompatActivity(), ImageSelectDialogFragment.ImageSelectDialogInterface{//, NavigationView.OnNavigationItemSelectedListener {
+class MainActivity : AppCompatActivity(), ImageSelectDialogFragment.ImageSelectDialogInterface {
 
     private lateinit var gameDetailViewModel: GameDetailViewModel
     private lateinit var gameListViewModel: GameListViewModel
     private lateinit var gameAddEditViewModel: GameAddEditViewModel
     private lateinit var consoleListViewModel: ConsoleListViewModel
+    private lateinit var consoleDetailViewModel: ConsoleDetailViewModel
+    private lateinit var consoleAddEditViewModel: ConsoleAddEditViewModel
     private lateinit var appBarConfig: AppBarConfiguration
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -95,6 +94,10 @@ class MainActivity : AppCompatActivity(), ImageSelectDialogFragment.ImageSelectD
             .get(GameAddEditViewModel::class.java)
         consoleListViewModel = ViewModelProvider(this, ConsoleViewModelFactory(this.application))
             .get(ConsoleListViewModel::class.java)
+        consoleDetailViewModel = ViewModelProvider(this, ConsoleViewModelFactory(this.application))
+            .get(ConsoleDetailViewModel::class.java)
+        consoleAddEditViewModel = ViewModelProvider(this, ConsoleViewModelFactory(this.application))
+            .get(ConsoleAddEditViewModel::class.java)
     }
 
     /**
@@ -113,6 +116,9 @@ class MainActivity : AppCompatActivity(), ImageSelectDialogFragment.ImageSelectD
         }
     }
 
+    /**
+     * Changes the bitmap for the cover image
+     */
     override fun changeImageBitmap(bitmap: Bitmap) {
         cover_art_image_view?.setImageBitmap(bitmap)
     }
