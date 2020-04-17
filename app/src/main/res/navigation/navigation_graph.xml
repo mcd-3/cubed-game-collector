@@ -130,7 +130,7 @@
     <fragment
         android:id="@+id/consoleDetailFragment"
         android:name="com.matthew.carvalhodagenais.gamecubecollector.ui.ConsoleDetailFragment"
-        android:label="ConsoleDetailFragment" >
+        android:label="@string/navigation_console_details_title" >
         <action
             android:id="@+id/action_consoleDetailFragment_to_consoleAddEditFragment"
             app:destination="@id/consoleAddEditFragment" />

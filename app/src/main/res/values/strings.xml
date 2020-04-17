@@ -134,6 +134,9 @@
     <string name="navigation_game_add_title">Add Game</string>
     <string name="navigation_favourites">Favourites</string>
     <string name="navigation_console_list_title">My Consoles</string>
+    <string name="navigation_console_details_title">Details</string>
+    <string name="navigation_console_edit_title">Edit Console</string>
+    <string name="navigation_console_add_title">Add Console</string>
     <string name="navigation_settings">Settings</string>
 
 </resources>
