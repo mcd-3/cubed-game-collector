@@ -82,6 +82,11 @@ class MainActivity : AppCompatActivity(), ImageSelectDialogFragment.ImageSelectD
     }
 
     /**
+     * Gets the ConsoleDetailViewModel
+     */
+    fun getConsoleDetailViewModel(): ConsoleDetailViewModel = consoleDetailViewModel
+
+    /**
      * Initialises all the ViewModels associated with this activity. Each ViewModel will be used
      * in its respective Fragment
      */

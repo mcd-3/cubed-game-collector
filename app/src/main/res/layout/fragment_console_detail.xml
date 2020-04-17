@@ -2,7 +2,12 @@
 <layout>
 
     <data>
-
+        <variable
+            name="viewModel"
+            type="com.matthew.carvalhodagenais.gamecubecollector.viewmodels.ConsoleDetailViewModel" />
+        <variable
+            name="lifecycleOwner"
+            type="androidx.lifecycle.LifecycleOwner" />
     </data>
 
     <ScrollView
@@ -25,6 +30,23 @@
                 android:layout_marginEnd="@dimen/small"
                 android:layout_marginTop="@dimen/small"
                 android:layout_marginBottom="@dimen/very_small">
+
+                <TextView
+                    android:id="@+id/title_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/large"
+                    android:layout_marginEnd="@dimen/large"
+                    android:layout_marginTop="@dimen/small"
+                    android:layout_marginBottom="@dimen/small"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center"
+                    android:textColor="?android:attr/textColor"
+                    android:textStyle="bold"
+                    style="@style/TextAppearance.AppCompat.Large"
+                    android:maxLines="3"
+                    android:ellipsize="end"
+                    android:text="@{viewModel.selectedConsole.title}"/>
 
             </com.google.android.material.card.MaterialCardView>
 
