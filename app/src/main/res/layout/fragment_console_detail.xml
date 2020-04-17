@@ -23,7 +23,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/small"
                 android:layout_marginEnd="@dimen/small"
-                android:layout_marginTop="@dimen/game_detail_title_margin_top"
+                android:layout_marginTop="@dimen/small"
                 android:layout_marginBottom="@dimen/very_small">
 
             </com.google.android.material.card.MaterialCardView>

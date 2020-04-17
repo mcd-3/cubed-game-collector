@@ -14,8 +14,8 @@
         <!-- Cover Art -->
         <ImageView
             android:id="@+id/cover_art_image_view"
-            android:layout_width="@dimen/game_item_cover_art_width"
-            android:layout_height="@dimen/game_item_cover_art_height"
+            android:layout_width="@dimen/large"
+            android:layout_height="@dimen/huge"
             android:layout_weight="1.5"
             android:layout_marginStart="@dimen/very_small"
             android:layout_marginEnd="@dimen/very_small"
