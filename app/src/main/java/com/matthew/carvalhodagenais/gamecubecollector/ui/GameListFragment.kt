@@ -55,7 +55,8 @@ class GameListFragment : Fragment() {
                 recyclerAdapter.setItemOnClickListener(
                     onClickGenerator.generate(
                         (activity as MainActivity).getGameDetailViewModel(),
-                        findNavController()
+                        findNavController(),
+                        false
                     )
                 )
         })

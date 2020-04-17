@@ -13,6 +13,7 @@ import com.matthew.carvalhodagenais.gamecubecollector.MainActivity
 import com.matthew.carvalhodagenais.gamecubecollector.R
 import com.matthew.carvalhodagenais.gamecubecollector.adapters.GameListRecyclerAdapter
 import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Game
+import com.matthew.carvalhodagenais.gamecubecollector.helpers.RecyclerAdapterItemClickGenerator
 import kotlinx.android.synthetic.main.fragment_game_list.*
 
 class FavouriteGameListFragment: Fragment() {
@@ -22,7 +23,6 @@ class FavouriteGameListFragment: Fragment() {
     companion object {
         const val FRAGMENT_TAG =
             "com.matthew.carvalhodagenais.gamecubecollector.ui.FavouriteGameListFragment"
-        const val FROM_FAVOURITE_REQUEST: Int = 1
         fun newInstance() =
             FavouriteGameListFragment()
     }
@@ -50,7 +50,15 @@ class FavouriteGameListFragment: Fragment() {
             .observe(viewLifecycleOwner, Observer {
                 recyclerAdapter.submitList(it)
                 recyclerAdapter.setSearchableList(it)
-                recyclerAdapter.setItemOnClickListener(itemOnClick)
+
+                val onClickGenerator = RecyclerAdapterItemClickGenerator()
+                recyclerAdapter.setItemOnClickListener(
+                    onClickGenerator.generate(
+                        (activity as MainActivity).getGameDetailViewModel(),
+                        findNavController(),
+                        true
+                    )
+                )
             })
     }
 
@@ -58,20 +66,4 @@ class FavouriteGameListFragment: Fragment() {
         menu.clear()
         super.onPrepareOptionsMenu(menu)
     }
-
-    /**
-     * OnClick for each RecyclerView item.
-     * Changes the fragment to the game's details
-     */
-    private var itemOnClick = object: GameListRecyclerAdapter.ItemOnClickListener {
-        override fun onItemClick(game: Game) {
-            (activity as MainActivity).getGameDetailViewModel().setSelectedGame(game)
-            val action = FavouriteGameListFragmentDirections.actionNavFavouritesToGameDetailFragment(
-                FROM_FAVOURITE_REQUEST
-            )
-            findNavController().navigate(action)
-        }
-    }
-
-
 }
