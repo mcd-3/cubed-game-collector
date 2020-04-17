@@ -148,7 +148,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/slightly_small"
-                        android:layout_marginTop="@dimen/slightly_small"
+                        android:layout_marginTop="@dimen/small"
+                        android:layout_marginBottom="@dimen/small"
+                        android:paddingStart="@dimen/small"
+                        android:paddingEnd="0dp"
                         style="@style/TextAppearance.AppCompat.Medium"
                         android:textStyle="bold"
                         android:text="@string/game_info_label" />
@@ -296,7 +299,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/slightly_small"
-                        android:layout_marginTop="@dimen/slightly_small"
+                        android:layout_marginTop="@dimen/small"
+                        android:layout_marginBottom="@dimen/small"
+                        android:paddingStart="@dimen/small"
+                        android:paddingEnd="0dp"
                         style="@style/TextAppearance.AppCompat.Medium"
                         android:textStyle="bold"
                         android:text="@string/more_details_label" />
