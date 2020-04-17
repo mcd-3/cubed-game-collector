@@ -90,12 +90,13 @@
     <string name="publishers_title">Publishers: </string>
 
     <!-- EditText Hints -->
-    <string name="title_hint">Game Title</string>
-    <string name="developer_hint">Developer</string>
-    <string name="publisher_hint">Publisher</string>
-    <string name="release_date_hint">Release Date</string>
-    <string name="buy_date_hint">Date Bought</string>
-    <string name="price_paid_hint">Price Paid</string>
+    <string name="game_title_hint">Game Title</string>
+    <string name="game_developer_hint">Developer</string>
+    <string name="game_publisher_hint">Publisher</string>
+    <string name="game_release_date_hint">Release Date</string>
+    <string name="game_buy_date_hint">Date Bought</string>
+    <string name="game_price_paid_hint">Price Paid</string>
+    <string name="console_title_hint">Console Title</string>
 
     <!-- EditText Default text -->
     <string name="date_default">No Date Set</string>

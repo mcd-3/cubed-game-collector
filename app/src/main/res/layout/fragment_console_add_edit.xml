@@ -48,7 +48,7 @@
                         android:inputType="textMultiLine"
                         android:backgroundTint="?attr/colorSurface"
                         android:text="@{viewModel.selectedConsole.title ?? @string/empty}"
-                        android:hint="@string/title_hint"/>
+                        android:hint="@string/console_title_hint"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
