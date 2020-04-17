@@ -1,6 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
 
-</LinearLayout>
+    <data>
+        <variable
+            name="lifecycleOwner"
+            type="androidx.lifecycle.LifecycleOwner" />
+        <variable
+            name="viewModel"
+            type="com.matthew.carvalhodagenais.gamecubecollector.viewmodels.ConsoleAddEditViewModel" />
+
+    </data>
+
+    <ScrollView
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/card_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/small"
+                android:layout_marginEnd="@dimen/small"
+                android:layout_marginTop="@dimen/small"
+                android:layout_marginBottom="@dimen/very_small">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:errorEnabled="true"
+                    android:layout_marginTop="@dimen/small"
+                    android:layout_marginStart="@dimen/small"
+                    android:layout_marginEnd="@dimen/small"
+                    android:layout_marginBottom="@dimen/small">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/title_edit_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textMultiLine"
+                        android:backgroundTint="?attr/colorSurface"
+                        android:text="@{viewModel.selectedConsole.title ?? @string/empty}"
+                        android:hint="@string/title_hint"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</layout>

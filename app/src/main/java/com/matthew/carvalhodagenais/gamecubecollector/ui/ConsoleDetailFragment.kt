@@ -21,7 +21,6 @@ class ConsoleDetailFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        setHasOptionsMenu(true)
         detailViewModel = (activity as MainActivity).getConsoleDetailViewModel()
         val binding = DataBindingUtil.inflate<FragmentConsoleDetailBinding>(
             inflater, R.layout.fragment_console_detail, container, false
