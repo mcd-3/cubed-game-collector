@@ -2,7 +2,6 @@ package com.matthew.carvalhodagenais.gamecubecollector.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Console
@@ -13,14 +12,6 @@ class ConsoleDetailViewModel(application: Application): AndroidViewModel(applica
 
     private var selectedConsole = MutableLiveData<Console>()
     private var repository = ConsoleRepository(application)
-
-    fun insert(console: Console) = viewModelScope.launch {
-        repository.insertConsole(console)
-    }
-
-    fun update(console: Console) = viewModelScope.launch {
-        repository.updateConsole(console)
-    }
 
     fun delete(console: Console) = viewModelScope.launch {
         repository.deleteConsole(console)

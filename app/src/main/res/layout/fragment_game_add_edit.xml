@@ -101,6 +101,7 @@
                     <ImageView
                         android:layout_width="128dp"
                         android:layout_height="212dp"
+                        android:contentDescription="@string/game_add_edit_cover_image_view_content_description"
                         android:focusable="true"
                         android:clickable="true"
                         android:src="@drawable/custom_edit_game_cover_button"
