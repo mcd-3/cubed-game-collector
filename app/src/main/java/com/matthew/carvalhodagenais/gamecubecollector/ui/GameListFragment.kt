@@ -13,6 +13,7 @@ import com.matthew.carvalhodagenais.gamecubecollector.R
 import com.matthew.carvalhodagenais.gamecubecollector.adapters.GameListRecyclerAdapter
 import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Game
 import com.matthew.carvalhodagenais.gamecubecollector.helpers.ItemTouchHelperGenerator
+import com.matthew.carvalhodagenais.gamecubecollector.helpers.RecyclerAdapterItemClickGenerator
 import kotlinx.android.synthetic.main.fragment_game_list.*
 
 class GameListFragment : Fragment() {
@@ -49,7 +50,14 @@ class GameListFragment : Fragment() {
             .observe(viewLifecycleOwner, Observer {
                 recyclerAdapter.submitList(it)
                 recyclerAdapter.setSearchableList(it)
-                recyclerAdapter.setItemOnClickListener(itemOnClick)
+
+                val onClickGenerator = RecyclerAdapterItemClickGenerator()
+                recyclerAdapter.setItemOnClickListener(
+                    onClickGenerator.generate(
+                        (activity as MainActivity).getGameDetailViewModel(),
+                        findNavController()
+                    )
+                )
         })
 
         // Make each item slide
@@ -104,16 +112,5 @@ class GameListFragment : Fragment() {
     private var searchExpandListener = object: MenuItem.OnActionExpandListener {
         override fun onMenuItemActionExpand(item: MenuItem?): Boolean = true
         override fun onMenuItemActionCollapse(item: MenuItem?): Boolean = true
-    }
-
-    /**
-     * OnClick for each RecyclerView item.
-     * Changes the fragment to the game's details
-     */
-    private var itemOnClick = object: GameListRecyclerAdapter.ItemOnClickListener {
-        override fun onItemClick(game: Game) {
-            (activity as MainActivity).getGameDetailViewModel().setSelectedGame(game)
-            findNavController().navigate(R.id.action_gameListFragment_to_gameDetailFragment)
-        }
     }
 }
