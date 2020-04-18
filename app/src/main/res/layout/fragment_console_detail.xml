@@ -117,6 +117,40 @@
                             android:layout_weight="1"
                             android:layout_gravity="center"
                             android:layout_marginStart="@dimen/small"
+                            android:drawableStart="@drawable/ic_region_black_24dp"
+                            android:drawableTint="?android:attr/icon"
+                            android:drawablePadding="@dimen/small"
+                            style="@style/TextAppearance.AppCompat.Medium"
+                            android:textColor="?android:attr/textColor"
+                            android:text="@string/region_label" />
+
+                        <TextView
+                            android:id="@+id/region_text_view"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="end"
+                            style="@style/TextAppearance.AppCompat.Large"
+                            android:layout_marginEnd="@dimen/medium"
+                            bind:lifecycleOwner="@{lifecycleOwner}"
+                            bind:repository="@{viewModel.getRegionRepository()}"
+                            bind:regionId="@{viewModel.selectedConsole.regionId}" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/small"
+                        android:layout_marginBottom="@dimen/small"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/small"
                             android:drawableStart="@drawable/ic_condition_black_24dp"
                             android:drawableTint="?android:attr/icon"
                             android:drawablePadding="@dimen/small"
