@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.matthew.carvalhodagenais.gamecubecollector.MainActivity
 import com.matthew.carvalhodagenais.gamecubecollector.R
 import com.matthew.carvalhodagenais.gamecubecollector.databinding.FragmentConsoleAddEditBinding
@@ -31,6 +32,7 @@ class ConsoleAddEditFragment: Fragment() {
         ).apply {
             this.lifecycleOwner = this@ConsoleAddEditFragment
             this.viewModel = addEditViewModel
+            this.navController = findNavController()
         }
         setHasOptionsMenu(true)
         return binding.root

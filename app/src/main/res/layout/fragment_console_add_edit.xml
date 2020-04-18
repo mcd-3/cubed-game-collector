@@ -11,6 +11,9 @@
         <variable
             name="viewModel"
             type="com.matthew.carvalhodagenais.gamecubecollector.viewmodels.ConsoleAddEditViewModel" />
+        <variable
+            name="navController"
+            type="androidx.navigation.NavController" />
     </data>
 
     <ScrollView
@@ -62,7 +65,37 @@
                 android:layout_marginTop="@dimen/small"
                 android:layout_marginBottom="@dimen/very_small">
 
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_marginTop="@dimen/medium"
+                    android:layout_marginBottom="@dimen/medium"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
+                    <!-- bind:game="@{viewModel.selectedConsole}" -->
+                    <ImageView
+                        android:id="@+id/console_image_view"
+                        android:layout_width="148dp"
+                        android:layout_height="148dp"
+                        android:contentDescription="@string/game_add_edit_image_view_content_description"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:layout_width="148dp"
+                        android:layout_height="148dp"
+                        android:contentDescription="@string/game_add_edit_cover_image_view_content_description"
+                        android:focusable="true"
+                        android:clickable="true"
+                        android:src="@drawable/custom_edit_console_button"
+                        android:onClick="@{() -> navController.navigate(@id/imageSelectDialogFragment)}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
