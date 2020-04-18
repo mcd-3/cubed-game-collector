@@ -28,7 +28,7 @@ class TextViewDataBinder {
         }
 
         @JvmStatic
-        @BindingAdapter("bind:lifecycleOwner", "bind:repository", "bind:regionId")
+        @BindingAdapter("bind:lifecycleOwner", "bind:repository", "bind:conditionId")
         fun setConditionText(textView: TextView, lco: LifecycleOwner, repo: ConditionRepository, conditionId: Int?) {
             if (conditionId != null) {
                 repo.getConditionById(conditionId).observe(lco, Observer {
@@ -56,13 +56,13 @@ class TextViewDataBinder {
         @JvmStatic
         @BindingAdapter("bind:hasCase", "bind:hasManual")
         fun setCompletenessText(textView: TextView, hasCase: Boolean, hasManual: Boolean) {
-            var str = textView.context.getString(R.string.completeness_disc);
+            var str = textView.context.getString(R.string.completeness_disc)
             if (hasCase && hasManual) {
-                str = textView.context.getString(R.string.completeness_cib);
+                str = textView.context.getString(R.string.completeness_cib)
             } else if (hasCase) {
-                str = textView.context.getString(R.string.completeness_case);
+                str = textView.context.getString(R.string.completeness_case)
             } else if (hasManual) {
-                str = textView.context.getString(R.string.completeness_manual);
+                str = textView.context.getString(R.string.completeness_manual)
             }
             textView.text = str
         }
