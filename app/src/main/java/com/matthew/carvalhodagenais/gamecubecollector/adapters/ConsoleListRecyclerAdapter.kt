@@ -59,6 +59,10 @@ class ConsoleListRecyclerAdapter: ListAdapter<Console, ConsoleListRecyclerAdapte
         return ConsoleHolder(itemView)
     }
 
+    fun setItemOnClickListener(listener: ItemOnClickListener) {
+        this.listener = listener
+    }
+
     inner class ConsoleHolder(view: View): RecyclerView.ViewHolder(view) {
         init {
             view.setOnClickListener {

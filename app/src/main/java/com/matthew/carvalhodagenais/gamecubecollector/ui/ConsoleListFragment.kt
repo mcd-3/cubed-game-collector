@@ -10,9 +10,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.matthew.carvalhodagenais.gamecubecollector.MainActivity
 import com.matthew.carvalhodagenais.gamecubecollector.R
 import com.matthew.carvalhodagenais.gamecubecollector.adapters.ConsoleListRecyclerAdapter
+import com.matthew.carvalhodagenais.gamecubecollector.adapters.GameListRecyclerAdapter
+import com.matthew.carvalhodagenais.gamecubecollector.helpers.RecyclerAdapterItemClickGenerator
 import kotlinx.android.synthetic.main.fragment_console_list.*
 
 class ConsoleListFragment: Fragment() {
+
+    private lateinit var recyclerAdapter: ConsoleListRecyclerAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,7 +30,7 @@ class ConsoleListFragment: Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        val recyclerAdapter = ConsoleListRecyclerAdapter()
+        recyclerAdapter = ConsoleListRecyclerAdapter()
         console_list_recycler_view.apply {
             layoutManager = LinearLayoutManager(requireActivity().applicationContext)
             adapter = recyclerAdapter
@@ -35,6 +39,14 @@ class ConsoleListFragment: Fragment() {
         (activity as MainActivity).getConsoleListViewModel().getAllConsoles()
             .observe(viewLifecycleOwner, Observer {
                 recyclerAdapter.submitList(it)
+
+                val onClickGenerator = RecyclerAdapterItemClickGenerator()
+                recyclerAdapter.setItemOnClickListener(
+                    onClickGenerator.generate(
+                        (activity as MainActivity).getConsoleDetailViewModel(),
+                        findNavController()
+                    )
+                )
             })
     }
 
@@ -50,8 +62,7 @@ class ConsoleListFragment: Fragment() {
                 ConsoleListFragmentDirections.actionNavConsolesToConsoleAddEditFragment(
                     ConsoleAddEditFragment.ADD_REQUEST
                 )
-            // TODO: Replace this once ConsoleAddEditViewModel() is done.
-            //(activity as MainActivity).getGameAddEditViewModel().clearCurrentlySelectedGame()
+            (activity as MainActivity).getConsoleAddEditViewModel().clearCurrentlySelectedConsole()
             findNavController().navigate(action)
             true
         }

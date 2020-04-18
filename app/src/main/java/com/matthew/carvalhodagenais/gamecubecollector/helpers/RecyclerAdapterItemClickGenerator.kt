@@ -4,15 +4,31 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.matthew.carvalhodagenais.gamecubecollector.MainActivity
 import com.matthew.carvalhodagenais.gamecubecollector.R
+import com.matthew.carvalhodagenais.gamecubecollector.adapters.ConsoleListRecyclerAdapter
 import com.matthew.carvalhodagenais.gamecubecollector.adapters.GameListRecyclerAdapter
+import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Console
 import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Game
 import com.matthew.carvalhodagenais.gamecubecollector.ui.FavouriteGameListFragmentDirections
+import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.ConsoleDetailViewModel
 import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.GameDetailViewModel
 
 class RecyclerAdapterItemClickGenerator() {
 
     companion object {
         private const val FROM_FAVOURITE_REQUEST: Int = 1
+    }
+
+    fun generate(
+        viewModel: ConsoleDetailViewModel,
+        navController: NavController
+    ): ConsoleListRecyclerAdapter.ItemOnClickListener {
+        val itemOnClick = object: ConsoleListRecyclerAdapter.ItemOnClickListener {
+            override fun onItemClick(console: Console) {
+                viewModel.setSelectedConsole(console)
+                navController.navigate(R.id.action_nav_consoles_to_consoleDetailFragment)
+            }
+        }
+        return itemOnClick
     }
 
     /**

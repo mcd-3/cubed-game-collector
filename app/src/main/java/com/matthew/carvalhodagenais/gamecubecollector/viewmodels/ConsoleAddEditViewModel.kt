@@ -43,7 +43,7 @@ class ConsoleAddEditViewModel(application: Application): AndroidViewModel(applic
 
     fun getConditionTypeID(): Int = Type.CONSOLE_ID
 
-    private fun clearCurrentlySelectedConsole() {
+    fun clearCurrentlySelectedConsole() {
         selectedConsole = MutableLiveData<Console>()
     }
 
