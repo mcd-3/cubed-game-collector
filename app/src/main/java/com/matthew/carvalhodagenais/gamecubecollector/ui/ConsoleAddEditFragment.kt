@@ -5,11 +5,14 @@ import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.snackbar.Snackbar
 import com.matthew.carvalhodagenais.gamecubecollector.MainActivity
 import com.matthew.carvalhodagenais.gamecubecollector.R
 import com.matthew.carvalhodagenais.gamecubecollector.databinding.FragmentConsoleAddEditBinding
 import com.matthew.carvalhodagenais.gamecubecollector.databinding.FragmentConsoleDetailBinding
 import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.ConsoleAddEditViewModel
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_console_add_edit.*
 
 class ConsoleAddEditFragment: Fragment() {
 
@@ -35,13 +38,45 @@ class ConsoleAddEditFragment: Fragment() {
             this.navController = findNavController()
         }
         setHasOptionsMenu(true)
+
+        // Set the title
+        if (ConsoleAddEditFragmentArgs.fromBundle(arguments!!).ADDEDITREQUEST == EDIT_REQUEST) {
+            activity?.toolbar?.title = getString(R.string.navigation_console_edit_title)
+        } else {
+            activity?.toolbar?.title = getString(R.string.navigation_console_add_title)
+        }
+
         return binding.root
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+    override fun onPrepareOptionsMenu(menu: Menu) {
         menu.clear()
         requireActivity().menuInflater.inflate(R.menu.menu_item_add_edit, menu)
-        return super.onPrepareOptionsMenu(menu)
+        super.onPrepareOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean = when(item.itemId) {
+        R.id.menu_save -> {
+            if (title_edit_text.text.toString().trim() != "") { // Save the console
+                (activity as MainActivity).getConsoleAddEditViewModel().saveConsole(
+                    ConsoleAddEditFragmentArgs.fromBundle(arguments!!).ADDEDITREQUEST,
+                    title_edit_text.text.toString(),
+                    description_edit_text.text.toString().trim(),
+                    region_spinner.selectedItem.toString().trim(),
+                    condition_spinner.selectedItem.toString().trim()
+                )
+                findNavController().navigate(R.id.action_consoleAddEditFragment_to_nav_consoles)
+            } else { // Warn the user about needing a title
+                Snackbar.make(
+                    view!!,
+                    getString(R.string.toast_no_title_warning),
+                    Snackbar.LENGTH_SHORT)
+                    .show()
+            }
+            true
+        }
+        else ->
+            super.onOptionsItemSelected(item)
     }
 
 }
