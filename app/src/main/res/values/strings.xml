@@ -99,6 +99,7 @@
     <string name="game_buy_date_hint">Date Bought</string>
     <string name="game_price_paid_hint">Price Paid</string>
     <string name="console_title_hint">Console Title</string>
+    <string name="console_description_hint">Description</string>
 
     <!-- EditText Default text -->
     <string name="date_default">No Date Set</string>

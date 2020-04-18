@@ -202,7 +202,7 @@
                             android:lines="4"
                             android:maxLength="150"
                             android:backgroundTint="?attr/colorSurface"
-                            android:hint="@string/console_title_hint"/>
+                            android:hint="@string/console_description_hint"/>
 
                     </com.google.android.material.textfield.TextInputLayout>
 
