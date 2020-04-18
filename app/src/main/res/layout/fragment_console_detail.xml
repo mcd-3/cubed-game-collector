@@ -77,7 +77,6 @@
                 </RelativeLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- TODO: Fix me up -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/collector_card_view"
                 android:layout_width="match_parent"
@@ -94,7 +93,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/more_details_label_text_view"
+                        android:id="@+id/console_details_label_text_view"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/slightly_small"
@@ -170,6 +169,39 @@
                             bind:repository="@{viewModel.getConditionRepository()}"
                             bind:conditionId="@{viewModel.selectedConsole.conditionId}" />
 
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/developer_linear_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="@dimen/medium"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/description_label_text_view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/TextAppearance.AppCompat.Medium"
+                            android:layout_marginStart="@dimen/small"
+                            android:layout_marginTop="@dimen/small"
+                            android:drawablePadding="@dimen/small"
+                            android:drawableStart="@drawable/ic_description_black_24dp"
+                            android:drawableTint="?android:attr/icon"
+                            android:textColor="?android:attr/textColor"
+                            android:text="@string/description_label" />
+
+                        <TextView
+                            android:id="@+id/description_text_view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/small"
+                            android:layout_marginStart="@dimen/extra_medium"
+                            android:layout_marginEnd="@dimen/extra_medium"
+                            style="@style/TextAppearance.AppCompat.Large"
+                            android:textColor="?android:attr/subtitleTextColor"
+                            android:textStyle="italic"
+                            bind:description="@{viewModel.selectedConsole.description}"/>
                     </LinearLayout>
 
                 </LinearLayout>

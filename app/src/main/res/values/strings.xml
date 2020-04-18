@@ -39,6 +39,7 @@
     <string name="cib_label">Completeness:</string>
     <string name="condition_label">Condition:</string>
     <string name="price_label">Price Paid:</string>
+    <string name="description_label">Description:</string>
     <string name="themes_label">Themes</string>
     <string name="completeness_cib">CIB</string>
     <string name="completeness_case">With Case</string>

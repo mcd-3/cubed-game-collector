@@ -40,6 +40,16 @@ class TextViewDataBinder {
         }
 
         @JvmStatic
+        @BindingAdapter("bind:description")
+        fun setDescription(textView: TextView, description: String?) {
+            if (description != null && description.trim() != "") {
+                textView.text = "\" $description \""
+            } else {
+                textView.text = textView.context.getString(R.string.no_description_available)
+            }
+        }
+
+        @JvmStatic
         @BindingAdapter("bind:isDefault")
         fun setDefaultTextStyle(textView: TextView, isDefault: Boolean) {
             if (isDefault) {
