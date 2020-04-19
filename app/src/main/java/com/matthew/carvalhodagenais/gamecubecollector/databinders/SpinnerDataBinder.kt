@@ -5,12 +5,14 @@ import android.widget.Spinner
 import androidx.databinding.BindingAdapter
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
+import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Type
 import com.matthew.carvalhodagenais.gamecubecollector.data.repositories.ConditionRepository
 import com.matthew.carvalhodagenais.gamecubecollector.data.repositories.RegionRepository
 
 class SpinnerDataBinder {
     companion object {
-        private const val INDEX_MIN_ID = 1
+        private const val INDEX_DISC = 1
+        private const val INDEX_CONSOLE = 6
 
         @JvmStatic
         @BindingAdapter("bind:repository", "bind:lifecycleOwner", "bind:defaultSelection")
@@ -29,7 +31,7 @@ class SpinnerDataBinder {
                 }
                 adapter.notifyDataSetChanged()
                 spinner.adapter = adapter
-                spinner.setSelection(defaultSelection - INDEX_MIN_ID)
+                spinner.setSelection(defaultSelection - INDEX_DISC)
             })
         }
 
@@ -49,7 +51,12 @@ class SpinnerDataBinder {
                     list.add(it)
                 }
                 adapter.notifyDataSetChanged()
-                spinner.setSelection(defaultSelection - INDEX_MIN_ID)
+                val index = when(type) {
+                    Type.CD_ID -> INDEX_DISC
+                    Type.CONSOLE_ID -> INDEX_CONSOLE
+                    else -> INDEX_DISC
+                }
+                spinner.setSelection(defaultSelection - index)
             })
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             spinner.adapter = adapter

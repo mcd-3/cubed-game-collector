@@ -74,8 +74,10 @@
     <!-- Alert Dialog text -->
     <string name="game_detail_delete_alert_title">Delete Game?</string>
     <string name="game_detail_delete_alert_body">Are you sure you want to delete this game?</string>
-    <string name="game_detail_delete_alert_positive">Delete</string>
-    <string name="game_detail_delete_alert_negative">@android:string/cancel</string>
+    <string name="console_detail_delete_alert_title">Delete Console?</string>
+    <string name="console_detail_delete_alert_body">Are you sure you want to delete this console?</string>
+    <string name="detail_delete_alert_positive">Delete</string>
+    <string name="detail_delete_alert_negative">@android:string/cancel</string>
     <string name="game_add_edit_change_image_title">Change Image How?</string>
 
     <!-- Default TextView text -->
