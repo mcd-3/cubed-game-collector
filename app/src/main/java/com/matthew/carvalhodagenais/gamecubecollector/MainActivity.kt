@@ -125,6 +125,7 @@ class MainActivity : AppCompatActivity(), ImageSelectDialogFragment.ImageSelectD
             getString(R.string.shared_preference_theme_cubed_night).toInt() -> setTheme(R.style.NightTheme)
             getString(R.string.shared_preference_theme_cubed_dolphin).toInt() -> setTheme(R.style.DolphinTheme)
             getString(R.string.shared_preference_theme_cubed_ps).toInt() -> setTheme(R.style.PlayerSelection)
+            getString(R.string.shared_preference_theme_cubed_pss).toInt() -> setTheme(R.style.PlayerSelectionSilver)
             else -> setTheme(R.style.CubedTheme)
         }
     }
