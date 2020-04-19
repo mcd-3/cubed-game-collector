@@ -1,15 +1,16 @@
 package com.matthew.carvalhodagenais.gamecubecollector.viewmodels
 
 import android.app.Application
+import android.graphics.Bitmap
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Condition
 import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Console
 import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Type
 import com.matthew.carvalhodagenais.gamecubecollector.data.repositories.ConditionRepository
 import com.matthew.carvalhodagenais.gamecubecollector.data.repositories.ConsoleRepository
 import com.matthew.carvalhodagenais.gamecubecollector.data.repositories.RegionRepository
+import com.matthew.carvalhodagenais.gamecubecollector.helpers.ImageStorageHelper
 import com.matthew.carvalhodagenais.gamecubecollector.ui.ConsoleAddEditFragment
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
@@ -56,7 +57,8 @@ class ConsoleAddEditViewModel(application: Application): AndroidViewModel(applic
         title: String,
         desc: String?,
         regionCode: String,
-        conditionCode: String
+        conditionCode: String,
+        bitmap: Bitmap
     ) = viewModelScope.launch {
         var regionId: Int? = null
         val getRegionIdOperation = async {
@@ -72,12 +74,20 @@ class ConsoleAddEditViewModel(application: Application): AndroidViewModel(applic
         }
         getConditionIdOperation.await()
 
+        val name = ImageStorageHelper.generateUniqueImageName()
+        ImageStorageHelper.save(
+            getApplication<Application>().applicationContext,
+            bitmap,
+            name
+        )
+
         val console = Console(
             title = title,
             description = desc,
             regionId = regionId,
             conditionId = conditionId
         )
+        console.imageName = name
 
         if (requestInt == ConsoleAddEditFragment.EDIT_REQUEST) { // Edit the console
             console.id = selectedConsole.value!!.id

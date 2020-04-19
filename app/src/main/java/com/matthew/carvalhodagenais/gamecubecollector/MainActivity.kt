@@ -16,6 +16,7 @@ import com.matthew.carvalhodagenais.gamecubecollector.factories.GameViewModelFac
 import com.matthew.carvalhodagenais.gamecubecollector.ui.ImageSelectDialogFragment
 import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.*
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_console_add_edit.*
 import kotlinx.android.synthetic.main.fragment_game_add_edit.*
 
 class MainActivity : AppCompatActivity(), ImageSelectDialogFragment.ImageSelectDialogInterface {
@@ -130,7 +131,11 @@ class MainActivity : AppCompatActivity(), ImageSelectDialogFragment.ImageSelectD
      * Changes the bitmap for the cover image
      */
     override fun changeImageBitmap(bitmap: Bitmap) {
-        cover_art_image_view?.setImageBitmap(bitmap)
+        if (cover_art_image_view != null) {
+            cover_art_image_view.setImageBitmap(bitmap)
+        } else if (console_image_view != null) {
+            console_image_view.setImageBitmap(bitmap)
+        }
     }
 
 

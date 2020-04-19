@@ -27,5 +27,5 @@ data class Console(
     var id: Int = 0
 
     @ColumnInfo(name = "image_path")
-    var imagePath: String? = ""
+    var imageName: String? = ""
 }

@@ -2,6 +2,7 @@ package com.matthew.carvalhodagenais.gamecubecollector.ui
 
 import android.os.Bundle
 import android.view.*
+import androidx.core.graphics.drawable.toBitmap
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -63,7 +64,8 @@ class ConsoleAddEditFragment: Fragment() {
                     title_edit_text.text.toString(),
                     description_edit_text.text.toString().trim(),
                     region_spinner.selectedItem.toString().trim(),
-                    condition_spinner.selectedItem.toString().trim()
+                    condition_spinner.selectedItem.toString().trim(),
+                    console_image_view.drawable.toBitmap()
                 )
                 findNavController().navigate(R.id.action_consoleAddEditFragment_to_nav_consoles)
             } else { // Warn the user about needing a title

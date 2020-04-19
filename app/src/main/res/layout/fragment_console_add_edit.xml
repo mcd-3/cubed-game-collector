@@ -76,7 +76,7 @@
                         android:id="@+id/console_image_view"
                         android:layout_width="148dp"
                         android:layout_height="148dp"
-                        android:src="@drawable/no_console"
+                        bind:console="@{viewModel.selectedConsole}"
                         android:contentDescription="@string/game_add_edit_image_view_content_description"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"

@@ -24,7 +24,7 @@ class ConsoleListRecyclerAdapter: ListAdapter<Console, ConsoleListRecyclerAdapte
                         oldItem.description == oldItem.description &&
                         oldItem.regionId == newItem.regionId &&
                         oldItem.conditionId == newItem.conditionId &&
-                        oldItem.imagePath == newItem.imagePath)
+                        oldItem.imageName == newItem.imageName)
             }
             override fun areItemsTheSame(oldItem: Console, newItem: Console): Boolean {
                 return oldItem.id == newItem.id
@@ -40,10 +40,10 @@ class ConsoleListRecyclerAdapter: ListAdapter<Console, ConsoleListRecyclerAdapte
         }
 
         // Place appropriate cover art
-        if (console.imagePath != "" && console.imagePath != null) {
+        if (console.imageName != "" && console.imageName != null) {
             Glide
                 .with(holder.parentView)
-                .load(ImageStorageHelper.getImageWithPath(console.imagePath.toString()))
+                .load(ImageStorageHelper.getImageWithPath(console.imageName.toString()))
                 .into(holder.imageView)
         } else {
             Glide
