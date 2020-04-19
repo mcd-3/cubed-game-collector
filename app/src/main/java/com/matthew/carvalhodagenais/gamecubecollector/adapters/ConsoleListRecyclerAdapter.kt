@@ -48,7 +48,7 @@ class ConsoleListRecyclerAdapter: ListAdapter<Console, ConsoleListRecyclerAdapte
         } else {
             Glide
                 .with(holder.parentView)
-                .load(holder.parentView.context.getDrawable(R.drawable.no_art))
+                .load(holder.parentView.context.getDrawable(R.drawable.no_console))
                 .into(holder.imageView)
         }
     }

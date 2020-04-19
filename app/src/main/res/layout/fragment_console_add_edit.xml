@@ -76,6 +76,7 @@
                         android:id="@+id/console_image_view"
                         android:layout_width="148dp"
                         android:layout_height="148dp"
+                        android:src="@drawable/no_console"
                         android:contentDescription="@string/game_add_edit_image_view_content_description"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -203,6 +204,7 @@
                             android:lines="4"
                             android:maxLength="150"
                             android:backgroundTint="?attr/colorSurface"
+                            android:text="@{viewModel.selectedConsole.description}"
                             android:hint="@string/console_description_hint"/>
 
                     </com.google.android.material.textfield.TextInputLayout>

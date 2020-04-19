@@ -64,7 +64,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <!-- TODO: bind:console -->
+                    <!-- TODO: bind:console for image -->
                     <ImageView
                         android:id="@+id/cover_art_image_view"
                         android:layout_width="140dp"
@@ -72,6 +72,7 @@
                         android:layout_centerHorizontal="true"
                         android:paddingTop="@dimen/medium"
                         android:paddingBottom="@dimen/medium"
+                        android:src="@drawable/no_console"
                         android:contentDescription="@string/game_detail_image_view_content_description" />
 
                 </RelativeLayout>

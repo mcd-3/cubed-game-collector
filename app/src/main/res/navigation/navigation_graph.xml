@@ -114,8 +114,7 @@
     </fragment>
     <fragment
         android:id="@+id/consoleAddEditFragment"
-        android:name="com.matthew.carvalhodagenais.gamecubecollector.ui.ConsoleAddEditFragment"
-        android:label="ConsoleAddEditFragment" >
+        android:name="com.matthew.carvalhodagenais.gamecubecollector.ui.ConsoleAddEditFragment" >
         <argument
             android:name="ADD_EDIT_REQUEST"
             app:argType="integer"
