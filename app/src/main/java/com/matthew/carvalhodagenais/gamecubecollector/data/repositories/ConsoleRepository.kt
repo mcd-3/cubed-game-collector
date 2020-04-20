@@ -31,6 +31,10 @@ class ConsoleRepository(application: Application) {
         consoleDao.delete(console)
     }
 
+    suspend fun deleteAllConsoles() {
+        consoleDao.deleteAllConsoles()
+    }
+
     fun getAllConsoles(): LiveData<List<Console>> {
         return allConsoles
     }

@@ -13,6 +13,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.matthew.carvalhodagenais.gamecubecollector.factories.ConsoleViewModelFactory
 import com.matthew.carvalhodagenais.gamecubecollector.factories.GameViewModelFactory
+import com.matthew.carvalhodagenais.gamecubecollector.factories.SettingsViewModelFactory
 import com.matthew.carvalhodagenais.gamecubecollector.ui.ImageSelectDialogFragment
 import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.*
 import kotlinx.android.synthetic.main.activity_main.*
@@ -27,6 +28,7 @@ class MainActivity : AppCompatActivity(), ImageSelectDialogFragment.ImageSelectD
     private lateinit var consoleListViewModel: ConsoleListViewModel
     private lateinit var consoleDetailViewModel: ConsoleDetailViewModel
     private lateinit var consoleAddEditViewModel: ConsoleAddEditViewModel
+    private lateinit var settingsViewModel: SettingsViewModel
     private lateinit var appBarConfig: AppBarConfiguration
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -93,6 +95,11 @@ class MainActivity : AppCompatActivity(), ImageSelectDialogFragment.ImageSelectD
     fun getConsoleAddEditViewModel(): ConsoleAddEditViewModel = consoleAddEditViewModel
 
     /**
+     * Gets the SettingsViewModel
+     */
+    fun getSettingsViewModel(): SettingsViewModel = settingsViewModel
+
+    /**
      * Initialises all the ViewModels associated with this activity. Each ViewModel will be used
      * in its respective Fragment
      */
@@ -109,6 +116,8 @@ class MainActivity : AppCompatActivity(), ImageSelectDialogFragment.ImageSelectD
             .get(ConsoleDetailViewModel::class.java)
         consoleAddEditViewModel = ViewModelProvider(this, ConsoleViewModelFactory(this.application))
             .get(ConsoleAddEditViewModel::class.java)
+        settingsViewModel = ViewModelProvider(this, SettingsViewModelFactory(this.application))
+            .get(SettingsViewModel::class.java)
     }
 
     /**

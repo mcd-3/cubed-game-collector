@@ -3,6 +3,9 @@
 
     <data>
         <variable
+            name="viewModel"
+            type="com.matthew.carvalhodagenais.gamecubecollector.viewmodels.SettingsViewModel" />
+        <variable
             name="radioButtonActions"
             type="com.matthew.carvalhodagenais.gamecubecollector.databinders.viewactions.RadioButtonActions" />
         <variable
@@ -95,7 +98,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clickable="true"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:onClick="@{() -> viewModel.deleteAllData()}">
 
 
             <TextView

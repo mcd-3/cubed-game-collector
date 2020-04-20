@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.ContextWrapper
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.os.Environment
+import android.util.Log
 import android.widget.ImageView
 import android.widget.Toast
 import kotlinx.coroutines.coroutineScope
@@ -111,6 +113,19 @@ class ImageStorageHelper {
                 image.delete()
             } catch (e: FileNotFoundException) {
                 e.printStackTrace()
+            }
+        }
+
+        suspend fun deleteAllImages() = coroutineScope {
+            try {
+                val directory = File(IMAGE_PATH)//getDir(IMAGE_DIRECTORY, Context.MODE_PRIVATE)
+                if (directory.isDirectory) {
+                    Log.e("DIRECTORY", "Yes")
+                } else {
+                    Log.e("DIRECTORY", "No.")
+                }
+            } catch (e: Exception) {
+
             }
         }
     }

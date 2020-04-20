@@ -16,6 +16,9 @@ interface ConsoleDao {
     @Delete
     suspend fun delete(console: Console)
 
+    @Query("DELETE FROM console_table")
+    suspend fun deleteAllConsoles()
+
     @Query("SELECT * FROM console_table")
     fun getAllConsoles(): LiveData<List<Console>>
 }

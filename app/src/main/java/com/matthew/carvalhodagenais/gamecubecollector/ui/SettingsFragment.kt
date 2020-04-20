@@ -30,6 +30,7 @@ class SettingsFragment: Fragment() {
         ).apply {
             this.act = (activity as MainActivity)
             this.radioButtonActions = RadioButtonActions()
+            this.viewModel = (activity as MainActivity).getSettingsViewModel()
         }
         return binding.root
     }
