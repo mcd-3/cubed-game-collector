@@ -55,6 +55,8 @@
     <string name="no_game_subtitle">Click &quot;+&quot; to add a new game</string>
     <string name="no_console_title">No Consoles in your Collection</string>
     <string name="no_console_subtitle">Click &quot;+&quot; to add a new console</string>
+    <string name="no_favourite_games_title">No Favourite Games in your Collection</string>
+    <string name="no_favourite_games_subtitle">Go set some games as favourites!</string>
     <string name="delete_data_label_title">Delete All Data</string>
     <string name="delete_data_label_subtitle">WARNING: Deletes all in-app data</string>
 

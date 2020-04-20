@@ -50,6 +50,8 @@ class GameListFragment : Fragment() {
             .observe(viewLifecycleOwner, Observer {
 
                 if (it.count() < 1) {
+                    no_games_title_text_view.text = getString(R.string.no_game_title)
+                    no_games_subtitle_text_view.text = getString(R.string.no_game_subtitle)
                     no_games_layout.visibility = View.VISIBLE
                 } else {
                     no_games_layout.visibility = View.INVISIBLE
