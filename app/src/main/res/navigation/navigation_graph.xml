@@ -107,10 +107,18 @@
         android:label="@string/navigation_console_list_title" >
         <action
             android:id="@+id/action_nav_consoles_to_consoleAddEditFragment"
-            app:destination="@id/consoleAddEditFragment" />
+            app:destination="@id/consoleAddEditFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
         <action
             android:id="@+id/action_nav_consoles_to_consoleDetailFragment"
-            app:destination="@id/consoleDetailFragment" />
+            app:destination="@id/consoleDetailFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
     </fragment>
     <fragment
         android:id="@+id/consoleAddEditFragment"
@@ -121,10 +129,18 @@
             android:defaultValue="1" />
         <action
             android:id="@+id/action_consoleAddEditFragment_to_nav_consoles"
-            app:destination="@id/nav_consoles" />
+            app:destination="@id/nav_consoles"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
         <action
             android:id="@+id/action_consoleAddEditFragment_to_imageSelectDialogFragment"
-            app:destination="@id/imageSelectDialogFragment" />
+            app:destination="@id/imageSelectDialogFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
     </fragment>
     <fragment
         android:id="@+id/consoleDetailFragment"
@@ -132,10 +148,18 @@
         android:label="@string/navigation_console_details_title" >
         <action
             android:id="@+id/action_consoleDetailFragment_to_consoleAddEditFragment"
-            app:destination="@id/consoleAddEditFragment" />
+            app:destination="@id/consoleAddEditFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
         <action
             android:id="@+id/action_consoleDetailFragment_to_nav_consoles"
-            app:destination="@id/nav_consoles" />
+            app:destination="@id/nav_consoles"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
     </fragment>
     <dialog
         android:id="@+id/imageSelectDialogFragment"
