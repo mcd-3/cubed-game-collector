@@ -3,6 +3,6 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="@dimen/extra_huge"
-    android:background="#9c00e8">
+    android:background="?attr/colorPrimary">
 
 </LinearLayout>

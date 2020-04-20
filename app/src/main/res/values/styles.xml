@@ -26,7 +26,7 @@
     </style>
 
     <style name="CubedDarkTheme" parent="Theme.MaterialComponents.NoActionBar">
-        <item name="colorPrimary">@color/deep_purple</item>
+        <item name="colorPrimary">@color/purple</item>
         <item name="colorPrimaryDark">@color/dark_purple</item>
         <item name="colorAccent">@color/light_purple</item>
         <item name="android:navigationBarColor">@color/dark_grey</item>
@@ -37,7 +37,7 @@
         <item name="colorSurface">@color/dark_grey</item>
         <item name="colorError">@color/bright_red</item>
         <item name="colorOnError">@color/red</item>
-        <item name="android:colorBackground">@color/black</item>
+        <item name="android:colorBackground">@color/shadow</item>
         <item name="windowActionBar">false</item>
     </style>
 
@@ -53,7 +53,7 @@
         <item name="colorSurface">@color/dark_grey</item>
         <item name="colorError">@color/bright_red</item>
         <item name="colorOnError">@color/red</item>
-        <item name="android:colorBackground">@color/black</item>
+        <item name="android:colorBackground">@color/shadow</item>
         <item name="windowActionBar">false</item>
     </style>
 

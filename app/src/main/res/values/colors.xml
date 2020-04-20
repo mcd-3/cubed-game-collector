@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black">#000000</color>
+    <color name="shadow">#0F0F0F</color>
     <color name="dark_grey">#131313</color>
     <color name="deep_grey">#565656</color>
     <color name="grey">#777777</color>
@@ -13,6 +14,7 @@
     <color name="deep_purple">#7800b3</color>
     <color name="dark_purple">#660099</color>
     <color name="light_purple">#dd99ff</color>
+    <color name="lilac">#bc33ff</color>
     <color name="blue">#32b2f0</color>
     <color name="deep_blue">#0081bf</color>
     <color name="dark_blue">#005880</color>
