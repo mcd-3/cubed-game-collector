@@ -48,6 +48,13 @@ class GameListFragment : Fragment() {
 
         (activity as MainActivity).getGameListViewModel().getAllGames()
             .observe(viewLifecycleOwner, Observer {
+
+                if (it.count() < 1) {
+                    no_games_layout.visibility = View.VISIBLE
+                } else {
+                    no_games_layout.visibility = View.INVISIBLE
+                }
+
                 recyclerAdapter.submitList(it)
                 recyclerAdapter.setSearchableList(it)
 

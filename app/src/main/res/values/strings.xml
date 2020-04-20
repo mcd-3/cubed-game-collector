@@ -51,6 +51,8 @@
     <string name="no_date">N.D</string>
     <string name="camera">Camera</string>
     <string name="gallery">Gallery</string>
+    <string name="no_game_title">No Games in your Collection</string>
+    <string name="no_game_subtitle">Click &quot;+&quot; to add a new game</string>
     <string name="delete_data_label_title">Delete All Data</string>
     <string name="delete_data_label_subtitle">WARNING: Deletes all in-app data</string>
 
@@ -72,6 +74,7 @@
     <string name="game_list_star_image_view_content_description">Favourite</string>
     <string name="game_add_edit_calendar_image_button_content_description">Pick a Date</string>
     <string name="game_add_edit_clear_image_button_content_description">Clear Date</string>
+    <string name="game_list_no_games_content_description">No Games</string>
 
     <!-- Alert Dialog text -->
     <string name="game_detail_delete_alert_title">Delete Game?</string>
