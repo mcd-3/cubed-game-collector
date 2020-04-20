@@ -78,6 +78,7 @@
     <string name="game_add_edit_clear_image_button_content_description">Clear Date</string>
     <string name="game_list_no_games_content_description">No Games</string>
     <string name="game_list_no_consoles_content_description">No Consoles</string>
+    <string name="logo_content_description">App Logo</string>
 
     <!-- Alert Dialog text -->
     <string name="game_detail_delete_alert_title">Delete Game?</string>
@@ -155,5 +156,9 @@
     <string name="navigation_console_edit_title">Edit Console</string>
     <string name="navigation_console_add_title">Add Console</string>
     <string name="navigation_settings">Settings</string>
+
+    <!-- Navigation Header TextView -->
+    <string name="gamecube">Gamecube</string>
+    <string name="collector">Collector</string>
 
 </resources>
