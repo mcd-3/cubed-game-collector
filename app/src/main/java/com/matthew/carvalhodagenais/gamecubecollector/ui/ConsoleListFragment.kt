@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.matthew.carvalhodagenais.gamecubecollector.MainActivity
 import com.matthew.carvalhodagenais.gamecubecollector.R
 import com.matthew.carvalhodagenais.gamecubecollector.adapters.ConsoleListRecyclerAdapter
-import com.matthew.carvalhodagenais.gamecubecollector.adapters.GameListRecyclerAdapter
 import com.matthew.carvalhodagenais.gamecubecollector.helpers.RecyclerAdapterItemClickGenerator
 import kotlinx.android.synthetic.main.fragment_console_list.*
 
@@ -39,6 +38,12 @@ class ConsoleListFragment: Fragment() {
         (activity as MainActivity).getConsoleListViewModel().getAllConsoles()
             .observe(viewLifecycleOwner, Observer {
                 recyclerAdapter.submitList(it)
+
+                if (it.count() < 1) {
+                    no_consoles_layout.visibility = View.VISIBLE
+                } else {
+                    no_consoles_layout.visibility = View.INVISIBLE
+                }
 
                 val onClickGenerator = RecyclerAdapterItemClickGenerator()
                 recyclerAdapter.setItemOnClickListener(
