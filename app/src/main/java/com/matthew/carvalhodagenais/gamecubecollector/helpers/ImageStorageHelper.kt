@@ -118,14 +118,15 @@ class ImageStorageHelper {
 
         suspend fun deleteAllImages() = coroutineScope {
             try {
-                val directory = File(IMAGE_PATH)//getDir(IMAGE_DIRECTORY, Context.MODE_PRIVATE)
+                val directory = File(IMAGE_PATH + '/')
                 if (directory.isDirectory) {
-                    Log.e("DIRECTORY", "Yes")
-                } else {
-                    Log.e("DIRECTORY", "No.")
+                    val children = directory.list()
+                    children.forEach {
+                        File(directory, it).delete()
+                    }
                 }
             } catch (e: Exception) {
-
+                e.printStackTrace()
             }
         }
     }

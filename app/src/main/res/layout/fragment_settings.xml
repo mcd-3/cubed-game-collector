@@ -98,8 +98,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clickable="true"
-            android:orientation="vertical"
-            android:onClick="@{() -> viewModel.deleteAllData()}">
+            android:focusable="true"
+            android:background="?android:attr/selectableItemBackground"
+            android:orientation="vertical">
 
 
             <TextView

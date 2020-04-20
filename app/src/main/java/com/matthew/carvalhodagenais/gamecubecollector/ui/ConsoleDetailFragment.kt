@@ -64,9 +64,9 @@ class ConsoleDetailFragment: Fragment() {
         val builder = MaterialAlertDialogBuilder(context)
         builder.setTitle(getString(R.string.console_detail_delete_alert_title))
             .setMessage(getString(R.string.console_detail_delete_alert_body))
-            .setPositiveButton(getString(R.string.detail_delete_alert_positive),
+            .setPositiveButton(getString(R.string.delete_alert_positive),
                 alertPositiveOnClick)
-            .setNegativeButton(getString(R.string.detail_delete_alert_negative)){
+            .setNegativeButton(getString(R.string.delete_alert_negative)){
                     dialog, _ -> dialog.dismiss() }
         val alert = builder.create()
         alert.show()
