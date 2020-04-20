@@ -13,13 +13,14 @@
         tools:listitem="@layout/console_item"/>
 
     <!--
-    If you want to edit this view,
-    comment out the RecyclerView so you can see what you're doing
--->
+        If you want to edit this view,
+        comment out the RecyclerView so you can see what you're doing
+    -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/no_consoles_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:visibility="invisible">
 
         <TextView
             android:id="@+id/no_consoles_title_text_view"
