@@ -21,6 +21,10 @@
             android:id="@+id/themes_linear_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingTop="@dimen/medium"
+            android:paddingStart="@dimen/small"
+            android:paddingEnd="0dp"
+            android:paddingBottom="@dimen/medium"
             android:orientation="vertical">
 
             <TextView
@@ -35,8 +39,9 @@
                 android:id="@+id/themes_radio_group"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/small"
-                android:layout_marginEnd="@dimen/small">
+                android:layout_marginTop="@dimen/small"
+                android:layout_marginStart="@dimen/medium"
+                android:layout_marginEnd="@dimen/medium">
 
                 <com.google.android.material.radiobutton.MaterialRadioButton
                     android:id="@+id/radio_theme_cubed"
@@ -94,32 +99,48 @@
         </LinearLayout>
 
         <LinearLayout
+            android:layout_marginTop="@dimen/small"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/silver"/>
+
+        <LinearLayout
             android:id="@+id/delete_all_data_linear_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clickable="true"
             android:focusable="true"
+            android:paddingTop="@dimen/medium"
+            android:paddingStart="@dimen/small"
+            android:paddingEnd="0dp"
+            android:paddingBottom="@dimen/medium"
             android:background="?android:attr/selectableItemBackground"
             android:orientation="vertical">
 
-
             <TextView
-                android:text="Delete Data"
+                android:text="@string/delete_data_label_title"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="@dimen/small"
                 android:layout_marginBottom="@dimen/very_small"
+                android:textColor="?attr/colorError"
                 style="@style/TextAppearance.AppCompat.Large"/>
 
-
             <TextView
-                android:text="WARNING: Deletes all in-app data"
+                android:text="@string/delete_data_label_subtitle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="@dimen/small"
+                android:textColor="?attr/colorOnError"
                 style="@style/TextAppearance.AppCompat.Medium"/>
 
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="@dimen/small"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/silver"/>
 
     </LinearLayout>
 

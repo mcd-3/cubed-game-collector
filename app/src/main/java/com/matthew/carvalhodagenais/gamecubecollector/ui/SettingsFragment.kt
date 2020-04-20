@@ -44,8 +44,8 @@ class SettingsFragment: Fragment() {
      */
     private val showDialogOnClickListener = View.OnClickListener {
         val builder = MaterialAlertDialogBuilder(context)
-        builder.setTitle(getString(R.string.game_detail_delete_alert_title))
-            .setMessage(getString(R.string.game_detail_delete_alert_body))
+        builder.setTitle(getString(R.string.delete_all_data_alert_title))
+            .setMessage(getString(R.string.delete_all_data_alert_body))
             .setPositiveButton(getString(R.string.delete_alert_positive),
                 alertPositiveOnClick)
             .setNegativeButton(getString(R.string.delete_alert_negative)){
