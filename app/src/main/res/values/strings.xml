@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">GamecubeCollector</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_version">1.0</string>
+    <string name="app_email">abcde@example.com</string>
+    <string name="app_github">https://www.github.com/mcd-3/gamecube-collector</string>
 
     <!-- Keys for SharedPreferences -->
     <string name="shared_preference_key">com.matthew.carvalhodagenais.gamecubecollector.PREFERENCE_KEY</string>
@@ -59,6 +60,12 @@
     <string name="no_favourite_games_subtitle">Go set some games as favourites!</string>
     <string name="delete_data_label_title">Delete All Data</string>
     <string name="delete_data_label_subtitle">WARNING: Deletes all in-app data</string>
+    <string name="about_app">An open source game collecting app for all your Gamecube needs!</string>
+    <string name="disclaimer">We are not affiliated, associated, authorized, endorsed by, or in any way officially connected with Nintendo Co., Ltd, or any of its subsidiaries or its affiliates.</string>
+    <string name="disclaimer_part_two">The names Gamecube and Dolphin as well as related names, marks, emblems and images are registered trademarks of their respective owners.</string>
+    <string name="email_label">Email</string>
+    <string name="github_label">Github</string>
+    <string name="version_label">Version: </string>
 
     <!-- Themes -->
     <string name="cubed_theme">Cubed</string>

@@ -3,4 +3,165 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/small"
+        android:layout_marginStart="@dimen/small"
+        android:layout_marginEnd="@dimen/small"
+        android:layout_marginBottom="@dimen/small">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/about_logo"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/extra_medium"
+                android:src="@drawable/logo"
+                android:contentDescription="@string/logo_content_description"
+                android:background="?attr/colorPrimary"
+                android:layout_alignParentTop="true"/>
+
+            <TextView
+                android:id="@+id/about_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/large"
+                android:layout_marginTop="@dimen/slightly_medium"
+                android:layout_marginEnd="@dimen/large"
+                android:gravity="center"
+                style="@style/TextAppearance.AppCompat.Medium"
+                android:text="@string/about_app"
+                android:textColor="?android:attr/textColor"
+                android:layout_below="@id/about_logo"/>
+
+            <TextView
+                android:id="@+id/about_notice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/medium"
+                android:layout_marginStart="@dimen/medium"
+                android:layout_marginEnd="@dimen/medium"
+                android:gravity="center"
+                android:text="@string/disclaimer"
+                android:textStyle="italic"
+                android:textColor="?android:attr/subtitleTextColor"
+                android:layout_below="@id/about_description"/>
+
+            <TextView
+                android:id="@+id/about_notice_two"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/medium"
+                android:layout_marginEnd="@dimen/medium"
+                android:gravity="center"
+                android:text="@string/disclaimer_part_two"
+                android:textStyle="italic"
+                android:textColor="?android:attr/subtitleTextColor"
+                android:layout_below="@id/about_notice"/>
+
+            <LinearLayout
+                android:id="@+id/about_email_linear_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/small"
+                android:paddingBottom="@dimen/slightly_medium"
+                android:orientation="vertical"
+                android:focusable="true"
+                android:clickable="true"
+                android:background="?attr/selectableItemBackground"
+                android:layout_above="@id/about_github_linear_layout">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/medium"
+                    style="@style/TextAppearance.AppCompat.Large"
+                    android:text="@string/email_label"/>
+
+                <TextView
+                    android:id="@+id/about_email"
+                    style="@style/TextAppearance.AppCompat.Medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/extra_medium"
+                    android:layout_marginEnd="@dimen/extra_medium"
+                    android:autoLink="email"
+                    android:drawableStart="@drawable/ic_email_black_24dp"
+                    android:drawablePadding="@dimen/medium"
+                    android:paddingTop="@dimen/slightly_medium"
+                    android:text="@string/app_email" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/about_github_linear_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/small"
+                android:paddingBottom="@dimen/slightly_medium"
+                android:orientation="vertical"
+                android:focusable="true"
+                android:clickable="true"
+                android:background="?attr/selectableItemBackground"
+                android:layout_above="@id/about_version">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/medium"
+                    style="@style/TextAppearance.AppCompat.Large"
+                    android:text="@string/github_label"/>
+
+                <TextView
+                    android:id="@+id/about_github"
+                    style="@style/TextAppearance.AppCompat.Medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/extra_medium"
+                    android:layout_marginEnd="@dimen/extra_medium"
+                    android:autoLink="web"
+                    android:drawableStart="@drawable/ic_link_black_24dp"
+                    android:drawablePadding="@dimen/medium"
+                    android:paddingTop="@dimen/slightly_medium"
+                    android:text="@string/app_github" />
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/about_version"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/slightly_small"
+                android:layout_marginStart="@dimen/slightly_small"
+                android:layout_marginEnd="@dimen/slightly_small"
+                android:layout_marginBottom="@dimen/slightly_small"
+                android:layout_alignParentBottom="true">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toStartOf="@id/version_number"
+                    android:text="@string/version_label"/>
+
+                <TextView
+                    android:id="@+id/version_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:paddingStart="@dimen/small"
+                    android:paddingEnd="0dp"
+                    android:text="@string/app_version"/>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
 </LinearLayout>
