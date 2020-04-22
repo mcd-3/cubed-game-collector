@@ -168,7 +168,7 @@
     <string name="navigation_about">About Us</string>
 
     <!-- Navigation Header TextView -->
-    <string name="gamecube">Gamecube</string>
+    <string name="cubed">Cubed: Game</string>
     <string name="collector">Collector</string>
 
 </resources>
