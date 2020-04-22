@@ -44,7 +44,7 @@
                 android:id="@+id/about_notice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/medium"
+                android:layout_marginTop="@dimen/extra_medium"
                 android:layout_marginStart="@dimen/medium"
                 android:layout_marginEnd="@dimen/medium"
                 android:gravity="center"
@@ -64,6 +64,12 @@
                 android:textStyle="italic"
                 android:textColor="?android:attr/subtitleTextColor"
                 android:layout_below="@id/about_notice"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/silver"
+                android:layout_above="@id/about_email_linear_layout"/>
 
             <LinearLayout
                 android:id="@+id/about_email_linear_layout"
@@ -94,16 +100,22 @@
                     android:autoLink="email"
                     android:drawableStart="@drawable/ic_email_black_24dp"
                     android:drawablePadding="@dimen/medium"
+                    android:drawableTint="?android:attr/icon"
                     android:paddingTop="@dimen/slightly_medium"
                     android:text="@string/app_email" />
 
             </LinearLayout>
 
             <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/about_email_linear_layout"
+                android:background="@color/silver"/>
+
+            <LinearLayout
                 android:id="@+id/about_github_linear_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="@dimen/small"
                 android:paddingBottom="@dimen/slightly_medium"
                 android:orientation="vertical"
                 android:focusable="true"
@@ -115,6 +127,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/medium"
+                    android:paddingTop="@dimen/small"
                     style="@style/TextAppearance.AppCompat.Large"
                     android:text="@string/github_label"/>
 
@@ -127,11 +140,18 @@
                     android:layout_marginEnd="@dimen/extra_medium"
                     android:autoLink="web"
                     android:drawableStart="@drawable/ic_link_black_24dp"
+                    android:drawableTint="?android:attr/icon"
                     android:drawablePadding="@dimen/medium"
                     android:paddingTop="@dimen/slightly_medium"
                     android:text="@string/app_github" />
 
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/about_github_linear_layout"
+                android:background="@color/silver"/>
 
             <RelativeLayout
                 android:id="@+id/about_version"
