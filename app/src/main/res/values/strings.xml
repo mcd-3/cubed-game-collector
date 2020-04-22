@@ -3,7 +3,7 @@
 
     <string name="app_version">1.0</string>
     <string name="app_email">abcde@example.com</string>
-    <string name="app_github">https://www.github.com/mcd-3/gamecube-collector</string>
+    <string name="app_github">https://github.com/mcd-3/cubed-game-collector</string>
 
     <!-- Keys for SharedPreferences -->
     <string name="shared_preference_key">com.matthew.carvalhodagenais.gamecubecollector.PREFERENCE_KEY</string>
