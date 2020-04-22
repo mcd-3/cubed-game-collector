@@ -51,6 +51,7 @@
                 android:text="@string/disclaimer"
                 android:textStyle="italic"
                 android:textColor="?android:attr/subtitleTextColor"
+                android:textSize="@dimen/small_text"
                 android:layout_below="@id/about_description"/>
 
             <TextView
@@ -63,6 +64,7 @@
                 android:text="@string/disclaimer_part_two"
                 android:textStyle="italic"
                 android:textColor="?android:attr/subtitleTextColor"
+                android:textSize="@dimen/small_text"
                 android:layout_below="@id/about_notice"/>
 
             <LinearLayout
