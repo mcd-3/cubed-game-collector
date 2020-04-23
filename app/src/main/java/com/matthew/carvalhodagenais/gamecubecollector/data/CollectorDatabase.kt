@@ -19,6 +19,7 @@ abstract class CollectorDatabase: RoomDatabase() {
     abstract fun typeDao(): TypeDao
     abstract fun conditionDao(): ConditionDao
     abstract fun consoleDao(): ConsoleDao
+    abstract fun accessoryDao(): AccessoryDao
 
     companion object {
 
