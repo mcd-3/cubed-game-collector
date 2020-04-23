@@ -87,8 +87,10 @@
     <string name="game_add_edit_calendar_image_button_content_description">Pick a Date</string>
     <string name="game_add_edit_clear_image_button_content_description">Clear Date</string>
     <string name="game_list_no_games_content_description">No Games</string>
-    <string name="game_list_no_consoles_content_description">No Consoles</string>
+    <string name="console_list_no_consoles_content_description">No Consoles</string>
     <string name="logo_content_description">App Logo</string>
+    <string name="console_list_image_view_content_description">Console Image</string>
+    <string name="accessory_list_image_view_content_description">Accessory Image</string>
 
     <!-- Alert Dialog text -->
     <string name="game_detail_delete_alert_title">Delete Game?</string>
