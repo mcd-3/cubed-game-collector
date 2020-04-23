@@ -13,6 +13,7 @@ import com.matthew.carvalhodagenais.gamecubecollector.R
 import com.matthew.carvalhodagenais.gamecubecollector.adapters.ConsoleListRecyclerAdapter
 import com.matthew.carvalhodagenais.gamecubecollector.helpers.ItemTouchHelperGenerator
 import com.matthew.carvalhodagenais.gamecubecollector.helpers.RecyclerAdapterItemClickGenerator
+import com.matthew.carvalhodagenais.gamecubecollector.helpers.RecyclerSearchQueryListenerGenerator
 import kotlinx.android.synthetic.main.fragment_console_list.*
 
 class ConsoleListFragment: Fragment() {
@@ -40,6 +41,7 @@ class ConsoleListFragment: Fragment() {
         (activity as MainActivity).getConsoleListViewModel().getAllConsoles()
             .observe(viewLifecycleOwner, Observer {
                 recyclerAdapter.submitList(it)
+                recyclerAdapter.setSearchableList(it)
 
                 if (it.count() < 1) {
                     no_consoles_layout.visibility = View.VISIBLE
@@ -68,6 +70,11 @@ class ConsoleListFragment: Fragment() {
     override fun onPrepareOptionsMenu(menu: Menu) {
         menu.clear()
         requireActivity().menuInflater.inflate(R.menu.menu_console_list, menu)
+        val searchItem = menu.findItem(R.id.menu_search)
+        val searchView = searchItem.actionView as SearchView
+        val generator = RecyclerSearchQueryListenerGenerator()
+        searchView.setOnQueryTextListener(generator.generateQueryTextListener(recyclerAdapter))
+        searchItem.setOnActionExpandListener(generator.generateExpandListener())
         return super.onPrepareOptionsMenu(menu)
     }
 

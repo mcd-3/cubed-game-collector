@@ -14,6 +14,7 @@ import com.matthew.carvalhodagenais.gamecubecollector.adapters.GameListRecyclerA
 import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Game
 import com.matthew.carvalhodagenais.gamecubecollector.helpers.ItemTouchHelperGenerator
 import com.matthew.carvalhodagenais.gamecubecollector.helpers.RecyclerAdapterItemClickGenerator
+import com.matthew.carvalhodagenais.gamecubecollector.helpers.RecyclerSearchQueryListenerGenerator
 import kotlinx.android.synthetic.main.fragment_game_list.*
 
 class GameListFragment : Fragment() {
@@ -84,8 +85,9 @@ class GameListFragment : Fragment() {
         requireActivity().menuInflater.inflate(R.menu.menu_game_list, menu)
         val searchItem = menu.findItem(R.id.menu_search)
         val searchView = searchItem.actionView as SearchView
-        searchView.setOnQueryTextListener(searchQueryTextListener)
-        searchItem.setOnActionExpandListener(searchExpandListener)
+        val generator = RecyclerSearchQueryListenerGenerator()
+        searchView.setOnQueryTextListener(generator.generateQueryTextListener(recyclerAdapter))
+        searchItem.setOnActionExpandListener(generator.generateExpandListener())
         return super.onPrepareOptionsMenu(menu)
     }
 
