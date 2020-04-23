@@ -11,10 +11,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.matthew.carvalhodagenais.gamecubecollector.MainActivity
 import com.matthew.carvalhodagenais.gamecubecollector.R
 import com.matthew.carvalhodagenais.gamecubecollector.adapters.GameListRecyclerAdapter
-import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Game
-import com.matthew.carvalhodagenais.gamecubecollector.helpers.ItemTouchHelperGenerator
-import com.matthew.carvalhodagenais.gamecubecollector.helpers.RecyclerAdapterItemClickGenerator
-import com.matthew.carvalhodagenais.gamecubecollector.helpers.RecyclerSearchQueryListenerGenerator
+import com.matthew.carvalhodagenais.gamecubecollector.helpers.generators.ItemTouchHelperGenerator
+import com.matthew.carvalhodagenais.gamecubecollector.helpers.generators.RecyclerAdapterItemClickGenerator
+import com.matthew.carvalhodagenais.gamecubecollector.helpers.generators.RecyclerSearchQueryListenerGenerator
 import kotlinx.android.synthetic.main.fragment_game_list.*
 
 class GameListFragment : Fragment() {
@@ -61,7 +60,8 @@ class GameListFragment : Fragment() {
                 recyclerAdapter.submitList(it)
                 recyclerAdapter.setSearchableList(it)
 
-                val onClickGenerator = RecyclerAdapterItemClickGenerator()
+                val onClickGenerator =
+                    RecyclerAdapterItemClickGenerator()
                 recyclerAdapter.setItemOnClickListener(
                     onClickGenerator.generate(
                         (activity as MainActivity).getGameDetailViewModel(),
@@ -73,7 +73,9 @@ class GameListFragment : Fragment() {
 
         // Make each item slide
         ItemTouchHelper(
-            ItemTouchHelperGenerator(context!!).generate(
+            ItemTouchHelperGenerator(
+                context!!
+            ).generate(
                 recyclerAdapter,
                 (activity as MainActivity).getGameListViewModel()
             )
@@ -85,7 +87,8 @@ class GameListFragment : Fragment() {
         requireActivity().menuInflater.inflate(R.menu.menu_game_list, menu)
         val searchItem = menu.findItem(R.id.menu_search)
         val searchView = searchItem.actionView as SearchView
-        val generator = RecyclerSearchQueryListenerGenerator()
+        val generator =
+            RecyclerSearchQueryListenerGenerator()
         searchView.setOnQueryTextListener(generator.generateQueryTextListener(recyclerAdapter))
         searchItem.setOnActionExpandListener(generator.generateExpandListener())
         return super.onPrepareOptionsMenu(menu)

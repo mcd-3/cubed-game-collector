@@ -1,4 +1,4 @@
-package com.matthew.carvalhodagenais.gamecubecollector.helpers
+package com.matthew.carvalhodagenais.gamecubecollector.helpers.generators
 
 import android.view.MenuItem
 import android.widget.SearchView

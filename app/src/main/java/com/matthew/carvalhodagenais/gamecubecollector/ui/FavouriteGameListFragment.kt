@@ -12,8 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.matthew.carvalhodagenais.gamecubecollector.MainActivity
 import com.matthew.carvalhodagenais.gamecubecollector.R
 import com.matthew.carvalhodagenais.gamecubecollector.adapters.GameListRecyclerAdapter
-import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Game
-import com.matthew.carvalhodagenais.gamecubecollector.helpers.RecyclerAdapterItemClickGenerator
+import com.matthew.carvalhodagenais.gamecubecollector.helpers.generators.RecyclerAdapterItemClickGenerator
 import kotlinx.android.synthetic.main.fragment_game_list.*
 
 class FavouriteGameListFragment: Fragment() {
@@ -60,7 +59,8 @@ class FavouriteGameListFragment: Fragment() {
                 recyclerAdapter.submitList(it)
                 recyclerAdapter.setSearchableList(it)
 
-                val onClickGenerator = RecyclerAdapterItemClickGenerator()
+                val onClickGenerator =
+                    RecyclerAdapterItemClickGenerator()
                 recyclerAdapter.setItemOnClickListener(
                     onClickGenerator.generate(
                         (activity as MainActivity).getGameDetailViewModel(),

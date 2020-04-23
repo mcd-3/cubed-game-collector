@@ -1,8 +1,6 @@
-package com.matthew.carvalhodagenais.gamecubecollector.helpers
+package com.matthew.carvalhodagenais.gamecubecollector.helpers.generators
 
 import androidx.navigation.NavController
-import androidx.navigation.fragment.findNavController
-import com.matthew.carvalhodagenais.gamecubecollector.MainActivity
 import com.matthew.carvalhodagenais.gamecubecollector.R
 import com.matthew.carvalhodagenais.gamecubecollector.adapters.ConsoleListRecyclerAdapter
 import com.matthew.carvalhodagenais.gamecubecollector.adapters.GameListRecyclerAdapter
