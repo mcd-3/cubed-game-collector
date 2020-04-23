@@ -63,6 +63,7 @@ class ConsoleAddEditFragment: Fragment() {
                     ConsoleAddEditFragmentArgs.fromBundle(arguments!!).ADDEDITREQUEST,
                     title_edit_text.text.toString(),
                     description_edit_text.text.toString().trim(),
+                    modded_yes.isChecked,
                     region_spinner.selectedItem.toString().trim(),
                     condition_spinner.selectedItem.toString().trim(),
                     console_image_view.drawable.toBitmap()

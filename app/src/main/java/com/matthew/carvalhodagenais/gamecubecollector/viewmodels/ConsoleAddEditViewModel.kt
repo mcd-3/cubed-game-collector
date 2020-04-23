@@ -49,13 +49,13 @@ class ConsoleAddEditViewModel(application: Application): AndroidViewModel(applic
     }
 
     /**
-     * TODO: Finish this function and change params
      * Saves a console to the database
      */
     fun saveConsole(
         requestInt: Int,
         title: String,
         desc: String?,
+        isModded: Boolean?,
         regionCode: String,
         conditionCode: String,
         bitmap: Bitmap
@@ -84,6 +84,7 @@ class ConsoleAddEditViewModel(application: Application): AndroidViewModel(applic
         val console = Console(
             title = title,
             description = desc,
+            isModded = isModded,
             regionId = regionId,
             conditionId = conditionId
         )

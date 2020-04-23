@@ -2,7 +2,7 @@ package com.matthew.carvalhodagenais.gamecubecollector.data.entities
 
 import androidx.room.*
 
-@Entity(tableName = "console_table",
+@Entity(tableName = "accessory_table",
     indices = [
         Index("region_id"),
         Index("condition_id")],
@@ -17,10 +17,9 @@ import androidx.room.*
             parentColumns = ["id"],
             childColumns = ["condition_id"],
             onDelete = ForeignKey.NO_ACTION)])
-data class Console(
+data class Accessory(
     @ColumnInfo(name = "title") var title: String,
     @ColumnInfo(name = "description") var description: String?,
-    @ColumnInfo(name = "is_modded") var isModded: Boolean?,
     @ColumnInfo(name = "region_id") var regionId: Int?,
     @ColumnInfo(name = "condition_id") var conditionId: Int?
 ) {

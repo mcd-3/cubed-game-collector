@@ -11,7 +11,7 @@ import com.matthew.carvalhodagenais.gamecubecollector.data.dao.*
 import com.matthew.carvalhodagenais.gamecubecollector.data.entities.*
 import kotlinx.coroutines.*
 
-@Database(entities = [Game::class, Console::class, Region::class, Type::class, Condition::class], version = 1)
+@Database(entities = [Game::class, Console::class, Region::class, Type::class, Condition::class], version = 2)
 abstract class CollectorDatabase: RoomDatabase() {
 
     abstract fun gameDao(): GameDao

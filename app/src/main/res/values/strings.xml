@@ -39,6 +39,7 @@
     <string name="release_date_label">Release Date:</string>
     <string name="cib_label">Completeness:</string>
     <string name="condition_label">Condition:</string>
+    <string name="modded_label">Modded:</string>
     <string name="price_label">Price Paid:</string>
     <string name="description_label">Description:</string>
     <string name="themes_label">Themes</string>
@@ -149,6 +150,10 @@
 
     <!-- Empty -->
     <string name="empty" />
+
+    <!-- Yes and No -->
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 
     <!-- RecyclerView ItemTouchHelper Labels -->
     <string name="ith_favourite">Favourite</string>

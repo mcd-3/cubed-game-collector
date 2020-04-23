@@ -40,6 +40,16 @@ class TextViewDataBinder {
         }
 
         @JvmStatic
+        @BindingAdapter("bind:isModded")
+        fun setIsModdedText(textView: TextView, isModded: Boolean) {
+            if (isModded) {
+                textView.text = textView.context.getString(R.string.yes)
+            } else {
+                textView.text = textView.context.getString(R.string.no)
+            }
+        }
+
+        @JvmStatic
         @BindingAdapter("bind:description")
         fun setDescription(textView: TextView, description: String?) {
             if (description != null && description.trim() != "") {
