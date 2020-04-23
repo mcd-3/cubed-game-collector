@@ -63,6 +63,10 @@ class ConsoleListRecyclerAdapter: ListAdapter<Console, ConsoleListRecyclerAdapte
         this.listener = listener
     }
 
+    fun getConsole(position: Int): Console {
+        return getItem(position)
+    }
+
     inner class ConsoleHolder(view: View): RecyclerView.ViewHolder(view) {
         init {
             view.setOnClickListener {
