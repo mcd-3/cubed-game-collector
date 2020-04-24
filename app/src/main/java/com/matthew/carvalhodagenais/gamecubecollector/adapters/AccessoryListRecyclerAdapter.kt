@@ -22,7 +22,6 @@ class AccessoryListRecyclerAdapter: ListAdapter<Accessory, AccessoryListRecycler
             override fun areContentsTheSame(oldItem: Accessory, newItem: Accessory): Boolean {
                 return (oldItem.title == newItem.title &&
                         oldItem.description == oldItem.description &&
-                        oldItem.regionId == newItem.regionId &&
                         oldItem.conditionId == newItem.conditionId &&
                         oldItem.imageName == newItem.imageName)
             }

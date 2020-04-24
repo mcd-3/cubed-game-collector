@@ -11,6 +11,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.matthew.carvalhodagenais.gamecubecollector.factories.AccessoryViewModelFactory
 import com.matthew.carvalhodagenais.gamecubecollector.factories.ConsoleViewModelFactory
 import com.matthew.carvalhodagenais.gamecubecollector.factories.GameViewModelFactory
 import com.matthew.carvalhodagenais.gamecubecollector.factories.SettingsViewModelFactory
@@ -28,6 +29,8 @@ class MainActivity : AppCompatActivity(), ImageSelectDialogFragment.ImageSelectD
     private lateinit var consoleListViewModel: ConsoleListViewModel
     private lateinit var consoleDetailViewModel: ConsoleDetailViewModel
     private lateinit var consoleAddEditViewModel: ConsoleAddEditViewModel
+    private lateinit var accessoryListViewModel: AccessoryListViewModel
+    private lateinit var accessoryDetailViewModel: AccessoryDetailViewModel
     private lateinit var settingsViewModel: SettingsViewModel
     private lateinit var appBarConfig: AppBarConfiguration
 
@@ -95,6 +98,16 @@ class MainActivity : AppCompatActivity(), ImageSelectDialogFragment.ImageSelectD
     fun getConsoleAddEditViewModel(): ConsoleAddEditViewModel = consoleAddEditViewModel
 
     /**
+     * Gets the AccessoryListViewModel
+     */
+    fun getAccessoryListViewModel(): AccessoryListViewModel = accessoryListViewModel
+
+    /**
+     * Gets the AccessoryDetailViewModel
+     */
+    fun getAccessoryDetailViewModel(): AccessoryDetailViewModel = accessoryDetailViewModel
+
+    /**
      * Gets the SettingsViewModel
      */
     fun getSettingsViewModel(): SettingsViewModel = settingsViewModel
@@ -116,6 +129,10 @@ class MainActivity : AppCompatActivity(), ImageSelectDialogFragment.ImageSelectD
             .get(ConsoleDetailViewModel::class.java)
         consoleAddEditViewModel = ViewModelProvider(this, ConsoleViewModelFactory(this.application))
             .get(ConsoleAddEditViewModel::class.java)
+        accessoryListViewModel = ViewModelProvider(this, AccessoryViewModelFactory(this.application))
+            .get(AccessoryListViewModel::class.java)
+        accessoryDetailViewModel = ViewModelProvider(this, AccessoryViewModelFactory(this.application))
+            .get(AccessoryDetailViewModel::class.java)
         settingsViewModel = ViewModelProvider(this, SettingsViewModelFactory(this.application))
             .get(SettingsViewModel::class.java)
     }
