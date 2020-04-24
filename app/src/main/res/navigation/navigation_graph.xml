@@ -169,6 +169,14 @@
         app:exitAnim="@anim/nav_default_exit_anim"
         app:popEnterAnim="@anim/nav_default_pop_enter_anim"
         app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+    <fragment
+        android:id="@id/nav_accessories"
+        android:name="com.matthew.carvalhodagenais.gamecubecollector.ui.AccessoryListFragment"
+        android:label="@string/navigation_accessory_list_title"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim"
+        app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+        app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     <dialog
         android:id="@+id/imageSelectDialogFragment"
         android:name="com.matthew.carvalhodagenais.gamecubecollector.ui.ImageSelectDialogFragment"

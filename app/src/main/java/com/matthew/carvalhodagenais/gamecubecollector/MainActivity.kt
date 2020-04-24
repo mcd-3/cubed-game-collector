@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity(), ImageSelectDialogFragment.ImageSelectD
         //Set NavigationDrawer
         val navController = findNavController(R.id.nav_host_fragment)
         appBarConfig = AppBarConfiguration(setOf(
-            R.id.nav_games, R.id.nav_favourites, R.id.nav_consoles, R.id.nav_settings, R.id.nav_about
+            R.id.nav_games, R.id.nav_favourites, R.id.nav_consoles, R.id.nav_accessories, R.id.nav_settings, R.id.nav_about
         ), main_activity_drawer_layout)
         setupActionBarWithNavController(navController, appBarConfig)
         main_activity_navigation_view.setupWithNavController(navController)
