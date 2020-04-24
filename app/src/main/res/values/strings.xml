@@ -57,6 +57,8 @@
     <string name="no_game_subtitle">Click &quot;+&quot; to add a new game</string>
     <string name="no_console_title">No Consoles in your Collection</string>
     <string name="no_console_subtitle">Click &quot;+&quot; to add a new console</string>
+    <string name="no_accessory_title">No Accessories in your Collection</string>
+    <string name="no_accessory_subtitle">Click &quot;+&quot; to add a new accessory</string>
     <string name="no_favourite_games_title">No Favourite Games in your Collection</string>
     <string name="no_favourite_games_subtitle">Go set some games as favourites!</string>
     <string name="delete_data_label_title">Delete All Data</string>
@@ -88,6 +90,7 @@
     <string name="game_add_edit_clear_image_button_content_description">Clear Date</string>
     <string name="game_list_no_games_content_description">No Games</string>
     <string name="console_list_no_consoles_content_description">No Consoles</string>
+    <string name="accessory_list_no_accessories_content_description">No Accessories</string>
     <string name="logo_content_description">App Logo</string>
     <string name="console_list_image_view_content_description">Console Image</string>
     <string name="accessory_list_image_view_content_description">Accessory Image</string>

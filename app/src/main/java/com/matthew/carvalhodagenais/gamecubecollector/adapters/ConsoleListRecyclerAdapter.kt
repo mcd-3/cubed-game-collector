@@ -27,6 +27,7 @@ class ConsoleListRecyclerAdapter: ListAdapter<Console, ConsoleListRecyclerAdapte
                 return (oldItem.title == newItem.title &&
                         oldItem.description == oldItem.description &&
                         oldItem.regionId == newItem.regionId &&
+                        oldItem.isModded == newItem.isModded &&
                         oldItem.conditionId == newItem.conditionId &&
                         oldItem.imageName == newItem.imageName)
             }
@@ -43,7 +44,7 @@ class ConsoleListRecyclerAdapter: ListAdapter<Console, ConsoleListRecyclerAdapte
             holder.descriptionTextView.text = console.description
         }
 
-        // Place appropriate cover art
+        // Place appropriate console image
         if (console.imageName != "" && console.imageName != null) {
             Glide
                 .with(holder.parentView)

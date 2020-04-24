@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.AccessoryListFragment">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/accessory_list_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/accessory_item"/>
+
+    <!--
+        If you want to edit this view,
+        comment out the RecyclerView so you can see what you're doing
+    -->
+    <FrameLayout
+        android:id="@+id/no_accessories_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center_vertical">
+
+            <TextView
+                android:id="@+id/no_accessories_title_text_view"
+                style="@style/TextAppearance.AppCompat.Large"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginBottom="@dimen/large"
+                android:text="@string/no_accessory_title"/>
+
+            <ImageView
+                android:id="@+id/no_accessories_image_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:contentDescription="@string/accessory_list_no_accessories_content_description"
+                android:layout_marginBottom="@dimen/large"
+                android:src="@drawable/ic_library_add_grey_148dp" />
+
+            <TextView
+                android:id="@+id/no_accessories_subtitle_text_view"
+                style="@style/TextAppearance.AppCompat.Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/no_accessory_subtitle" />
+
+        </LinearLayout>
+    </FrameLayout>
+
+</FrameLayout>
