@@ -195,7 +195,7 @@
     <fragment
         android:id="@+id/accessoryDetailFragment"
         android:name="com.matthew.carvalhodagenais.gamecubecollector.ui.AccessoryDetailFragment"
-        android:label="AccessoryDetailFragment">
+        android:label="@string/navigation_accessory_details_title">
         <action
             android:id="@+id/action_accessoryDetailFragment_to_accessoryAddEditFragment"
             app:destination="@id/accessoryAddEditFragment"
@@ -213,8 +213,7 @@
     </fragment>
     <fragment
         android:id="@+id/accessoryAddEditFragment"
-        android:name="com.matthew.carvalhodagenais.gamecubecollector.ui.AccessoryAddEditFragment"
-        android:label="AccessoryAddEditFragment" >
+        android:name="com.matthew.carvalhodagenais.gamecubecollector.ui.AccessoryAddEditFragment" >
         <argument
             android:name="ADD_EDIT_REQUEST"
             app:argType="integer"

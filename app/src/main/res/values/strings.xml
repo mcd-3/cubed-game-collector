@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">GamecubeCollector</string>
 
-    <string name="app_version">1.0</string>
+    <string name="app_version">0.8</string>
     <string name="app_email">abcde@example.com</string>
     <string name="app_github">https://github.com/mcd-3/cubed-game-collector</string>
 
@@ -180,6 +180,7 @@
     <string name="navigation_console_edit_title">Edit Console</string>
     <string name="navigation_console_add_title">Add Console</string>
     <string name="navigation_accessory_list_title">My Accessories</string>
+    <string name="navigation_accessory_details_title">Details</string>
     <string name="navigation_accessory_edit_title">Edit Accessory</string>
     <string name="navigation_accessory_add_title">Add Accessory</string>
     <string name="navigation_settings">Settings</string>
