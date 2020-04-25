@@ -15,6 +15,8 @@ class AccessoryViewModelFactory(private val application: Application):
                 AccessoryListViewModel(application) as T
             isAssignableFrom(AccessoryDetailViewModel::class.java) ->
                 AccessoryDetailViewModel(application) as T
+            isAssignableFrom(AccessoryAddEditViewModel::class.java) ->
+                AccessoryAddEditViewModel(application) as T
             else -> IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}") as T
         }
     }

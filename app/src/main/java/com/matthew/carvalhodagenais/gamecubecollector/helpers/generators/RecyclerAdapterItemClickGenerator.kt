@@ -26,7 +26,7 @@ class RecyclerAdapterItemClickGenerator() {
         val itemOnClick = object: AccessoryListRecyclerAdapter.ItemOnClickListener {
             override fun onItemClick(accessory: Accessory) {
                 viewModel.setSelectedAccessory(accessory)
-                //navController.navigate(R.id.action_nav_consoles_to_consoleDetailFragment)
+                navController.navigate(R.id.action_nav_accessories_to_accessoryDetailFragment)
             }
         }
         return itemOnClick

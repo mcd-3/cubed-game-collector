@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="lifecycleOwner"
+            type="androidx.lifecycle.LifecycleOwner" />
+        <variable
+            name="viewModel"
+            type="com.matthew.carvalhodagenais.gamecubecollector.viewmodels.AccessoryAddEditViewModel" />
+        <variable
+            name="navController"
+            type="androidx.navigation.NavController" />
+    </data>
+
+    <ScrollView
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/card_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/small"
+                android:layout_marginEnd="@dimen/small"
+                android:layout_marginTop="@dimen/small"
+                android:layout_marginBottom="@dimen/very_small">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:errorEnabled="true"
+                    android:layout_marginTop="@dimen/small"
+                    android:layout_marginStart="@dimen/small"
+                    android:layout_marginEnd="@dimen/small"
+                    android:layout_marginBottom="@dimen/small">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/title_edit_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textMultiLine"
+                        android:backgroundTint="?attr/colorSurface"
+                        android:text="@{viewModel.selectedAccessory.title ?? @string/empty}"
+                        android:hint="@string/accessory_title_hint"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/small"
+                android:layout_marginEnd="@dimen/small"
+                android:layout_marginTop="@dimen/small"
+                android:layout_marginBottom="@dimen/very_small">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_marginTop="@dimen/medium"
+                    android:layout_marginBottom="@dimen/medium"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/accessory_image_view"
+                        android:layout_width="148dp"
+                        android:layout_height="148dp"
+                        bind:accessory="@{viewModel.selectedAccessory}"
+                        android:contentDescription="@string/game_add_edit_image_view_content_description"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:layout_width="148dp"
+                        android:layout_height="148dp"
+                        android:contentDescription="@string/game_add_edit_cover_image_view_content_description"
+                        android:focusable="true"
+                        android:clickable="true"
+                        android:src="@drawable/custom_edit_console_button"
+                        android:onClick="@{() -> navController.navigate(@id/imageSelectDialogFragment)}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/small"
+                android:layout_marginEnd="@dimen/small"
+                android:layout_marginTop="@dimen/small"
+                android:layout_marginBottom="@dimen/very_small">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/accessory_info_label_text_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/slightly_small"
+                        android:layout_marginTop="@dimen/small"
+                        android:layout_marginBottom="@dimen/small"
+                        android:paddingStart="@dimen/small"
+                        android:paddingEnd="0dp"
+                        style="@style/TextAppearance.AppCompat.Medium"
+                        android:textStyle="bold"
+                        android:text="@string/accessory_info_label" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/small"
+                        android:layout_marginStart="@dimen/small"
+                        android:layout_marginEnd="@dimen/very_small"
+                        android:layout_marginBottom="@dimen/medium"
+                        android:paddingTop="@dimen/medium"
+                        android:paddingBottom="@dimen/slightly_small">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/small"
+                            android:layout_marginEnd="@dimen/large"
+                            style="@style/TextAppearance.AppCompat.Medium"
+                            android:layout_gravity="center"
+                            android:text="@string/condition_label"/>
+
+                        <Spinner
+                            android:id="@+id/condition_spinner"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            bind:repository="@{viewModel.getConditionRepository()}"
+                            bind:lifecycleOwner="@{lifecycleOwner}"
+                            bind:defaultSelection="@{viewModel.selectedAccessory.conditionId}"
+                            bind:typeID="@{viewModel.getConditionTypeID()}" />
+
+                    </LinearLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/small"
+                        android:layout_marginEnd="@dimen/small"
+                        android:layout_marginBottom="@dimen/medium"
+                        app:counterEnabled="true"
+                        app:counterMaxLength="150">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/description_edit_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/huge"
+                            android:gravity="top|start"
+                            android:inputType="textMultiLine"
+                            android:lines="4"
+                            android:maxLength="150"
+                            android:backgroundTint="?attr/colorSurface"
+                            android:text="@{viewModel.selectedAccessory.description}"
+                            android:hint="@string/accessory_description_hint"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</layout>

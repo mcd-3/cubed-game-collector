@@ -31,6 +31,7 @@ class MainActivity : AppCompatActivity(), ImageSelectDialogFragment.ImageSelectD
     private lateinit var consoleAddEditViewModel: ConsoleAddEditViewModel
     private lateinit var accessoryListViewModel: AccessoryListViewModel
     private lateinit var accessoryDetailViewModel: AccessoryDetailViewModel
+    private lateinit var accessoryAddEditViewModel: AccessoryAddEditViewModel
     private lateinit var settingsViewModel: SettingsViewModel
     private lateinit var appBarConfig: AppBarConfiguration
 
@@ -108,6 +109,11 @@ class MainActivity : AppCompatActivity(), ImageSelectDialogFragment.ImageSelectD
     fun getAccessoryDetailViewModel(): AccessoryDetailViewModel = accessoryDetailViewModel
 
     /**
+     * Gets the AccessoryAddEditViewModel
+     */
+    fun getAccessoryAddEditViewModel(): AccessoryAddEditViewModel = accessoryAddEditViewModel
+
+    /**
      * Gets the SettingsViewModel
      */
     fun getSettingsViewModel(): SettingsViewModel = settingsViewModel
@@ -133,6 +139,8 @@ class MainActivity : AppCompatActivity(), ImageSelectDialogFragment.ImageSelectD
             .get(AccessoryListViewModel::class.java)
         accessoryDetailViewModel = ViewModelProvider(this, AccessoryViewModelFactory(this.application))
             .get(AccessoryDetailViewModel::class.java)
+        accessoryAddEditViewModel = ViewModelProvider(this, AccessoryViewModelFactory(this.application))
+            .get(AccessoryAddEditViewModel::class.java)
         settingsViewModel = ViewModelProvider(this, SettingsViewModelFactory(this.application))
             .get(SettingsViewModel::class.java)
     }

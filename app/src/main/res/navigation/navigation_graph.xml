@@ -176,7 +176,64 @@
         app:enterAnim="@anim/nav_default_enter_anim"
         app:exitAnim="@anim/nav_default_exit_anim"
         app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-        app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        app:popExitAnim="@anim/nav_default_pop_exit_anim" >
+        <action
+            android:id="@+id/action_nav_accessories_to_accessoryDetailFragment"
+            app:destination="@id/accessoryDetailFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+        <action
+            android:id="@+id/action_nav_accessories_to_accessoryAddEditFragment"
+            app:destination="@id/accessoryAddEditFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+    </fragment>
+    <fragment
+        android:id="@+id/accessoryDetailFragment"
+        android:name="com.matthew.carvalhodagenais.gamecubecollector.ui.AccessoryDetailFragment"
+        android:label="AccessoryDetailFragment">
+        <action
+            android:id="@+id/action_accessoryDetailFragment_to_accessoryAddEditFragment"
+            app:destination="@id/accessoryAddEditFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+        <action
+            android:id="@+id/action_accessoryDetailFragment_to_nav_accessories"
+            app:destination="@id/nav_accessories"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+    </fragment>
+    <fragment
+        android:id="@+id/accessoryAddEditFragment"
+        android:name="com.matthew.carvalhodagenais.gamecubecollector.ui.AccessoryAddEditFragment"
+        android:label="AccessoryAddEditFragment" >
+        <argument
+            android:name="ADD_EDIT_REQUEST"
+            app:argType="integer"
+            android:defaultValue="1" />
+        <action
+            android:id="@+id/action_accessoryAddEditFragment_to_nav_accessories"
+            app:destination="@id/nav_accessories"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+        <action
+            android:id="@+id/action_accessoryAddEditFragment_to_imageSelectDialogFragment"
+            app:destination="@id/imageSelectDialogFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+    </fragment>
     <dialog
         android:id="@+id/imageSelectDialogFragment"
         android:name="com.matthew.carvalhodagenais.gamecubecollector.ui.ImageSelectDialogFragment"

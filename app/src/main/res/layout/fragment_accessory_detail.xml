@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.matthew.carvalhodagenais.gamecubecollector.viewmodels.ConsoleDetailViewModel" />
+            type="com.matthew.carvalhodagenais.gamecubecollector.viewmodels.AccessoryDetailViewModel" />
         <variable
             name="lifecycleOwner"
             type="androidx.lifecycle.LifecycleOwner" />
@@ -47,7 +47,7 @@
                     style="@style/TextAppearance.AppCompat.Large"
                     android:maxLines="3"
                     android:ellipsize="end"
-                    android:text="@{viewModel.selectedConsole.title}"/>
+                    android:text="@{viewModel.selectedAccessory.title}"/>
 
             </com.google.android.material.card.MaterialCardView>
 
@@ -71,7 +71,7 @@
                         android:layout_centerHorizontal="true"
                         android:paddingTop="@dimen/medium"
                         android:paddingBottom="@dimen/medium"
-                        bind:console="@{viewModel.selectedConsole}"
+                        bind:accessory="@{viewModel.selectedAccessory}"
                         android:contentDescription="@string/game_detail_image_view_content_description" />
 
                 </RelativeLayout>
@@ -93,7 +93,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/console_details_label_text_view"
+                        android:id="@+id/accessory_details_label_text_view"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/slightly_small"
@@ -101,41 +101,7 @@
                         android:layout_marginBottom="@dimen/small"
                         style="@style/TextAppearance.AppCompat.Medium"
                         android:textStyle="bold"
-                        android:text="@string/console_info_label" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/small"
-                        android:layout_marginBottom="@dimen/small"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_gravity="center"
-                            android:layout_marginStart="@dimen/small"
-                            android:drawableStart="@drawable/ic_region_black_24dp"
-                            android:drawableTint="?android:attr/icon"
-                            android:drawablePadding="@dimen/small"
-                            style="@style/TextAppearance.AppCompat.Medium"
-                            android:textColor="?android:attr/textColor"
-                            android:text="@string/region_label" />
-
-                        <TextView
-                            android:id="@+id/region_text_view"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="end"
-                            style="@style/TextAppearance.AppCompat.Large"
-                            android:layout_marginEnd="@dimen/medium"
-                            bind:lifecycleOwner="@{lifecycleOwner}"
-                            bind:repository="@{viewModel.getRegionRepository()}"
-                            bind:regionId="@{viewModel.selectedConsole.regionId}" />
-
-                    </LinearLayout>
+                        android:text="@string/accessory_info_label" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -167,39 +133,7 @@
                             android:layout_marginEnd="@dimen/medium"
                             bind:lifecycleOwner="@{lifecycleOwner}"
                             bind:repository="@{viewModel.getConditionRepository()}"
-                            bind:conditionId="@{viewModel.selectedConsole.conditionId}" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/small"
-                        android:layout_marginBottom="@dimen/small"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_gravity="center"
-                            android:layout_marginStart="@dimen/small"
-                            android:drawableStart="@drawable/ic_modded_black_24dp"
-                            android:drawableTint="?android:attr/icon"
-                            android:drawablePadding="@dimen/small"
-                            style="@style/TextAppearance.AppCompat.Medium"
-                            android:textColor="?android:attr/textColor"
-                            android:text="@string/modded_label" />
-
-                        <TextView
-                            android:id="@+id/modded_text_view"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="end"
-                            style="@style/TextAppearance.AppCompat.Large"
-                            android:layout_marginEnd="@dimen/medium"
-                            bind:isModded="@{viewModel.selectedConsole.isModded}"/>
+                            bind:conditionId="@{viewModel.selectedAccessory.conditionId}" />
 
                     </LinearLayout>
 
@@ -233,7 +167,7 @@
                             style="@style/TextAppearance.AppCompat.Large"
                             android:textColor="?android:attr/subtitleTextColor"
                             android:textStyle="italic"
-                            bind:description="@{viewModel.selectedConsole.description}"/>
+                            bind:description="@{viewModel.selectedAccessory.description}"/>
                     </LinearLayout>
 
                 </LinearLayout>
