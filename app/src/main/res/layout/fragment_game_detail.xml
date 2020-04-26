@@ -258,8 +258,7 @@
                             android:gravity="end"
                             android:layout_marginEnd="@dimen/medium"
                             style="@style/TextAppearance.AppCompat.Large"
-                            bind:isDefault="@{viewModel.selectedGame.releaseDate == null}"
-                            android:text="@{(viewModel.selectedGame.releaseDate == null)? @string/no_date: viewModel.selectedGame.releaseDate.toString()}" />
+                            bind:date="@{viewModel.selectedGame.releaseDate}" />
 
                     </LinearLayout>
                 </LinearLayout>
@@ -291,6 +290,38 @@
                         style="@style/TextAppearance.AppCompat.Medium"
                         android:textStyle="bold"
                         android:text="@string/more_details_label" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/small"
+                        android:layout_marginBottom="@dimen/small"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/small"
+                            android:drawableStart="@drawable/ic_date_black_24dp"
+                            android:drawableTint="?android:attr/icon"
+                            android:drawablePadding="@dimen/small"
+                            style="@style/TextAppearance.AppCompat.Medium"
+                            android:textColor="?android:attr/textColor"
+                            android:text="@string/buy_date_label" />
+
+                        <TextView
+                            android:id="@+id/buy_date_text_view"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="end"
+                            style="@style/TextAppearance.AppCompat.Large"
+                            android:layout_marginEnd="@dimen/medium"
+                            bind:date="@{viewModel.selectedGame.boughtDate}" />
+
+                    </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"

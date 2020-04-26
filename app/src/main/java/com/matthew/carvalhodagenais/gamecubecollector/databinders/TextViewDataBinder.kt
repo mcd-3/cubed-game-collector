@@ -12,6 +12,8 @@ import com.google.android.material.internal.ContextUtils
 import com.matthew.carvalhodagenais.gamecubecollector.R
 import com.matthew.carvalhodagenais.gamecubecollector.data.repositories.ConditionRepository
 import com.matthew.carvalhodagenais.gamecubecollector.data.repositories.RegionRepository
+import com.matthew.carvalhodagenais.gamecubecollector.helpers.DateHelper
+import java.util.*
 
 class TextViewDataBinder {
     companion object {
@@ -60,16 +62,12 @@ class TextViewDataBinder {
         }
 
         @JvmStatic
-        @BindingAdapter("bind:isDefault")
-        fun setDefaultTextStyle(textView: TextView, isDefault: Boolean) {
-            if (isDefault) {
-                textView.setTypeface(null, Typeface.ITALIC)
-
-                // get theme subtitle color
-//                val typedValue = TypedValue()
-//                val theme: Resources.Theme = textView.context.applicationContext.theme
-//                theme.resolveAttribute(R.attr.subtitleTextColor, typedValue, true)
-//                textView.setTextColor(typedValue.data)
+        @BindingAdapter("bind:date")
+        fun setDateString(textView: TextView, date: Date?) {
+            if (date == null) {
+                textView.text = textView.context.getString(R.string.no_date)
+            } else {
+                textView.text = DateHelper.createDateString(date)
             }
         }
 
@@ -85,6 +83,20 @@ class TextViewDataBinder {
                 str = textView.context.getString(R.string.completeness_manual)
             }
             textView.text = str
+        }
+
+        @JvmStatic
+        @BindingAdapter("bind:isDefault")
+        fun setDefaultTextStyle(textView: TextView, isDefault: Boolean) {
+            if (isDefault) {
+                textView.setTypeface(null, Typeface.ITALIC)
+
+                // get theme subtitle color
+//                val typedValue = TypedValue()
+//                val theme: Resources.Theme = textView.context.applicationContext.theme
+//                theme.resolveAttribute(R.attr.subtitleTextColor, typedValue, true)
+//                textView.setTextColor(typedValue.data)
+            }
         }
     }
 }

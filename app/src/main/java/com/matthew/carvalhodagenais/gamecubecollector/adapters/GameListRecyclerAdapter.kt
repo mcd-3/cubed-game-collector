@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.matthew.carvalhodagenais.gamecubecollector.R
 import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Game
+import com.matthew.carvalhodagenais.gamecubecollector.helpers.DateHelper
 import com.matthew.carvalhodagenais.gamecubecollector.helpers.ImageStorageHelper
 import kotlinx.android.synthetic.main.game_item.view.*
 import java.util.*
@@ -49,7 +50,7 @@ class GameListRecyclerAdapter: ListAdapter<Game, GameListRecyclerAdapter.GameHol
             if (game.developers != "" && game.developers != null) game.developers
             else holder.parentView.context.getString(R.string.no_developer_available)
         holder.yearTextView.text =
-            if (game.releaseDate != null) game.releaseDate.toString()
+            if (game.releaseDate != null) DateHelper.createDateString(game.releaseDate)
             else holder.parentView.context.getString(R.string.no_date_available)
 
         // Place appropriate cover art

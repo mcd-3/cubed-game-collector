@@ -17,7 +17,7 @@ class DateHelper {
             try {
                 val array = ddmmyearString.split('/').toTypedArray()
                 val cal = Calendar.getInstance()
-                cal.set(array[0].toInt(), array[1].toInt(), array[2].toInt())
+                cal.set(array[2].toInt(), array[1].toInt(), array[0].toInt())
                 date = cal.time
             } catch(e: Exception) {
                 Log.e("EXCEPTION", "Could not convert $ddmmyearString to Date.\n${e.message.toString()}")

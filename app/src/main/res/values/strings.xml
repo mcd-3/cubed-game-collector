@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">GamecubeCollector</string>
+    <string name="app_name">CubedGameCollector</string>
 
     <string name="app_version">0.8</string>
     <string name="app_email">abcde@example.com</string>
@@ -38,6 +38,7 @@
     <string name="more_details_label">More Details</string>
     <string name="region_label">Region:</string>
     <string name="release_date_label">Release Date:</string>
+    <string name="buy_date_label">Date Purchased:</string>
     <string name="cib_label">Completeness:</string>
     <string name="condition_label">Condition:</string>
     <string name="modded_label">Modded:</string>
