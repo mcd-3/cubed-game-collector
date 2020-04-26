@@ -13,6 +13,7 @@ class SpinnerDataBinder {
     companion object {
         private const val INDEX_DISC = 1
         private const val INDEX_CONSOLE = 6
+        private const val INDEX_ACCESSORY = 11
 
         @JvmStatic
         @BindingAdapter("bind:repository", "bind:lifecycleOwner", "bind:defaultSelection")
@@ -54,6 +55,7 @@ class SpinnerDataBinder {
                 val index = when(type) {
                     Type.CD_ID -> INDEX_DISC
                     Type.CONSOLE_ID -> INDEX_CONSOLE
+                    Type.ACCESSORY_ID -> INDEX_ACCESSORY
                     else -> INDEX_DISC
                 }
                 spinner.setSelection(defaultSelection - index)
