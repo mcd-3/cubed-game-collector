@@ -51,9 +51,6 @@ class GameListRecyclerAdapter: ListAdapter<Game, GameListRecyclerAdapter.GameHol
         holder.yearTextView.text =
             if (game.releaseDate != null) game.releaseDate.toString()
             else holder.parentView.context.getString(R.string.no_date_available)
-        holder.regionTextView.text =
-            if (game.regionId != null) game.regionId.toString()
-            else holder.parentView.context.getString(R.string.no_region_available)
 
         // Place appropriate cover art
         if (game.imageName != "" && game.imageName != null) {
@@ -105,7 +102,6 @@ class GameListRecyclerAdapter: ListAdapter<Game, GameListRecyclerAdapter.GameHol
         var titleTextView = view.title_text_view
         var developerTextView = view.developer_text_view
         var yearTextView = view.year_text_view
-        var regionTextView = view.region_text_view
         var coverImageView = view.cover_art_image_view
     }
 
