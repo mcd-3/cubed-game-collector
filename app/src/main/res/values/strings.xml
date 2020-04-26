@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">CubedGameCollector</string>
 
-    <string name="app_version">0.8</string>
+    <string name="app_version">0.8 BETA</string>
     <string name="app_email">abcde@example.com</string>
     <string name="app_github">https://github.com/mcd-3/cubed-game-collector</string>
 
