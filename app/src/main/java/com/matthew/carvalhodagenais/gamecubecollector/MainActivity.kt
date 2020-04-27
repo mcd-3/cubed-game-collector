@@ -2,15 +2,17 @@ package com.matthew.carvalhodagenais.gamecubecollector
 
 import android.content.Context
 import android.graphics.Bitmap
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
+import com.bumptech.glide.signature.ObjectKey
 import com.matthew.carvalhodagenais.gamecubecollector.factories.AccessoryViewModelFactory
 import com.matthew.carvalhodagenais.gamecubecollector.factories.ConsoleViewModelFactory
 import com.matthew.carvalhodagenais.gamecubecollector.factories.GameViewModelFactory
@@ -21,6 +23,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_accessory_add_edit.*
 import kotlinx.android.synthetic.main.fragment_console_add_edit.*
 import kotlinx.android.synthetic.main.fragment_game_add_edit.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 class MainActivity : AppCompatActivity(), ImageSelectDialogFragment.ImageSelectDialogInterface {
 
@@ -169,12 +173,16 @@ class MainActivity : AppCompatActivity(), ImageSelectDialogFragment.ImageSelectD
      * Changes the bitmap for the cover image
      */
     override fun changeImageBitmap(bitmap: Bitmap) {
-        if (cover_art_image_view != null) {
-            cover_art_image_view.setImageBitmap(bitmap)
-        } else if (console_image_view != null) {
-            console_image_view.setImageBitmap(bitmap)
-        } else if (accessory_image_view != null) {
-            accessory_image_view.setImageBitmap(bitmap)
+        val imgView = when {
+            cover_art_image_view != null -> cover_art_image_view
+            console_image_view != null -> console_image_view
+            accessory_image_view != null -> accessory_image_view
+            else -> null
+        }
+        if (imgView != null) {
+            Glide.with(this)
+                .load(bitmap)
+                .into(imgView)
         }
     }
 
