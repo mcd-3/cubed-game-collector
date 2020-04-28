@@ -2,7 +2,6 @@ package com.matthew.carvalhodagenais.gamecubecollector
 
 import android.content.Context
 import android.graphics.Bitmap
-import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
@@ -13,8 +12,6 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
-import com.bumptech.glide.signature.ObjectKey
 import com.matthew.carvalhodagenais.gamecubecollector.factories.AccessoryViewModelFactory
 import com.matthew.carvalhodagenais.gamecubecollector.factories.ConsoleViewModelFactory
 import com.matthew.carvalhodagenais.gamecubecollector.factories.GameViewModelFactory
@@ -22,11 +19,6 @@ import com.matthew.carvalhodagenais.gamecubecollector.factories.SettingsViewMode
 import com.matthew.carvalhodagenais.gamecubecollector.ui.ImageSelectDialogFragment
 import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.*
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_accessory_add_edit.*
-import kotlinx.android.synthetic.main.fragment_console_add_edit.*
-import kotlinx.android.synthetic.main.fragment_game_add_edit.*
-import java.text.SimpleDateFormat
-import java.util.*
 
 class MainActivity : AppCompatActivity(), ImageSelectDialogFragment.ImageSelectDialogInterface {
 
