@@ -23,7 +23,7 @@
                 android:layout_height="140dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/extra_medium"
-                android:src="@drawable/logo"
+                android:src="@drawable/logo_2"
                 android:contentDescription="@string/logo_content_description"
                 android:background="?attr/colorPrimary"
                 android:layout_alignParentTop="true"/>
