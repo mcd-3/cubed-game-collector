@@ -68,32 +68,46 @@ class MainActivity : AppCompatActivity(), ImageSelectDialogFragment.ImageSelectD
     }
 
     /**
+     * Changes the bitmap for the cover image
+     */
+    override fun changeImageBitmap(bitmap: Bitmap) {
+        val imgView = when {
+            findViewById<ImageView>(R.id.cover_art_image_view) != null
+            -> findViewById<ImageView>(R.id.cover_art_image_view)
+            findViewById<ImageView>(R.id.console_image_view) != null
+            -> findViewById<ImageView>(R.id.console_image_view)
+            findViewById<ImageView>(R.id.accessory_image_view) != null
+            -> findViewById<ImageView>(R.id.accessory_image_view)
+            else -> null
+        }
+        if (imgView != null) {
+            Glide.with(this)
+                .load(bitmap)
+                .skipMemoryCache(true)
+                .into(imgView)
+        }
+    }
+
+    /**
      * Gets the GameDetailViewModel
      */
-    fun getGameDetailViewModel(): GameDetailViewModel {
-        return gameDetailViewModel
-    }
+    fun getGameDetailViewModel(): GameDetailViewModel = gameDetailViewModel
+
 
     /**
      * Gets the GameListViewModel
      */
-    fun getGameListViewModel(): GameListViewModel {
-        return gameListViewModel
-    }
+    fun getGameListViewModel(): GameListViewModel = gameListViewModel
 
     /**
      * Gets the GameAddEditViewModel
      */
-    fun getGameAddEditViewModel(): GameAddEditViewModel {
-        return gameAddEditViewModel
-    }
+    fun getGameAddEditViewModel(): GameAddEditViewModel = gameAddEditViewModel
 
     /**
      * Gets the ConsoleListViewModel
      */
-    fun getConsoleListViewModel(): ConsoleListViewModel {
-        return consoleListViewModel
-    }
+    fun getConsoleListViewModel(): ConsoleListViewModel = consoleListViewModel
 
     /**
      * Gets the ConsoleDetailViewModel
@@ -170,27 +184,4 @@ class MainActivity : AppCompatActivity(), ImageSelectDialogFragment.ImageSelectD
             else -> setTheme(R.style.CubedTheme)
         }
     }
-
-    /**
-     * Changes the bitmap for the cover image
-     */
-    override fun changeImageBitmap(bitmap: Bitmap) {
-        val imgView = when {
-            findViewById<ImageView>(R.id.cover_art_image_view) != null
-                -> findViewById<ImageView>(R.id.cover_art_image_view)
-            findViewById<ImageView>(R.id.console_image_view) != null
-                -> findViewById<ImageView>(R.id.console_image_view)
-            findViewById<ImageView>(R.id.accessory_image_view) != null
-                -> findViewById<ImageView>(R.id.accessory_image_view)
-            else -> null
-        }
-        if (imgView != null) {
-            Glide.with(this)
-                .load(bitmap)
-                .skipMemoryCache(true)
-                .into(imgView)
-        }
-    }
-
-
 }
