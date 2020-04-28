@@ -1,5 +1,6 @@
 package com.matthew.carvalhodagenais.gamecubecollector.ui
 
+import android.content.Context
 import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,6 +14,7 @@ import com.matthew.carvalhodagenais.gamecubecollector.MainActivity
 import com.matthew.carvalhodagenais.gamecubecollector.R
 import com.matthew.carvalhodagenais.gamecubecollector.databinding.FragmentSettingsBinding
 import com.matthew.carvalhodagenais.gamecubecollector.databinders.viewactions.RadioButtonActions
+import kotlinx.android.synthetic.main.fragment_settings.*
 
 class SettingsFragment: Fragment() {
 
@@ -37,6 +39,23 @@ class SettingsFragment: Fragment() {
         }
         binding.deleteAllDataLinearLayout.setOnClickListener(showDialogOnClickListener)
         return binding.root
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        val sharedPrefs = activity?.getSharedPreferences(getString(R.string.shared_preference_key), Context.MODE_PRIVATE)
+        val theme = sharedPrefs?.getInt(
+            getString(R.string.shared_preference_theme_key),
+            getString(R.string.shared_preference_theme_cubed).toInt())
+        when (theme) {
+            getString(R.string.shared_preference_theme_cubed).toInt() -> radio_theme_cubed.isChecked = true
+            getString(R.string.shared_preference_theme_cubed_dark).toInt() -> radio_theme_cubed_dark.isChecked = true
+            getString(R.string.shared_preference_theme_cubed_night).toInt() -> radio_theme_night.isChecked = true
+            getString(R.string.shared_preference_theme_cubed_dolphin).toInt() -> radio_theme_dolphin.isChecked = true
+            getString(R.string.shared_preference_theme_cubed_ps).toInt() -> radio_theme_player_selection.isChecked = true
+            getString(R.string.shared_preference_theme_cubed_pss).toInt() -> radio_theme_silver_player.isChecked = true
+            else -> radio_theme_cubed.isChecked = true
+        }
     }
 
     /**
