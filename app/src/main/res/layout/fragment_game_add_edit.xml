@@ -216,6 +216,8 @@
                             android:layout_weight="1"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:textAlignment="textEnd"
                             bind:repository="@{viewModel.getRegionRepository()}"
                             bind:lifecycleOwner="@{lifecycleOwner}"
                             bind:defaultSelection="@{viewModel.selectedGame.regionId ?? 1}"/>
@@ -405,6 +407,8 @@
                             android:layout_weight="1"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:textAlignment="textEnd"
                             bind:repository="@{viewModel.getConditionRepository()}"
                             bind:lifecycleOwner="@{lifecycleOwner}"
                             bind:defaultSelection="@{viewModel.selectedGame.conditionId}"
