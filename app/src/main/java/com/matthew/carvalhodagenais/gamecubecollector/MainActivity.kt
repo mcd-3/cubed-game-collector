@@ -2,7 +2,9 @@ package com.matthew.carvalhodagenais.gamecubecollector
 
 import android.content.Context
 import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
@@ -174,14 +176,18 @@ class MainActivity : AppCompatActivity(), ImageSelectDialogFragment.ImageSelectD
      */
     override fun changeImageBitmap(bitmap: Bitmap) {
         val imgView = when {
-            cover_art_image_view != null -> cover_art_image_view
-            console_image_view != null -> console_image_view
-            accessory_image_view != null -> accessory_image_view
+            findViewById<ImageView>(R.id.cover_art_image_view) != null
+                -> findViewById<ImageView>(R.id.cover_art_image_view)
+            findViewById<ImageView>(R.id.console_image_view) != null
+                -> findViewById<ImageView>(R.id.console_image_view)
+            findViewById<ImageView>(R.id.accessory_image_view) != null
+                -> findViewById<ImageView>(R.id.accessory_image_view)
             else -> null
         }
         if (imgView != null) {
             Glide.with(this)
                 .load(bitmap)
+                .skipMemoryCache(true)
                 .into(imgView)
         }
     }
