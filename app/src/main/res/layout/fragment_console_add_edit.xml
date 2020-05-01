@@ -219,7 +219,8 @@
                             android:layout_weight="1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal">
+                            android:orientation="horizontal"
+                            bind:viewModel="@{viewModel}">
 
                             <RadioButton
                                 android:id="@+id/modded_yes"
