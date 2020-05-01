@@ -21,23 +21,30 @@ class SpinnerDataBinder {
         private const val INDEX_ACCESSORY = 11
 
         @JvmStatic
-        @BindingAdapter("bind:repository", "bind:lifecycleOwner", "bind:defaultSelection")
+        @BindingAdapter("bind:viewModel", "bind:lifecycleOwner", "bind:defaultSelection")
         fun setSpinnerRegionEntries(
             spinner: Spinner,
-            repo: RegionRepository,
+            vm: AndroidViewModel,
             lco: LifecycleOwner,
             defaultSelection: Int
         ) {
             val list = mutableListOf<String>()
             val adapter = ArrayAdapter(spinner.context, android.R.layout.simple_spinner_item, list)
+            val repository: RegionRepository? = when {
+                vm is GameAddEditViewModel -> vm.getRegionRepository()
+                vm is ConsoleAddEditViewModel -> vm.getRegionRepository()
+                else -> null
+            }
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            repo.getRegionCodes().observe(lco, Observer { items ->
+            repository?.getRegionCodes()?.observe(lco, Observer { items ->
                 items.forEach {
                     list.add(it)
                 }
                 adapter.notifyDataSetChanged()
                 spinner.adapter = adapter
                 spinner.setSelection(defaultSelection - INDEX_DISC)
+                val slg = SpinnerOnItemSelectedListenerGenerator()
+                spinner.onItemSelectedListener = slg.generate(vm)
             })
         }
 

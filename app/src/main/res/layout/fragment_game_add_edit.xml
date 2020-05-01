@@ -219,7 +219,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="end"
                             android:textAlignment="textEnd"
-                            bind:repository="@{viewModel.getRegionRepository()}"
+                            bind:viewModel="@{viewModel}"
                             bind:lifecycleOwner="@{lifecycleOwner}"
                             bind:defaultSelection="@{viewModel.selectedGame.regionId ?? 1}"/>
 

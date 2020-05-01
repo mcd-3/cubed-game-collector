@@ -8,13 +8,10 @@ import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.AccessoryAddEdi
 
 class EditTextDataBinder {
     companion object {
-
         @JvmStatic
-        @BindingAdapter("bind:textWatcher", "bind:viewModelToUpdate")
-        fun bindTextWatcher(et: EditText, tw: TextWatcher, vm: AccessoryAddEditViewModel) {
+        @BindingAdapter("bind:textWatcher")
+        fun bindTextWatcher(et: EditText, tw: TextWatcher) {
             et.addTextChangedListener(tw)
         }
-
-
     }
 }

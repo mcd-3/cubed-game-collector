@@ -56,7 +56,6 @@
                         android:backgroundTint="?attr/colorSurface"
                         android:text="@{viewModel.selectedAccessory.title ?? @string/empty}"
                         android:hint="@string/accessory_title_hint"
-                        bind:viewModelToUpdate="@{viewModel}"
                         bind:textWatcher="@{textWatcher}"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -183,7 +182,6 @@
                             android:backgroundTint="?attr/colorSurface"
                             android:text="@{viewModel.selectedAccessory.description}"
                             android:hint="@string/accessory_description_hint"
-                            bind:viewModelToUpdate="@{viewModel}"
                             bind:textWatcher="@{textWatcher}"/>
 
                     </com.google.android.material.textfield.TextInputLayout>
