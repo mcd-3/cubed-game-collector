@@ -12,6 +12,7 @@ import com.matthew.carvalhodagenais.gamecubecollector.R
 import com.matthew.carvalhodagenais.gamecubecollector.databinding.FragmentGameAddEditBinding
 import com.matthew.carvalhodagenais.gamecubecollector.helpers.DateHelper
 import com.matthew.carvalhodagenais.gamecubecollector.databinders.viewactions.ImageButtonActions
+import com.matthew.carvalhodagenais.gamecubecollector.helpers.generators.TextWatcherGenerator
 import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.GameAddEditViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_game_add_edit.*
@@ -45,6 +46,7 @@ class GameAddEditFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         addEditViewModel = (activity as MainActivity).getGameAddEditViewModel()
+        val tw = TextWatcherGenerator()
         val binding = DataBindingUtil.inflate<FragmentGameAddEditBinding>(
             inflater, R.layout.fragment_game_add_edit, container, false
         ).apply {
@@ -52,6 +54,7 @@ class GameAddEditFragment: Fragment() {
             this.viewModel = addEditViewModel
             this.imageButtonActions = ImageButtonActions()
             this.navController = findNavController()
+            this.textWatcher = tw.generate(addEditViewModel)
         }
         binding.setReleaseDateEditText(binding.releaseDateEditText)
         binding.setBuyDateEditText(binding.buyDateEditText)

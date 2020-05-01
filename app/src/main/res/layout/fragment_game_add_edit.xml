@@ -28,6 +28,9 @@
         <variable
             name="buyDateClearImageButton"
             type="android.widget.ImageButton" />
+        <variable
+            name="textWatcher"
+            type="android.text.TextWatcher" />
         <import type="android.view.View"/>
     </data>
 
@@ -67,7 +70,8 @@
                         android:inputType="textMultiLine"
                         android:text="@{viewModel.selectedGame.title ?? @string/empty}"
                         android:backgroundTint="?attr/colorSurface"
-                        android:hint="@string/game_title_hint"/>
+                        android:hint="@string/game_title_hint"
+                        bind:textWatcher="@{textWatcher}"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -173,7 +177,8 @@
                             android:inputType="text"
                             android:text="@{viewModel.selectedGame.developers ?? @string/empty}"
                             android:backgroundTint="?attr/colorSurface"
-                            android:hint="@string/game_developer_hint"/>
+                            android:hint="@string/game_developer_hint"
+                            bind:textWatcher="@{textWatcher}"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -190,7 +195,8 @@
                             android:inputType="text"
                             android:text="@{viewModel.selectedGame.publishers ?? @string/empty}"
                             android:backgroundTint="?attr/colorSurface"
-                            android:hint="@string/game_publisher_hint"/>
+                            android:hint="@string/game_publisher_hint"
+                            bind:textWatcher="@{textWatcher}"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <LinearLayout
@@ -248,7 +254,8 @@
                                 android:enabled="false"
                                 android:text="@{viewModel.getDateString(viewModel.selectedGame.releaseDate) ?? @string/date_default}"
                                 android:backgroundTint="?attr/colorSurface"
-                                android:hint="@string/game_release_date_hint"/>
+                                android:hint="@string/game_release_date_hint"
+                                bind:textWatcher="@{textWatcher}"/>
 
                         </com.google.android.material.textfield.TextInputLayout>
 
@@ -325,7 +332,8 @@
                             android:inputType="numberDecimal"
                             android:text="@{viewModel.selectedGame.pricePaid.toString() ?? @string/empty}"
                             android:backgroundTint="?attr/colorSurface"
-                            android:hint="@string/game_price_paid_hint"/>
+                            android:hint="@string/game_price_paid_hint"
+                            bind:textWatcher="@{textWatcher}"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -352,7 +360,8 @@
                                 android:enabled="false"
                                 android:text="@{viewModel.getDateString(viewModel.selectedGame.boughtDate) ?? @string/date_default}"
                                 android:backgroundTint="?attr/colorSurface"
-                                android:hint="@string/game_buy_date_hint"/>
+                                android:hint="@string/game_buy_date_hint"
+                                bind:textWatcher="@{textWatcher}"/>
 
                         </com.google.android.material.textfield.TextInputLayout>
 
