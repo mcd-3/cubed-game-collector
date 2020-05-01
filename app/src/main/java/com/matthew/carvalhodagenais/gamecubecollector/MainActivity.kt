@@ -1,9 +1,11 @@
 package com.matthew.carvalhodagenais.gamecubecollector
 
 import android.content.Context
+import android.content.DialogInterface
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.widget.ImageView
+import android.widget.ScrollView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
@@ -12,6 +14,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.bumptech.glide.Glide
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.matthew.carvalhodagenais.gamecubecollector.factories.AccessoryViewModelFactory
 import com.matthew.carvalhodagenais.gamecubecollector.factories.ConsoleViewModelFactory
 import com.matthew.carvalhodagenais.gamecubecollector.factories.GameViewModelFactory
@@ -59,17 +62,47 @@ class MainActivity : AppCompatActivity(), ImageSelectDialogFragment.ImageSelectD
         return findNavController(R.id.nav_host_fragment).navigateUp(appBarConfig) || super.onSupportNavigateUp()
     }
 
+    override fun onBackPressed() {
+        if (findViewById<ScrollView>(R.id.game_add_edit_parent) != null ||
+            findViewById<ScrollView>(R.id.console_add_edit_parent) != null ||
+            findViewById<ScrollView>(R.id.accessory_add_edit_parent) != null
+        ) {
+            if (gameAddEditViewModel.viewFormChanged ||
+                consoleAddEditViewModel.viewFormChanged ||
+                accessoryAddEditViewModel.viewFormChanged
+            ) {
+                val builder = MaterialAlertDialogBuilder(this)
+                builder.setTitle(getString(R.string.discard_changes_title))
+                    .setMessage(getString(R.string.discard_changes_body))
+                    .setPositiveButton(getString(R.string.yes), {_, _ ->
+                        gameAddEditViewModel.viewFormChanged = false
+                        consoleAddEditViewModel.viewFormChanged = false
+                        accessoryAddEditViewModel.viewFormChanged = false
+                        super.onBackPressed()
+                    })
+                    .setNegativeButton(getString(R.string.delete_alert_negative)){
+                            dialog, _ -> dialog.dismiss() }
+                val alert = builder.create()
+                alert.show()
+            } else {
+                super.onBackPressed()
+            }
+        } else {
+            super.onBackPressed()
+        }
+    }
+
     /**
      * Changes the bitmap for the cover image
      */
     override fun changeImageBitmap(bitmap: Bitmap) {
         val imgView = when {
             findViewById<ImageView>(R.id.cover_art_image_view) != null
-            -> findViewById<ImageView>(R.id.cover_art_image_view)
+                -> findViewById<ImageView>(R.id.cover_art_image_view)
             findViewById<ImageView>(R.id.console_image_view) != null
-            -> findViewById<ImageView>(R.id.console_image_view)
+                -> findViewById<ImageView>(R.id.console_image_view)
             findViewById<ImageView>(R.id.accessory_image_view) != null
-            -> findViewById<ImageView>(R.id.accessory_image_view)
+                -> findViewById<ImageView>(R.id.accessory_image_view)
             else -> null
         }
         if (imgView != null) {
@@ -77,6 +110,14 @@ class MainActivity : AppCompatActivity(), ImageSelectDialogFragment.ImageSelectD
                 .load(bitmap)
                 .skipMemoryCache(true)
                 .into(imgView)
+        }
+        when {
+            findViewById<ScrollView>(R.id.game_add_edit_parent) != null
+                -> gameAddEditViewModel.viewFormChanged = true
+            findViewById<ScrollView>(R.id.console_add_edit_parent) != null
+                -> consoleAddEditViewModel.viewFormChanged = true
+            findViewById<ScrollView>(R.id.accessory_add_edit_parent) != null
+                -> accessoryAddEditViewModel.viewFormChanged = true
         }
     }
 

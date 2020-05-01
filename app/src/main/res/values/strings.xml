@@ -108,6 +108,8 @@
     <string name="delete_alert_positive">Delete</string>
     <string name="delete_alert_negative">@android:string/cancel</string>
     <string name="game_add_edit_change_image_title">Change Image How?</string>
+    <string name="discard_changes_title">Discard Changes?</string>
+    <string name="discard_changes_body">Any unsaved changes will be lost</string>
 
     <!-- Default TextView text -->
     <string name="no_title_available">No Title</string>
