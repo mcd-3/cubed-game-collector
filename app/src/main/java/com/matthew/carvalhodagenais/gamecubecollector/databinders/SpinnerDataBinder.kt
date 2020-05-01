@@ -3,11 +3,15 @@ package com.matthew.carvalhodagenais.gamecubecollector.databinders
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.databinding.BindingAdapter
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Type
 import com.matthew.carvalhodagenais.gamecubecollector.data.repositories.ConditionRepository
 import com.matthew.carvalhodagenais.gamecubecollector.data.repositories.RegionRepository
+import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.AccessoryAddEditViewModel
+import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.ConsoleAddEditViewModel
+import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.GameAddEditViewModel
 
 class SpinnerDataBinder {
     companion object {
@@ -37,31 +41,40 @@ class SpinnerDataBinder {
         }
 
         @JvmStatic
-        @BindingAdapter("bind:repository", "bind:lifecycleOwner", "bind:defaultSelection", "bind:typeID")
+        @BindingAdapter("bind:viewModel", "bind:lifecycleOwner", "bind:defaultSelection", "bind:typeID")
         fun setSpinnerConditionEntries(
             spinner: Spinner,
-            repo: ConditionRepository,
+            vm: AndroidViewModel,
             lco: LifecycleOwner,
             defaultSelection: Int,
             type: Int
         ) {
             val list = mutableListOf<String>()
             val adapter = ArrayAdapter(spinner.context, android.R.layout.simple_spinner_item, list)
-            repo.getConditionCodes(type).observe(lco, Observer { items ->
-                items.forEach {
-                    list.add(it)
-                }
-                adapter.notifyDataSetChanged()
-                val index = when(type) {
-                    Type.CD_ID -> INDEX_DISC
-                    Type.CONSOLE_ID -> INDEX_CONSOLE
-                    Type.ACCESSORY_ID -> INDEX_ACCESSORY
-                    else -> INDEX_DISC
-                }
-                spinner.setSelection(defaultSelection - index)
-            })
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            spinner.adapter = adapter
+            val repository: ConditionRepository? = when {
+                vm is GameAddEditViewModel -> vm.getConditionRepository()
+                vm is ConsoleAddEditViewModel -> vm.getConditionRepository()
+                vm is AccessoryAddEditViewModel -> vm.getConditionRepository()
+                else -> null
+            }
+            if (repository != null) {
+                repository.getConditionCodes(type).observe(lco, Observer { items ->
+                    items.forEach {
+                        list.add(it)
+                    }
+                    adapter.notifyDataSetChanged()
+                    val index = when(type) {
+                        Type.CD_ID -> INDEX_DISC
+                        Type.CONSOLE_ID -> INDEX_CONSOLE
+                        Type.ACCESSORY_ID -> INDEX_ACCESSORY
+                        else -> INDEX_DISC
+                    }
+                    spinner.setSelection(defaultSelection - index)
+                    //TODO: Add spinner listener over here!
+                })
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                spinner.adapter = adapter
+            }
         }
     }
 }

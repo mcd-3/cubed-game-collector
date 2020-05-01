@@ -183,7 +183,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="end"
                             android:textAlignment="textEnd"
-                            bind:repository="@{viewModel.getConditionRepository()}"
+                            bind:viewModel="@{viewModel}"
                             bind:lifecycleOwner="@{lifecycleOwner}"
                             bind:defaultSelection="@{viewModel.selectedConsole.conditionId}"
                             bind:typeID="@{viewModel.getConditionTypeID()}" />
