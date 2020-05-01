@@ -58,6 +58,23 @@ class GameAddEditViewModel(application: Application): AndroidViewModel(applicati
 
     fun getConditionTypeID(): Int = Type.CD_ID
 
+    /**
+     * Saves a game to the database
+     *
+     * @param requestInt Int
+     * @param title String
+     * @param publisher String
+     * @param developer String
+     * @param releaseDate Date?
+     * @param pricePaid Double?
+     * @param boughtDate Date?
+     * @param hasCase Boolean
+     * @param hasManual Boolean
+     * @param isFavouriteTag String
+     * @param regionCode String
+     * @param conditionCode String
+     * @param bitmap Bitmap
+     */
     fun saveGame(
         requestInt: Int,
         title: String,
