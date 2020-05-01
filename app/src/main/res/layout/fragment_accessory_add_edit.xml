@@ -14,6 +14,9 @@
         <variable
             name="navController"
             type="androidx.navigation.NavController" />
+        <variable
+            name="textWatcher"
+            type="android.text.TextWatcher" />
     </data>
 
     <ScrollView
@@ -51,7 +54,9 @@
                         android:inputType="textMultiLine"
                         android:backgroundTint="?attr/colorSurface"
                         android:text="@{viewModel.selectedAccessory.title ?? @string/empty}"
-                        android:hint="@string/accessory_title_hint"/>
+                        android:hint="@string/accessory_title_hint"
+                        bind:viewModelToUpdate="@{viewModel}"
+                        bind:textWatcher="@{textWatcher}"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -176,7 +181,9 @@
                             android:maxLength="150"
                             android:backgroundTint="?attr/colorSurface"
                             android:text="@{viewModel.selectedAccessory.description}"
-                            android:hint="@string/accessory_description_hint"/>
+                            android:hint="@string/accessory_description_hint"
+                            bind:viewModelToUpdate="@{viewModel}"
+                            bind:textWatcher="@{textWatcher}"/>
 
                     </com.google.android.material.textfield.TextInputLayout>
 

@@ -20,6 +20,8 @@ class AccessoryAddEditViewModel(application: Application): AndroidViewModel(appl
     private var repository = AccessoryRepository(application)
     private var conditionRepo = ConditionRepository(application)
 
+    var viewFormChanged: Boolean = false
+
     fun insert(accessory: Accessory) = viewModelScope.launch {
         repository.insertAccessory(accessory)
         clearCurrentlySelectedAccessory()

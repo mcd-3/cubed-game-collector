@@ -10,6 +10,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.matthew.carvalhodagenais.gamecubecollector.MainActivity
 import com.matthew.carvalhodagenais.gamecubecollector.R
 import com.matthew.carvalhodagenais.gamecubecollector.databinding.FragmentAccessoryAddEditBinding
+import com.matthew.carvalhodagenais.gamecubecollector.helpers.generators.TextWatcherGenerator
 import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.AccessoryAddEditViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_accessory_add_edit.*
@@ -30,12 +31,14 @@ class AccessoryAddEditFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         addEditViewModel = (activity as MainActivity).getAccessoryAddEditViewModel()
+        val tw = TextWatcherGenerator()
         val binding = DataBindingUtil.inflate<FragmentAccessoryAddEditBinding>(
             inflater, R.layout.fragment_accessory_add_edit, container, false
         ).apply {
             this.lifecycleOwner = this@AccessoryAddEditFragment
             this.viewModel = addEditViewModel
             this.navController = findNavController()
+            this.textWatcher = tw.generate(addEditViewModel)
         }
         setHasOptionsMenu(true)
 
