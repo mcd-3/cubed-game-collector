@@ -26,6 +26,8 @@ class GameAddEditViewModel(application: Application): AndroidViewModel(applicati
     private var regionRepository = RegionRepository(application)
     private var conditionRepository = ConditionRepository(application)
 
+    var viewFormChanged: Boolean = false
+
     fun insert(game: Game) = viewModelScope.launch {
         gameRepository.insertGame(game)
         clearCurrentlySelectedGame()

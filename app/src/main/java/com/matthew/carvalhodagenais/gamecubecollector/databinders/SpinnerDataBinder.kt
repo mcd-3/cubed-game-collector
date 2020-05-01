@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer
 import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Type
 import com.matthew.carvalhodagenais.gamecubecollector.data.repositories.ConditionRepository
 import com.matthew.carvalhodagenais.gamecubecollector.data.repositories.RegionRepository
+import com.matthew.carvalhodagenais.gamecubecollector.helpers.generators.SpinnerOnItemSelectedListenerGenerator
 import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.AccessoryAddEditViewModel
 import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.ConsoleAddEditViewModel
 import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.GameAddEditViewModel
@@ -70,7 +71,8 @@ class SpinnerDataBinder {
                         else -> INDEX_DISC
                     }
                     spinner.setSelection(defaultSelection - index)
-                    //TODO: Add spinner listener over here!
+                    val slg = SpinnerOnItemSelectedListenerGenerator()
+                    spinner.onItemSelectedListener = slg.generate(vm)
                 })
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                 spinner.adapter = adapter

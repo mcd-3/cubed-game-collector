@@ -22,6 +22,8 @@ class ConsoleAddEditViewModel(application: Application): AndroidViewModel(applic
     private var regionRepo = RegionRepository(application)
     private var conditionRepo = ConditionRepository(application)
 
+    var viewFormChanged: Boolean = false
+
     fun insert(console: Console) = viewModelScope.launch {
         repository.insertConsole(console)
         clearCurrentlySelectedConsole()
