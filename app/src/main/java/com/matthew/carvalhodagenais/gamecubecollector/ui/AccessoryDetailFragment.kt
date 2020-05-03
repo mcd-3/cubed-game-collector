@@ -45,7 +45,7 @@ class AccessoryDetailFragment: Fragment() {
         }
         R.id.menu_edit -> {
             val action = AccessoryDetailFragmentDirections.actionAccessoryDetailFragmentToAccessoryAddEditFragment(
-                AccessoryAddEditFragment.EDIT_REQUEST
+                AccessoryAddEditFragment.EDIT_REQUEST, getString(R.string.navigation_accessory_edit_title)
             )
             (activity as MainActivity).getAccessoryAddEditViewModel().setSelectedAccessory(
                 detailViewModel.getSelectedAccessory()
@@ -76,7 +76,7 @@ class AccessoryDetailFragment: Fragment() {
      * AlertDialog OnClickListener to delete the currently selected game
      */
     private val alertPositiveOnClick = DialogInterface.OnClickListener { _, _ ->
-        detailViewModel.delete(detailViewModel.getSelectedAccessory()!!)
+        detailViewModel.delete(detailViewModel.getSelectedAccessory())
         findNavController().navigate(R.id.action_accessoryDetailFragment_to_nav_accessories)
     }
 

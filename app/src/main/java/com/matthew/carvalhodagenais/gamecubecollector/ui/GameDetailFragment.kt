@@ -58,7 +58,7 @@ class GameDetailFragment: Fragment() {
                 else 2
             val action =
                 GameDetailFragmentDirections.actionGameDetailFragmentToGameAddEditFragment(
-                    GameAddEditFragment.EDIT_REQUEST, req
+                    GameAddEditFragment.EDIT_REQUEST, req, getString(R.string.navigation_game_edit_title)
                 )
             (activity as MainActivity).getGameAddEditViewModel().setSelectedGame(
                 detailViewModel.getSelectedGame()!!

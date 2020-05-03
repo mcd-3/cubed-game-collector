@@ -45,7 +45,7 @@ class ConsoleDetailFragment: Fragment() {
         }
         R.id.menu_edit -> {
             val action = ConsoleDetailFragmentDirections.actionConsoleDetailFragmentToConsoleAddEditFragment(
-                ConsoleAddEditFragment.EDIT_REQUEST
+                ConsoleAddEditFragment.EDIT_REQUEST, getString(R.string.navigation_console_edit_title)
             )
             (activity as MainActivity).getConsoleAddEditViewModel().setSelectedConsole(
                 detailViewModel.getSelectedConsole()!!

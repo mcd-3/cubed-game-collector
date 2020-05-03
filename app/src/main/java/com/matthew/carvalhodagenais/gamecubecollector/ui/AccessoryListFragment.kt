@@ -84,7 +84,7 @@ class AccessoryListFragment: Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when(item.itemId){
         R.id.menu_add -> {
             val action = AccessoryListFragmentDirections.actionNavAccessoriesToAccessoryAddEditFragment(
-                AccessoryAddEditFragment.ADD_REQUEST
+                AccessoryAddEditFragment.ADD_REQUEST, getString(R.string.navigation_accessory_add_title)
             )
             (activity as MainActivity).getAccessoryAddEditViewModel().clearCurrentlySelectedAccessory()
             findNavController().navigate(action)

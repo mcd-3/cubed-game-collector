@@ -62,14 +62,6 @@ class GameAddEditFragment: Fragment() {
         binding.setReleaseDateClearImageButton(binding.releaseDateClearImageButton)
         binding.setBuyDateClearImageButton(binding.buyDateClearImageButton)
         setHasOptionsMenu(true)
-
-        // Set the title
-        if (GameAddEditFragmentArgs.fromBundle(arguments!!).ADDEDITREQUEST == EDIT_REQUEST) {
-            activity?.toolbar?.title = getString(R.string.navigation_game_edit_title)
-        } else {
-            activity?.toolbar?.title = getString(R.string.navigation_game_add_title)
-        }
-
         return binding.root
     }
 

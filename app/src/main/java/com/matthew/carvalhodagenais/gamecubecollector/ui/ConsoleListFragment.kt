@@ -86,7 +86,7 @@ class ConsoleListFragment: Fragment() {
         R.id.menu_add -> {
             val action =
                 ConsoleListFragmentDirections.actionNavConsolesToConsoleAddEditFragment(
-                    ConsoleAddEditFragment.ADD_REQUEST
+                    ConsoleAddEditFragment.ADD_REQUEST, getString(R.string.navigation_console_add_title)
                 )
             (activity as MainActivity).getConsoleAddEditViewModel().clearCurrentlySelectedConsole()
             findNavController().navigate(action)

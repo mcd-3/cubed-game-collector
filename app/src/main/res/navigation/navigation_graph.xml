@@ -54,7 +54,8 @@
         android:label="@string/navigation_settings" />
     <fragment
         android:id="@+id/gameAddEditFragment"
-        android:name="com.matthew.carvalhodagenais.gamecubecollector.ui.GameAddEditFragment">
+        android:name="com.matthew.carvalhodagenais.gamecubecollector.ui.GameAddEditFragment"
+        android:label="{TITLE}">
         <argument
             android:name="ADD_EDIT_REQUEST"
             app:argType="integer"
@@ -63,6 +64,9 @@
             android:name="FROM_FAVOURITE"
             app:argType="integer"
             android:defaultValue="0" />
+        <argument
+            android:name="TITLE"
+            app:argType="string"/>
         <action
             android:id="@+id/action_gameAddEditFragment_to_gameListFragment"
             app:destination="@id/nav_games"
@@ -122,11 +126,15 @@
     </fragment>
     <fragment
         android:id="@+id/consoleAddEditFragment"
-        android:name="com.matthew.carvalhodagenais.gamecubecollector.ui.ConsoleAddEditFragment" >
+        android:name="com.matthew.carvalhodagenais.gamecubecollector.ui.ConsoleAddEditFragment"
+        android:label="{TITLE}">
         <argument
             android:name="ADD_EDIT_REQUEST"
             app:argType="integer"
             android:defaultValue="1" />
+        <argument
+            android:name="TITLE"
+            app:argType="string"/>
         <action
             android:id="@+id/action_consoleAddEditFragment_to_nav_consoles"
             app:destination="@id/nav_consoles"
@@ -213,11 +221,15 @@
     </fragment>
     <fragment
         android:id="@+id/accessoryAddEditFragment"
-        android:name="com.matthew.carvalhodagenais.gamecubecollector.ui.AccessoryAddEditFragment" >
+        android:name="com.matthew.carvalhodagenais.gamecubecollector.ui.AccessoryAddEditFragment"
+        android:label="{TITLE}">
         <argument
             android:name="ADD_EDIT_REQUEST"
             app:argType="integer"
             android:defaultValue="1" />
+        <argument
+            android:name="TITLE"
+            app:argType="string"/>
         <action
             android:id="@+id/action_accessoryAddEditFragment_to_nav_accessories"
             app:destination="@id/nav_accessories"

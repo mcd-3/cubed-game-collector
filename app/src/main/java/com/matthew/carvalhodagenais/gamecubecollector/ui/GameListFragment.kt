@@ -98,7 +98,7 @@ class GameListFragment : Fragment() {
         R.id.menu_add -> {
             val action =
                 GameListFragmentDirections.actionGameListFragmentToGameAddEditFragment(
-                    GameAddEditFragment.ADD_REQUEST
+                    GameAddEditFragment.ADD_REQUEST, 0, getString(R.string.navigation_game_add_title)
                 )
             (activity as MainActivity).getGameAddEditViewModel().clearCurrentlySelectedGame()
             findNavController().navigate(action)
@@ -107,25 +107,5 @@ class GameListFragment : Fragment() {
         else -> {
             super.onOptionsItemSelected(item)
         }
-    }
-
-    /**
-     * OnQueryTextListener for the search menu item.
-     * Allows a user to search for a specific game
-     */
-    private var searchQueryTextListener = object: SearchView.OnQueryTextListener {
-        override fun onQueryTextChange(newText: String?): Boolean {
-            recyclerAdapter.filter.filter(newText)
-            return false
-        }
-        override fun onQueryTextSubmit(query: String?): Boolean = false
-    }
-
-    /**
-     * OnActionExpandListener for the search menu item.
-     */
-    private var searchExpandListener = object: MenuItem.OnActionExpandListener {
-        override fun onMenuItemActionExpand(item: MenuItem?): Boolean = true
-        override fun onMenuItemActionCollapse(item: MenuItem?): Boolean = true
     }
 }
