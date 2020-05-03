@@ -31,6 +31,9 @@
         <variable
             name="textWatcher"
             type="android.text.TextWatcher" />
+        <variable
+            name="act"
+            type="android.app.Activity" />
         <import type="android.view.View"/>
     </data>
 
@@ -270,7 +273,7 @@
                             android:backgroundTint="?android:attr/colorAccent"
                             android:foreground="?attr/selectableItemBackground"
                             android:contentDescription="@string/game_add_edit_calendar_image_button_content_description"
-                            android:onClick="@{(view) -> imageButtonActions.pickDate(view, releaseDateEditText, releaseDateClearImageButton)}"
+                            android:onClick="@{(view) -> imageButtonActions.pickDate(view, releaseDateEditText, releaseDateClearImageButton, act)}"
                             android:src="@drawable/ic_date_range_white_42dp" />
 
                         <!-- Set this to RED if has date, else set to very light gray -->
@@ -283,8 +286,10 @@
                             android:contentDescription="@string/game_add_edit_clear_image_button_content_description"
                             android:foreground="?attr/selectableItemBackground"
                             android:clickable="@{(viewModel.selectedGame.releaseDate != null)}"
-                            android:onClick="@{(view) -> imageButtonActions.clearEditText(view, releaseDateEditText)}"
-                            android:src="@drawable/ic_cancel_white_32dp" />
+                            android:onClick="@{(view) -> imageButtonActions.clearEditText(view, releaseDateEditText, act)}"
+                            android:src="@drawable/ic_cancel_white_32dp"
+                            bind:parentActivity="@{act}"
+                            bind:isEnabled="@{viewModel.selectedGame.releaseDate != null}"/>
 
                     </LinearLayout>
 
@@ -375,7 +380,7 @@
                             android:contentDescription="@string/game_add_edit_calendar_image_button_content_description"
                             android:backgroundTint="?android:attr/colorAccent"
                             android:foreground="?attr/selectableItemBackground"
-                            android:onClick="@{(view) -> imageButtonActions.pickDate(view, buyDateEditText, buyDateClearImageButton)}"
+                            android:onClick="@{(view) -> imageButtonActions.pickDate(view, buyDateEditText, buyDateClearImageButton, act)}"
                             android:src="@drawable/ic_date_range_white_42dp" />
 
                         <!-- Set this to RED if has date, else set to very light gray -->
@@ -388,8 +393,10 @@
                             android:contentDescription="@string/game_add_edit_clear_image_button_content_description"
                             android:foreground="?attr/selectableItemBackground"
                             android:clickable="@{(viewModel.selectedGame.boughtDate != null)}"
-                            android:onClick="@{(view) -> imageButtonActions.clearEditText(view, buyDateEditText)}"
-                            android:src="@drawable/ic_cancel_white_32dp" />
+                            android:onClick="@{(view) -> imageButtonActions.clearEditText(view, buyDateEditText, act)}"
+                            android:src="@drawable/ic_cancel_white_32dp"
+                            bind:parentActivity="@{act}"
+                            bind:isEnabled="@{viewModel.selectedGame.boughtDate != null}"/>
 
                     </LinearLayout>
 

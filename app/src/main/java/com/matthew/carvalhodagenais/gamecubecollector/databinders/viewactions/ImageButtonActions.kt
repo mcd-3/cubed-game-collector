@@ -1,6 +1,10 @@
 package com.matthew.carvalhodagenais.gamecubecollector.databinders.viewactions
 
+import android.app.Activity
 import android.app.DatePickerDialog
+import android.content.res.ColorStateList
+import android.content.res.Resources
+import android.util.TypedValue
 import android.view.View
 import android.widget.EditText
 import android.widget.ImageButton
@@ -73,13 +77,14 @@ class ImageButtonActions {
      * Prompts the user for a date, and updates a given EditText when a date is selected.
      * Also disables a "clear date" button
      */
-    fun pickDate(button: View, editText: View, clearButton: View) {
+    fun pickDate(button: View, editText: View, clearButton: View, act: Activity) {
         val cal = Calendar.getInstance()
         val datePicker = DatePickerDialog(
             button.context,
             DatePickerDialog.OnDateSetListener { _, mYear, mMonth, mDay ->
                 (editText as EditText).setText("${mDay}/${mMonth + 1}/${mYear}")
                 (clearButton as ImageButton).isClickable = true
+                setButtonColour((clearButton as ImageButton), act, true)
             },
             cal.get(Calendar.YEAR),
             cal.get(Calendar.MONTH),
@@ -94,10 +99,11 @@ class ImageButtonActions {
      * @param button View
      * @param editText EditText
      */
-    fun clearEditText(button: View, editText: EditText) {
+    fun clearEditText(button: View, editText: EditText, act: Activity) {
         try {
             editText.setText(editText.context.getString(R.string.date_default))
             (button as ImageButton).isClickable = false
+            setButtonColour((button as ImageButton), act, false)
         } catch (e: ClassCastException) {
             Toast.makeText(
                 button.context,
@@ -105,5 +111,23 @@ class ImageButtonActions {
                 Toast.LENGTH_SHORT
             ).show()
         }
+    }
+
+    /**
+     * Sets the colour of an ImageButton. Default if disabled or red if enabled
+     *
+     * @param imgBtn
+     * @param activity
+     * @param isEnabled
+     */
+    private fun setButtonColour(imgBtn: ImageButton, activity: Activity, isEnabled: Boolean) {
+        val typedValue = TypedValue()
+        val theme: Resources.Theme = activity.theme
+        if (isEnabled) {
+            theme.resolveAttribute(android.R.attr.colorError, typedValue, true)
+        } else {
+            theme.resolveAttribute(android.R.attr.colorButtonNormal, typedValue, true)
+        }
+        imgBtn.backgroundTintList = ColorStateList.valueOf(typedValue.data)
     }
 }

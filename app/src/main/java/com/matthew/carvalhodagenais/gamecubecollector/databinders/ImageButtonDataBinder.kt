@@ -1,5 +1,9 @@
 package com.matthew.carvalhodagenais.gamecubecollector.databinders
 
+import android.app.Activity
+import android.content.res.ColorStateList
+import android.content.res.Resources
+import android.util.TypedValue
 import android.widget.ImageButton
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
@@ -17,6 +21,19 @@ class ImageButtonDataBinder {
             Glide.with(imageButton.context)
                 .load(drawable)
                 .into(imageButton)
+        }
+
+        @JvmStatic
+        @BindingAdapter("bind:parentActivity", "bind:isEnabled")
+        fun setImageButtonColour(btn: ImageButton, activity: Activity, isEnabled: Boolean) {
+            val typedValue = TypedValue()
+            val theme: Resources.Theme = activity.theme
+            if (isEnabled) {
+                theme.resolveAttribute(android.R.attr.colorError, typedValue, true)
+            } else {
+                theme.resolveAttribute(android.R.attr.colorButtonNormal, typedValue, true)
+            }
+            btn.backgroundTintList = ColorStateList.valueOf(typedValue.data)
         }
     }
 }

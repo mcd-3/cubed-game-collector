@@ -55,6 +55,7 @@ class GameAddEditFragment: Fragment() {
             this.imageButtonActions = ImageButtonActions()
             this.navController = findNavController()
             this.textWatcher = tw.generate(addEditViewModel)
+            this.act = activity
         }
         binding.setReleaseDateEditText(binding.releaseDateEditText)
         binding.setBuyDateEditText(binding.buyDateEditText)
