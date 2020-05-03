@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/small"
         android:layout_marginStart="@dimen/small"
         android:layout_marginEnd="@dimen/small"
         android:layout_marginBottom="@dimen/small">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -21,11 +21,10 @@
                 android:id="@+id/about_logo"
                 android:layout_width="140dp"
                 android:layout_height="140dp"
-                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
                 android:layout_marginTop="@dimen/extra_medium"
                 android:src="@drawable/logo_layered"
-                android:contentDescription="@string/logo_content_description"
-                android:layout_alignParentTop="true"/>
+                android:contentDescription="@string/logo_content_description" />
 
             <TextView
                 android:id="@+id/about_description"
@@ -34,11 +33,10 @@
                 android:layout_marginStart="@dimen/large"
                 android:layout_marginTop="@dimen/slightly_medium"
                 android:layout_marginEnd="@dimen/large"
-                android:gravity="center"
+                android:layout_gravity="center"
                 style="@style/TextAppearance.AppCompat.Medium"
                 android:text="@string/about_app"
-                android:textColor="?android:attr/textColor"
-                android:layout_below="@id/about_logo"/>
+                android:textColor="?android:attr/textColor"/>
 
             <TextView
                 android:id="@+id/about_notice"
@@ -47,12 +45,11 @@
                 android:layout_marginTop="@dimen/extra_medium"
                 android:layout_marginStart="@dimen/medium"
                 android:layout_marginEnd="@dimen/medium"
-                android:gravity="center"
+                android:layout_gravity="center"
                 android:text="@string/disclaimer"
                 android:textStyle="italic"
                 android:textColor="?android:attr/subtitleTextColor"
-                android:textSize="@dimen/small_text"
-                android:layout_below="@id/about_description"/>
+                android:textSize="@dimen/small_text"/>
 
             <TextView
                 android:id="@+id/about_notice_two"
@@ -60,18 +57,17 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/medium"
                 android:layout_marginEnd="@dimen/medium"
-                android:gravity="center"
+                android:layout_marginBottom="@dimen/very_large"
+                android:layout_gravity="center"
                 android:text="@string/disclaimer_part_two"
                 android:textStyle="italic"
                 android:textColor="?android:attr/subtitleTextColor"
-                android:textSize="@dimen/small_text"
-                android:layout_below="@id/about_notice"/>
+                android:textSize="@dimen/small_text"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/silver"
-                android:layout_above="@id/about_email_linear_layout"/>
+                android:background="@color/silver"/>
 
             <LinearLayout
                 android:id="@+id/about_email_linear_layout"
@@ -82,8 +78,7 @@
                 android:orientation="vertical"
                 android:focusable="true"
                 android:clickable="true"
-                android:background="?attr/selectableItemBackground"
-                android:layout_above="@id/about_github_linear_layout">
+                android:background="?attr/selectableItemBackground">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -111,7 +106,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_below="@id/about_email_linear_layout"
                 android:background="@color/silver"/>
 
             <LinearLayout
@@ -122,8 +116,7 @@
                 android:orientation="vertical"
                 android:focusable="true"
                 android:clickable="true"
-                android:background="?attr/selectableItemBackground"
-                android:layout_above="@id/about_version">
+                android:background="?attr/selectableItemBackground">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -152,7 +145,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_below="@id/about_github_linear_layout"
                 android:background="@color/silver"/>
 
             <RelativeLayout
@@ -162,8 +154,7 @@
                 android:layout_marginTop="@dimen/slightly_small"
                 android:layout_marginStart="@dimen/slightly_small"
                 android:layout_marginEnd="@dimen/slightly_small"
-                android:layout_marginBottom="@dimen/slightly_small"
-                android:layout_alignParentBottom="true">
+                android:layout_marginBottom="@dimen/slightly_small">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -182,8 +173,8 @@
 
             </RelativeLayout>
 
-        </RelativeLayout>
+        </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>
 
-</LinearLayout>
+</ScrollView>
