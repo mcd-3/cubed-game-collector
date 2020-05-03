@@ -3,6 +3,8 @@ package com.matthew.carvalhodagenais.gamecubecollector.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -11,11 +13,13 @@ import com.matthew.carvalhodagenais.gamecubecollector.R
 import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Accessory
 import com.matthew.carvalhodagenais.gamecubecollector.helpers.ImageStorageHelper
 import kotlinx.android.synthetic.main.accessory_item.view.*
+import java.util.*
 
 class AccessoryListRecyclerAdapter: ListAdapter<Accessory, AccessoryListRecyclerAdapter.AccessoryHolder> (
     DIFF_CALLBACK
-) {
+), Filterable {
     private var listener: ItemOnClickListener? = null
+    private lateinit var searchableList: List<Accessory>
 
     companion object {
         private val DIFF_CALLBACK = object: DiffUtil.ItemCallback<Accessory>() {
@@ -66,6 +70,14 @@ class AccessoryListRecyclerAdapter: ListAdapter<Accessory, AccessoryListRecycler
         return getItem(position)
     }
 
+    override fun getFilter(): Filter {
+        return searchFilter
+    }
+
+    fun setSearchableList(list: List<Accessory>) {
+        searchableList = list
+    }
+
     inner class AccessoryHolder(view: View): RecyclerView.ViewHolder(view) {
         init {
             view.setOnClickListener {
@@ -83,6 +95,30 @@ class AccessoryListRecyclerAdapter: ListAdapter<Accessory, AccessoryListRecycler
 
     interface ItemOnClickListener {
         fun onItemClick(accessory: Accessory)
+    }
+
+    private var searchFilter = object: Filter() {
+        override fun performFiltering(constraint: CharSequence?): FilterResults {
+            var filteredList = mutableListOf<Accessory>()
+            if (constraint!!.isEmpty()) {
+                filteredList = searchableList.toMutableList()
+            } else {
+                val filterPattern = constraint.toString().toLowerCase(Locale.getDefault()).trim()
+                searchableList.forEach {
+                    if (it.title.toLowerCase(Locale.getDefault()).contains(filterPattern)) {
+                        filteredList.add(it)
+                    }
+                }
+            }
+            val results = FilterResults()
+            results.values = filteredList
+            submitList(filteredList)
+            return results
+        }
+
+        override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+            notifyDataSetChanged()
+        }
     }
 
 }

@@ -2,6 +2,7 @@ package com.matthew.carvalhodagenais.gamecubecollector.ui
 
 import android.os.Bundle
 import android.view.*
+import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -12,6 +13,7 @@ import com.matthew.carvalhodagenais.gamecubecollector.R
 import com.matthew.carvalhodagenais.gamecubecollector.adapters.AccessoryListRecyclerAdapter
 import com.matthew.carvalhodagenais.gamecubecollector.helpers.generators.ItemTouchHelperGenerator
 import com.matthew.carvalhodagenais.gamecubecollector.helpers.generators.RecyclerAdapterItemClickGenerator
+import com.matthew.carvalhodagenais.gamecubecollector.helpers.generators.RecyclerSearchQueryListenerGenerator
 import kotlinx.android.synthetic.main.fragment_accessory_list.*
 
 class AccessoryListFragment: Fragment() {
@@ -39,6 +41,7 @@ class AccessoryListFragment: Fragment() {
         (activity as MainActivity).getAccessoryListViewModel().getAllAccessories()
             .observe(viewLifecycleOwner, Observer {
                 recyclerAdapter.submitList(it)
+                recyclerAdapter.setSearchableList(it)
 
                 if (it.count() < 1) {
                     no_accessories_layout.visibility = View.VISIBLE
@@ -69,6 +72,12 @@ class AccessoryListFragment: Fragment() {
     override fun onPrepareOptionsMenu(menu: Menu) {
         menu.clear()
         requireActivity().menuInflater.inflate(R.menu.menu_accessory_list, menu)
+        val searchItem = menu.findItem(R.id.menu_search)
+        val searchView = searchItem.actionView as SearchView
+        val generator =
+            RecyclerSearchQueryListenerGenerator()
+        searchView.setOnQueryTextListener(generator.generateQueryTextListener(recyclerAdapter))
+        searchItem.setOnActionExpandListener(generator.generateExpandListener())
         super.onPrepareOptionsMenu(menu)
     }
 
