@@ -13,6 +13,9 @@
         <variable
             name="lifecycleOwner"
             type="androidx.lifecycle.LifecycleOwner" />
+        <variable
+            name="act"
+            type="android.app.Activity" />
     </data>
 
     <ScrollView
@@ -147,6 +150,7 @@
                             android:layout_marginEnd="@dimen/extra_medium"
                             style="@style/TextAppearance.AppCompat.Large"
                             bind:isDefault="@{viewModel.selectedGame.developers == null}"
+                            bind:parentActivity="@{act}"
                             android:text="@{viewModel.selectedGame.developers ?? @string/no_developer_available}" />
                     </LinearLayout>
 
@@ -191,6 +195,7 @@
                             android:layout_marginTop="@dimen/small"
                             android:drawablePadding="@dimen/small"
                             bind:isDefault="@{viewModel.selectedGame.publishers == null}"
+                            bind:parentActivity="@{act}"
                             android:text="@{viewModel.selectedGame.publishers ?? @string/no_publisher_available}" />
                     </LinearLayout>
 
@@ -258,7 +263,9 @@
                             android:gravity="end"
                             android:layout_marginEnd="@dimen/medium"
                             style="@style/TextAppearance.AppCompat.Large"
-                            bind:date="@{viewModel.selectedGame.releaseDate}" />
+                            bind:date="@{viewModel.selectedGame.releaseDate}"
+                            bind:isDefault="@{viewModel.selectedGame.releaseDate == null}"
+                            bind:parentActivity="@{act}"/>
 
                     </LinearLayout>
                 </LinearLayout>
@@ -319,7 +326,9 @@
                             android:gravity="end"
                             style="@style/TextAppearance.AppCompat.Large"
                             android:layout_marginEnd="@dimen/medium"
-                            bind:date="@{viewModel.selectedGame.boughtDate}" />
+                            bind:date="@{viewModel.selectedGame.boughtDate}"
+                            bind:isDefault="@{viewModel.selectedGame.boughtDate == null}"
+                            bind:parentActivity="@{act}"/>
 
                     </LinearLayout>
 
@@ -386,6 +395,7 @@
                             style="@style/TextAppearance.AppCompat.Large"
                             android:layout_marginEnd="@dimen/medium"
                             bind:isDefault="@{viewModel.selectedGame.pricePaid == null}"
+                            bind:parentActivity="@{act}"
                             android:text="@{'$' + ((viewModel.selectedGame.pricePaid != null) ? viewModel.selectedGame.pricePaid.toString() : @string/no_price)}" />
 
                     </LinearLayout>
@@ -397,7 +407,7 @@
                         android:layout_gravity="center"
                         style="@style/TextAppearance.AppCompat.Large"
                         android:layout_marginTop="@dimen/small"
-                        android:layout_marginBottom="@dimen/small"
+                        android:layout_marginBottom="@dimen/slightly_medium"
                         android:textColor="?android:attr/textColor"
                         bind:hasCase="@{viewModel.selectedGame.hasCase}"
                         bind:hasManual="@{viewModel.selectedGame.hasManual}" />

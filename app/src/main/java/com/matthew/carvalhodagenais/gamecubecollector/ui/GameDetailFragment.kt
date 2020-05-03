@@ -38,6 +38,7 @@ class GameDetailFragment: Fragment() {
             this.viewModel = detailViewModel
             this.imageButtonActions =
                 ImageButtonActions()
+            this.act = activity
         }
         setHasOptionsMenu(true)
         return binding.root

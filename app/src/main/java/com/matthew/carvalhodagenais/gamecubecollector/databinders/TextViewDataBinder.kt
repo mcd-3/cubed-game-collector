@@ -1,5 +1,6 @@
 package com.matthew.carvalhodagenais.gamecubecollector.databinders
 
+import android.app.Activity
 import android.content.res.Resources
 import android.content.res.TypedArray
 import android.graphics.Typeface
@@ -86,16 +87,15 @@ class TextViewDataBinder {
         }
 
         @JvmStatic
-        @BindingAdapter("bind:isDefault")
-        fun setDefaultTextStyle(textView: TextView, isDefault: Boolean) {
+        @BindingAdapter("bind:isDefault", "bind:parentActivity")
+        fun setDefaultTextStyle(textView: TextView, isDefault: Boolean, act: Activity) {
             if (isDefault) {
                 textView.setTypeface(null, Typeface.ITALIC)
-
                 // get theme subtitle color
-//                val typedValue = TypedValue()
-//                val theme: Resources.Theme = textView.context.applicationContext.theme
-//                theme.resolveAttribute(R.attr.subtitleTextColor, typedValue, true)
-//                textView.setTextColor(typedValue.data)
+                val typedValue = TypedValue()
+                val theme: Resources.Theme = act.theme
+                theme.resolveAttribute(android.R.attr.subtitleTextColor, typedValue, true)
+                textView.setTextColor(typedValue.data)
             }
         }
     }
