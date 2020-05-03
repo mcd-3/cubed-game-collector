@@ -126,6 +126,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingBottom="@dimen/medium"
+                        android:layout_marginStart="@dimen/small"
+                        android:layout_marginEnd="@dimen/small"
                         android:orientation="vertical">
 
                         <TextView
@@ -145,7 +147,8 @@
                             android:id="@+id/developer_text_view"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/small"
+                            android:layout_marginTop="@dimen/slightly_medium"
+                            android:layout_marginBottom="@dimen/slightly_medium"
                             android:layout_marginStart="@dimen/extra_medium"
                             android:layout_marginEnd="@dimen/extra_medium"
                             style="@style/TextAppearance.AppCompat.Large"
@@ -159,6 +162,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingBottom="@dimen/medium"
+                        android:layout_marginStart="@dimen/small"
+                        android:layout_marginEnd="@dimen/small"
                         android:orientation="vertical">
 
                         <TextView
@@ -174,17 +179,6 @@
                             android:textColor="?android:attr/textColor"
                             android:text="@string/publisher_title" />
 
-<!--                        <TextView-->
-<!--                            android:id="@+id/publisher_text_view"-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            style="@style/TextAppearance.AppCompat.Large"-->
-<!--                            android:layout_marginStart="@dimen/slightly_small"-->
-<!--                            android:layout_marginTop="@dimen/small"-->
-<!--                            android:drawablePadding="@dimen/small"-->
-<!--                            android:textColor="?android:attr/subtitleTextColor"-->
-<!--                            android:textStyle="italic"-->
-<!--                            android:text="@{viewModel.selectedGame.publishers ?? @string/no_publisher_available}" />-->
                         <TextView
                             android:id="@+id/publisher_text_view"
                             android:layout_width="wrap_content"
@@ -192,7 +186,8 @@
                             style="@style/TextAppearance.AppCompat.Large"
                             android:layout_marginStart="@dimen/extra_medium"
                             android:layout_marginEnd="@dimen/extra_medium"
-                            android:layout_marginTop="@dimen/small"
+                            android:layout_marginTop="@dimen/slightly_medium"
+                            android:layout_marginBottom="@dimen/slightly_medium"
                             android:drawablePadding="@dimen/small"
                             bind:isDefault="@{viewModel.selectedGame.publishers == null}"
                             bind:parentActivity="@{act}"
@@ -204,6 +199,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:paddingBottom="@dimen/medium"
+                        android:layout_marginStart="@dimen/small"
+                        android:layout_marginEnd="@dimen/small"
                         android:orientation="vertical">
 
                         <TextView
@@ -224,7 +221,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             style="@style/TextAppearance.AppCompat.Large"
-                            android:layout_marginTop="@dimen/small"
+                            android:layout_marginTop="@dimen/slightly_medium"
+                            android:layout_marginBottom="@dimen/slightly_medium"
                             android:layout_marginStart="@dimen/extra_medium"
                             android:layout_marginEnd="@dimen/extra_medium"
                             bind:lifecycleOwner="@{lifecycleOwner}"
@@ -238,6 +236,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/medium"
+                        android:layout_marginStart="@dimen/small"
+                        android:layout_marginEnd="@dimen/small"
                         android:layout_marginBottom="@dimen/small"
                         android:orientation="horizontal">
 
@@ -302,6 +302,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/small"
+                        android:layout_marginStart="@dimen/small"
+                        android:layout_marginEnd="@dimen/small"
                         android:layout_marginBottom="@dimen/small"
                         android:orientation="horizontal">
 
@@ -336,6 +338,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/small"
+                        android:layout_marginStart="@dimen/small"
+                        android:layout_marginEnd="@dimen/small"
                         android:layout_marginBottom="@dimen/small"
                         android:orientation="horizontal">
 
@@ -370,6 +374,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/small"
+                        android:layout_marginStart="@dimen/small"
+                        android:layout_marginEnd="@dimen/small"
                         android:layout_marginBottom="@dimen/small"
                         android:orientation="horizontal">
 
