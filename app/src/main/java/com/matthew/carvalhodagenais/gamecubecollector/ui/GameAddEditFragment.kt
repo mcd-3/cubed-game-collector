@@ -19,7 +19,6 @@ import com.matthew.carvalhodagenais.gamecubecollector.databinders.viewactions.Im
 import com.matthew.carvalhodagenais.gamecubecollector.helpers.ImageStorageHelper
 import com.matthew.carvalhodagenais.gamecubecollector.helpers.generators.TextWatcherGenerator
 import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.GameAddEditViewModel
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_game_add_edit.*
 import kotlinx.android.synthetic.main.fragment_game_add_edit.favourite_image_button
 

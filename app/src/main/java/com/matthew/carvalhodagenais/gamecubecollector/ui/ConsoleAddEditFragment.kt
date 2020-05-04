@@ -11,11 +11,9 @@ import com.google.android.material.snackbar.Snackbar
 import com.matthew.carvalhodagenais.gamecubecollector.MainActivity
 import com.matthew.carvalhodagenais.gamecubecollector.R
 import com.matthew.carvalhodagenais.gamecubecollector.databinding.FragmentConsoleAddEditBinding
-import com.matthew.carvalhodagenais.gamecubecollector.databinding.FragmentConsoleDetailBinding
 import com.matthew.carvalhodagenais.gamecubecollector.helpers.ImageStorageHelper
 import com.matthew.carvalhodagenais.gamecubecollector.helpers.generators.TextWatcherGenerator
 import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.ConsoleAddEditViewModel
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_console_add_edit.*
 
 class ConsoleAddEditFragment: Fragment() {

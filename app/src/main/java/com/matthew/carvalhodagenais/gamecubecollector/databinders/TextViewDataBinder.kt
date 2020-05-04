@@ -2,14 +2,12 @@ package com.matthew.carvalhodagenais.gamecubecollector.databinders
 
 import android.app.Activity
 import android.content.res.Resources
-import android.content.res.TypedArray
 import android.graphics.Typeface
 import android.util.TypedValue
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
-import com.google.android.material.internal.ContextUtils
 import com.matthew.carvalhodagenais.gamecubecollector.R
 import com.matthew.carvalhodagenais.gamecubecollector.data.repositories.ConditionRepository
 import com.matthew.carvalhodagenais.gamecubecollector.data.repositories.RegionRepository

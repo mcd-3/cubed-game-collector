@@ -4,9 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Condition
 import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Console
-import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Region
 import com.matthew.carvalhodagenais.gamecubecollector.data.repositories.ConditionRepository
 import com.matthew.carvalhodagenais.gamecubecollector.data.repositories.ConsoleRepository
 import com.matthew.carvalhodagenais.gamecubecollector.data.repositories.RegionRepository

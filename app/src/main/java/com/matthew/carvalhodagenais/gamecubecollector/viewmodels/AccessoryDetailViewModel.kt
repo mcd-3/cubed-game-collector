@@ -7,7 +7,6 @@ import androidx.lifecycle.viewModelScope
 import com.matthew.carvalhodagenais.gamecubecollector.data.entities.Accessory
 import com.matthew.carvalhodagenais.gamecubecollector.data.repositories.AccessoryRepository
 import com.matthew.carvalhodagenais.gamecubecollector.data.repositories.ConditionRepository
-import com.matthew.carvalhodagenais.gamecubecollector.data.repositories.RegionRepository
 import kotlinx.coroutines.launch
 
 class AccessoryDetailViewModel(application: Application): AndroidViewModel(application) {
