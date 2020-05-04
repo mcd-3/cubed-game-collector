@@ -1,6 +1,9 @@
 package com.matthew.carvalhodagenais.gamecubecollector.ui
 
+import android.content.res.ColorStateList
+import android.content.res.Resources
 import android.os.Bundle
+import android.util.TypedValue
 import android.view.*
 import androidx.core.graphics.drawable.toBitmap
 import androidx.databinding.DataBindingUtil
@@ -115,6 +118,7 @@ class GameAddEditFragment: Fragment() {
             region_spinner.setSelection(savedInstanceState.getInt(REGION_KEY))
             release_date_edit_text.setText(savedInstanceState.getString(RDATE_KEY))
             buy_date_edit_text.setText(savedInstanceState.getString(BDATE_KEY))
+            setButtonColor()
             price_paid_edit_text.setText(savedInstanceState.getString(PRICE_KEY))
             case_checkbox.isChecked = savedInstanceState.getBoolean(CASE_KEY)
             manual_checkbox.isChecked = savedInstanceState.getBoolean(MANUAL_KEY)
@@ -169,6 +173,37 @@ class GameAddEditFragment: Fragment() {
         else -> {
             super.onOptionsItemSelected(item)
         }
+    }
+
+    /**
+     * Sets the clear ImageButton colours and whether or not they are enabled
+     * Used when the view is restored
+     */
+    private fun setButtonColor() {
+        val typedValue = TypedValue()
+        val theme: Resources.Theme = activity!!.theme
+
+        if (release_date_edit_text.text.toString() != getString(R.string.date_default)) {
+            theme.resolveAttribute(android.R.attr.colorError, typedValue, true)
+            release_date_clear_image_button.isEnabled = true
+            release_date_clear_image_button.isClickable = true
+        } else {
+            theme.resolveAttribute(android.R.attr.colorButtonNormal, typedValue, true)
+            release_date_clear_image_button.isEnabled = false
+            release_date_clear_image_button.isClickable = false
+        }
+        release_date_clear_image_button.backgroundTintList = ColorStateList.valueOf(typedValue.data)
+
+        if (buy_date_edit_text.text.toString() != getString(R.string.date_default)) {
+            theme.resolveAttribute(android.R.attr.colorError, typedValue, true)
+            buy_date_clear_image_button.isEnabled = true
+            buy_date_clear_image_button.isClickable = true
+        } else {
+            theme.resolveAttribute(android.R.attr.colorButtonNormal, typedValue, true)
+            buy_date_clear_image_button.isEnabled = false
+            buy_date_clear_image_button.isClickable = false
+        }
+        buy_date_clear_image_button.backgroundTintList = ColorStateList.valueOf(typedValue.data)
     }
 
 }
