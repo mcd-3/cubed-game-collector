@@ -41,14 +41,6 @@ class AccessoryAddEditFragment: Fragment() {
             this.textWatcher = tw.generate(addEditViewModel)
         }
         setHasOptionsMenu(true)
-
-        // Set the title
-        if (AccessoryAddEditFragmentArgs.fromBundle(arguments!!).ADDEDITREQUEST == EDIT_REQUEST) {
-            activity?.toolbar?.title = getString(R.string.navigation_accessory_edit_title)
-        } else {
-            activity?.toolbar?.title = getString(R.string.navigation_accessory_add_title)
-        }
-
         return binding.root
     }
 

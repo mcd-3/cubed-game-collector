@@ -42,14 +42,6 @@ class ConsoleAddEditFragment: Fragment() {
             this.textWatcher = tw.generate(addEditViewModel)
         }
         setHasOptionsMenu(true)
-
-        // Set the title
-        if (ConsoleAddEditFragmentArgs.fromBundle(arguments!!).ADDEDITREQUEST == EDIT_REQUEST) {
-            activity?.toolbar?.title = getString(R.string.navigation_console_edit_title)
-        } else {
-            activity?.toolbar?.title = getString(R.string.navigation_console_add_title)
-        }
-
         return binding.root
     }
 
