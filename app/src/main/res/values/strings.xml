@@ -189,7 +189,7 @@
     <string name="navigation_about">About Us</string>
 
     <!-- Navigation Header TextView -->
-    <string name="cubed">Cubed: Game</string>
-    <string name="collector">Collector</string>
+    <string name="cubed">Cubed</string>
+    <string name="collector">Game\nCollector</string>
 
 </resources>
