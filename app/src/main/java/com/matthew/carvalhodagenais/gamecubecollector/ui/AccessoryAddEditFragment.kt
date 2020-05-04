@@ -26,6 +26,7 @@ class AccessoryAddEditFragment: Fragment() {
         private const val TITLE_KEY = "TITLE"
         private const val DESCRIPTION_KEY = "DESC"
         private const val CONDITION_KEY = "COND"
+        private const val IMAGE_NAME = "TEMP_ACC_IMG"
         const val ADD_REQUEST = 1
         const val EDIT_REQUEST = 2
     }
@@ -60,6 +61,7 @@ class AccessoryAddEditFragment: Fragment() {
         outState.putString(TITLE_KEY, title_edit_text.text.toString())
         outState.putString(DESCRIPTION_KEY, description_edit_text.text.toString())
         outState.putInt(CONDITION_KEY, condition_spinner.selectedItemPosition)
+        ImageStorageHelper.saveNoAsync(context!!, accessory_image_view.drawable.toBitmap(), IMAGE_NAME)
         super.onSaveInstanceState(outState)
     }
 
@@ -69,6 +71,10 @@ class AccessoryAddEditFragment: Fragment() {
             title_edit_text.setText(savedInstanceState.getString(TITLE_KEY))
             description_edit_text.setText(savedInstanceState.getString(DESCRIPTION_KEY))
             condition_spinner.setSelection(savedInstanceState.getInt(CONDITION_KEY))
+            Glide.with(context!!)
+                .load(ImageStorageHelper.getBitmap(ImageStorageHelper.IMAGE_PATH, IMAGE_NAME)!!)
+                .into(accessory_image_view)
+            ImageStorageHelper.deleteImageNoAsync(ImageStorageHelper.IMAGE_PATH, IMAGE_NAME)
         }
     }
 

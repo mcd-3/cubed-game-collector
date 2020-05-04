@@ -66,6 +66,34 @@ class ImageStorageHelper {
         }
 
         /**
+         * Saves a bitmap image to the internal storage
+         * This is done on the UI thread so use very sparingly
+         *
+         * @param context
+         * @param bitmap
+         * @param name
+         */
+        fun saveNoAsync(context: Context, bitmap: Bitmap, name: String) {
+            val contextWrapper = ContextWrapper(context.applicationContext)
+            val directory: File = contextWrapper.getDir(IMAGE_DIRECTORY, Context.MODE_PRIVATE)
+            val path = File(directory, name)
+            var outputStream: FileOutputStream? = null
+
+            try {
+                outputStream = FileOutputStream(path)
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
+            } catch (e: Exception) {
+                Toast.makeText(context, "Could not save file", Toast.LENGTH_SHORT).show()
+            } finally {
+                try {
+                    outputStream?.close()
+                } catch (e: IOException) {
+                    e.printStackTrace()
+                }
+            }
+        }
+
+        /**
          * Reads, returns an image from internal storage, and sets it to an ImageView
          *
          * @param path String Path to where the image is stored
@@ -109,7 +137,23 @@ class ImageStorageHelper {
          */
         suspend fun deleteImage(path: String, name: String) = coroutineScope {
             try {
-                val image = File(path, name)
+                val image = File(path + '/', name)
+                image.delete()
+            } catch (e: FileNotFoundException) {
+                e.printStackTrace()
+            }
+        }
+
+        /**
+         * Deletes an image from the device
+         * This is done on the UI thread so use very sparingly
+         *
+         * @param path String Path to where the image is stored
+         * @param name String Name of the image
+         */
+        fun deleteImageNoAsync(path: String, name: String) {
+            try {
+                val image = File(path + '/', name)
                 image.delete()
             } catch (e: FileNotFoundException) {
                 e.printStackTrace()

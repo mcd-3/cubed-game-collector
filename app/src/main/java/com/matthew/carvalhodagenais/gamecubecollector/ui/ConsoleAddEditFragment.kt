@@ -6,11 +6,13 @@ import androidx.core.graphics.drawable.toBitmap
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 import com.matthew.carvalhodagenais.gamecubecollector.MainActivity
 import com.matthew.carvalhodagenais.gamecubecollector.R
 import com.matthew.carvalhodagenais.gamecubecollector.databinding.FragmentConsoleAddEditBinding
 import com.matthew.carvalhodagenais.gamecubecollector.databinding.FragmentConsoleDetailBinding
+import com.matthew.carvalhodagenais.gamecubecollector.helpers.ImageStorageHelper
 import com.matthew.carvalhodagenais.gamecubecollector.helpers.generators.TextWatcherGenerator
 import com.matthew.carvalhodagenais.gamecubecollector.viewmodels.ConsoleAddEditViewModel
 import kotlinx.android.synthetic.main.activity_main.*
@@ -24,6 +26,12 @@ class ConsoleAddEditFragment: Fragment() {
         private const val REQUEST_CODE: String = "ConsoleAddEditFragment.REQUEST_CODE"
         const val ADD_REQUEST = 1
         const val EDIT_REQUEST = 2
+        private const val TITLE_KEY = "TITLE"
+        private const val DESCRIPTION_KEY = "DESC"
+        private const val CONDITION_KEY = "COND"
+        private const val REGION_KEY = "REG"
+        private const val MODDED_KEY = "MOD"
+        private const val IMAGE_NAME = "TEMP_CON_IMG"
     }
 
     override fun onCreateView(
@@ -42,6 +50,7 @@ class ConsoleAddEditFragment: Fragment() {
             this.textWatcher = tw.generate(addEditViewModel)
         }
         setHasOptionsMenu(true)
+        binding.executePendingBindings()
         return binding.root
     }
 
@@ -49,6 +58,34 @@ class ConsoleAddEditFragment: Fragment() {
         menu.clear()
         requireActivity().menuInflater.inflate(R.menu.menu_item_add_edit, menu)
         super.onPrepareOptionsMenu(menu)
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putString(TITLE_KEY, title_edit_text.text.toString())
+        outState.putString(DESCRIPTION_KEY, description_edit_text.text.toString())
+        outState.putInt(CONDITION_KEY, condition_spinner.selectedItemPosition)
+        outState.putInt(REGION_KEY, region_spinner.selectedItemPosition)
+        outState.putBoolean(MODDED_KEY, modded_yes.isChecked)
+        ImageStorageHelper.saveNoAsync(context!!, console_image_view.drawable.toBitmap(), IMAGE_NAME)
+        super.onSaveInstanceState(outState)
+    }
+
+    override fun onViewStateRestored(savedInstanceState: Bundle?) {
+        super.onViewStateRestored(savedInstanceState)
+        if (savedInstanceState != null) {
+            title_edit_text.setText(savedInstanceState.getString(TITLE_KEY))
+            description_edit_text.setText(savedInstanceState.getString(DESCRIPTION_KEY))
+            condition_spinner.setSelection(savedInstanceState.getInt(CONDITION_KEY))
+            region_spinner.setSelection(savedInstanceState.getInt(REGION_KEY))
+            if (savedInstanceState.getBoolean(MODDED_KEY))
+                modded_yes.isChecked = true
+            else
+                modded_no.isChecked = true
+            Glide.with(context!!)
+                .load(ImageStorageHelper.getBitmap(ImageStorageHelper.IMAGE_PATH, IMAGE_NAME)!!)
+                .into(console_image_view)
+            ImageStorageHelper.deleteImageNoAsync(ImageStorageHelper.IMAGE_PATH, IMAGE_NAME)
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when(item.itemId) {
