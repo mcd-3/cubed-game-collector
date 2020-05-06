@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Cubed: Game Collector</string>
     <string name="app_version">0.95 PRE-RELEASE</string>
-    <string name="app_email">abcde@example.com</string>
+    <string name="app_email">appdev.mcardag@gmail.com</string>
     <string name="app_github">https://github.com/mcd-3/cubed-game-collector</string>
 
     <!-- Keys for SharedPreferences -->
