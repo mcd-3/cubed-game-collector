@@ -10,7 +10,7 @@
             type="androidx.lifecycle.LifecycleOwner" />
         <variable
             name="viewModel"
-            type="com.matthew.carvalhodagenais.gamecubecollector.viewmodels.AccessoryAddEditViewModel" />
+            type="com.matthew.carvalhodagenais.cubedcollector.viewmodels.AccessoryAddEditViewModel" />
         <variable
             name="navController"
             type="androidx.navigation.NavController" />

@@ -4,10 +4,10 @@
     <data>
         <variable
             name="viewModel"
-            type="com.matthew.carvalhodagenais.gamecubecollector.viewmodels.SettingsViewModel" />
+            type="com.matthew.carvalhodagenais.cubedcollector.viewmodels.SettingsViewModel" />
         <variable
             name="radioButtonActions"
-            type="com.matthew.carvalhodagenais.gamecubecollector.databinders.viewactions.RadioButtonActions" />
+            type="com.matthew.carvalhodagenais.cubedcollector.databinders.viewactions.RadioButtonActions" />
         <variable
             name="act"
             type="android.app.Activity" />

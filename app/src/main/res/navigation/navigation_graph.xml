@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@id/nav_games"
-        android:name="com.matthew.carvalhodagenais.gamecubecollector.ui.GameListFragment"
+        android:name="com.matthew.carvalhodagenais.cubedcollector.ui.GameListFragment"
         android:label="@string/navigation_game_list_title"
         tools:layout="@layout/fragment_game_list" >
         <action
@@ -27,7 +27,7 @@
     </fragment>
     <fragment
         android:id="@+id/gameDetailFragment"
-        android:name="com.matthew.carvalhodagenais.gamecubecollector.ui.GameDetailFragment"
+        android:name="com.matthew.carvalhodagenais.cubedcollector.ui.GameDetailFragment"
         android:label="@string/navigation_game_details_title" >
         <argument
             android:name="FROM_FAVOURITE"
@@ -50,11 +50,11 @@
     </fragment>
     <fragment
         android:id="@id/nav_settings"
-        android:name="com.matthew.carvalhodagenais.gamecubecollector.ui.SettingsFragment"
+        android:name="com.matthew.carvalhodagenais.cubedcollector.ui.SettingsFragment"
         android:label="@string/navigation_settings" />
     <fragment
         android:id="@+id/gameAddEditFragment"
-        android:name="com.matthew.carvalhodagenais.gamecubecollector.ui.GameAddEditFragment"
+        android:name="com.matthew.carvalhodagenais.cubedcollector.ui.GameAddEditFragment"
         android:label="{TITLE}">
         <argument
             android:name="ADD_EDIT_REQUEST"
@@ -95,7 +95,7 @@
     </fragment>
     <fragment
         android:id="@id/nav_favourites"
-        android:name="com.matthew.carvalhodagenais.gamecubecollector.ui.FavouriteGameListFragment"
+        android:name="com.matthew.carvalhodagenais.cubedcollector.ui.FavouriteGameListFragment"
         android:label="@string/navigation_favourites" >
         <action
             android:id="@+id/action_nav_favourites_to_gameDetailFragment"
@@ -107,7 +107,7 @@
     </fragment>
     <fragment
         android:id="@id/nav_consoles"
-        android:name="com.matthew.carvalhodagenais.gamecubecollector.ui.ConsoleListFragment"
+        android:name="com.matthew.carvalhodagenais.cubedcollector.ui.ConsoleListFragment"
         android:label="@string/navigation_console_list_title" >
         <action
             android:id="@+id/action_nav_consoles_to_consoleAddEditFragment"
@@ -126,7 +126,7 @@
     </fragment>
     <fragment
         android:id="@+id/consoleAddEditFragment"
-        android:name="com.matthew.carvalhodagenais.gamecubecollector.ui.ConsoleAddEditFragment"
+        android:name="com.matthew.carvalhodagenais.cubedcollector.ui.ConsoleAddEditFragment"
         android:label="{TITLE}">
         <argument
             android:name="ADD_EDIT_REQUEST"
@@ -152,7 +152,7 @@
     </fragment>
     <fragment
         android:id="@+id/consoleDetailFragment"
-        android:name="com.matthew.carvalhodagenais.gamecubecollector.ui.ConsoleDetailFragment"
+        android:name="com.matthew.carvalhodagenais.cubedcollector.ui.ConsoleDetailFragment"
         android:label="@string/navigation_console_details_title" >
         <action
             android:id="@+id/action_consoleDetailFragment_to_consoleAddEditFragment"
@@ -171,7 +171,7 @@
     </fragment>
     <fragment
         android:id="@id/nav_about"
-        android:name="com.matthew.carvalhodagenais.gamecubecollector.ui.AboutFragment"
+        android:name="com.matthew.carvalhodagenais.cubedcollector.ui.AboutFragment"
         android:label="@string/navigation_about"
         app:enterAnim="@anim/nav_default_enter_anim"
         app:exitAnim="@anim/nav_default_exit_anim"
@@ -179,7 +179,7 @@
         app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
     <fragment
         android:id="@id/nav_accessories"
-        android:name="com.matthew.carvalhodagenais.gamecubecollector.ui.AccessoryListFragment"
+        android:name="com.matthew.carvalhodagenais.cubedcollector.ui.AccessoryListFragment"
         android:label="@string/navigation_accessory_list_title"
         app:enterAnim="@anim/nav_default_enter_anim"
         app:exitAnim="@anim/nav_default_exit_anim"
@@ -202,7 +202,7 @@
     </fragment>
     <fragment
         android:id="@+id/accessoryDetailFragment"
-        android:name="com.matthew.carvalhodagenais.gamecubecollector.ui.AccessoryDetailFragment"
+        android:name="com.matthew.carvalhodagenais.cubedcollector.ui.AccessoryDetailFragment"
         android:label="@string/navigation_accessory_details_title">
         <action
             android:id="@+id/action_accessoryDetailFragment_to_accessoryAddEditFragment"
@@ -221,7 +221,7 @@
     </fragment>
     <fragment
         android:id="@+id/accessoryAddEditFragment"
-        android:name="com.matthew.carvalhodagenais.gamecubecollector.ui.AccessoryAddEditFragment"
+        android:name="com.matthew.carvalhodagenais.cubedcollector.ui.AccessoryAddEditFragment"
         android:label="{TITLE}">
         <argument
             android:name="ADD_EDIT_REQUEST"
@@ -247,6 +247,6 @@
     </fragment>
     <dialog
         android:id="@+id/imageSelectDialogFragment"
-        android:name="com.matthew.carvalhodagenais.gamecubecollector.ui.ImageSelectDialogFragment"
+        android:name="com.matthew.carvalhodagenais.cubedcollector.ui.ImageSelectDialogFragment"
         android:label="ImageSelectDialogFragment" />
 </navigation>

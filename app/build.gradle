@@ -12,7 +12,7 @@ android {
     compileSdkVersion 28
     buildToolsVersion "29.0.2"
     defaultConfig {
-        applicationId "com.matthew.carvalhodagenais.gamecubecollector"
+        applicationId "com.matthew.carvalhodagenais.cubedcollector"
         minSdkVersion 26
         targetSdkVersion 28
         versionCode 1

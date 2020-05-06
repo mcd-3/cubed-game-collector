@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.matthew.carvalhodagenais.gamecubecollector.viewmodels.ConsoleDetailViewModel" />
+            type="com.matthew.carvalhodagenais.cubedcollector.viewmodels.ConsoleDetailViewModel" />
         <variable
             name="lifecycleOwner"
             type="androidx.lifecycle.LifecycleOwner" />

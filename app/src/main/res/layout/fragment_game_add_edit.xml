@@ -9,13 +9,13 @@
             type="androidx.navigation.NavController" />
         <variable
             name="imageButtonActions"
-            type="com.matthew.carvalhodagenais.gamecubecollector.databinders.viewactions.ImageButtonActions" />
+            type="com.matthew.carvalhodagenais.cubedcollector.databinders.viewactions.ImageButtonActions" />
         <variable
             name="lifecycleOwner"
             type="androidx.lifecycle.LifecycleOwner" />
         <variable
             name="viewModel"
-            type="com.matthew.carvalhodagenais.gamecubecollector.viewmodels.GameAddEditViewModel" />
+            type="com.matthew.carvalhodagenais.cubedcollector.viewmodels.GameAddEditViewModel" />
         <variable
             name="releaseDateEditText"
             type="com.google.android.material.textfield.TextInputEditText" />

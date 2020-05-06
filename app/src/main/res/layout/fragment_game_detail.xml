@@ -6,10 +6,10 @@
     <data>
         <variable
             name="imageButtonActions"
-            type="com.matthew.carvalhodagenais.gamecubecollector.databinders.viewactions.ImageButtonActions" />
+            type="com.matthew.carvalhodagenais.cubedcollector.databinders.viewactions.ImageButtonActions" />
         <variable
             name="viewModel"
-            type="com.matthew.carvalhodagenais.gamecubecollector.viewmodels.GameDetailViewModel" />
+            type="com.matthew.carvalhodagenais.cubedcollector.viewmodels.GameDetailViewModel" />
         <variable
             name="lifecycleOwner"
             type="androidx.lifecycle.LifecycleOwner" />

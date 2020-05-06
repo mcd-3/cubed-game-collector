@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.matthew.carvalhodagenais.gamecubecollector">
+    package="com.matthew.carvalhodagenais.cubedcollector">
 
     <uses-feature
         android:name="android.hardware.camera"
@@ -13,7 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name="com.matthew.carvalhodagenais.cubedcollector.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
