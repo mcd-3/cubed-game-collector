@@ -5,8 +5,8 @@ If you are viewing the code for the first time or need some quick documentation,
 Adapters for RecyclerViews
 ### data
 All things related to inner storage using Room
-- dao: Data Accesso Objects to interact with database tables
-- entities: Models mapped to databse tables
+- dao: Data Access Objects to interact with database tables
+- entities: Models mapped to database tables
 - repositories: Contains DAO functions for its respective models
 ### databinders
 Used in binding data and modifying data for layouts
