@@ -19,7 +19,7 @@ interface AccessoryDao {
     @Query("DELETE FROM accessory_table")
     suspend fun deleteAllAccessories()
 
-    @Query("SELECT * FROM accessory_table")
+    @Query("SELECT * FROM accessory_table ORDER BY title")
     fun getAllAccessories(): LiveData<List<Accessory>>
 
 }
