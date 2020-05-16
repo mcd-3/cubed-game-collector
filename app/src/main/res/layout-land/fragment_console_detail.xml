@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.matthew.carvalhodagenais.cubedcollector.viewmodels.ConsoleDetailViewModel" />
+        <variable
+            name="lifecycleOwner"
+            type="androidx.lifecycle.LifecycleOwner" />
+    </data>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:baselineAligned="false">
+
+        <ScrollView
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/small"
+            android:layout_marginBottom="@dimen/small">
+
+            <LinearLayout
+                android:id="@+id/card_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/title_card_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/small"
+                    android:layout_marginEnd="@dimen/small"
+                    android:layout_marginBottom="@dimen/very_small">
+
+                    <TextView
+                        android:id="@+id/title_text_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/large"
+                        android:layout_marginEnd="@dimen/large"
+                        android:layout_marginTop="@dimen/small"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center"
+                        android:textColor="?android:attr/textColor"
+                        android:textStyle="bold"
+                        style="@style/TextAppearance.AppCompat.Large"
+                        android:maxLines="3"
+                        android:ellipsize="end"
+                        android:text="@{viewModel.selectedConsole.title}"/>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cover_card_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/small"
+                    android:layout_marginEnd="@dimen/small"
+                    android:layout_marginTop="@dimen/very_small">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/cover_art_image_view"
+                            android:layout_width="140dp"
+                            android:layout_height="140dp"
+                            android:layout_centerHorizontal="true"
+                            android:paddingTop="@dimen/medium"
+                            android:paddingBottom="@dimen/medium"
+                            bind:console="@{viewModel.selectedConsole}"
+                            android:contentDescription="@string/game_detail_image_view_content_description" />
+
+                    </RelativeLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+        </ScrollView>
+
+        <ScrollView
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/collector_card_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/small"
+                android:layout_marginEnd="@dimen/small"
+                android:layout_marginTop="@dimen/very_small"
+                android:layout_marginBottom="@dimen/very_small">
+
+                <LinearLayout
+                    android:id="@+id/collector_parent_linear_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/console_details_label_text_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/slightly_small"
+                        android:layout_marginTop="@dimen/slightly_small"
+                        android:layout_marginBottom="@dimen/small"
+                        style="@style/TextAppearance.AppCompat.Medium"
+                        android:textStyle="bold"
+                        android:text="@string/console_info_label" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/small"
+                        android:layout_marginBottom="@dimen/small"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/small"
+                            android:drawableStart="@drawable/ic_region_black_24dp"
+                            android:drawableTint="?android:attr/icon"
+                            android:drawablePadding="@dimen/small"
+                            style="@style/TextAppearance.AppCompat.Medium"
+                            android:textColor="?android:attr/textColor"
+                            android:text="@string/region_label" />
+
+                        <TextView
+                            android:id="@+id/region_text_view"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="end"
+                            style="@style/TextAppearance.AppCompat.Large"
+                            android:layout_marginEnd="@dimen/medium"
+                            bind:lifecycleOwner="@{lifecycleOwner}"
+                            bind:repository="@{viewModel.getRegionRepository()}"
+                            bind:regionId="@{viewModel.selectedConsole.regionId}" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/small"
+                        android:layout_marginBottom="@dimen/small"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/small"
+                            android:drawableStart="@drawable/ic_condition_black_24dp"
+                            android:drawableTint="?android:attr/icon"
+                            android:drawablePadding="@dimen/small"
+                            style="@style/TextAppearance.AppCompat.Medium"
+                            android:textColor="?android:attr/textColor"
+                            android:text="@string/condition_label" />
+
+                        <TextView
+                            android:id="@+id/condition_text_view"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="end"
+                            style="@style/TextAppearance.AppCompat.Large"
+                            android:layout_marginEnd="@dimen/medium"
+                            bind:lifecycleOwner="@{lifecycleOwner}"
+                            bind:repository="@{viewModel.getConditionRepository()}"
+                            bind:conditionId="@{viewModel.selectedConsole.conditionId}" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/small"
+                        android:layout_marginBottom="@dimen/small"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/small"
+                            android:drawableStart="@drawable/ic_modded_black_24dp"
+                            android:drawableTint="?android:attr/icon"
+                            android:drawablePadding="@dimen/small"
+                            style="@style/TextAppearance.AppCompat.Medium"
+                            android:textColor="?android:attr/textColor"
+                            android:text="@string/modded_label" />
+
+                        <TextView
+                            android:id="@+id/modded_text_view"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="end"
+                            style="@style/TextAppearance.AppCompat.Large"
+                            android:layout_marginEnd="@dimen/medium"
+                            bind:isModded="@{viewModel.selectedConsole.isModded}"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/developer_linear_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="@dimen/medium"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/description_label_text_view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/TextAppearance.AppCompat.Medium"
+                            android:layout_marginStart="@dimen/small"
+                            android:layout_marginTop="@dimen/small"
+                            android:drawablePadding="@dimen/small"
+                            android:drawableStart="@drawable/ic_description_black_24dp"
+                            android:drawableTint="?android:attr/icon"
+                            android:textColor="?android:attr/textColor"
+                            android:text="@string/description_label" />
+
+                        <TextView
+                            android:id="@+id/description_text_view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/small"
+                            android:layout_marginStart="@dimen/extra_medium"
+                            android:layout_marginEnd="@dimen/extra_medium"
+                            style="@style/TextAppearance.AppCompat.Large"
+                            android:textColor="?android:attr/subtitleTextColor"
+                            android:textStyle="italic"
+                            bind:description="@{viewModel.selectedConsole.description}"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </ScrollView>
+    </LinearLayout>
+</layout>
