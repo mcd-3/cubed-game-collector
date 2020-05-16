@@ -57,10 +57,12 @@ class AccessoryAddEditFragment: Fragment() {
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
-        outState.putString(TITLE_KEY, title_edit_text.text.toString())
-        outState.putString(DESCRIPTION_KEY, description_edit_text.text.toString())
-        outState.putInt(CONDITION_KEY, condition_spinner.selectedItemPosition)
-        ImageStorageHelper.saveNoAsync(context!!, accessory_image_view.drawable.toBitmap(), IMAGE_NAME)
+        if (isVisible) {
+            outState.putString(TITLE_KEY, title_edit_text.text.toString())
+            outState.putString(DESCRIPTION_KEY, description_edit_text.text.toString())
+            outState.putInt(CONDITION_KEY, condition_spinner.selectedItemPosition)
+            ImageStorageHelper.saveNoAsync(requireContext(), accessory_image_view.drawable.toBitmap(), IMAGE_NAME)
+        }
         super.onSaveInstanceState(outState)
     }
 
@@ -70,7 +72,7 @@ class AccessoryAddEditFragment: Fragment() {
             title_edit_text.setText(savedInstanceState.getString(TITLE_KEY))
             description_edit_text.setText(savedInstanceState.getString(DESCRIPTION_KEY))
             condition_spinner.setSelection(savedInstanceState.getInt(CONDITION_KEY))
-            Glide.with(context!!)
+            Glide.with(requireContext())
                 .load(ImageStorageHelper.getBitmap(ImageStorageHelper.IMAGE_PATH, IMAGE_NAME)!!)
                 .into(accessory_image_view)
             ImageStorageHelper.deleteImageNoAsync(ImageStorageHelper.IMAGE_PATH, IMAGE_NAME)
@@ -81,7 +83,7 @@ class AccessoryAddEditFragment: Fragment() {
         R.id.menu_save -> {
             if (title_edit_text.text.toString().trim() != "") { // Save the console
                 (activity as MainActivity).getAccessoryAddEditViewModel().saveAccessory(
-                    ConsoleAddEditFragmentArgs.fromBundle(arguments!!).ADDEDITREQUEST,
+                    ConsoleAddEditFragmentArgs.fromBundle(requireArguments()).ADDEDITREQUEST,
                     title_edit_text.text.toString().trim(),
                     description_edit_text.text.toString().trim(),
                     condition_spinner.selectedItem.toString().trim(),
@@ -90,7 +92,7 @@ class AccessoryAddEditFragment: Fragment() {
                 findNavController().navigate(R.id.action_accessoryAddEditFragment_to_nav_accessories)
             } else { // Warn the user about needing a title
                 Snackbar.make(
-                    view!!,
+                    requireView(),
                     getString(R.string.toast_no_title_warning),
                     Snackbar.LENGTH_SHORT)
                     .show()

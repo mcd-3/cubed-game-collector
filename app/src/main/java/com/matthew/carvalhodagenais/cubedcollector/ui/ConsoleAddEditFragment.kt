@@ -59,12 +59,14 @@ class ConsoleAddEditFragment: Fragment() {
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
-        outState.putString(TITLE_KEY, title_edit_text.text.toString())
-        outState.putString(DESCRIPTION_KEY, description_edit_text.text.toString())
-        outState.putInt(CONDITION_KEY, condition_spinner.selectedItemPosition)
-        outState.putInt(REGION_KEY, region_spinner.selectedItemPosition)
-        outState.putBoolean(MODDED_KEY, modded_yes.isChecked)
-        ImageStorageHelper.saveNoAsync(context!!, console_image_view.drawable.toBitmap(), IMAGE_NAME)
+        if (isVisible) {
+            outState.putString(TITLE_KEY, title_edit_text.text.toString())
+            outState.putString(DESCRIPTION_KEY, description_edit_text.text.toString())
+            outState.putInt(CONDITION_KEY, condition_spinner.selectedItemPosition)
+            outState.putInt(REGION_KEY, region_spinner.selectedItemPosition)
+            outState.putBoolean(MODDED_KEY, modded_yes.isChecked)
+            ImageStorageHelper.saveNoAsync(requireContext(), console_image_view.drawable.toBitmap(), IMAGE_NAME)
+        }
         super.onSaveInstanceState(outState)
     }
 
@@ -79,7 +81,7 @@ class ConsoleAddEditFragment: Fragment() {
                 modded_yes.isChecked = true
             else
                 modded_no.isChecked = true
-            Glide.with(context!!)
+            Glide.with(requireContext())
                 .load(ImageStorageHelper.getBitmap(ImageStorageHelper.IMAGE_PATH, IMAGE_NAME)!!)
                 .into(console_image_view)
             ImageStorageHelper.deleteImageNoAsync(ImageStorageHelper.IMAGE_PATH, IMAGE_NAME)
@@ -90,7 +92,7 @@ class ConsoleAddEditFragment: Fragment() {
         R.id.menu_save -> {
             if (title_edit_text.text.toString().trim() != "") { // Save the console
                 (activity as MainActivity).getConsoleAddEditViewModel().saveConsole(
-                    ConsoleAddEditFragmentArgs.fromBundle(arguments!!).ADDEDITREQUEST,
+                    ConsoleAddEditFragmentArgs.fromBundle(requireArguments()).ADDEDITREQUEST,
                     title_edit_text.text.toString(),
                     description_edit_text.text.toString().trim(),
                     modded_yes.isChecked,
@@ -101,7 +103,7 @@ class ConsoleAddEditFragment: Fragment() {
                 findNavController().navigate(R.id.action_consoleAddEditFragment_to_nav_consoles)
             } else { // Warn the user about needing a title
                 Snackbar.make(
-                    view!!,
+                    requireView(),
                     getString(R.string.toast_no_title_warning),
                     Snackbar.LENGTH_SHORT)
                     .show()
