@@ -32,6 +32,7 @@
 
     <!-- TextView text -->
     <string name="game_info_label">Game Info</string>
+    <string name="game_image_label">Cover Art</string>
     <string name="console_info_label">Console Info</string>
     <string name="console_image_label">Console Image</string>
     <string name="accessory_info_label">Accessory Info</string>

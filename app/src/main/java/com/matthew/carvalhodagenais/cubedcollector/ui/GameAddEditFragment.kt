@@ -93,17 +93,19 @@ class GameAddEditFragment: Fragment() {
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
-        outState.putString(TITLE_KEY, title_edit_text.text.toString())
-        outState.putString(DEVELOPER_KEY, developer_edit_text.text.toString())
-        outState.putString(PUBLISHER_KEY, publisher_edit_text.text.toString())
-        outState.putInt(CONDITION_KEY, condition_spinner.selectedItemPosition)
-        outState.putInt(REGION_KEY, region_spinner.selectedItemPosition)
-        outState.putString(RDATE_KEY, release_date_edit_text.text.toString())
-        outState.putString(BDATE_KEY, buy_date_edit_text.text.toString())
-        outState.putString(PRICE_KEY, price_paid_edit_text.text.toString())
-        outState.putBoolean(CASE_KEY, case_checkbox.isChecked)
-        outState.putBoolean(MANUAL_KEY, manual_checkbox.isChecked)
-        ImageStorageHelper.saveNoAsync(context!!, cover_art_image_view.drawable.toBitmap(), IMAGE_NAME)
+        if (isVisible) {
+            outState.putString(TITLE_KEY, title_edit_text.text.toString())
+            outState.putString(DEVELOPER_KEY, developer_edit_text.text.toString())
+            outState.putString(PUBLISHER_KEY, publisher_edit_text.text.toString())
+            outState.putInt(CONDITION_KEY, condition_spinner.selectedItemPosition)
+            outState.putInt(REGION_KEY, region_spinner.selectedItemPosition)
+            outState.putString(RDATE_KEY, release_date_edit_text.text.toString())
+            outState.putString(BDATE_KEY, buy_date_edit_text.text.toString())
+            outState.putString(PRICE_KEY, price_paid_edit_text.text.toString())
+            outState.putBoolean(CASE_KEY, case_checkbox.isChecked)
+            outState.putBoolean(MANUAL_KEY, manual_checkbox.isChecked)
+            ImageStorageHelper.saveNoAsync(requireContext(), cover_art_image_view.drawable.toBitmap(), IMAGE_NAME)
+        }
         super.onSaveInstanceState(outState)
     }
 
@@ -121,7 +123,7 @@ class GameAddEditFragment: Fragment() {
             price_paid_edit_text.setText(savedInstanceState.getString(PRICE_KEY))
             case_checkbox.isChecked = savedInstanceState.getBoolean(CASE_KEY)
             manual_checkbox.isChecked = savedInstanceState.getBoolean(MANUAL_KEY)
-            Glide.with(context!!)
+            Glide.with(requireContext())
                 .load(ImageStorageHelper.getBitmap(ImageStorageHelper.IMAGE_PATH, IMAGE_NAME)!!)
                 .into(cover_art_image_view)
             ImageStorageHelper.deleteImageNoAsync(ImageStorageHelper.IMAGE_PATH, IMAGE_NAME)
@@ -132,13 +134,13 @@ class GameAddEditFragment: Fragment() {
         R.id.menu_save -> {
             if (title_edit_text.text?.trim().toString().isEmpty()) {
                 Snackbar.make(
-                    view!!,
+                    requireView(),
                     getString(R.string.toast_no_title_warning),
                     Snackbar.LENGTH_SHORT)
                     .show()
             } else {
                 addEditViewModel.saveGame(
-                    GameAddEditFragmentArgs.fromBundle(arguments!!).ADDEDITREQUEST,
+                    GameAddEditFragmentArgs.fromBundle(requireArguments()).ADDEDITREQUEST,
                     title_edit_text.text.toString(),
                     publisher_edit_text.text.toString(),
                     developer_edit_text.text.toString(),
@@ -161,7 +163,7 @@ class GameAddEditFragment: Fragment() {
                     condition_spinner.selectedItem.toString().trim(),
                     cover_art_image_view.drawable.toBitmap()
                 )
-                if (GameAddEditFragmentArgs.fromBundle(arguments!!).FROMFAVOURITE == FROM_FAVOURITE_REQUEST) {
+                if (GameAddEditFragmentArgs.fromBundle(requireArguments()).FROMFAVOURITE == FROM_FAVOURITE_REQUEST) {
                     findNavController().navigate(R.id.action_gameAddEditFragment_to_favouriteGameListFragment)
                 } else {
                     findNavController().navigate(R.id.action_gameAddEditFragment_to_gameListFragment)
@@ -180,7 +182,7 @@ class GameAddEditFragment: Fragment() {
      */
     private fun setButtonColor() {
         val typedValue = TypedValue()
-        val theme: Resources.Theme = activity!!.theme
+        val theme: Resources.Theme = requireActivity().theme
 
         if (release_date_edit_text.text.toString() != getString(R.string.date_default)) {
             theme.resolveAttribute(android.R.attr.colorError, typedValue, true)
