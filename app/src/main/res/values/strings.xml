@@ -66,7 +66,9 @@
     <string name="no_favourite_games_title">No Favourite Games in your Collection</string>
     <string name="no_favourite_games_subtitle">Go set some games as favourites!</string>
     <string name="delete_data_label_title">Delete All Data</string>
+    <string name="export_data_label_title">Export Data</string>
     <string name="delete_data_label_subtitle">WARNING: Deletes all in-app data</string>
+    <string name="export_data_label_subtitle">Export to a CSV file</string>
     <string name="about_app">An open source game collecting app for all your Gamecube needs!</string>
     <string name="disclaimer">We are not affiliated, associated, authorized, endorsed by, or in any way officially connected with Nintendo Co., Ltd, or any of its subsidiaries or its affiliates.</string>
     <string name="disclaimer_part_two">The names Gamecube and Dolphin as well as related names, marks, emblems and images are registered trademarks of their respective owners.</string>
