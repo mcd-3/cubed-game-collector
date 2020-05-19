@@ -88,4 +88,7 @@ dependencies {
 
     // RecyclerView Swipe Decorator
     implementation 'it.xabaras.android:recyclerview-swipedecorator:1.2.2'
+
+    // Leak Canary
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.3'
 }
