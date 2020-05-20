@@ -1,6 +1,7 @@
 package com.matthew.carvalhodagenais.cubedcollector
 
 import android.content.Context
+import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.widget.ImageView
@@ -14,10 +15,12 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.bumptech.glide.Glide
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.snackbar.Snackbar
 import com.matthew.carvalhodagenais.cubedcollector.factories.AccessoryViewModelFactory
 import com.matthew.carvalhodagenais.cubedcollector.factories.ConsoleViewModelFactory
 import com.matthew.carvalhodagenais.cubedcollector.factories.GameViewModelFactory
 import com.matthew.carvalhodagenais.cubedcollector.factories.SettingsViewModelFactory
+import com.matthew.carvalhodagenais.cubedcollector.helpers.CSVFileStorageHelper
 import com.matthew.carvalhodagenais.cubedcollector.ui.ImageSelectDialogFragment
 import com.matthew.carvalhodagenais.cubedcollector.viewmodels.*
 import kotlinx.android.synthetic.main.activity_main.*
@@ -59,6 +62,30 @@ class MainActivity : AppCompatActivity(), ImageSelectDialogFragment.ImageSelectD
 
     override fun onSupportNavigateUp(): Boolean {
         return findNavController(R.id.nav_host_fragment).navigateUp(appBarConfig) || super.onSupportNavigateUp()
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        when (requestCode) {
+            CSVFileStorageHelper.WRITE_EXTERNAL_PERMISSION_CODE -> {
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    settingsViewModel.exportData()
+                    Snackbar.make(
+                        this.main_activity_drawer_layout,
+                        getString(R.string.saved_to_downloads),
+                        Snackbar.LENGTH_SHORT).show()
+                } else {
+                    Snackbar.make(
+                        this.main_activity_drawer_layout,
+                        getString(R.string.permission_denied),
+                        Snackbar.LENGTH_SHORT).show()
+                }
+            }
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
 
     override fun onBackPressed() {

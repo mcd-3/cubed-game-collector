@@ -12,6 +12,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.matthew.carvalhodagenais.cubedcollector.MainActivity
 import com.matthew.carvalhodagenais.cubedcollector.R
+import com.matthew.carvalhodagenais.cubedcollector.databinders.viewactions.LinearLayoutActions
 import com.matthew.carvalhodagenais.cubedcollector.databinding.FragmentSettingsBinding
 import com.matthew.carvalhodagenais.cubedcollector.databinders.viewactions.RadioButtonActions
 import kotlinx.android.synthetic.main.fragment_settings.*
@@ -36,6 +37,7 @@ class SettingsFragment: Fragment() {
             this.act = (activity as MainActivity)
             this.radioButtonActions = RadioButtonActions()
             this.viewModel = (activity as MainActivity).getSettingsViewModel()
+            this.linearLayoutActions = LinearLayoutActions()
         }
         binding.deleteAllDataLinearLayout.setOnClickListener(showDialogOnClickListener)
         return binding.root
@@ -78,6 +80,6 @@ class SettingsFragment: Fragment() {
      */
     private val alertPositiveOnClick = DialogInterface.OnClickListener { _, _ ->
         (activity as MainActivity).getSettingsViewModel().deleteAllData()
-        Snackbar.make(view!!, "All in-app data deleted", Snackbar.LENGTH_SHORT).show()
+        Snackbar.make(requireView(), "All in-app data deleted", Snackbar.LENGTH_SHORT).show()
     }
 }

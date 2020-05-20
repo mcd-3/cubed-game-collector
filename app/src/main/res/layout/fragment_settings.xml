@@ -11,6 +11,9 @@
         <variable
             name="act"
             type="android.app.Activity" />
+        <variable
+            name="linearLayoutActions"
+            type="com.matthew.carvalhodagenais.cubedcollector.databinders.viewactions.LinearLayoutActions" />
     </data>
 
     <ScrollView
@@ -35,7 +38,8 @@
                 android:paddingEnd="0dp"
                 android:paddingBottom="@dimen/medium"
                 android:background="?android:attr/selectableItemBackground"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:onClick="@{() -> linearLayoutActions.askWritePermissions(act)}">
 
                 <TextView
                     android:text="@string/export_data_label_title"
