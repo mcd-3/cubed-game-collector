@@ -12,6 +12,11 @@ class CSVFileStorageHelper {
     companion object {
         const val WRITE_EXTERNAL_PERMISSION_CODE = 11
 
+        /**
+         * Exports a list of games to an Excel CSV file
+         *
+         * @param gameList List<Game>
+         */
         fun exportToCSV(gameList: List<Game>?) {
             val directory: File = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
             val fileName = "${directory}/Cubed_My_Game_List.csv"
