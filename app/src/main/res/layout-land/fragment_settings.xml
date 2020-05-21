@@ -16,54 +16,17 @@
             type="com.matthew.carvalhodagenais.cubedcollector.databinders.viewactions.LinearLayoutActions" />
     </data>
 
-    <ScrollView
+    <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:baselineAligned="false">
 
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <LinearLayout
-                android:id="@+id/export_data_linear_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:focusable="true"
-                android:paddingTop="@dimen/medium"
-                android:paddingStart="@dimen/small"
-                android:paddingEnd="0dp"
-                android:paddingBottom="@dimen/medium"
-                android:background="?android:attr/selectableItemBackground"
-                android:orientation="vertical"
-                android:onClick="@{() -> linearLayoutActions.askWritePermissions(act)}">
-
-                <TextView
-                    android:text="@string/export_data_label_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="@dimen/small"
-                    android:layout_marginBottom="@dimen/very_small"
-                    android:textColor="?android:attr/textColor"
-                    style="@style/TextAppearance.AppCompat.Large"/>
-
-                <TextView
-                    android:text="@string/export_data_label_subtitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="@dimen/small"
-                    android:textColor="?android:attr/subtitleTextColor"
-                    style="@style/TextAppearance.AppCompat.Medium"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/silver"/>
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:id="@+id/themes_linear_layout"
@@ -79,7 +42,7 @@
                     android:text="@string/themes_label"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="@dimen/small"
+                    android:layout_marginStart="@dimen/medium"
                     android:layout_marginBottom="@dimen/very_small"
                     style="@style/TextAppearance.AppCompat.Large"/>
 
@@ -88,7 +51,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/small"
-                    android:layout_marginStart="@dimen/extra_medium"
+                    android:layout_marginStart="48dp"
                     android:layout_marginEnd="@dimen/medium">
 
                     <com.google.android.material.radiobutton.MaterialRadioButton
@@ -145,50 +108,100 @@
 
 
             </LinearLayout>
+        </ScrollView>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.01"
+            android:background="@color/silver"/>
+
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent">
 
             <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/silver"/>
+                android:layout_height="wrap_content">
 
-            <LinearLayout
-                android:id="@+id/delete_all_data_linear_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:focusable="true"
-                android:paddingTop="@dimen/medium"
-                android:paddingStart="@dimen/small"
-                android:paddingEnd="0dp"
-                android:paddingBottom="@dimen/medium"
-                android:background="?android:attr/selectableItemBackground"
-                android:orientation="vertical">
-
-                <TextView
-                    android:text="@string/delete_data_label_title"
+                <LinearLayout
+                    android:id="@+id/export_data_linear_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="@dimen/small"
-                    android:layout_marginBottom="@dimen/very_small"
-                    android:textColor="?attr/colorError"
-                    style="@style/TextAppearance.AppCompat.Large"/>
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:paddingTop="@dimen/medium"
+                    android:paddingStart="@dimen/small"
+                    android:paddingEnd="0dp"
+                    android:paddingBottom="@dimen/medium"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:orientation="vertical"
+                    android:onClick="@{() -> linearLayoutActions.askWritePermissions(act)}">
 
-                <TextView
-                    android:text="@string/delete_data_label_subtitle"
+                    <TextView
+                        android:text="@string/export_data_label_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/small"
+                        android:layout_marginBottom="@dimen/very_small"
+                        android:textColor="?android:attr/textColor"
+                        style="@style/TextAppearance.AppCompat.Large"/>
+
+                    <TextView
+                        android:text="@string/export_data_label_subtitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/small"
+                        android:textColor="?android:attr/subtitleTextColor"
+                        style="@style/TextAppearance.AppCompat.Medium"/>
+
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="@dimen/small"
-                    android:textColor="?attr/colorOnError"
-                    style="@style/TextAppearance.AppCompat.Medium"/>
+                    android:layout_height="1dp"
+                    android:background="@color/silver"/>
 
+                <LinearLayout
+                    android:id="@+id/delete_all_data_linear_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:paddingTop="@dimen/medium"
+                    android:paddingStart="@dimen/small"
+                    android:paddingEnd="0dp"
+                    android:paddingBottom="@dimen/medium"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:text="@string/delete_data_label_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/small"
+                        android:layout_marginBottom="@dimen/very_small"
+                        android:textColor="?attr/colorError"
+                        style="@style/TextAppearance.AppCompat.Large"/>
+
+                    <TextView
+                        android:text="@string/delete_data_label_subtitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/small"
+                        android:textColor="?attr/colorOnError"
+                        style="@style/TextAppearance.AppCompat.Medium"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/silver"/>
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/silver"/>
-
-        </LinearLayout>
-
-    </ScrollView>
+        </ScrollView>
+    </LinearLayout>
 </layout>
