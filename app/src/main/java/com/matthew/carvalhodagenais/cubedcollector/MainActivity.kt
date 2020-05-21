@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.widget.ImageView
 import android.widget.ScrollView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -72,7 +73,9 @@ class MainActivity : AppCompatActivity(), ImageSelectDialogFragment.ImageSelectD
         when (requestCode) {
             CSVFileStorageHelper.WRITE_EXTERNAL_PERMISSION_CODE -> {
                 if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    settingsViewModel.exportData()
+                    settingsViewModel.getAllGames().observe(this, Observer {
+                        settingsViewModel.exportData(it)
+                    })
                     Snackbar.make(
                         this.main_activity_drawer_layout,
                         getString(R.string.saved_to_downloads),

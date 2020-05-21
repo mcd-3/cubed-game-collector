@@ -2,6 +2,7 @@ package com.matthew.carvalhodagenais.cubedcollector.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.matthew.carvalhodagenais.cubedcollector.data.entities.Game
 import com.matthew.carvalhodagenais.cubedcollector.data.repositories.AccessoryRepository
@@ -17,9 +18,12 @@ class SettingsViewModel(application: Application): AndroidViewModel(application)
     private val consoleRepo: ConsoleRepository = ConsoleRepository(application)
     private val accessoryRepo: AccessoryRepository = AccessoryRepository(application)
 
-    fun exportData() = viewModelScope.launch {
-        val list: List<Game>? = gameRepo.getAllGames().value
-        CSVFileStorageHelper.exportToCSV()
+    fun getAllGames(): LiveData<List<Game>> {
+        return gameRepo.getAllGames()
+    }
+
+    fun exportData(gameList: List<Game>?) = viewModelScope.launch {
+        CSVFileStorageHelper.exportToCSV(gameList)
     }
 
     fun deleteAllData() = viewModelScope.launch {
