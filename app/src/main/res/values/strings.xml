@@ -198,5 +198,6 @@
     <!-- Navigation Header TextView -->
     <string name="cubed">Cubed</string>
     <string name="collector">Game\nCollector</string>
+    <string name="collector_land">Game Collector</string>
 
 </resources>
