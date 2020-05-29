@@ -1,6 +1,8 @@
 # Cubed: Gamecube Game Collector
 An Android app to manage your Nintendo(TM) Gamecube games, consoles, and accessories! 
 
+### Now available on Google Play:
+https://play.google.com/store/apps/details?id=com.matthew.carvalhodagenais.cubedcollector&hl=en
 
 # Features
 - Save your favourite Nintendo(TM) Gamecube games!
