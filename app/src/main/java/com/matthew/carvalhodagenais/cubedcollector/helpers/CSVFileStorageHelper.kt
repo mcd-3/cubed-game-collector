@@ -36,9 +36,9 @@ class CSVFileStorageHelper {
                             "Manual" + "\n")
                     if ( gameList != null && gameList.isNotEmpty()) {
                         gameList.forEach {
-                            fw.append(it.title.replace(",", "\",\"") + ",")
-                            fw.append(getNoneIfNull(it.developers).replace(",", "\",\"") + ",")
-                            fw.append(getNoneIfNull(it.publishers).replace(",", "\",\"") + ",")
+                            fw.append(it.title.replace(",", "\"\",\"\"") + ",")
+                            fw.append(getNoneIfNull(it.developers).replace(",", "\"\",\"\"") + ",")
+                            fw.append(getNoneIfNull(it.publishers).replace(",", "\"\",\"\"") + ",")
                             fw.append(getNoneIfNull(DateHelper.createDateString(it.releaseDate)) + ",")
                             fw.append(Region.getRegionName(it.regionId) + ",")
                             fw.append(getNoneIfNull(DateHelper.createDateString(it.boughtDate)) + ",")

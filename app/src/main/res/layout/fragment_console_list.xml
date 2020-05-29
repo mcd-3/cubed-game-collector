@@ -15,46 +15,42 @@
         If you want to edit this view,
         comment out the RecyclerView so you can see what you're doing
     -->
-    <FrameLayout
-        android:id="@+id/no_consoles_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="invisible">
 
-        <LinearLayout
-            android:orientation="vertical"
+    <LinearLayout
+        android:id="@+id/no_consoles_layout"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|center_vertical">
+
+        <TextView
+            android:id="@+id/no_consoles_title_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal|center_vertical">
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginBottom="@dimen/large"
+            android:text="@string/no_console_title"
+            android:textSize="@dimen/extra_medium_text"
+            android:textColor="?android:attr/textColor"/>
 
-            <TextView
-                android:id="@+id/no_consoles_title_text_view"
-                style="@style/TextAppearance.AppCompat.Large"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:layout_marginBottom="@dimen/large"
-                android:text="@string/no_console_title"/>
+        <ImageView
+            android:id="@+id/no_consoles_image_view"
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:layout_gravity="center"
+            android:contentDescription="@string/console_list_no_consoles_content_description"
+            android:layout_marginBottom="@dimen/large"
+            android:src="@drawable/ic_library_add_grey_148dp" />
 
-            <ImageView
-                android:id="@+id/no_consoles_image_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:contentDescription="@string/console_list_no_consoles_content_description"
-                android:layout_marginBottom="@dimen/large"
-                android:src="@drawable/ic_library_add_grey_148dp" />
+        <TextView
+            android:id="@+id/no_consoles_subtitle_text_view"
+            style="@style/TextAppearance.AppCompat.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/no_console_subtitle" />
 
-            <TextView
-                android:id="@+id/no_consoles_subtitle_text_view"
-                style="@style/TextAppearance.AppCompat.Medium"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/no_console_subtitle" />
-
-        </LinearLayout>
-    </FrameLayout>
+    </LinearLayout>
 
 </FrameLayout>
