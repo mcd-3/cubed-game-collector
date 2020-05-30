@@ -1,22 +1,21 @@
 <resources>
     <string name="app_name">Cubed: Game Collector</string>
-    <string name="app_version">2.0</string>
-    <string name="app_email">appdev.mcardag@gmail.com</string>
-    <string name="app_github">https://github.com/mcd-3/cubed-game-collector</string>
+    <string name="app_version" translatable="false">2.0</string>
+    <string name="app_email" translatable="false">appdev.mcardag@gmail.com</string>
+    <string name="app_github" translatable="false">https://github.com/mcd-3/cubed-game-collector</string>
 
     <!-- Keys for SharedPreferences -->
-    <string name="shared_preference_key">com.matthew.carvalhodagenais.gamecubecollector.PREFERENCE_KEY</string>
-    <string name="shared_preference_theme_key">SELECTED_THEME</string>
+    <string name="shared_preference_key" translatable="false">com.matthew.carvalhodagenais.gamecubecollector.PREFERENCE_KEY</string>
+    <string name="shared_preference_theme_key" translatable="false">SELECTED_THEME</string>
     <!-- Theme Keys -->
-    <string name="shared_preference_theme_cubed">101</string>
-    <string name="shared_preference_theme_cubed_dark">102</string>
-    <string name="shared_preference_theme_cubed_night">103</string>
-    <string name="shared_preference_theme_cubed_dolphin">104</string>
-    <string name="shared_preference_theme_cubed_ps">105</string>
-    <string name="shared_preference_theme_cubed_pss">106</string>
+    <string name="shared_preference_theme_cubed" translatable="false">101</string>
+    <string name="shared_preference_theme_cubed_dark" translatable="false">102</string>
+    <string name="shared_preference_theme_cubed_night" translatable="false">103</string>
+    <string name="shared_preference_theme_cubed_dolphin" translatable="false">104</string>
+    <string name="shared_preference_theme_cubed_ps" translatable="false">105</string>
+    <string name="shared_preference_theme_cubed_pss" translatable="false">106</string>
 
     <!-- Menu item titles -->
-    <string name="menu_edit_title">Edit</string>
     <string name="menu_delete_title">Delete</string>
     <string name="menu_save_title">Save</string>
     <string name="menu_add_title">Add</string>
@@ -51,10 +50,10 @@
     <string name="completeness_case">With Case</string>
     <string name="completeness_manual">With Manual</string>
     <string name="completeness_disc">Disc Only</string>
-    <string name="no_price">0.00</string>
+    <string name="no_price" translatable="false">0.00</string>
     <string name="no_region">No Region</string>
-    <string name="no_condition">N/A</string>
-    <string name="no_date">N.D</string>
+    <string name="no_condition" translatable="false">N/A</string>
+    <string name="no_date" translatable="false">N.D</string>
     <string name="camera">Camera</string>
     <string name="gallery">Gallery</string>
     <string name="no_game_title">No Games in your Collection</string>
@@ -73,7 +72,7 @@
     <string name="disclaimer">We are not affiliated, associated, authorized, endorsed by, or in any way officially connected with Nintendo Co., Ltd, or any of its subsidiaries or its affiliates.</string>
     <string name="disclaimer_part_two">The names Gamecube and Dolphin as well as related names, marks, emblems and images are registered trademarks of their respective owners.</string>
     <string name="email_label">Email</string>
-    <string name="github_label">Github</string>
+    <string name="github_label" translatable="false">Github</string>
     <string name="version_label">Version: </string>
 
     <!-- Themes -->
@@ -111,7 +110,7 @@
     <string name="delete_all_data_alert_title">Delete all data?</string>
     <string name="delete_all_data_alert_body">Are you sure you want to delete all in-app data?\n\nThis includes games, consoles, accessories, and images.\n\nTHIS IS A PERMANENT ACTION</string>
     <string name="delete_alert_positive">Delete</string>
-    <string name="delete_alert_negative">@android:string/cancel</string>
+    <string name="delete_alert_negative" translatable="false">@android:string/cancel</string>
     <string name="game_add_edit_change_image_title">Change Image How?</string>
     <string name="discard_changes_title">Discard Changes?</string>
     <string name="discard_changes_body">Any unsaved changes will be lost</string>
@@ -119,8 +118,8 @@
     <!-- Default TextView text -->
     <string name="no_title_available">No Title</string>
     <string name="no_developer_available">No Developer</string>
-    <string name="no_date_available">N.D</string>
-    <string name="no_region_available" />
+    <string name="no_date_available" translatable="false">N.D</string>
+    <string name="no_region_available" translatable="false" />
     <string name="no_publisher_available">No Publisher</string>
     <string name="no_description_available">No Description</string>
 
@@ -164,11 +163,11 @@
     <string name="drawer_layout_close">Close</string>
 
     <!-- Various Tags -->
-    <string name="star_border_tag">0</string>
-    <string name="star_filled_tag">1</string>
+    <string name="star_border_tag" translatable="false">0</string>
+    <string name="star_filled_tag" translatable="false">1</string>
 
     <!-- Empty -->
-    <string name="empty" />
+    <string name="empty" translatable="false" />
 
     <!-- Yes and No -->
     <string name="yes">Yes</string>
@@ -199,5 +198,6 @@
     <string name="cubed">Cubed</string>
     <string name="collector">Game\nCollector</string>
     <string name="collector_land">Game Collector</string>
+    <string name="menu_edit_title">Edit</string>
 
 </resources>
