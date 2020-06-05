@@ -23,7 +23,7 @@
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/small"
+            android:layout_marginTop="@dimen/very_small"
             android:layout_marginBottom="@dimen/small">
 
             <LinearLayout
@@ -40,7 +40,7 @@
                     android:layout_marginEnd="@dimen/very_small"
                     android:layout_marginBottom="@dimen/very_small">
 
-                    <TextView
+                    <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/title_text_view"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -51,7 +51,6 @@
                         android:layout_gravity="center_horizontal"
                         android:gravity="center"
                         android:textColor="?android:attr/textColor"
-                        android:textStyle="bold"
                         style="@style/TextAppearance.AppCompat.Large"
                         android:maxLines="3"
                         android:ellipsize="end"
@@ -89,7 +88,9 @@
         <ScrollView
             android:layout_weight="1"
             android:layout_width="0dp"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/very_small"
+            android:layout_marginBottom="@dimen/small">
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/collector_card_view"
@@ -97,7 +98,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/very_small"
                 android:layout_marginEnd="@dimen/small"
-                android:layout_marginTop="@dimen/small"
                 android:layout_marginBottom="@dimen/small">
 
                 <LinearLayout

@@ -28,7 +28,7 @@
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/small"
+            android:layout_marginTop="@dimen/very_small"
             android:layout_marginBottom="@dimen/small">
 
             <LinearLayout
@@ -55,7 +55,6 @@
                         android:layout_gravity="center_horizontal"
                         android:gravity="center"
                         android:textColor="?android:attr/textColor"
-                        android:textStyle="bold"
                         style="@style/TextAppearance.AppCompat.Large"
                         android:maxLines="3"
                         android:ellipsize="end"
@@ -106,7 +105,7 @@
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/small"
+            android:layout_marginTop="@dimen/very_small"
             android:layout_marginBottom="@dimen/small">
 
             <LinearLayout
