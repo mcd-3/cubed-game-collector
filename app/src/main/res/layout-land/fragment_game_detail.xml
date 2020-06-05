@@ -44,7 +44,7 @@
                     android:layout_marginEnd="@dimen/small"
                     android:layout_marginBottom="@dimen/very_small">
 
-                    <TextView
+                    <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/title_text_view"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -128,17 +128,16 @@
                         android:layout_height="match_parent"
                         android:orientation="vertical">
 
-                        <TextView
+                        <com.google.android.material.textview.MaterialTextView
                             android:id="@+id/game_info_label_text_view"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/slightly_small"
-                            android:layout_marginTop="@dimen/slightly_small"
-                            android:layout_marginBottom="@dimen/small"
-                            style="@style/TextAppearance.AppCompat.Medium"
+                            android:layout_marginStart="@dimen/slightly_medium"
+                            android:layout_marginTop="@dimen/slightly_medium"
+                            android:layout_marginBottom="@dimen/medium"
+                            style="@style/TextAppearance.AppCompat.Large"
                             android:textStyle="bold"
                             android:text="@string/game_info_label" />
-
 
                         <LinearLayout
                             android:id="@+id/developer_linear_layout"
@@ -149,26 +148,27 @@
                             android:layout_marginEnd="@dimen/small"
                             android:orientation="vertical">
 
-                            <TextView
+                            <com.google.android.material.textview.MaterialTextView
                                 android:id="@+id/developer_label_text_view"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                style="@style/TextAppearance.AppCompat.Medium"
                                 android:layout_marginStart="@dimen/slightly_small"
                                 android:layout_marginTop="@dimen/small"
+                                android:gravity="center_vertical"
                                 android:drawablePadding="@dimen/small"
                                 android:drawableStart="@drawable/ic_developer_black_24dp"
                                 android:drawableTint="?android:attr/icon"
                                 android:textColor="?android:attr/textColor"
+                                android:textSize="@dimen/medium_text"
                                 android:text="@string/developer_title" />
 
                             <TextView
                                 android:id="@+id/developer_text_view"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/slightly_medium"
+                                android:layout_marginTop="@dimen/small"
                                 android:layout_marginBottom="@dimen/slightly_medium"
-                                android:layout_marginStart="@dimen/extra_medium"
+                                android:layout_marginStart="@dimen/slightly_small"
                                 android:layout_marginEnd="@dimen/extra_medium"
                                 style="@style/TextAppearance.AppCompat.Large"
                                 bind:isDefault="@{viewModel.selectedGame.developers == null}"
@@ -185,17 +185,18 @@
                             android:layout_marginEnd="@dimen/small"
                             android:orientation="vertical">
 
-                            <TextView
+                            <com.google.android.material.textview.MaterialTextView
                                 android:id="@+id/publisher_label_text_view"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                style="@style/TextAppearance.AppCompat.Medium"
-                                android:drawableStart="@drawable/ic_publisher_black_24dp"
-                                android:drawableTint="?android:attr/icon"
+                                android:gravity="center_vertical"
                                 android:layout_marginStart="@dimen/slightly_small"
                                 android:layout_marginTop="@dimen/small"
+                                android:drawableStart="@drawable/ic_publisher_black_24dp"
+                                android:drawableTint="?android:attr/icon"
                                 android:drawablePadding="@dimen/small"
                                 android:textColor="?android:attr/textColor"
+                                android:textSize="@dimen/medium_text"
                                 android:text="@string/publisher_title" />
 
                             <TextView
@@ -203,9 +204,9 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 style="@style/TextAppearance.AppCompat.Large"
-                                android:layout_marginStart="@dimen/extra_medium"
+                                android:layout_marginStart="@dimen/slightly_small"
                                 android:layout_marginEnd="@dimen/extra_medium"
-                                android:layout_marginTop="@dimen/slightly_medium"
+                                android:layout_marginTop="@dimen/small"
                                 android:layout_marginBottom="@dimen/slightly_medium"
                                 android:drawablePadding="@dimen/small"
                                 bind:isDefault="@{viewModel.selectedGame.publishers == null}"
@@ -217,74 +218,75 @@
                             android:id="@+id/region_linear_layout"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:paddingBottom="@dimen/medium"
                             android:layout_marginStart="@dimen/small"
                             android:layout_marginEnd="@dimen/small"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            android:paddingBottom="@dimen/medium">
 
-                            <TextView
+                            <com.google.android.material.textview.MaterialTextView
                                 android:id="@+id/region_label_text_view"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="?android:attr/textColor"
-                                style="@style/TextAppearance.AppCompat.Medium"
-                                android:layout_marginTop="@dimen/small"
                                 android:layout_marginStart="@dimen/slightly_small"
+                                android:layout_marginTop="@dimen/small"
                                 android:drawableStart="@drawable/ic_region_black_24dp"
-                                android:drawableTint="?android:attr/icon"
                                 android:drawablePadding="@dimen/small"
-                                android:text="@string/region_label" />
+                                android:drawableTint="?android:attr/icon"
+                                android:gravity="center_vertical"
+                                android:text="@string/region_label"
+                                android:textColor="?android:attr/textColor"
+                                android:textSize="@dimen/medium_text" />
 
                             <TextView
                                 android:id="@+id/region_text_view"
+                                style="@style/TextAppearance.AppCompat.Large"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                style="@style/TextAppearance.AppCompat.Large"
-                                android:layout_marginTop="@dimen/slightly_medium"
-                                android:layout_marginBottom="@dimen/slightly_medium"
-                                android:layout_marginStart="@dimen/extra_medium"
+                                android:layout_marginStart="@dimen/slightly_small"
+                                android:layout_marginTop="@dimen/small"
                                 android:layout_marginEnd="@dimen/extra_medium"
+                                android:layout_marginBottom="@dimen/slightly_medium"
                                 bind:lifecycleOwner="@{lifecycleOwner}"
-                                bind:repository="@{viewModel.getRegionRepository()}"
-                                bind:regionId="@{viewModel.selectedGame.regionId}" />
+                                bind:regionId="@{viewModel.selectedGame.regionId}"
+                                bind:repository="@{viewModel.getRegionRepository()}" />
 
                         </LinearLayout>
 
                         <LinearLayout
                             android:id="@+id/release_date_linear_layout"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/medium"
+                            android:layout_height="match_parent"
+                            android:paddingBottom="@dimen/medium"
                             android:layout_marginStart="@dimen/small"
                             android:layout_marginEnd="@dimen/small"
-                            android:layout_marginBottom="@dimen/small"
-                            android:orientation="horizontal">
+                            android:orientation="vertical">
 
-                            <TextView
+                            <com.google.android.material.textview.MaterialTextView
                                 android:id="@+id/release_date_label_text_view"
-                                android:layout_width="0dp"
-                                android:layout_weight="1"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="@dimen/small"
-                                android:layout_gravity="center"
-                                android:textColor="?android:attr/textColor"
+                                android:layout_marginTop="@dimen/small"
+                                android:layout_marginStart="@dimen/slightly_small"
+                                android:gravity="center_vertical"
                                 android:drawableStart="@drawable/ic_date_black_24dp"
                                 android:drawableTint="?android:attr/icon"
                                 android:drawablePadding="@dimen/small"
-                                style="@style/TextAppearance.AppCompat.Medium"
+                                android:textSize="@dimen/medium_text"
+                                android:textColor="?android:attr/textColor"
                                 android:text="@string/release_date_label" />
 
                             <TextView
                                 android:id="@+id/release_date_text_view"
-                                android:layout_width="0dp"
-                                android:layout_weight="1"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:gravity="end"
-                                android:layout_marginEnd="@dimen/medium"
                                 style="@style/TextAppearance.AppCompat.Large"
+                                android:layout_marginTop="@dimen/small"
+                                android:layout_marginBottom="@dimen/slightly_medium"
+                                android:layout_marginStart="@dimen/slightly_small"
+                                android:layout_marginEnd="@dimen/extra_medium"
                                 bind:date="@{viewModel.selectedGame.releaseDate}"
                                 bind:isDefault="@{viewModel.selectedGame.releaseDate == null}"
-                                bind:parentActivity="@{act}"/>
+                                bind:parentActivity="@{act}" />
 
                         </LinearLayout>
                     </LinearLayout>
@@ -305,83 +307,83 @@
                         android:layout_height="match_parent"
                         android:orientation="vertical">
 
-                        <TextView
+                        <com.google.android.material.textview.MaterialTextView
                             android:id="@+id/more_details_label_text_view"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/slightly_small"
-                            android:layout_marginTop="@dimen/slightly_small"
-                            android:layout_marginBottom="@dimen/small"
-                            style="@style/TextAppearance.AppCompat.Medium"
+                            android:layout_marginStart="@dimen/slightly_medium"
+                            android:layout_marginTop="@dimen/slightly_medium"
+                            android:layout_marginBottom="@dimen/medium"
+                            style="@style/TextAppearance.AppCompat.Large"
                             android:textStyle="bold"
                             android:text="@string/more_details_label" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/small"
+                            android:layout_height="match_parent"
+                            android:paddingBottom="@dimen/medium"
                             android:layout_marginStart="@dimen/small"
                             android:layout_marginEnd="@dimen/small"
-                            android:layout_marginBottom="@dimen/small"
-                            android:orientation="horizontal">
+                            android:orientation="vertical">
 
-                            <TextView
-                                android:layout_width="0dp"
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:layout_gravity="center"
-                                android:layout_marginStart="@dimen/small"
+                                android:layout_marginTop="@dimen/small"
+                                android:layout_marginStart="@dimen/slightly_small"
+                                android:gravity="center_vertical"
                                 android:drawableStart="@drawable/ic_date_black_24dp"
                                 android:drawableTint="?android:attr/icon"
                                 android:drawablePadding="@dimen/small"
-                                style="@style/TextAppearance.AppCompat.Medium"
+                                android:textSize="@dimen/medium_text"
                                 android:textColor="?android:attr/textColor"
                                 android:text="@string/buy_date_label" />
 
                             <TextView
                                 android:id="@+id/buy_date_text_view"
-                                android:layout_width="0dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:gravity="end"
                                 style="@style/TextAppearance.AppCompat.Large"
-                                android:layout_marginEnd="@dimen/medium"
+                                android:layout_marginTop="@dimen/small"
+                                android:layout_marginBottom="@dimen/slightly_medium"
+                                android:layout_marginStart="@dimen/slightly_small"
+                                android:layout_marginEnd="@dimen/extra_medium"
                                 bind:date="@{viewModel.selectedGame.boughtDate}"
                                 bind:isDefault="@{viewModel.selectedGame.boughtDate == null}"
-                                bind:parentActivity="@{act}"/>
+                                bind:parentActivity="@{act}" />
 
                         </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/small"
+                            android:layout_height="match_parent"
+                            android:paddingBottom="@dimen/medium"
                             android:layout_marginStart="@dimen/small"
                             android:layout_marginEnd="@dimen/small"
-                            android:layout_marginBottom="@dimen/small"
-                            android:orientation="horizontal">
+                            android:orientation="vertical">
 
-                            <TextView
-                                android:layout_width="0dp"
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:layout_gravity="center"
-                                android:layout_marginStart="@dimen/small"
+                                android:layout_marginTop="@dimen/small"
+                                android:layout_marginStart="@dimen/slightly_small"
+                                android:gravity="center_vertical"
                                 android:drawableStart="@drawable/ic_condition_black_24dp"
                                 android:drawableTint="?android:attr/icon"
                                 android:drawablePadding="@dimen/small"
-                                style="@style/TextAppearance.AppCompat.Medium"
+                                android:textSize="@dimen/medium_text"
                                 android:textColor="?android:attr/textColor"
-                                android:text="@string/condition_label" />
+                                android:text="@string/release_date_label" />
 
                             <TextView
                                 android:id="@+id/condition_text_view"
-                                android:layout_width="0dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:gravity="end"
                                 style="@style/TextAppearance.AppCompat.Large"
-                                android:layout_marginEnd="@dimen/medium"
+                                android:layout_marginTop="@dimen/small"
+                                android:layout_marginBottom="@dimen/slightly_medium"
+                                android:layout_marginStart="@dimen/slightly_small"
+                                android:layout_marginEnd="@dimen/extra_medium"
                                 bind:lifecycleOwner="@{lifecycleOwner}"
                                 bind:repository="@{viewModel.getConditionRepository()}"
                                 bind:conditionId="@{viewModel.selectedGame.conditionId}" />
@@ -390,34 +392,34 @@
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/small"
+                            android:layout_height="match_parent"
+                            android:paddingBottom="@dimen/medium"
                             android:layout_marginStart="@dimen/small"
                             android:layout_marginEnd="@dimen/small"
-                            android:layout_marginBottom="@dimen/small"
-                            android:orientation="horizontal">
+                            android:orientation="vertical">
 
-                            <TextView
-                                android:layout_width="0dp"
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:layout_gravity="center"
-                                android:layout_marginStart="@dimen/small"
+                                android:layout_marginTop="@dimen/small"
+                                android:layout_marginStart="@dimen/slightly_small"
+                                android:gravity="center_vertical"
                                 android:drawableStart="@drawable/ic_price_24dp"
                                 android:drawableTint="?android:attr/icon"
                                 android:drawablePadding="@dimen/small"
+                                android:textSize="@dimen/medium_text"
                                 android:textColor="?android:attr/textColor"
-                                style="@style/TextAppearance.AppCompat.Medium"
                                 android:text="@string/price_label" />
 
                             <TextView
                                 android:id="@+id/price_paid_text_view"
-                                android:layout_width="0dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:gravity="end"
                                 style="@style/TextAppearance.AppCompat.Large"
-                                android:layout_marginEnd="@dimen/medium"
+                                android:layout_marginTop="@dimen/small"
+                                android:layout_marginBottom="@dimen/slightly_medium"
+                                android:layout_marginStart="@dimen/slightly_small"
+                                android:layout_marginEnd="@dimen/extra_medium"
                                 bind:isDefault="@{viewModel.selectedGame.pricePaid == null}"
                                 bind:parentActivity="@{act}"
                                 android:text="@{'$' + ((viewModel.selectedGame.pricePaid != null) ? viewModel.selectedGame.pricePaid.toString() : @string/no_price)}" />
