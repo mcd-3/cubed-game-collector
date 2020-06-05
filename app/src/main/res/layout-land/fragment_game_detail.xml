@@ -41,7 +41,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/small"
-                    android:layout_marginEnd="@dimen/small"
+                    android:layout_marginEnd="@dimen/very_small"
                     android:layout_marginBottom="@dimen/very_small">
 
                     <com.google.android.material.textview.MaterialTextView
@@ -68,7 +68,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/small"
-                    android:layout_marginEnd="@dimen/small"
+                    android:layout_marginEnd="@dimen/very_small"
                     android:layout_marginTop="@dimen/very_small">
 
                     <RelativeLayout
@@ -118,7 +118,7 @@
                     android:id="@+id/game_info_card_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/small"
+                    android:layout_marginStart="@dimen/very_small"
                     android:layout_marginEnd="@dimen/small"
                     android:layout_marginBottom="@dimen/very_small">
 
