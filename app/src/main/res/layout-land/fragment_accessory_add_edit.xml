@@ -36,7 +36,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/small"
-                android:layout_marginEnd="@dimen/small">
+                android:layout_marginEnd="@dimen/very_small">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -48,11 +48,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/slightly_small"
-                        android:layout_marginTop="@dimen/small"
-                        android:layout_marginBottom="@dimen/small"
+                        android:layout_marginTop="@dimen/slightly_medium"
+                        android:layout_marginBottom="@dimen/medium"
                         android:paddingStart="@dimen/small"
                         android:paddingEnd="0dp"
-                        style="@style/TextAppearance.AppCompat.Medium"
+                        style="@style/TextAppearance.AppCompat.Large"
                         android:textStyle="bold"
                         android:text="@string/accessory_image_label" />
 
@@ -103,7 +103,7 @@
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/small"
+                android:layout_marginStart="@dimen/very_small"
                 android:layout_marginEnd="@dimen/small">
 
                 <LinearLayout
@@ -116,15 +116,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/slightly_small"
-                        android:layout_marginTop="@dimen/small"
-                        android:layout_marginBottom="@dimen/small"
+                        android:layout_marginTop="@dimen/slightly_medium"
+                        android:layout_marginBottom="@dimen/medium"
                         android:paddingStart="@dimen/small"
                         android:paddingEnd="0dp"
-                        style="@style/TextAppearance.AppCompat.Medium"
+                        style="@style/TextAppearance.AppCompat.Large"
                         android:textStyle="bold"
                         android:text="@string/accessory_info_label" />
 
                     <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         app:errorEnabled="true"
@@ -179,6 +180,7 @@
                     </LinearLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginStart="@dimen/small"
