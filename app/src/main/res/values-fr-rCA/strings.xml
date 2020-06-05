@@ -15,11 +15,11 @@
     <string name="menu_navigation_collection_title">Collection</string>
     <string name="menu_navigation_other_title">Autres</string>
     <string name="game_info_label"><u>Info du Jeux</u></string>
-    <string name="game_image_label">Art du Couverture</string>
-    <string name="console_info_label">Info du Console</string>
-    <string name="console_image_label">Image du Console</string>
-    <string name="accessory_info_label">Info de l\'Accessoire</string>
-    <string name="accessory_image_label">Image de l\'Accessoire</string>
+    <string name="game_image_label"><u>Art du Couverture</u></string>
+    <string name="console_info_label"><u>Info du Console</u></string>
+    <string name="console_image_label"><u>Image du Console</u></string>
+    <string name="accessory_info_label"><u>Info de l\'Accessoire</u></string>
+    <string name="accessory_image_label"><u>Image de l\'Accessoire</u></string>
     <string name="more_details_label"><u>Plus de Détails</u></string>
     <string name="region_label">Région:</string>
     <string name="release_date_label">Date de Sortie:</string>

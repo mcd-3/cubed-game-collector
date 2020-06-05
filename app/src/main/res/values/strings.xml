@@ -32,10 +32,10 @@
     <!-- TextView text -->
     <string name="game_info_label"><u>Game Info</u></string>
     <string name="game_image_label"><u>Cover Art</u></string>
-    <string name="console_info_label">Console Info</string>
-    <string name="console_image_label">Console Image</string>
-    <string name="accessory_info_label">Accessory Info</string>
-    <string name="accessory_image_label">Accessory Image</string>
+    <string name="console_info_label"><u>Console Info</u></string>
+    <string name="console_image_label"><u>Console Image</u></string>
+    <string name="accessory_info_label"><u>Accessory Info</u></string>
+    <string name="accessory_image_label"><u>Accessory Image</u></string>
     <string name="more_details_label"><u>More Details</u></string>
     <string name="region_label">Region:</string>
     <string name="release_date_label">Release Date:</string>

@@ -315,7 +315,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <TextView
+                    <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/details_label_text_view"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
