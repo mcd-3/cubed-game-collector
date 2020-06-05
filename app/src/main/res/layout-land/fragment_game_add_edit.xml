@@ -489,14 +489,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/small"
-                android:layout_marginEnd="@dimen/small">
+                android:layout_marginEnd="@dimen/very_small">
 
                 <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <TextView
+                    <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/game_image_label_text_view"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -505,7 +505,7 @@
                         android:layout_marginBottom="@dimen/small"
                         android:paddingStart="@dimen/small"
                         android:paddingEnd="0dp"
-                        style="@style/TextAppearance.AppCompat.Medium"
+                        style="@style/TextAppearance.AppCompat.Large"
                         android:textStyle="bold"
                         android:text="@string/game_image_label" />
 
@@ -577,7 +577,7 @@
                     android:id="@+id/game_info_card_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/small"
+                    android:layout_marginStart="@dimen/very_small"
                     android:layout_marginEnd="@dimen/small">
 
                     <LinearLayout
@@ -585,20 +585,21 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
-                        <TextView
+                        <com.google.android.material.textview.MaterialTextView
                             android:id="@+id/game_info_label_text_view"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/slightly_small"
                             android:layout_marginTop="@dimen/small"
-                            android:layout_marginBottom="@dimen/small"
+                            android:layout_marginBottom="@dimen/medium"
                             android:paddingStart="@dimen/small"
                             android:paddingEnd="0dp"
-                            style="@style/TextAppearance.AppCompat.Medium"
+                            style="@style/TextAppearance.AppCompat.Large"
                             android:textStyle="bold"
                             android:text="@string/game_info_label" />
 
                         <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             app:errorEnabled="true"
@@ -620,9 +621,9 @@
 
 
                         <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_marginTop="@dimen/very_small"
                             android:layout_marginStart="@dimen/small"
                             android:layout_marginEnd="@dimen/small"
                             android:layout_marginBottom="@dimen/small">
@@ -639,8 +640,10 @@
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:layout_marginTop="@dimen/small"
                             android:layout_marginStart="@dimen/small"
                             android:layout_marginEnd="@dimen/small"
                             android:layout_marginBottom="@dimen/small">
@@ -698,6 +701,7 @@
                             android:orientation="horizontal">
 
                             <com.google.android.material.textfield.TextInputLayout
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="2"
@@ -754,7 +758,8 @@
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/small"
+                    android:layout_marginTop="@dimen/medium"
+                    android:layout_marginStart="@dimen/very_small"
                     android:layout_marginEnd="@dimen/small">
 
                     <LinearLayout
@@ -762,25 +767,27 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
-                        <TextView
+                        <com.google.android.material.textview.MaterialTextView
                             android:id="@+id/details_label_text_view"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/slightly_small"
                             android:layout_marginTop="@dimen/small"
-                            android:layout_marginBottom="@dimen/small"
+                            android:layout_marginBottom="@dimen/medium"
                             android:paddingStart="@dimen/small"
                             android:paddingEnd="0dp"
-                            style="@style/TextAppearance.AppCompat.Medium"
+                            style="@style/TextAppearance.AppCompat.Large"
                             android:textStyle="bold"
                             android:text="@string/more_details_label" />
 
                         <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_marginStart="@dimen/small"
                             android:layout_marginEnd="@dimen/small"
-                            android:layout_marginBottom="@dimen/small">
+                            android:layout_marginBottom="@dimen/small"
+                            android:layout_marginTop="@dimen/very_small">
 
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/price_paid_edit_text"
@@ -804,6 +811,7 @@
                             android:orientation="horizontal">
 
                             <com.google.android.material.textfield.TextInputLayout
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="2"
