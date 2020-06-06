@@ -74,7 +74,7 @@ class GameListFragment : Fragment() {
         // Make each item slide
         ItemTouchHelper(
             ItemTouchHelperGenerator(
-                context!!
+                requireContext()
             ).generate(
                 recyclerAdapter,
                 (activity as MainActivity).getGameListViewModel()

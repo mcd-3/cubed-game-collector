@@ -62,7 +62,7 @@ class ConsoleListFragment: Fragment() {
         // Make onSwipe ItemTouchHelper
         ItemTouchHelper(
             ItemTouchHelperGenerator(
-                context!!
+                requireContext()
             ).generate(
                 recyclerAdapter,
                 (activity as MainActivity).getConsoleListViewModel()

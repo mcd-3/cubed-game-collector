@@ -53,7 +53,7 @@ class GameDetailFragment: Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when(item.itemId) {
         R.id.menu_edit -> {
             val req =
-                if (GameDetailFragmentArgs.fromBundle(arguments!!).FROMFAVOURITE == FROM_FAVOURITE_REQUEST)
+                if (GameDetailFragmentArgs.fromBundle(requireArguments()).FROMFAVOURITE == FROM_FAVOURITE_REQUEST)
                     1
                 else 2
             val action =

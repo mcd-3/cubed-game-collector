@@ -61,7 +61,7 @@ class AccessoryListFragment: Fragment() {
         // Make onSwipe ItemTouchHelper
         ItemTouchHelper(
             ItemTouchHelperGenerator(
-                context!!
+                requireContext()
             ).generate(
                 recyclerAdapter,
                 (activity as MainActivity).getAccessoryListViewModel()
