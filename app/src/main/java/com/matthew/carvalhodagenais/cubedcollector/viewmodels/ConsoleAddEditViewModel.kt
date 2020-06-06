@@ -30,6 +30,10 @@ class ConsoleAddEditViewModel(application: Application): AndroidViewModel(applic
     }
 
     fun update(console: Console) = viewModelScope.launch {
+        if (selectedConsole.value?.imageName != "") {
+            ImageStorageHelper.deleteImage(
+                ImageStorageHelper.IMAGE_PATH, selectedConsole.value?.imageName!!)
+        }
         repository.updateConsole(console)
         clearCurrentlySelectedConsole()
     }

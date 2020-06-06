@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import com.matthew.carvalhodagenais.cubedcollector.data.CollectorDatabase
 import com.matthew.carvalhodagenais.cubedcollector.data.dao.AccessoryDao
 import com.matthew.carvalhodagenais.cubedcollector.data.entities.Accessory
+import com.matthew.carvalhodagenais.cubedcollector.helpers.ImageStorageHelper
 
 class AccessoryRepository(application: Application) {
 
@@ -28,6 +29,9 @@ class AccessoryRepository(application: Application) {
     }
 
     suspend fun deleteAccessory(accessory: Accessory) {
+        if (accessory.imageName != null) {
+            ImageStorageHelper.deleteImage(ImageStorageHelper.IMAGE_PATH, accessory.imageName.toString())
+        }
         accessoryDao.delete(accessory)
     }
 

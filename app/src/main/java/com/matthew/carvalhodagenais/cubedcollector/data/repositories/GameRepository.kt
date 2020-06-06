@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import com.matthew.carvalhodagenais.cubedcollector.data.CollectorDatabase
 import com.matthew.carvalhodagenais.cubedcollector.data.dao.GameDao
 import com.matthew.carvalhodagenais.cubedcollector.data.entities.Game
+import com.matthew.carvalhodagenais.cubedcollector.helpers.ImageStorageHelper
 
 class GameRepository(application: Application) {
 
@@ -28,6 +29,9 @@ class GameRepository(application: Application) {
     }
 
     suspend fun deleteGame(game: Game) {
+        if (game.imageName != null) {
+            ImageStorageHelper.deleteImage(ImageStorageHelper.IMAGE_PATH, game.imageName.toString())
+        }
         gameDao.delete(game)
     }
 

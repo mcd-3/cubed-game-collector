@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import com.matthew.carvalhodagenais.cubedcollector.data.CollectorDatabase
 import com.matthew.carvalhodagenais.cubedcollector.data.dao.ConsoleDao
 import com.matthew.carvalhodagenais.cubedcollector.data.entities.Console
+import com.matthew.carvalhodagenais.cubedcollector.helpers.ImageStorageHelper
 
 class ConsoleRepository(application: Application) {
 
@@ -28,6 +29,9 @@ class ConsoleRepository(application: Application) {
     }
 
     suspend fun deleteConsole(console: Console) {
+        if (console.imageName != null) {
+            ImageStorageHelper.deleteImage(ImageStorageHelper.IMAGE_PATH, console.imageName.toString())
+        }
         consoleDao.delete(console)
     }
 

@@ -28,6 +28,10 @@ class AccessoryAddEditViewModel(application: Application): AndroidViewModel(appl
     }
 
     fun update(accessory: Accessory) = viewModelScope.launch {
+        if (selectedAccessory.value?.imageName != "") {
+            ImageStorageHelper.deleteImage(
+                ImageStorageHelper.IMAGE_PATH, selectedAccessory.value?.imageName!!)
+        }
         repository.updateAccessory(accessory)
         clearCurrentlySelectedAccessory()
     }
