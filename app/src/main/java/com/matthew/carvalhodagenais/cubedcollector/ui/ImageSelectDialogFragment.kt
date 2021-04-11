@@ -27,7 +27,7 @@ class ImageSelectDialogFragment: AppCompatDialogFragment() {
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val inflater = activity!!.layoutInflater
+        val inflater = requireActivity().layoutInflater
         val binding = DataBindingUtil.inflate<FragmentImageSelectDialogBinding>(
             inflater, R.layout.fragment_image_select_dialog, null, false
         )
@@ -56,7 +56,7 @@ class ImageSelectDialogFragment: AppCompatDialogFragment() {
         } else if (requestCode == REQUEST_GALLERY) {
             if (resultCode == Activity.RESULT_OK) {
                 val image: Uri? = data?.data
-                val bitmap: Bitmap = MediaStore.Images.Media.getBitmap(activity!!.contentResolver, image)
+                val bitmap: Bitmap = MediaStore.Images.Media.getBitmap(requireActivity().contentResolver, image)
                 listener.changeImageBitmap(bitmap)
             } else {
                 Toast.makeText(context, getString(R.string.gallery_cancelled), Toast.LENGTH_LONG).show()
@@ -76,9 +76,9 @@ class ImageSelectDialogFragment: AppCompatDialogFragment() {
     }
 
     private val cameraOptionOnClick = View.OnClickListener {
-        if (activity!!.packageManager.hasSystemFeature(PackageManager.FEATURE_CAMERA)) {
+        if (requireActivity().packageManager.hasSystemFeature(PackageManager.FEATURE_CAMERA)) {
             Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
-                takePictureIntent.resolveActivity(activity!!.packageManager)?.also {
+                takePictureIntent.resolveActivity(requireActivity().packageManager)?.also {
                     startActivityForResult(takePictureIntent, REQUEST_CAMERA)
                 }
             }
