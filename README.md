@@ -28,3 +28,6 @@ Topics used to write this code include:
 - Material Design
 - Theming
 - Testing with Unit Tests and Instrumentation (UI) Tests
+
+*We are not affiliated, associated, authorized, endorsed by, or in any way officially connected with Nintendo Co., Ltd, or any of its subsidiaries or its affiliates.*
+*The names Gamecube and Dolphin as well as related names, marks, emblems and images are registered trademarks of their respective owners.*
