@@ -1,7 +1,9 @@
 package com.matthew.carvalhodagenais.cubedcollector.ui
 
+import android.content.Context
 import android.os.Bundle
 import android.view.*
+import android.view.inputmethod.InputMethodManager
 import androidx.core.graphics.drawable.toBitmap
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -89,6 +91,11 @@ class AccessoryAddEditFragment: Fragment() {
                     condition_spinner.selectedItem.toString().trim(),
                     accessory_image_view.drawable.toBitmap()
                 )
+
+                // Close keyboard
+                val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(requireView().windowToken, 0)
+
                 findNavController().navigate(R.id.action_accessoryAddEditFragment_to_nav_accessories)
             } else { // Warn the user about needing a title
                 Snackbar.make(

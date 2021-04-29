@@ -1,10 +1,12 @@
 package com.matthew.carvalhodagenais.cubedcollector.ui
 
+import android.content.Context
 import android.content.res.ColorStateList
 import android.content.res.Resources
 import android.os.Bundle
 import android.util.TypedValue
 import android.view.*
+import android.view.inputmethod.InputMethodManager
 import androidx.core.graphics.drawable.toBitmap
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -163,6 +165,11 @@ class GameAddEditFragment: Fragment() {
                     condition_spinner.selectedItem.toString().trim(),
                     cover_art_image_view.drawable.toBitmap()
                 )
+
+                // Close keyboard
+                val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(requireView().windowToken, 0)
+
                 if (GameAddEditFragmentArgs.fromBundle(requireArguments()).FROMFAVOURITE == FROM_FAVOURITE_REQUEST) {
                     findNavController().navigate(R.id.action_gameAddEditFragment_to_favouriteGameListFragment)
                 } else {
