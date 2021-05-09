@@ -355,7 +355,7 @@
                             android:drawablePadding="@dimen/small"
                             android:textSize="@dimen/medium_text"
                             android:textColor="?android:attr/textColor"
-                            android:text="@string/release_date_label" />
+                            android:text="@string/condition_label" />
 
                         <TextView
                             android:id="@+id/condition_text_view"
