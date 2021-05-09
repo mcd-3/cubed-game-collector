@@ -2,6 +2,8 @@ package com.matthew.carvalhodagenais.cubedcollector.ui
 
 import android.content.Context
 import android.content.DialogInterface
+import android.content.res.Configuration
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -46,9 +48,25 @@ class SettingsFragment: Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         val sharedPrefs = activity?.getSharedPreferences(getString(R.string.shared_preference_key), Context.MODE_PRIVATE)
-        val theme = sharedPrefs?.getInt(
-            getString(R.string.shared_preference_theme_key),
-            getString(R.string.shared_preference_theme_cubed).toInt())
+        var theme: Int? = 0
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            when (requireContext().resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
+                Configuration.UI_MODE_NIGHT_NO -> {
+                    theme = sharedPrefs?.getInt(
+                        getString(R.string.shared_preference_theme_key),
+                        getString(R.string.shared_preference_theme_cubed).toInt())
+                }
+                Configuration.UI_MODE_NIGHT_YES -> {
+                    theme = sharedPrefs?.getInt(
+                        getString(R.string.shared_preference_theme_key),
+                        getString(R.string.shared_preference_theme_cubed_dark).toInt())
+                }
+            }
+        } else {
+            theme = sharedPrefs?.getInt(
+                getString(R.string.shared_preference_theme_key),
+                getString(R.string.shared_preference_theme_cubed).toInt())
+        }
         when (theme) {
             getString(R.string.shared_preference_theme_cubed).toInt() -> radio_theme_cubed.isChecked = true
             getString(R.string.shared_preference_theme_cubed_dark).toInt() -> radio_theme_cubed_dark.isChecked = true

@@ -2,7 +2,9 @@ package com.matthew.carvalhodagenais.cubedcollector
 
 import android.content.Context
 import android.content.pm.PackageManager
+import android.content.res.Configuration
 import android.graphics.Bitmap
+import android.os.Build
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.ScrollView
@@ -233,9 +235,25 @@ class MainActivity : AppCompatActivity(), ImageSelectDialogFragment.ImageSelectD
      */
     private fun setTheme() {
         val sharedPrefs = getSharedPreferences(getString(R.string.shared_preference_key), Context.MODE_PRIVATE)
-        val theme = sharedPrefs.getInt(
-            getString(R.string.shared_preference_theme_key),
-            getString(R.string.shared_preference_theme_cubed).toInt())
+        var theme: Int = 0
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            when (applicationContext.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
+                Configuration.UI_MODE_NIGHT_NO -> {
+                    theme = sharedPrefs.getInt(
+                        getString(R.string.shared_preference_theme_key),
+                        getString(R.string.shared_preference_theme_cubed).toInt())
+                }
+                Configuration.UI_MODE_NIGHT_YES -> {
+                    theme = sharedPrefs.getInt(
+                        getString(R.string.shared_preference_theme_key),
+                        getString(R.string.shared_preference_theme_cubed_dark).toInt())
+                }
+            }
+        } else {
+            theme = sharedPrefs.getInt(
+                getString(R.string.shared_preference_theme_key),
+                getString(R.string.shared_preference_theme_cubed).toInt())
+        }
         when (theme) {
             getString(R.string.shared_preference_theme_cubed).toInt() -> setTheme(R.style.CubedTheme)
             getString(R.string.shared_preference_theme_cubed_dark).toInt() -> setTheme(R.style.CubedDarkTheme)
