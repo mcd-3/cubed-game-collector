@@ -235,26 +235,28 @@ class MainActivity : AppCompatActivity(), ImageSelectDialogFragment.ImageSelectD
      */
     private fun setTheme() {
         val sharedPrefs = getSharedPreferences(getString(R.string.shared_preference_key), Context.MODE_PRIVATE)
-        var theme: Int = 0
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            when (applicationContext.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
-                Configuration.UI_MODE_NIGHT_NO -> {
-                    theme = sharedPrefs.getInt(
-                        getString(R.string.shared_preference_theme_key),
-                        getString(R.string.shared_preference_theme_cubed).toInt())
-                }
-                Configuration.UI_MODE_NIGHT_YES -> {
-                    theme = sharedPrefs.getInt(
-                        getString(R.string.shared_preference_theme_key),
-                        getString(R.string.shared_preference_theme_cubed_dark).toInt())
-                }
+        val theme = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            val themeFallback = when (applicationContext.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
+                Configuration.UI_MODE_NIGHT_YES -> getString(R.string.shared_preference_theme_cubed_dark).toInt()
+                Configuration.UI_MODE_NIGHT_NO -> getString(R.string.shared_preference_theme_cubed).toInt()
+                else -> getString(R.string.shared_preference_theme_cubed).toInt()
             }
+            sharedPrefs.getInt(
+                getString(R.string.shared_preference_theme_key),
+                themeFallback)
         } else {
-            theme = sharedPrefs.getInt(
+            sharedPrefs.getInt(
                 getString(R.string.shared_preference_theme_key),
                 getString(R.string.shared_preference_theme_cubed).toInt())
         }
         when (theme) {
+            getString(R.string.shared_preference_theme_device).toInt() ->  {
+                when (applicationContext.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
+                    Configuration.UI_MODE_NIGHT_YES -> setTheme(R.style.CubedDarkTheme)
+                    Configuration.UI_MODE_NIGHT_NO -> setTheme(R.style.CubedTheme)
+                    else -> setTheme(R.style.CubedTheme)
+                }
+            }
             getString(R.string.shared_preference_theme_cubed).toInt() -> setTheme(R.style.CubedTheme)
             getString(R.string.shared_preference_theme_cubed_dark).toInt() -> setTheme(R.style.CubedDarkTheme)
             getString(R.string.shared_preference_theme_cubed_night).toInt() -> setTheme(R.style.NightTheme)

@@ -55,6 +55,14 @@
                     android:layout_marginEnd="@dimen/medium">
 
                     <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/radio_theme_device"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/medium_text"
+                        android:text="@string/device_theme"
+                        android:onClick="@{(view) -> radioButtonActions.setTheme(view, act)}"/>
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
                         android:id="@+id/radio_theme_cubed"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

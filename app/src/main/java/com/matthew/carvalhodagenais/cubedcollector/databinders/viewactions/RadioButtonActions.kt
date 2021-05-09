@@ -20,6 +20,8 @@ class RadioButtonActions {
             Context.MODE_PRIVATE)
 
         val keyInt = when (view.id) {
+            R.id.radio_theme_device -> activity.getString(
+                R.string.shared_preference_theme_device).toInt()
             R.id.radio_theme_cubed -> activity.getString(
                 R.string.shared_preference_theme_cubed).toInt()
             R.id.radio_theme_cubed_dark -> activity.getString(

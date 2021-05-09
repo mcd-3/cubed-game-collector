@@ -54,6 +54,7 @@
     <string name="disclaimer_part_two">Les noms Gamecube et Dolphin ainsi que les noms, marques, emblèmes et images associés sont des marques déposées de leurs propriétaires respectifs.</string>
     <string name="email_label">Email</string>
     <string name="version_label">Version:</string>
+    <string name="device_theme">Thème de l\'Appareil</string>
     <string name="cubed_theme">Cubed</string>
     <string name="cubed_dark_theme">Cubed Sombre</string>
     <string name="night_theme">Cubed Nuit</string>
